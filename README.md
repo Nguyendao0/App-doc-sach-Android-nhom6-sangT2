@@ -1,13 +1,24 @@
 Tên đề tài: ứng dụng đọc sách, truyên.
+
 Yêu cầu: 
-	1. Sử dụng kiến trúc được đề xuất trên lớp
-	2. Ngôn ngữ sử dụ Java :Frontend.
-	3. Viết Native App.
-	4. Backend API: Tự do.
-	5. Áp dụng càng nhiều công nghệ học trên lớp thì tốt.
-	6. thời gian hoàn thành: 10 tuần.
-	7. Minh chứng đóng góp dựa vào lịch sử PUSH trên github.
-	8. Báo cáo seminar ít nhất 1 chủ đề .
+
+1. Sử dụng kiến trúc được đề xuất trên lớp
+   
+3. Ngôn ngữ sử dụ Java :Frontend.
+   
+5. Viết Native App.
+   
+7. Backend API: Tự do.
+   
+9. Áp dụng càng nhiều công nghệ học trên lớp thì tốt.
+    
+11. thời gian hoàn thành: 10 tuần
+
+tuần 1: xác định đề tài, database, công nghệ.
+    
+13. Minh chứng đóng góp dựa vào lịch sử PUSH trên github.
+    
+15. Báo cáo seminar ít nhất 1 chủ đề .
  
 các ứng dựng tham khảo: wattpad, waka 4.0
 

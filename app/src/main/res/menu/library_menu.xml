@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/sortMenuItem"
+        android:title="Sắp xếp theo">
+        <menu
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <item
+                android:id="@+id/titleMenuItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:title="Tiêu đề" />
+            <item
+                android:id="@+id/authorMenuItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:title="Tác giả" />
+            <item
+                android:id="@+id/readRecentlyMenuItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:title="Đọc gần đây" />
+            <item
+                android:id="@+id/updateRecentlyMenuItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:title="Cập nhật gần đây" />
+            <item
+                android:id="@+id/addRecentlyMenuItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:title="Thêm gần đây" />
+        </menu>
+    </item>
+    <item
+        android:id="@+id/editMenuItem"
+        android:title="Chỉnh sửa" />
+    <item
+        android:id="@+id/viewModeMenuItem"
+        android:title="Xem danh sách" />
+</menu>

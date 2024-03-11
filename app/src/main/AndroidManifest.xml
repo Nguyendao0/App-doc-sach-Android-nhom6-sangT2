@@ -13,6 +13,11 @@
         android:theme="@style/Theme.HelloWorldJava"
         tools:targetApi="31">
         <activity
+            android:name=".ReadBookActivity"
+            android:exported="false"
+            android:label="Book Name"
+            android:parentActivityName=".MainActivity"/>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -21,6 +26,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:label="Comment"
+            android:name=".CommentActivity" android:exported="true" android:parentActivityName=".ReadBookActivity" />
     </application>
 
 </manifest>

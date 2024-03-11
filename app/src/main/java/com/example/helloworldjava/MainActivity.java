@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     Spinner listSpinner;
+    //this is van phuoc
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

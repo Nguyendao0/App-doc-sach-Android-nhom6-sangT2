@@ -1,4 +1,4 @@
-package com.example.serach_display;
+package com.example.helloworldjava;
 
 import android.content.Context;
 import android.view.LayoutInflater;

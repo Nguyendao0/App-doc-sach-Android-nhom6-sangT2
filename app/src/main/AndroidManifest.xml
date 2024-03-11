@@ -24,7 +24,6 @@
             android:exported="false" />
         <activity
             android:name=".Menu.MenuActivity"
-            android:name=".Library.TESTGETPDFActivity"
             android:exported="false" />
         <activity
             android:name=".Library.QuestionActivity"

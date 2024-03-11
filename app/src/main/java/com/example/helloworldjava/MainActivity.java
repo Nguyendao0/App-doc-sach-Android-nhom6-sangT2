@@ -50,8 +50,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void ThongBao(View view) {
-        Intent intent = new Intent(this, Noitification.class);
 
+        Intent intent = new Intent(this, Noitification.class);
+        startActivity(intent);
+    }
     public void GoToLibraryActivity(View view)
     {
         Intent intent = new Intent(this, LibraryActivity.class);

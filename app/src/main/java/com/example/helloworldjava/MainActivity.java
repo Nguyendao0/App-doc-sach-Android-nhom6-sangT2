@@ -1,4 +1,4 @@
-package com.example.serach_display;
+package com.example.helloworldjava;
 
 import androidx.appcompat.app.AppCompatActivity;
 

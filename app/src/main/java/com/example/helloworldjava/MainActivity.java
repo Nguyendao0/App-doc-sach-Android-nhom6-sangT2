@@ -10,35 +10,26 @@ import android.widget.Spinner;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    Spinner listSpinner;
     //this is van phuoc
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        //Design spinner for quick search by catergory//
-        listSpinner = (Spinner) findViewById(R.id.spinner);
-        ArrayList<String> arrayCatergory = new ArrayList<String>();
-        arrayCatergory.add("Phieu luu");
-        arrayCatergory.add("Ao tuong");
-        arrayCatergory.add("Tinh cam");
-        arrayCatergory.add("Thanh tinh");
-        ArrayAdapter adapterSpinner = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, arrayCatergory );
-        listSpinner.setAdapter(adapterSpinner);
-        //Adapter send data to list view//
-        ListView listView;
-        ArrayList<Book> arrayList;
-        AdapterListBook adapter;
-        listView = findViewById(R.id.listBook);
-        arrayList = new ArrayList<>();
-        arrayList.add(new Book("Tận hưởng chuyến hành trình của mình", "Hãy cho nỗi đau thêm thời gian",R.drawable.sach1));
-        arrayList.add(new Book("Tận hưởng chuyến hành trình của mình", "Hãy cho nỗi đau thêm thời gian",R.drawable.sach1));
-        arrayList.add(new Book("Tận hưởng chuyến hành trình của mình", "Hãy cho nỗi đau thêm thời gian",R.drawable.sach1));
-        arrayList.add(new Book("Tận hưởng chuyến hành trình của mình", "Hãy cho nỗi đau thêm thời gian",R.drawable.sach1));
-        arrayList.add(new Book("Tận hưởng chuyến hành trình của mình", "Hãy cho nỗi đau thêm thời gian",R.drawable.sach1));
-        arrayList.add(new Book("Tận hưởng chuyến hành trình của mình", "Hãy cho nỗi đau thêm thời gian",R.drawable.sach1));
-        adapter = new AdapterListBook(MainActivity.this, R.layout.modelbook,arrayList);
-        listView.setAdapter(adapter);
+        setContentView(R.layout.search_layout);
+        runArrayList();
+    }
 
+    protected void runArrayList(){
+        CatergorySearch catergorySearch = new CatergorySearch();
+        HistorySearch historySearch = new HistorySearch();
+
+        Spinner spinner;
+        spinner = (Spinner) findViewById(R.id.spinner);
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, androidx.constraintlayout.widget.R.layout.support_simple_spinner_dropdown_item,catergorySearch.getArrayCatergory());
+        spinner.setAdapter(arrayAdapter);
+
+        ListView listView;
+        listView = (ListView) findViewById(R.id.listBook);
+        AdapterListBook adapterListBook = new AdapterListBook(this, R.layout.modelbook,historySearch.getArrayBook());
+        listView.setAdapter(adapterListBook);
     }
 }

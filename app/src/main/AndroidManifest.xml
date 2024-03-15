@@ -13,6 +13,12 @@
         android:theme="@style/Theme.HelloWorldJava"
         tools:targetApi="31">
         <activity
+            android:name=".BookCategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListBooksActity"
+            android:exported="false" />
+        <activity
             android:name=".HomeActivity"
             android:exported="false" />
         <activity

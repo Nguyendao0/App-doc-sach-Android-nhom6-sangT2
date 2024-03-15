@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-feature android:name="android.hardware.microphone" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -32,6 +33,12 @@
             android:name=".Library.LibraryActivity"
             android:exported="false" />
         <activity
+            android:name=".AccountSettingActivity"
+            android:exported="false"/>
+        <activity
+            android:parentActivityName=".UserActivity"
+            android:label="Sửa thông tin"/>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -40,6 +47,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".UserActivity"
+            android:exported="true"
+            android:parentActivityName=".MainActivity"
+            android:label="Thông tin cá nhân"/>
     </application>
 
 </manifest>

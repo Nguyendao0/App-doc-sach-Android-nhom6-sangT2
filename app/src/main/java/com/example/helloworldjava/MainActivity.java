@@ -1,6 +1,7 @@
 package com.example.helloworldjava;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import com.example.helloworldjava.Library.LibraryActivity;
 import com.example.helloworldjava.Library.TESTGETPDFActivity;
 
 import java.util.Locale;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
     private TextToSpeech tts;
@@ -39,6 +41,18 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        Button btnUser = findViewById(R.id.btnUser);
+        btnUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, UserActivity.class);
+                startActivity(intent);
+            }
+        });
     }
     public void goToMenu(View view) {
         Intent intent = new Intent(this, MenuActivity.class);

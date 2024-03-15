@@ -16,4 +16,12 @@
     <color name="brown">#FFA52A2A</color>
     <color name="pink">#FFFFC0CB</color>
     <color name="teal">#FF008080</color>
+    <color name="colorPrimary">#E0E0E0</color>
+    <color name="colorPrimaryDark">#FBB8AC</color>
+    <color name="colorAccent">#FEDBD0</color>
+    <color name="textColorPrimary">#442C2E</color>
+    <color name="toolbarIconColor">@color/textColorPrimary</color>
+    <color name="colorSecondary">#FEEAE6</color>
+    <color name="loginPageBackgroundColor">#FFFFFF</color>
+    <color name="productGridBackgroundColor">#FFFFFF</color>
 </resources>

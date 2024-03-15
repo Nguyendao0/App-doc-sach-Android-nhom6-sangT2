@@ -1,22 +1,23 @@
 package com.example.helloworldjava;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.Spinner;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.helloworldjava.GioiThieuSach.BookDetailActivity;
-import com.example.helloworldjava.Menu.MenuActivity;
-import com.example.helloworldjava.Thongbao.Noitification;
 import com.example.helloworldjava.Library.LibraryActivity;
 import com.example.helloworldjava.Library.TESTGETPDFActivity;
-
-import java.util.Locale;
-import android.widget.Button;
+import com.example.helloworldjava.Menu.MenuActivity;
+import com.example.helloworldjava.Thongbao.Noitification;
 
 public class MainActivity extends AppCompatActivity {
     private TextToSpeech tts;
@@ -53,7 +54,22 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // Ánh xạ button từ layout XML
+        Button openSearchButton = findViewById(R.id.openSearchButton);
+
+// Thiết lập sự kiện click cho button
+        openSearchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Xử lý khi button được click
+                // Ví dụ: mở view, thực hiện một hành động nào đó, vv...
+                runArrayList();
+            }
+        });
     }
+
+
     public void goToMenu(View view) {
         Intent intent = new Intent(this, MenuActivity.class);
         startActivity(intent);
@@ -79,22 +95,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-}
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Spinner;
-
-import java.util.ArrayList;
-
-public class MainActivity extends AppCompatActivity {
-    //this is van phuoc
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.search_layout);
-        runArrayList();
-    }
-
     protected void runArrayList(){
         CatergorySearch catergorySearch = new CatergorySearch();
         HistorySearch historySearch = new HistorySearch();
@@ -109,4 +109,5 @@ public class MainActivity extends AppCompatActivity {
         AdapterListBook adapterListBook = new AdapterListBook(this, R.layout.modelbook,historySearch.getArrayBook());
         listView.setAdapter(adapterListBook);
     }
+
 }

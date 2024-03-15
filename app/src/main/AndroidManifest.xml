@@ -34,8 +34,7 @@
             android:exported="false" />
         <activity
             android:name=".AccountSettingActivity"
-            android:exported="false"/>
-        <activity
+            android:exported="false"
             android:parentActivityName=".UserActivity"
             android:label="Sửa thông tin"/>
         <activity

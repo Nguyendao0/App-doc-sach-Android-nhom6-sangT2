@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Spinner;
+import android.widget.*;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -21,6 +21,8 @@ import com.example.helloworldjava.Thongbao.Noitification;
 
 public class MainActivity extends AppCompatActivity {
     private TextToSpeech tts;
+public class SearchActivity extends AppCompatActivity {
+    //this is van phuoc
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,6 +96,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, TESTGETPDFActivity.class);
         startActivity(intent);
     }
+
+
 
     protected void runArrayList(){
         CatergorySearch catergorySearch = new CatergorySearch();

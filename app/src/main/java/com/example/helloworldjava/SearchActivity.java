@@ -5,18 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Spinner;
+import android.widget.*;
 
-import java.util.ArrayList;
-
-public class MainActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity {
     //this is van phuoc
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.search_layout);
+        setContentView(R.layout.home_layout);
         runArrayList();
     }
+
+
 
     protected void runArrayList(){
         CatergorySearch catergorySearch = new CatergorySearch();

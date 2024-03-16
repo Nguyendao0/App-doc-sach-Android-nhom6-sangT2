@@ -21,15 +21,25 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.ListResult;
 import com.google.firebase.storage.StorageReference;
+
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 public class BookAdapter extends RecyclerView.Adapter<BookViewHolder>{
     private String imageUrl;
     private String title;
     private LayoutInflater minflater;
+    private  DatabaseReference mDatabase;
+    private StorageReference storageRef;
+    private int fileCount = 0;
     public BookAdapter(LayoutInflater minflater) {
         this.minflater = minflater;
-        readData();
+        this.mDatabase = FirebaseDatabase.getInstance().getReference();
+        this.storageRef = FirebaseStorage.getInstance().getReference();
+        getAmountBook();
+        this.readData();
     }
 
     @NonNull
@@ -54,8 +64,6 @@ public class BookAdapter extends RecyclerView.Adapter<BookViewHolder>{
     }
 
     private void readData() {
-        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-        StorageReference storageRef = FirebaseStorage.getInstance().getReference();
 
         mDatabase.child("BookApp").child("Books").child("BOOK1").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -63,8 +71,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookViewHolder>{
                 if (dataSnapshot.exists()) {
                     String image = dataSnapshot.child("Image").getValue(String.class);
                     title = dataSnapshot.child("Title").getValue(String.class);
-
-                    StorageReference imageRef = storageRef.child("Book1/" + image.trim());
+                    StorageReference imageRef = storageRef.child("Images/" + image);
                     imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
@@ -90,9 +97,29 @@ public class BookAdapter extends RecyclerView.Adapter<BookViewHolder>{
         });
     }
 
+    private void getAmountBook()
+    {
+        storageRef.child("Books").listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
+            @Override
+            public void onSuccess(ListResult listResult) {
+
+
+                // Duyệt qua danh sách file và thư mục
+                for (StorageReference item : listResult.getItems()) {
+                    // Kiểm tra xem item là thư mục hay không
+                    fileCount++;
+                }
+
+                System.out.println("Số lượng file:"+ fileCount);
+            }
+        });
+
+    }
+
+
     @Override
     public int getItemCount() {
-        return 20;
+        return  fileCount;
     }
 }
 

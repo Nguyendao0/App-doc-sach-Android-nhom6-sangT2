@@ -56,13 +56,13 @@
                         android:textSize="16sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/textView8"
+                        app:layout_constraintEnd_toStartOf="@+id/amountBooksOnline"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.0" />
 
                     <TextView
-                        android:id="@+id/textView8"
+                        android:id="@+id/amountBooksOnline"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="202dp"
@@ -109,13 +109,13 @@
                         android:textSize="16sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/textView6"
+                        app:layout_constraintEnd_toStartOf="@+id/amountBooksOffline"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.515" />
 
                     <TextView
-                        android:id="@+id/textView6"
+                        android:id="@+id/amountBooksOffline"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0 truyện"

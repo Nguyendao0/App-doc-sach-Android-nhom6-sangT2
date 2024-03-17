@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
 
         Button btnUser = findViewById(R.id.btnUser);
         btnUser.setOnClickListener(new View.OnClickListener() {
@@ -52,6 +52,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, UserActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        Button btnReadBook = findViewById(R.id.btbReadBook);
+        btnReadBook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(MainActivity.this, ReadBookActivity.class);
+                startActivity(myIntent);
             }
         });
 
@@ -105,5 +114,6 @@ public class MainActivity extends AppCompatActivity {
         AdapterListBook adapterListBook = new AdapterListBook(this, R.layout.modelbook,historySearch.getArrayBook());
         listView.setAdapter(adapterListBook);
     }
+
 
 }

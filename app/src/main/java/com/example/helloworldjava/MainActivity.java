@@ -65,6 +65,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+//
+//        Button btnReadBook = findViewById(R.id.btbReadBook);
+//        btnReadBook.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent myIntent = new Intent(MainActivity.this, ReadBookActivity.class);
+//                MainActivity.this.startActivity(myIntent);
+//            }
+//        });
 
 
     }
@@ -117,14 +126,5 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(adapterListBook);
     }
 
-        Button btnReadBook = findViewById(R.id.btbReadBook);
-        btnReadBook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent myIntent = new Intent(MainActivity.this, ReadBookActivity.class);
-                MainActivity.this.startActivity(myIntent);
-            }
-        });
-    }
 
 }

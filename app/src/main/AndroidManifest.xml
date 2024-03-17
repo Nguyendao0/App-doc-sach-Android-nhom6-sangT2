@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-feature android:name="android.hardware.microphone" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,14 +18,45 @@
         android:theme="@style/Theme.HelloWorldJava"
         tools:targetApi="31">
         <activity
+            android:name=".Thongbao.Noitification"
+            android:exported="false" />
+        <activity
+            android:name=".GioiThieuSach.BookDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Menu.MenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Library.QuestionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Library.LibraryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AccountSettingActivity"
+            android:exported="false"
+            android:parentActivityName=".UserActivity"
+            android:label="Sửa thông tin"/>
+        <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".SearchActivity"
+            android:exported="false">
+
+        </activity>
+        <activity
+            android:name=".UserActivity"
+            android:exported="true"
+            android:parentActivityName=".MainActivity"
+            android:label="Thông tin cá nhân"/>
     </application>
 
 </manifest>

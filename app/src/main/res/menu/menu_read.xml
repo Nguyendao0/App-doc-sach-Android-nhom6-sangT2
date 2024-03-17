@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/item1"
+        android:title="Đánh dấu trang "
+        android:icon="@drawable/bookmark"
+        app:showAsAction="ifRoom|withText" />
+
+    <item android:id="@+id/item2"
+        android:title="Khóa màn hình "
+        android:icon="@drawable/lock"
+        app:showAsAction="ifRoom|withText"/>
+
+    <item android:id="@+id/item3"
+        android:title="Đổi màu "
+
+        android:icon="@drawable/colors"
+        app:showAsAction="ifRoom|withText"/>
+
+</menu>

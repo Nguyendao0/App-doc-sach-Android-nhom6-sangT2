@@ -6,3 +6,7 @@
         android:width="2dp"
         android:color="@android:color/white" />
 </shape>
+    android:shape="rectangle">
+    <corners android:radius="700dp" />
+    <solid android:color="@android:color/white" />
+</shape>

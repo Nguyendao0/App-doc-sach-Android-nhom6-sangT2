@@ -38,6 +38,11 @@
             android:parentActivityName=".UserActivity"
             android:label="Sửa thông tin"/>
         <activity
+            android:name=".ReadBookActivity"
+            android:exported="false"
+            android:label="Book Name"
+            android:parentActivityName=".MainActivity"/>
+        <activity
             android:name=".MainActivity"
             android:exported="true" >
             <intent-filter>
@@ -57,6 +62,9 @@
             android:exported="true"
             android:parentActivityName=".MainActivity"
             android:label="Thông tin cá nhân"/>
+        <activity
+            android:label="Comment"
+            android:name=".CommentActivity" android:exported="true" android:parentActivityName=".ReadBookActivity" />
     </application>
 
 </manifest>

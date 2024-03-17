@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/search"
+        android:title="Search"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_bookmark"
+        android:icon="@drawable/bookmark"
+        android:title="Bookmark"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/action_size"
+        android:icon="@drawable/size"
+        android:title="Size"
+        app:showAsAction="ifRoom"/>
+</menu>

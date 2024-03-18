@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="listArrangeBooks" >
+        <item>Tên sách</item>
+        <item>Tác giả</item>
+    </string-array>
+</resources>

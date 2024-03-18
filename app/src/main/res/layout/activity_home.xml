@@ -193,7 +193,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
 
                 <TextView
-                    android:id="@+id/textView7"
+                    android:id="@+id/tv_ThuVien"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -211,7 +211,7 @@
                     android:layout_height="30dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    app:layout_constraintStart_toEndOf="@+id/textView7"
+                    app:layout_constraintStart_toEndOf="@+id/tv_ThuVien"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_expand_circle_right" />
 
@@ -238,7 +238,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
 
                 <TextView
-                    android:id="@+id/textView7"
+                    android:id="@+id/tv_Moi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -256,7 +256,7 @@
                     android:layout_height="30dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    app:layout_constraintStart_toEndOf="@+id/textView7"
+                    app:layout_constraintStart_toEndOf="@+id/tv_Moi"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_expand_circle_right" />
 
@@ -330,7 +330,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout5">
 
                 <TextView
-                    android:id="@+id/textView7"
+                    android:id="@+id/tv_danhmucsach"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -348,7 +348,7 @@
                     android:layout_height="30dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    app:layout_constraintStart_toEndOf="@+id/textView7"
+                    app:layout_constraintStart_toEndOf="@+id/tv_danhmucsach"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_expand_circle_right" />
 

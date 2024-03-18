@@ -43,6 +43,15 @@
             android:label="Book Name"
             android:parentActivityName=".MainActivity"/>
         <activity
+            android:name=".BookCategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListBooksActity"
+            android:exported="false" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true" >
             <intent-filter>

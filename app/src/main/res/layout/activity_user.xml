@@ -86,7 +86,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="16dp"
                     android:layout_weight="1"
-                    android:background="@drawable/round_background"
+                    android:background="@drawable/round_background_white"
                     android:orientation="vertical">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -134,7 +134,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="16dp"
                     android:layout_weight="1"
-                    android:background="@drawable/round_background"
+                    android:background="@drawable/round_background_white"
                     android:orientation="vertical">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -182,7 +182,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="16dp"
                     android:layout_weight="1"
-                    android:background="@drawable/round_background"
+                    android:background="@drawable/round_background_white"
                     android:orientation="vertical">
 
                     <androidx.constraintlayout.widget.ConstraintLayout

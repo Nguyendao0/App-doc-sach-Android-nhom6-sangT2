@@ -68,7 +68,7 @@ public class ProfileFeaturesAdapter extends RecyclerView.Adapter<ProfileFeatures
             mName.setText(profileFeature.getName());
 
             if (profileFeature.getImageResourceId() == R.drawable.logout) {
-                mName.setTextColor(mContext.getResources().getColor(com.google.android.material.R.color.design_default_color_error));
+                mName.setTextColor(mContext.getResources().getColor(R.color.colorError));
             }
 
             Glide.with(mContext).load(profileFeature.getImageResourceId())

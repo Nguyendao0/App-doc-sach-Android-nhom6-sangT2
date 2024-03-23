@@ -33,15 +33,15 @@
           app:layout_constraintTop_toTopOf="parent" />
 
       <Button
+          android:id="@+id/search_btn"
           android:layout_width="60dp"
           android:layout_height="50dp"
           android:layout_marginTop="20dp"
           android:layout_marginRight="20dp"
           android:layout_weight="0"
           android:backgroundTint="@color/white"
-          android:backgroundTintMode="screen"
-          app:icon="@drawable/baseline_search_24"
-          android:id="@+id/search_btn"
+          android:backgroundTintMode="multiply"
+          app:icon="@drawable/search_icon"
           app:iconTintMode="src_in" />
   </LinearLayout>
 

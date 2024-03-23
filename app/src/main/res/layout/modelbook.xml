@@ -5,14 +5,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
         android:id="@+id/cardview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:cardCornerRadius="15dp">
         <ImageView
             android:id="@+id/imageBook"
-            android:layout_marginTop="20sp"
-            android:layout_marginLeft="20dp"
             android:layout_width="120dp"
             android:scaleType="centerCrop"
             android:layout_height="120dp" />
@@ -23,7 +23,7 @@
 
     <TextView
         android:text="Name"
-        android:layout_marginTop="20sp"
+        android:layout_marginTop="20dp"
         android:textSize="20sp"
         android:textColor="@color/black"
         android:textStyle="bold"

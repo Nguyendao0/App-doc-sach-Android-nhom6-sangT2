@@ -8,6 +8,6 @@ public class HomePresenter {
     }
 
     public void loadSearching(){
-        homeInterface.onClick();
+        homeInterface.onClickButton();
     }
 }

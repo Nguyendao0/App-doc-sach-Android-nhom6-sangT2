@@ -19,12 +19,14 @@ public class HomeActivity extends AppCompatActivity implements HomeInterface {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_layout);
+        homePresenter = new HomePresenter(this);
         homePresenter.loadSearching();
+
     }
 
 
     @Override
-    public void onClick() {
+    public void onClickButton() {
         Button btnSearch;
         btnSearch = (Button) findViewById(R.id.button_search);
         btnSearch.setOnClickListener(new View.OnClickListener() {

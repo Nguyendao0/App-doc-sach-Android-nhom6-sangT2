@@ -21,6 +21,7 @@ public class SearchActivity extends AppCompatActivity implements SearchInterface
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_layout);
+        searchPresenter = new SearchPresenter(this);
         searchPresenter.loadHistorySearch();
     }
 

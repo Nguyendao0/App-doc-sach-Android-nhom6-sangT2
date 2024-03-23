@@ -21,7 +21,7 @@ public class HistorySearch {
     public HistorySearch() {
         ArrayList<Book> array = new ArrayList<Book>();
         array.add(new Book("Watanabe Kazuko","Hạnh Phúc Hay Không Do Ta Quyết Định", R.drawable.sach01));
-        array.add(new Book("Be Kind","Hãy có lòng tốt",sach02));
+        array.add(new Book("Be Kind","Hãy có lòng tốt",R.drawable.sach03));
         array.add(new Book("Minh Niệm","Làm Như Chơi ",R.drawable.sach03));
         array.add(new Book("Nhà xuất bản Trẻ","Tư vấn tâm lý học đường. ",R.drawable.sach04));
 

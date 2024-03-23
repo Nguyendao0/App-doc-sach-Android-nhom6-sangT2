@@ -1,4 +1,4 @@
-package com.example.helloworldjava;
+package com.example.helloworldjava.model;
 
 import android.app.Activity;
 

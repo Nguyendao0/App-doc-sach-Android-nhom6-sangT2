@@ -33,20 +33,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
+                app:shapeAppearanceOverlay="@style/circleImageView"
                 android:id="@+id/userAvatarImage"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_marginTop="24dp"
                 android:background="@drawable/circle_outline"
                 android:scaleType="centerCrop"
+                android:src="@drawable/menhera_chan"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"

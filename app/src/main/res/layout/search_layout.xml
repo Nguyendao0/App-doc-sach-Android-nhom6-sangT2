@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".mvp.view.SearchActivity">
 
   <LinearLayout
       android:id="@+id/nav_search_icon"
@@ -14,7 +14,7 @@
       android:layout_height="wrap_content"
       android:gravity="end"
       android:orientation="horizontal"
-      tools:context=".MainActivity">
+      tools:context=".mvp.view.SearchActivity">
       <EditText
           android:id="@+id/search_text"
           android:layout_width="wrap_content"
@@ -31,16 +31,18 @@
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent" />
+
       <Button
           android:layout_width="60dp"
           android:layout_height="50dp"
           android:layout_marginTop="20dp"
-          android:layout_weight="0"
-          android:backgroundTintMode="@color/black"
-          android:backgroundTint="@color/black"
-          app:icon="@drawable/baseline_search_24"
           android:layout_marginRight="20dp"
-          app:iconTintMode="src_in"/>
+          android:layout_weight="0"
+          android:backgroundTint="@color/white"
+          android:backgroundTintMode="screen"
+          app:icon="@drawable/baseline_search_24"
+          android:id="@+id/search_btn"
+          app:iconTintMode="src_in" />
   </LinearLayout>
 
     <LinearLayout
@@ -68,12 +70,11 @@
 
     <ListView
         android:id="@+id/listBook"
-        android:layout_weight="2"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="70dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="70dp"
+        android:layout_weight="2" />
 
 
 </LinearLayout>

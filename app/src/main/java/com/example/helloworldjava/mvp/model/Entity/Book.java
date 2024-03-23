@@ -1,4 +1,4 @@
-package com.example.helloworldjava.mvp.model;
+package com.example.helloworldjava.mvp.model.Entity;
 
 public class Book {
     private String Decription;

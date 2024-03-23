@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:gravity="end"
     android:orientation="horizontal"
-    tools:context=".MainActivity">
+    tools:context=".mvp.view.SearchActivity">
    <ListView
        android:layout_width="match_parent"
        android:layout_height="wrap_content"

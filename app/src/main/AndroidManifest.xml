@@ -38,7 +38,7 @@
             android:parentActivityName=".UserActivity"
             android:label="Sửa thông tin"/>
         <activity
-            android:name=".ReadBookActivity"
+            android:name=".view.ReadBookActivity"
             android:exported="false"
             android:label="Book Name"
             android:parentActivityName=".MainActivity"/>
@@ -72,9 +72,9 @@
             android:label="Thông tin cá nhân"/>
         <activity
             android:label="Comment"
-            android:name=".CommentActivity"
+            android:name=".view.CommentActivity"
             android:exported="true"
-            android:parentActivityName=".ReadBookActivity" />
+            android:parentActivityName=".view.ReadBookActivity" />
     </application>
 
 </manifest>

@@ -1,8 +1,10 @@
-package com.example.helloworldjava;
+package com.example.helloworldjava.view;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.helloworldjava.R;
 
 public class CommentActivity extends AppCompatActivity {
     @Override

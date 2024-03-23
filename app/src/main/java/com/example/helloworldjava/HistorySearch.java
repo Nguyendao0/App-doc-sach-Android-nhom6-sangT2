@@ -2,6 +2,8 @@ package com.example.helloworldjava;
 
 import static com.example.helloworldjava.R.drawable.sach02;
 
+import com.example.helloworldjava.mvp.model.Book;
+
 import java.util.ArrayList;
 
 public class HistorySearch {

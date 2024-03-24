@@ -17,8 +17,6 @@ public class BookViewHolder extends RecyclerView.ViewHolder{
         super(itemView);
         textViewTitleBook = itemView.findViewById(R.id.titleBook);
         imageViewBook = itemView.findViewById(R.id.imageBook);
-
-
     }
 
     public void setUI(String txt, String imageUrl) {

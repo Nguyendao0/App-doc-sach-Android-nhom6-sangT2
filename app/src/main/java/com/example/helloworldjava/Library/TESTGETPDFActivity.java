@@ -20,10 +20,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfPage;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.canvas.parser.PdfTextExtractor;
+
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
@@ -81,37 +78,8 @@ public class TESTGETPDFActivity extends AppCompatActivity {
 
     }
 
-    public void speechToText(View view) {
-        extractTextFromPDF();
-    }
 
-    private void extractTextFromPDF() {
-        try {
-            PdfReader reader = new PdfReader(localFile.getAbsolutePath());
-            PdfDocument document = new PdfDocument(reader);
 
-            int pageNumber = 20;
-            PdfPage page = document.getPage(pageNumber);
-            String pageContent = PdfTextExtractor.getTextFromPage(page);
-            Log.i("CONTENT",pageContent);
-            tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
-                @Override
-                public void onInit(int status) {
-                    if (status == TextToSpeech.SUCCESS) {
-
-                        tts.setLanguage(Locale.US); // Sử dụng ngôn ngữ mặc định của thiết bị
-                        tts.speak(pageContent, TextToSpeech.QUEUE_FLUSH, null);
-                    } else {
-                        Log.e("MainActivity", "TTS initialization failed");
-                    }
-                }
-            });
-            document.close();
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
 
 

@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -54,13 +55,16 @@ public class BookAdapter extends RecyclerView.Adapter<BookViewHolder>{
         holder.setUI(title, imageUrl);
 
         // Đăng ký bộ lắng nghe sự kiện click cho item
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+
                 // Hiển thị số thứ tự của item bằng Toast
-                Toast.makeText(v.getContext(), "Số thứ tự: " + position , Toast.LENGTH_SHORT).show();
-            }
-        });
+                ImageView imageView = holder.itemView.findViewById(R.id.imageBook);
+                imageView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        imageView.setAlpha(0.5f);
+                    }
+                });
+
     }
 
     private void readData() {

@@ -11,16 +11,12 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.*;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import com.example.helloworldjava.GioiThieuSach.BookDetailActivity;
 import com.example.helloworldjava.Library.LibraryActivity;
 import com.example.helloworldjava.Library.TESTGETPDFActivity;
 import com.example.helloworldjava.Menu.MenuActivity;
 import com.example.helloworldjava.Thongbao.Noitification;
-
-import android.widget.Button;
+import com.example.helloworldjava.view.UserActivity;
 
 public class MainActivity extends AppCompatActivity {
     //this is van phuoc

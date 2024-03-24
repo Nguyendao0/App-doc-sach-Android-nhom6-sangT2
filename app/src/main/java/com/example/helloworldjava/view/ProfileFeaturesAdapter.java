@@ -1,10 +1,7 @@
-package com.example.helloworldjava;
+package com.example.helloworldjava.view;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.helloworldjava.R;
+import com.example.helloworldjava.model.ProfileFeature;
 
 import java.util.List;
 
@@ -68,7 +66,7 @@ public class ProfileFeaturesAdapter extends RecyclerView.Adapter<ProfileFeatures
             mName.setText(profileFeature.getName());
 
             if (profileFeature.getImageResourceId() == R.drawable.logout) {
-                mName.setTextColor(mContext.getResources().getColor(com.google.android.material.R.color.design_default_color_error));
+                mName.setTextColor(mContext.getResources().getColor(R.color.colorError));
             }
 
             Glide.with(mContext).load(profileFeature.getImageResourceId())

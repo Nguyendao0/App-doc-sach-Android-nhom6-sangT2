@@ -38,4 +38,4 @@ giao diện thư viện, đăng sách(admin), thông báo
 Chọn Công Nghệ và Ngôn Ngữ Lập Trình:
 java, nodeJs, sqlite, firebase
 
-link: https://drive.google.com/file/d/1DwjAIFZ2-blsi5CgH0k2Ygj_GF_aviAg/view?fbclid=IwAR3DqQ6rsUrRFkmXbEOkkjPXNG_65a9xAeRXu538cFuIDidtlZoJJCscPBg
+link database: https://drive.google.com/file/d/1DwjAIFZ2-blsi5CgH0k2Ygj_GF_aviAg/view?fbclid=IwAR3DqQ6rsUrRFkmXbEOkkjPXNG_65a9xAeRXu538cFuIDidtlZoJJCscPBg

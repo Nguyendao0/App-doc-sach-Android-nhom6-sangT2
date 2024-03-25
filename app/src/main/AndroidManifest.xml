@@ -18,13 +18,13 @@
         android:theme="@style/Theme.HelloWorldJava"
         tools:targetApi="31">
         <activity
-            android:name=".Thongbao.Noitification"
+            android:name=".view.Thongbao.Noitification"
             android:exported="false" />
         <activity
-            android:name=".GioiThieuSach.BookDetailActivity"
+            android:name=".view.GioiThieuSach.BookDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".Menu.MenuActivity"
+            android:name=".view.Menu.MenuActivity"
             android:exported="false" />
         <activity
             android:name=".Library.QuestionActivity"
@@ -38,7 +38,7 @@
             android:parentActivityName=".view.UserActivity"
             android:label="Sửa thông tin"/>
         <activity
-            android:name=".ReadBookActivity"
+            android:name=".view.ReadBookActivity"
             android:exported="false"
             android:label="Book Name"
             android:parentActivityName=".MainActivity"/>
@@ -72,9 +72,9 @@
             android:label="Thông tin cá nhân"/>
         <activity
             android:label="Comment"
-            android:name=".CommentActivity"
+            android:name=".view.CommentActivity"
             android:exported="true"
-            android:parentActivityName=".ReadBookActivity" />
+            android:parentActivityName=".view.ReadBookActivity" />
     </application>
 
 </manifest>

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:textAlignment="center"
-    tools:context=".ReadBookActivity">
+    tools:context=".view.ReadBookActivity">
 
     <TextView
         android:id="@+id/textView2"

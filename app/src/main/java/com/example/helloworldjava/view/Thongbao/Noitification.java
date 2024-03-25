@@ -1,4 +1,4 @@
-package com.example.helloworldjava.Thongbao;
+package com.example.helloworldjava.view.Thongbao;
 
 import androidx.appcompat.app.AppCompatActivity;
 

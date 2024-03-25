@@ -1,4 +1,4 @@
-package com.example.helloworldjava.Menu;
+package com.example.helloworldjava.view.Menu;
 
 import androidx.fragment.app.Fragment;
 

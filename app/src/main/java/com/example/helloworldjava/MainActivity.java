@@ -11,11 +11,12 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.*;
 
-import com.example.helloworldjava.GioiThieuSach.BookDetailActivity;
+import com.example.helloworldjava.view.GioiThieuSach.BookDetailActivity;
 import com.example.helloworldjava.Library.LibraryActivity;
 import com.example.helloworldjava.Library.TESTGETPDFActivity;
-import com.example.helloworldjava.Menu.MenuActivity;
-import com.example.helloworldjava.Thongbao.Noitification;
+import com.example.helloworldjava.view.Menu.MenuActivity;
+import com.example.helloworldjava.view.Thongbao.Noitification;
+import com.example.helloworldjava.view.ReadBookActivity;
 import com.example.helloworldjava.view.UserActivity;
 
 public class MainActivity extends AppCompatActivity {

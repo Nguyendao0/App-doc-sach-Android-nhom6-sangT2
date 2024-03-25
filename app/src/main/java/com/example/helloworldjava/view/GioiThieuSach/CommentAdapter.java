@@ -1,4 +1,4 @@
-package com.example.helloworldjava.GioiThieuSach;
+package com.example.helloworldjava.view.GioiThieuSach;
 
 
 import android.view.LayoutInflater;

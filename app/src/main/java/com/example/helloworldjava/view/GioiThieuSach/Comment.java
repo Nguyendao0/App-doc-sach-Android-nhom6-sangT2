@@ -1,4 +1,4 @@
-package com.example.helloworldjava.GioiThieuSach;
+package com.example.helloworldjava.view.GioiThieuSach;
 
 public class Comment {
     private String Time, Name;

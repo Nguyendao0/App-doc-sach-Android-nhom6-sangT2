@@ -16,7 +16,7 @@ import com.example.helloworldjava.Library.LibraryActivity;
 import com.example.helloworldjava.Library.TESTGETPDFActivity;
 import com.example.helloworldjava.Menu.MenuActivity;
 import com.example.helloworldjava.Thongbao.Noitification;
-import com.example.helloworldjava.view.UserActivity;
+import com.example.helloworldjava.view.ReadBookActivity;
 
 public class MainActivity extends AppCompatActivity {
     //this is van phuoc

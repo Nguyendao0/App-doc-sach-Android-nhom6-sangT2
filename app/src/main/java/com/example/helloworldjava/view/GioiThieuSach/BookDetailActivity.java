@@ -1,4 +1,4 @@
-package com.example.helloworldjava.Menu;
+package com.example.helloworldjava.view.GioiThieuSach;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.helloworldjava.R;
 
-public class MenuActivity extends AppCompatActivity {
+public class BookDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.menu_layout);
+        setContentView(R.layout.introduce_book);
     }
 }

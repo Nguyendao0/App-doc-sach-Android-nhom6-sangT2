@@ -18,13 +18,13 @@
         android:theme="@style/Theme.HelloWorldJava"
         tools:targetApi="31">
         <activity
-            android:name=".Thongbao.Noitification"
+            android:name=".view.Thongbao.Noitification"
             android:exported="false" />
         <activity
-            android:name=".GioiThieuSach.BookDetailActivity"
+            android:name=".view.GioiThieuSach.BookDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".Menu.MenuActivity"
+            android:name=".view.Menu.MenuActivity"
             android:exported="false" />
         <activity
             android:name=".Library.QuestionActivity"

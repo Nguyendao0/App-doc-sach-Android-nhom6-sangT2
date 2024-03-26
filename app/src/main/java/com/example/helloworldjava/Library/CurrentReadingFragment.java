@@ -34,6 +34,7 @@ public class CurrentReadingFragment extends Fragment {
         rv=view.findViewById(R.id.RVOfflineBooks);
         BookAdapter ba = new BookAdapter(inflater);
         this.rv.setAdapter(ba);
+
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 3);
         rv.setLayoutManager(layoutManager);
         // Inflate the layout for this fragment

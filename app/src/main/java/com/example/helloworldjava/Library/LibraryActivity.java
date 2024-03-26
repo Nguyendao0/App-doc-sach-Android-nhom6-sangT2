@@ -2,28 +2,37 @@ package com.example.helloworldjava.Library;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentContainerView;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 
+import com.example.helloworldjava.Library.View.LibraryInterface;
+import com.example.helloworldjava.Library.View.libraryEditPopupFragment;
 import com.example.helloworldjava.Library.View.libraryFragmentNavigation;
 import com.example.helloworldjava.R;
+import com.example.helloworldjava.databinding.LibraryEditPopupFragmentBinding;
 import com.google.android.material.tabs.TabLayout;
 
-public class LibraryActivity extends AppCompatActivity  {
+public class LibraryActivity extends AppCompatActivity  implements LibraryInterface.View {
 
     private TabLayout tabLayoutLibrary;
-    private ImageButton imageButtonMore;
+    private libraryEditPopupFragment popupEditFragment;
+    private libraryFragmentNavigation navigationFragment;
 
+    private FragmentContainerView fcv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_library);
 
-        tabLayoutLibrary = findViewById(R.id.tabLayoutLibrary);
+        popupEditFragment = new libraryEditPopupFragment();
 
+        tabLayoutLibrary = findViewById(R.id.tabLayoutLibrary);
+        fcv = findViewById(R.id.fragmentContainerViewNavigation);
+        navigationFragment = fcv.getFragment();
         tabLayoutLibrary.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -42,12 +51,7 @@ public class LibraryActivity extends AppCompatActivity  {
             }
         });
 
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .setReorderingAllowed(true)
-                    .add(R.id.fragmentContainerViewNavigation, libraryFragmentNavigation.class, null)
-                    .commit();
-        }
+
 
     }
 
@@ -71,12 +75,18 @@ public class LibraryActivity extends AppCompatActivity  {
                 .replace(R.id.fragmentContainerViewLibraryContent , fragment)
                 .commit();
 
-        getSupportFragmentManager().beginTransaction()
-                .setReorderingAllowed(true)
-                .replace(R.id.fragmentContainerViewNavigation, libraryFragmentNavigation.class, null)
-                .commit();
+        if(popupEditFragment.isVisible())
+        {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.fragmentContainerViewNavigation, navigationFragment, null)
+                    .addToBackStack(null)
+                    .commit();
+        }
     }
 
 
-
+    @Override
+    public Fragment returnF() {
+        return popupEditFragment;
+    }
 }

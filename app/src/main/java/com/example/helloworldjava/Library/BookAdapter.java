@@ -9,6 +9,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.helloworldjava.R;
@@ -61,7 +64,10 @@ public class BookAdapter extends RecyclerView.Adapter<BookViewHolder>{
                 imageView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        imageView.setAlpha(0.5f);
+
+                            imageView.setAlpha(0.5f);
+
+
                     }
                 });
 

@@ -1,0 +1,4 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#00B2B2" /> <!-- Màu nền của hình tròn -->
+    <corners android:radius="1000dp" /> <!-- Bán kính để tạo hình tròn -->
+</shape>

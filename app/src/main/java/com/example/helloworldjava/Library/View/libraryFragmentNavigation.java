@@ -1,5 +1,6 @@
 package com.example.helloworldjava.Library.View;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -15,22 +16,28 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 
+import com.example.helloworldjava.Library.LibraryActivity;
+import com.example.helloworldjava.Library.QuestionActivity;
 import com.example.helloworldjava.R;
 import com.google.android.material.tabs.TabLayout;
 
 
 public class libraryFragmentNavigation extends Fragment {
-
+    private LibraryInterface.View mView;
     private PopupMenu popupMenu;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.library_fragment_navigation, container, false);
+        mView = (LibraryInterface.View) getActivity();
 
         ImageButton button = view.findViewById(R.id.imageButtonMore);
+
+        ImageButton questionButton = view.findViewById(R.id.imageButtonQuestion);
+
         popupMenu = new PopupMenu(view.getContext(), button);
         popupMenu.getMenuInflater().inflate(R.menu.library_menu, popupMenu.getMenu());
-        // Gắn sự kiện onclick cho button
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,7 +51,8 @@ public class libraryFragmentNavigation extends Fragment {
                         if (itemId == R.id.editMenuItem) {
                             getActivity().getSupportFragmentManager().beginTransaction()
                                     .setReorderingAllowed(true)
-                                    .replace(R.id.fragmentContainerViewNavigation, libraryEditPopupFragment.class, null)
+                                    .add(R.id.fragmentContainerViewNavigation, mView.returnF(), null)
+                                    .addToBackStack(null)
                                     .commit();
                             return true;
                         } else if (itemId == R.id.viewModeMenuItem) {
@@ -63,6 +71,15 @@ public class libraryFragmentNavigation extends Fragment {
             }
         });
 
+        questionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), QuestionActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
         return view;
     }
 
@@ -72,7 +89,7 @@ public class libraryFragmentNavigation extends Fragment {
 
         TabLayout tabLayout = getActivity().findViewById(R.id.tabLayoutLibrary);
 
-        int position = tabLayout.getSelectedTabPosition();
+        int position = tabLayout.getSelectedTabPosition(); System.out.println(position);
         switch (position){
             case 1:
                 popupMenu.getMenu().findItem(R.id.sortMenuItem).getSubMenu().removeItem(R.id.readRecentlyMenuItem);
@@ -87,4 +104,6 @@ public class libraryFragmentNavigation extends Fragment {
                 break;
         }
     }
+
+
 }

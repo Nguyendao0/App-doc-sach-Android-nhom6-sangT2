@@ -22,7 +22,6 @@ import com.google.android.material.tabs.TabLayout;
 
 public class libraryEditPopupFragment extends Fragment {
 
-
     public libraryEditPopupFragment() {
         super(R.layout.library_edit_popup_fragment);
     }
@@ -64,4 +63,5 @@ public class libraryEditPopupFragment extends Fragment {
             }
         });
     }
+
 }

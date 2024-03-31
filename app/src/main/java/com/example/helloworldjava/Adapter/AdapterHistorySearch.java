@@ -1,4 +1,4 @@
-package com.example.helloworldjava.mvp.Adapter;
+package com.example.helloworldjava.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.helloworldjava.R;
-import com.example.helloworldjava.mvp.model.Entity.Book;
+import com.example.helloworldjava.model.entity.Book;
 
 import java.util.List;
 

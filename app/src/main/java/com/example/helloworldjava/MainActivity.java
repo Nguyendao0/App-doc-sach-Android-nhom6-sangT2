@@ -11,10 +11,15 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.*;
 
+import com.example.helloworldjava.Adapter.AdapterHistorySearch;
+import com.example.helloworldjava.model.CatergorySearch;
+import com.example.helloworldjava.model.HistorySearch;
 import com.example.helloworldjava.view.GioiThieuSach.BookDetailActivity;
 import com.example.helloworldjava.Library.LibraryActivity;
 import com.example.helloworldjava.Library.TESTGETPDFActivity;
 import com.example.helloworldjava.view.Menu.MenuActivity;
+import com.example.helloworldjava.view.Search.HomeActivity;
+import com.example.helloworldjava.view.Search.SearchActivity;
 import com.example.helloworldjava.view.Thongbao.Noitification;
 import com.example.helloworldjava.view.ReadBookActivity;
 import com.example.helloworldjava.view.UserActivity;
@@ -120,8 +125,8 @@ public class MainActivity extends AppCompatActivity {
 
         ListView listView;
         listView = (ListView) findViewById(R.id.listBook);
-        AdapterListBook adapterListBook = new AdapterListBook(this, R.layout.modelbook,historySearch.getArrayBook());
-        listView.setAdapter(adapterListBook);
+        AdapterHistorySearch adapterHistorySearch = new AdapterHistorySearch(this, R.layout.search_history_book,historySearch.getArrayBook());
+        listView.setAdapter(adapterHistorySearch);
     }
 
 

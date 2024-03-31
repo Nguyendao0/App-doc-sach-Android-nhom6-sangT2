@@ -1,4 +1,4 @@
-package com.example.helloworldjava.mvp.view;
+package com.example.helloworldjava.view.Search;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.helloworldjava.R;
-import com.example.helloworldjava.mvp.presenter.HomeInterface;
-import com.example.helloworldjava.mvp.presenter.HomePresenter;
+import com.example.helloworldjava.presenter.HomeInterface;
+import com.example.helloworldjava.presenter.HomePresenter;
 
 public class HomeActivity extends AppCompatActivity implements HomeInterface {
 

@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-feature android:name="android.hardware.microphone" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,17 +17,63 @@
         android:theme="@style/Theme.HelloWorldJava"
         tools:targetApi="31">
         <activity
-            android:name=".mvp.view.SearchActivity"
+            android:name=".view.Thongbao.Noitification"
             android:exported="false" />
         <activity
-            android:name=".mvp.view.HomeActivity"
-            android:exported="true">
+            android:name=".view.GioiThieuSach.BookDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.Menu.MenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Library.QuestionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Library.LibraryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.AccountSettingActivity"
+            android:exported="false"
+            android:parentActivityName=".view.UserActivity"
+            android:label="Sửa thông tin"/>
+        <activity
+            android:name=".view.ReadBookActivity"
+            android:exported="false"
+            android:label="Book Name"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".BookCategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListBooksActity"
+            android:exported="false" />
+        <activity
+            android:name=".view.Search.SearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".SearchActivity"
+            android:exported="false">
+
+        </activity>
+        <activity
+            android:name=".view.UserActivity"
+            android:exported="true"
+            android:parentActivityName=".MainActivity"
+            android:label="Thông tin cá nhân"/>
+        <activity
+            android:label="Comment"
+            android:name=".view.CommentActivity"
+            android:exported="true"
+            android:parentActivityName=".view.ReadBookActivity" />
     </application>
 
 </manifest>

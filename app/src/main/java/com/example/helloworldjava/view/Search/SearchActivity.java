@@ -1,18 +1,18 @@
-package com.example.helloworldjava.mvp.view;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.helloworldjava.view.Search;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.*;
+import android.widget.Spinner;
 
-import com.example.helloworldjava.mvp.Adapter.AdapterHistorySearch;
-import com.example.helloworldjava.mvp.model.CatergorySearch;
-import com.example.helloworldjava.mvp.model.HistorySearch;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.helloworldjava.Adapter.AdapterHistorySearch;
 import com.example.helloworldjava.R;
-import com.example.helloworldjava.mvp.presenter.SearchInterface;
-import com.example.helloworldjava.mvp.presenter.SearchPresenter;
+import com.example.helloworldjava.model.CatergorySearch;
+import com.example.helloworldjava.model.HistorySearch;
+import com.example.helloworldjava.presenter.SearchInterface;
+import com.example.helloworldjava.presenter.SearchPresenter;
 
 public class SearchActivity extends AppCompatActivity implements SearchInterface {
     //this is van phuoc
@@ -42,7 +42,7 @@ public class SearchActivity extends AppCompatActivity implements SearchInterface
         HistorySearch historySearch = new HistorySearch();
         ListView listView;
         listView = (ListView) findViewById(R.id.listBook);
-        AdapterHistorySearch adapterListBook = new AdapterHistorySearch(this, R.layout.modelbook,historySearch.getArrayBook());
+        AdapterHistorySearch adapterListBook = new AdapterHistorySearch(this, R.layout.search_history_book,historySearch.getArrayBook());
         listView.setAdapter(adapterListBook);
     }
 

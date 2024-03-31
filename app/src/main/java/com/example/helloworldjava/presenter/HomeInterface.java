@@ -1,4 +1,4 @@
-package com.example.helloworldjava.mvp.presenter;
+package com.example.helloworldjava.presenter;
 
 public interface HomeInterface {
     void onClickButton();

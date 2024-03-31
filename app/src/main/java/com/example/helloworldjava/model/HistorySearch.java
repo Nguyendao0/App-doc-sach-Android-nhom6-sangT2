@@ -1,9 +1,7 @@
-package com.example.helloworldjava.mvp.model;
-
-import static com.example.helloworldjava.R.drawable.sach02;
+package com.example.helloworldjava.model;
 
 import com.example.helloworldjava.R;
-import com.example.helloworldjava.mvp.model.Entity.Book;
+import com.example.helloworldjava.model.entity.Book;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.example.helloworldjava.mvp.model;
+package com.example.helloworldjava.model;
 
 import java.util.ArrayList;
 

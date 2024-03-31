@@ -16,6 +16,7 @@ import com.example.helloworldjava.Library.LibraryActivity;
 import com.example.helloworldjava.Library.TESTGETPDFActivity;
 import com.example.helloworldjava.Menu.MenuActivity;
 import com.example.helloworldjava.Thongbao.Noitification;
+import com.example.helloworldjava.view.Account_Login;
 import com.example.helloworldjava.view.ReadBookActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -72,9 +73,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button btnlogin = findViewById(R.id.btnlogin);
+        btnlogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(MainActivity.this, Account_Login.class);
+                startActivity(myIntent);
+            }
+        });
+
 
     }
 
+
+    public  void gotoLogin(View view ){
+        Intent intent = new Intent(this, Account_Login.class);
+        startActivity(intent);
+    }
 
     public  void gotoSearch(View view ){
         Intent intent = new Intent(this, SearchActivity.class);

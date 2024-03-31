@@ -17,6 +17,7 @@ import com.example.helloworldjava.Library.TESTGETPDFActivity;
 import com.example.helloworldjava.Menu.MenuActivity;
 import com.example.helloworldjava.Thongbao.Noitification;
 import com.example.helloworldjava.view.Account_Login;
+import com.example.helloworldjava.view.Account_Register;
 import com.example.helloworldjava.view.ReadBookActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -103,6 +104,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToGioiThieuSach(View view) {
         Intent intent = new Intent(this, BookDetailActivity.class);
+        startActivity(intent);
+    }
+    //goToSignin
+    public void goToSignin(View view) {
+        Intent intent = new Intent(this, Account_Register.class);
         startActivity(intent);
     }
     public void ThongBao(View view) {

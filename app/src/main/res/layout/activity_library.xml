@@ -17,7 +17,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragmentContainerViewNavigation"
-            android:name="com.example.helloworldjava.Library.View.libraryFragmentNavigation"
+            android:name="com.example.helloworldjava.Library.View.LibraryNavigationFragment"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -60,7 +60,6 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerViewLibraryContent"
-        android:name="com.example.helloworldjava.Library.CurrentReadingFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="10dp"

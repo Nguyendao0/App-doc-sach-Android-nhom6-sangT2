@@ -1,4 +1,4 @@
-package com.example.helloworldjava.Library;
+package com.example.helloworldjava.Library.View;
 
 import android.os.Bundle;
 

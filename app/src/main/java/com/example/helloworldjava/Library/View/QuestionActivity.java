@@ -1,4 +1,4 @@
-package com.example.helloworldjava.Library;
+package com.example.helloworldjava.Library.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;

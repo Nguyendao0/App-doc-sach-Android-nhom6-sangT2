@@ -8,8 +8,8 @@ import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
 
-import com.example.helloworldjava.Library.LibraryActivity;
 import com.example.helloworldjava.Library.TESTGETPDFActivity;
+import com.example.helloworldjava.Library.View.LibraryActivity;
 
 import java.util.Locale;
 

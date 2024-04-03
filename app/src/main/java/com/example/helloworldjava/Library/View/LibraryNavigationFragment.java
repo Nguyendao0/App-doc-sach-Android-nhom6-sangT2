@@ -6,30 +6,26 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 
-import com.example.helloworldjava.Library.LibraryActivity;
-import com.example.helloworldjava.Library.QuestionActivity;
+import com.example.helloworldjava.Library.LibraryInterface.LibraryNavigationContract;
 import com.example.helloworldjava.R;
-import com.google.android.material.tabs.TabLayout;
 
 
-public class libraryFragmentNavigation extends Fragment {
-    private LibraryInterface.View mView;
+public class LibraryNavigationFragment extends Fragment implements LibraryNavigationContract.View{
+
     private PopupMenu popupMenu;
+    private LibraryNavigationContract.Presenter navigationPresenter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.library_fragment_navigation, container, false);
-        mView = (LibraryInterface.View) getActivity();
+
 
         ImageButton button = view.findViewById(R.id.imageButtonMore);
 
@@ -49,17 +45,14 @@ public class libraryFragmentNavigation extends Fragment {
                         int itemId = item.getItemId();
 
                         if (itemId == R.id.editMenuItem) {
-                            getActivity().getSupportFragmentManager().beginTransaction()
-                                    .setReorderingAllowed(true)
-                                    .add(R.id.fragmentContainerViewNavigation, mView.returnF(), null)
-                                    .addToBackStack(null)
-                                    .commit();
+                            navigationPresenter.showEditPopupFragment(R.id.fragmentContainerViewNavigation);
                             return true;
                         } else if (itemId == R.id.viewModeMenuItem) {
                             Toast.makeText(view.getContext(), "Chế độ xem", Toast.LENGTH_SHORT).show();
                             return true;
                         } else if (itemId == R.id.titleMenuItem) {
                             Toast.makeText(view.getContext(), "Tiêu đề", Toast.LENGTH_SHORT).show();
+                            return true;
                         }
 
                         return false;
@@ -84,26 +77,36 @@ public class libraryFragmentNavigation extends Fragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        TabLayout tabLayout = getActivity().findViewById(R.id.tabLayoutLibrary);
-
-        int position = tabLayout.getSelectedTabPosition(); System.out.println(position);
-        switch (position){
+    public void updatePopupmenu(int position)
+    {
+        switch (position) {
             case 1:
-                popupMenu.getMenu().findItem(R.id.sortMenuItem).getSubMenu().removeItem(R.id.readRecentlyMenuItem);
-                popupMenu.getMenu().findItem(R.id.sortMenuItem).getSubMenu().removeItem(R.id.updateRecentlyMenuItem);
-                popupMenu.getMenu().findItem(R.id.sortMenuItem).getSubMenu().removeItem(R.id.addRecentlyMenuItem);
+                popupMenu.getMenu().findItem(R.id.readRecentlyMenuItem).setVisible(false);
+                popupMenu.getMenu().findItem(R.id.updateRecentlyMenuItem).setVisible(false);
+                popupMenu.getMenu().findItem(R.id.addRecentlyMenuItem).setVisible(false);
                 break;
             case 2:
-                popupMenu.getMenu().removeItem(R.id.sortMenuItem);
-                popupMenu.getMenu().removeItem(R.id.viewModeMenuItem);
+                popupMenu.getMenu().findItem(R.id.sortMenuItem).setVisible(false);
+                popupMenu.getMenu().findItem(R.id.viewModeMenuItem).setVisible(false);
                 break;
             default:
                 break;
         }
     }
 
+    @Override
+    public void resetPopupMenu()
+    {
+        popupMenu.getMenu().findItem(R.id.sortMenuItem).setVisible(true);
+        popupMenu.getMenu().findItem(R.id.viewModeMenuItem).setVisible(true);
+        popupMenu.getMenu().findItem(R.id.readRecentlyMenuItem).setVisible(true);
+        popupMenu.getMenu().findItem(R.id.updateRecentlyMenuItem).setVisible(true);
+        popupMenu.getMenu().findItem(R.id.addRecentlyMenuItem).setVisible(true);
+    }
 
+
+
+    public void setNavigationPresenter(LibraryNavigationContract.Presenter navigationPresenter) {
+        this.navigationPresenter = navigationPresenter;
+    }
 }

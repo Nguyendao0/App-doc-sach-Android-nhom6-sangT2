@@ -1,34 +1,30 @@
 package com.example.helloworldjava.Library.View;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.helloworldjava.Library.LibraryActivity;
-import com.example.helloworldjava.MainActivity;
+import com.example.helloworldjava.Library.LibraryInterface.EditPopupContract;
 import com.example.helloworldjava.R;
 import com.google.android.material.tabs.TabLayout;
 
-public class libraryEditPopupFragment extends Fragment {
+public class LibraryEditPopupFragment extends Fragment  implements EditPopupContract.View {
 
-    public libraryEditPopupFragment() {
+    private EditPopupContract.Presenter editPopupPresenter;
+
+    public LibraryEditPopupFragment() {
         super(R.layout.library_edit_popup_fragment);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
 
         TabLayout tabLayout = getActivity().findViewById(R.id.tabLayoutLibrary);
         int position = tabLayout.getSelectedTabPosition();
@@ -50,18 +46,30 @@ public class libraryEditPopupFragment extends Fragment {
                 break;
         }
 
+
+
         ImageButton button = view.findViewById(R.id.imageButtonClose);
 
         // Gắn sự kiện onclick cho button
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .setReorderingAllowed(true)
-                        .replace(R.id.fragmentContainerViewNavigation, libraryFragmentNavigation.class, null)
-                        .commit();
+                editPopupPresenter.showNavigationFragment(R.id.fragmentContainerViewNavigation);
+                editPopupPresenter.resetItemViewSelected();
             }
         });
+
+
     }
 
+    @Override
+    public void setEditPopupPresenter(EditPopupContract.Presenter editPopupPresenter) {
+        this.editPopupPresenter = editPopupPresenter;
+    }
+
+    @Override
+    public boolean Visible()
+    {
+        return this.isVisible();
+    }
 }

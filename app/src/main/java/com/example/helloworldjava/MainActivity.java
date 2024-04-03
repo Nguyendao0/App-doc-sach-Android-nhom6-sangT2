@@ -8,10 +8,7 @@ import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
 
-import com.example.helloworldjava.Library.TESTGETPDFActivity;
 import com.example.helloworldjava.Library.View.LibraryActivity;
-
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     private TextToSpeech tts;
@@ -43,10 +40,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, LibraryActivity.class);
         startActivity(intent);
     }
-    public void goToPDF(View view)
-    {
-        Intent intent = new Intent(this, TESTGETPDFActivity.class);
-        startActivity(intent);
-    }
+
 
 }

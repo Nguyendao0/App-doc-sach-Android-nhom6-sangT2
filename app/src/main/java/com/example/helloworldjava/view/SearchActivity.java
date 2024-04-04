@@ -1,14 +1,13 @@
-package com.example.helloworldjava;
+package com.example.helloworldjava.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
+
+import com.example.helloworldjava.R;
 
 public class SearchActivity extends AppCompatActivity {
 

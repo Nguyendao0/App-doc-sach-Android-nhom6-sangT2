@@ -30,9 +30,6 @@
             android:name=".view.Account_Login"
             android:exported="false" />
         <activity
-            android:name=".Thongbao.Noitification"
-            android:exported="false" />
-        <activity
             android:name=".view.Thongbao.Noitification"
             android:exported="false" />
         <activity
@@ -42,29 +39,29 @@
             android:name=".view.Menu.MenuActivity"
             android:exported="false" />
         <activity
-            android:name=".Library.QuestionActivity"
+            android:name=".view.Library.QuestionActivity"
             android:exported="false" />
         <activity
-            android:name=".Library.LibraryActivity"
+            android:name=".view.Library.LibraryActivity"
             android:exported="false" />
         <activity
             android:name=".view.AccountSettingActivity"
             android:exported="false"
             android:label="Sửa thông tin"
-            android:parentActivityName=".UserActivity" />
+            android:parentActivityName=".view.UserActivity" />
         <activity
             android:name=".view.ReadBookActivity"
             android:exported="false"
             android:label="Book Name"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".BookCategoryActivity"
+            android:name=".view.BookCategoryActivity"
             android:exported="false" />
         <activity
-            android:name=".ListBooksActity"
+            android:name=".view.ListBooksActity"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".view.HomeActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -76,7 +73,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SearchActivity"
+            android:name=".view.SearchActivity"
             android:exported="false" />
         <activity
             android:name=".view.UserActivity"

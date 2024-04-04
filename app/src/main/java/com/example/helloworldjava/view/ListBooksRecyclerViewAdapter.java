@@ -1,4 +1,4 @@
-package com.example.helloworldjava;
+package com.example.helloworldjava.view;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,31 +8,31 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ListBooksHomeRecyclerViewAdapter extends RecyclerView.Adapter<ListBooksHomeRecyclerViewAdapter.ViewHolder> {
+import com.example.helloworldjava.R;
+
+public class ListBooksRecyclerViewAdapter extends RecyclerView.Adapter<ListBooksRecyclerViewAdapter.ViewHolder> {
 
     private String[] mData;
     private LayoutInflater mInflater;
-    private ListBooksRecyclerViewAdapter.ItemClickListener mClickListener;
-    private int itemLayoutResId;
+    private ItemClickListener mClickListener;
 
     // data is passed into the constructor
-    ListBooksHomeRecyclerViewAdapter(Context context, String[] data, int itemLayoutResId) {
+    ListBooksRecyclerViewAdapter(Context context, String[] data) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
-        this.itemLayoutResId = itemLayoutResId;
     }
 
     // inflates the cell layout from xml when needed
     @Override
     @NonNull
-    public ListBooksHomeRecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(itemLayoutResId, parent, false);
-        return new ListBooksHomeRecyclerViewAdapter.ViewHolder(view);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = mInflater.inflate(R.layout.list_books_item, parent, false);
+        return new ViewHolder(view);
     }
 
     // binds the data to the TextView in each cell
     @Override
-    public void onBindViewHolder(@NonNull ListBooksHomeRecyclerViewAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
     }
 
     // total number of cells
@@ -71,3 +71,4 @@ public class ListBooksHomeRecyclerViewAdapter extends RecyclerView.Adapter<ListB
         void onItemClick(View view, int position);
     }
 }
+

@@ -1,6 +1,8 @@
-package com.example.helloworldjava;
+package com.example.helloworldjava.view;
 
 import static com.example.helloworldjava.R.drawable.sach02;
+
+import com.example.helloworldjava.R;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.example.helloworldjava;
+package com.example.helloworldjava.view;
 
 public class BookCategory {
     private String title;

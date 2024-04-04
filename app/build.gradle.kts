@@ -88,5 +88,9 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
+    //Roomdatabase
+    implementation ("androidx.room:room-runtime:2.4.0")
+    annotationProcessor ("androidx.room:room-compiler:2.4.0")
+
 
 }

@@ -1,4 +1,4 @@
-package com.example.helloworldjava;
+package com.example.helloworldjava.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.helloworldjava.R;
 
 public class ListBooksActity extends AppCompatActivity {
     ListBooksRecyclerViewAdapter adapter;

@@ -1,4 +1,4 @@
-package com.example.helloworldjava.Library;
+package com.example.helloworldjava.view.Library;
 
 import android.view.View;
 import android.widget.ImageView;

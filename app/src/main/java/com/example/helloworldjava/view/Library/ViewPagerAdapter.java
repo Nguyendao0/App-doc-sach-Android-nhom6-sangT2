@@ -1,4 +1,4 @@
-package com.example.helloworldjava.Library;
+package com.example.helloworldjava.view.Library;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

@@ -1,4 +1,4 @@
-package com.example.helloworldjava;
+package com.example.helloworldjava.view;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,14 +10,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ListBooksRecyclerViewAdapter extends RecyclerView.Adapter<ListBooksRecyclerViewAdapter.ViewHolder> {
+import com.example.helloworldjava.R;
 
-    private String[] mData;
+import java.util.List;
+
+public class BookCategoryRecyclerViewAdapter extends RecyclerView.Adapter<BookCategoryRecyclerViewAdapter.ViewHolder> {
+
+    private List<BookCategory> mData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
     // data is passed into the constructor
-    ListBooksRecyclerViewAdapter(Context context, String[] data) {
+    BookCategoryRecyclerViewAdapter(Context context, List<BookCategory> data) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
     }
@@ -26,28 +30,34 @@ public class ListBooksRecyclerViewAdapter extends RecyclerView.Adapter<ListBooks
     @Override
     @NonNull
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.list_books_item, parent, false);
+        View view = mInflater.inflate(R.layout.list_books_category_item, parent, false);
         return new ViewHolder(view);
     }
 
     // binds the data to the TextView in each cell
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        BookCategory bookCategory = mData.get(position);
+        holder.myTextView.setText(bookCategory.getTitle());
+        holder.myImageView.setImageDrawable(mInflater.getContext().getDrawable(bookCategory.getImageResId()));
     }
 
     // total number of cells
     @Override
     public int getItemCount() {
-        return mData.length;
+        return mData.size();
     }
 
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
+        TextView myTextView;
+        ImageView myImageView;
 
         ViewHolder(View itemView) {
             super(itemView);
+            myTextView = itemView.findViewById(R.id.list_book_category_item_text_view);
+            myImageView = itemView.findViewById(R.id.list_book_category_item_image_view);
             itemView.setOnClickListener(this);
         }
 
@@ -58,12 +68,13 @@ public class ListBooksRecyclerViewAdapter extends RecyclerView.Adapter<ListBooks
     }
 
     // convenience method for getting data at click position
-    String getItem(int id) {
-        return mData[id];
+    BookCategory getItem(int id) {
+        return mData.get(id);
     }
 
     // allows clicks events to be caught
-    void setClickListener(BookCategoryRecyclerViewAdapter.ItemClickListener itemClickListener) {
+    void setClickListener(ItemClickListener itemClickListener) {
+        this.mClickListener = itemClickListener;
     }
 
     // parent activity will implement this method to respond to click events
@@ -71,4 +82,3 @@ public class ListBooksRecyclerViewAdapter extends RecyclerView.Adapter<ListBooks
         void onItemClick(View view, int position);
     }
 }
-

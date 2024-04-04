@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
     <uses-feature android:name="android.hardware.microphone" />
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -17,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HelloWorldJava"
         tools:targetApi="31">
+        <activity
+            android:name=".view.Menu.testActivity"
+            android:exported="false" />
         <activity
             android:name=".view.Thongbao.Noitification"
             android:exported="false" />
@@ -35,13 +39,13 @@
         <activity
             android:name=".view.AccountSettingActivity"
             android:exported="false"
-            android:parentActivityName=".view.UserActivity"
-            android:label="Sửa thông tin"/>
+            android:label="Sửa thông tin"
+            android:parentActivityName=".view.UserActivity" />
         <activity
             android:name=".view.ReadBookActivity"
             android:exported="false"
             android:label="Book Name"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".BookCategoryActivity"
             android:exported="false" />
@@ -53,27 +57,25 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".SearchActivity"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".view.UserActivity"
             android:exported="true"
-            android:parentActivityName=".MainActivity"
-            android:label="Thông tin cá nhân"/>
+            android:label="Thông tin cá nhân"
+            android:parentActivityName=".MainActivity" />
         <activity
-            android:label="Comment"
             android:name=".view.CommentActivity"
             android:exported="true"
+            android:label="Comment"
             android:parentActivityName=".view.ReadBookActivity" />
     </application>
 

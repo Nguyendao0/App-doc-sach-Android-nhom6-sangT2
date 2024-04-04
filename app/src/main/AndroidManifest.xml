@@ -22,6 +22,17 @@
             android:name=".view.Menu.testActivity"
             android:exported="false" />
         <activity
+            android:name=".view.Account_Register"
+            android:exported="false"
+            android:label="@string/title_activity_account_register"
+            android:theme="@style/Theme.HelloWorldJava" />
+        <activity
+            android:name=".view.Account_Login"
+            android:exported="false" />
+        <activity
+            android:name=".Thongbao.Noitification"
+            android:exported="false" />
+        <activity
             android:name=".view.Thongbao.Noitification"
             android:exported="false" />
         <activity
@@ -40,7 +51,7 @@
             android:name=".view.AccountSettingActivity"
             android:exported="false"
             android:label="Sửa thông tin"
-            android:parentActivityName=".view.UserActivity" />
+            android:parentActivityName=".UserActivity" />
         <activity
             android:name=".view.ReadBookActivity"
             android:exported="false"
@@ -66,7 +77,7 @@
         </activity>
         <activity
             android:name=".SearchActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".view.UserActivity"
             android:exported="true"

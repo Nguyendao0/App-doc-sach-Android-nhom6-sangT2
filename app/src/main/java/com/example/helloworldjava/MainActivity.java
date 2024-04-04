@@ -14,8 +14,10 @@ import android.widget.*;
 import com.example.helloworldjava.view.GioiThieuSach.BookDetailActivity;
 import com.example.helloworldjava.Library.LibraryActivity;
 import com.example.helloworldjava.Library.TESTGETPDFActivity;
-import com.example.helloworldjava.view.Menu.MenuActivity;
-import com.example.helloworldjava.view.Thongbao.Noitification;
+import com.example.helloworldjava.Menu.MenuActivity;
+import com.example.helloworldjava.Thongbao.Noitification;
+import com.example.helloworldjava.view.Account_Login;
+import com.example.helloworldjava.view.Account_Register;
 import com.example.helloworldjava.view.ReadBookActivity;
 import com.example.helloworldjava.view.UserActivity;
 
@@ -73,9 +75,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button btnlogin = findViewById(R.id.btnlogin);
+        btnlogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(MainActivity.this, Account_Login.class);
+                startActivity(myIntent);
+            }
+        });
+
 
     }
 
+
+    public  void gotoLogin(View view ){
+        Intent intent = new Intent(this, Account_Login.class);
+        startActivity(intent);
+    }
 
     public  void gotoSearch(View view ){
         Intent intent = new Intent(this, SearchActivity.class);
@@ -89,6 +105,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToGioiThieuSach(View view) {
         Intent intent = new Intent(this, BookDetailActivity.class);
+        startActivity(intent);
+    }
+    //goToSignin
+    public void goToSignin(View view) {
+        Intent intent = new Intent(this, Account_Register.class);
         startActivity(intent);
     }
     public void ThongBao(View view) {

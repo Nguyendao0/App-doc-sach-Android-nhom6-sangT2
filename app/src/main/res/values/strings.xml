@@ -52,6 +52,7 @@
     <string name="information_Storage1">Nếu một truyện được cập nhật, nó sẽ tự trở về Thư viện của bạn.Truyện đã lưu trữ tốn ít dung lượng trên thiết bị hơn nhưng không thể đọc offline.</string>
     <string name="information_Storage2">Chọn truyện để lưu trữ</string>
     <string name="noStorage">Chưa lưu trữ</string>
+    <string name="title_activity_account_register">Account_Register</string>
     <!-- TODO: Remove or change this placeholder text -->
-<!--    <string name="hello_blank_fragment">Hello blank fragment</string>-->
+    <!--    <string name="hello_blank_fragment">Hello blank fragment</string>-->
 </resources>

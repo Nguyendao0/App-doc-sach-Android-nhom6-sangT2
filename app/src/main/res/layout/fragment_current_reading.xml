@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    tools:context=".Library.CurrentReadingFragment">
+    tools:context=".view.Library.CurrentReadingFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -13,7 +13,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:context=".Library.LibraryActivity">
+            tools:context=".view.Library.LibraryActivity">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

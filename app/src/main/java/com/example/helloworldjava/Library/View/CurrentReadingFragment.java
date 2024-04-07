@@ -2,7 +2,6 @@ package com.example.helloworldjava.Library.View;
 
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,11 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.helloworldjava.Library.Book;
+import com.example.helloworldjava.Library.BookLibrary;
 import com.example.helloworldjava.Library.LibraryInterface.CurrentReadingContract;
 import com.example.helloworldjava.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,21 +26,15 @@ public class CurrentReadingFragment extends Fragment implements CurrentReadingCo
     private RecyclerView recyclerView;
 
     private BookAdapter bookAdapter;
-    private CurrentReadingContract.Presenter presenter;
+    public CurrentReadingContract.Presenter presenter;
     private TextView txtAmountOtherBook;
-
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_current_reading, container, false);
-
         recyclerView =view.findViewById(R.id.RVOthersBooks);
         txtAmountOtherBook = view.findViewById(R.id.amountBooksOnline);
-
-
         bookAdapter = new BookAdapter(presenter);
 
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 3);
@@ -58,7 +50,7 @@ public class CurrentReadingFragment extends Fragment implements CurrentReadingCo
 
 
     @Override
-    public void showBook(List<Book> bookList) {
+    public void showBook(List<BookLibrary> bookList) {
         bookAdapter.setBookList(bookList);
         bookAdapter.notifyDataSetChanged();
     }
@@ -80,6 +72,4 @@ public class CurrentReadingFragment extends Fragment implements CurrentReadingCo
             b.resetSelected();
         }
     }
-
-
 }

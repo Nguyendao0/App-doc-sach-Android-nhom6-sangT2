@@ -5,7 +5,7 @@ import android.os.AsyncTask;
 
 import androidx.annotation.NonNull;
 
-import com.example.helloworldjava.Library.Book;
+import com.example.helloworldjava.Library.BookLibrary;
 import com.example.helloworldjava.Library.LibraryInterface.LibraryContract;
 import com.example.helloworldjava.Library.LibraryInterface.ValueListerner;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -50,7 +50,7 @@ public class BookModelFB implements LibraryContract.Model {
 
     @Override
     public void Read(ValueListerner.ListAgrument listerner) {
-        List<Book> bookList = new ArrayList<>();
+        List<BookLibrary> bookList = new ArrayList<>();
         mDatabase.child("BookApp").child("Books").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -59,7 +59,7 @@ public class BookModelFB implements LibraryContract.Model {
                     String Image = bookSnapshot.child("Image").getValue(String.class);
                     String Source = bookSnapshot.child("Source").getValue(String.class);
                     String Title = bookSnapshot.child("Title").getValue(String.class);
-                    Book book = new Book(ID, Image, Source, Title);
+                    BookLibrary book = new BookLibrary(ID, Image, Source, Title);
                     bookList.add(book);
                 }
                 listerner.onDataLoaded(bookList);
@@ -73,7 +73,7 @@ public class BookModelFB implements LibraryContract.Model {
     }
 
 //    @Override
-//    public void dowloadImageFile(ValueListerner.ListAgrument listerner, List<Book> bookList) {
+//    public void dowloadImageFile(ValueListerner.ListAgrument listerner, List<BookLibrary> bookList) {
 //        StorageReference booksRef = mStorageRef.child("Images");
 //        booksRef.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
 //            @Override
@@ -83,7 +83,7 @@ public class BookModelFB implements LibraryContract.Model {
 //                        @Override
 //                        public void onSuccess(Uri downloadUrl) {
 //                            String fileUrl = downloadUrl.toString();
-//                            for(Book b : bookList)
+//                            for(BookLibrary b : bookList)
 //                            {
 //                                if(fileUrl.contains(b.getImage()))
 //                                {
@@ -105,7 +105,7 @@ public class BookModelFB implements LibraryContract.Model {
 //    }
 
     @Override
-    public void dowloadImageFile(ValueListerner.ListAgrument listerner, List<Book> bookList) {
+    public void dowloadImageFile(ValueListerner.ListAgrument listerner, List<BookLibrary> bookList) {
         StorageReference booksRef = mStorageRef.child("Images");
         booksRef.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
             @Override
@@ -119,11 +119,11 @@ public class BookModelFB implements LibraryContract.Model {
 
     private class BookAT extends AsyncTask<Void, Void, Void> {
 
-        private List<Book> bookList;
+        private List<BookLibrary> bookList;
         private ListResult listResult;
         private ValueListerner.ListAgrument listener;
 
-        public BookAT(List<Book> bookList, ListResult listResult, ValueListerner.ListAgrument listener) {
+        public BookAT(List<BookLibrary> bookList, ListResult listResult, ValueListerner.ListAgrument listener) {
             this.bookList = bookList;
             this.listResult = listResult;
             this.listener = listener;
@@ -138,7 +138,7 @@ public class BookModelFB implements LibraryContract.Model {
                     @Override
                     public void onSuccess(Uri downloadUrl) {
                         String fileUrl = downloadUrl.toString();
-                        for (Book b : bookList) {
+                        for (BookLibrary b : bookList) {
                             if (fileUrl.contains(b.getImage())) {
                                 b.setDowloadedImageFilePath(fileUrl);
                             }

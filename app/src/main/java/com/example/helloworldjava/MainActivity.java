@@ -35,11 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void GoToLibraryActivity(View view)
-    {
-        Intent intent = new Intent(this, LibraryActivity.class);
-        startActivity(intent);
-    }
+
 
 
 }

@@ -1,6 +1,6 @@
 package com.example.helloworldjava.Library.Presenter;
 
-import com.example.helloworldjava.Library.Book;
+import com.example.helloworldjava.Library.BookLibrary;
 import com.example.helloworldjava.Library.LibraryInterface.CurrentReadingContract;
 import com.example.helloworldjava.Library.LibraryInterface.EditPopupContract;
 import com.example.helloworldjava.Library.LibraryInterface.LibraryContract;
@@ -26,10 +26,10 @@ public class CurrentReading implements CurrentReadingContract.Presenter {
         bookModelFB = BookModelFB.getInstance();
         bookModelFB.Read(new ValueListerner.ListAgrument() {
             @Override
-            public void onDataLoaded(List<Book> readBookList) {
+            public void onDataLoaded(List<BookLibrary> readBookList) {
                 bookModelFB.dowloadImageFile(new ValueListerner.ListAgrument() {
                     @Override
-                    public void onDataLoaded(List<Book> bookList) {
+                    public void onDataLoaded(List<BookLibrary> bookList) {
 //                        currentReadingView.setRecyclerView(bookList);
                         currentReadingView.showBook(bookList);
                     }
@@ -43,7 +43,7 @@ public class CurrentReading implements CurrentReadingContract.Presenter {
         bookModelFB = BookModelFB.getInstance();
         bookModelFB.Read(new ValueListerner.ListAgrument() {
             @Override
-            public void onDataLoaded(List<Book> bookList) {
+            public void onDataLoaded(List<BookLibrary> bookList) {
                 currentReadingView.setAmountOtherBook(bookList.size());
             }
         });

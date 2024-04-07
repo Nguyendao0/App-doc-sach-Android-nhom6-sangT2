@@ -1,7 +1,9 @@
 package com.example.helloworldjava.Library.View;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -16,50 +18,39 @@ import com.google.android.material.tabs.TabLayout;
 public class LibraryEditPopupFragment extends Fragment  implements EditPopupContract.View {
 
     private EditPopupContract.Presenter editPopupPresenter;
+    private ImageButton btnClose;
+    private ImageButton btnAdd;
+    private ImageButton btnStorage;
+    private ImageButton btnDelete;
+    private ImageButton btnPlus;
+    private TextView txtLibraryPopupMenu;
 
-    public LibraryEditPopupFragment() {
-        super(R.layout.library_edit_popup_fragment);
+
+    @Override
+    public View onCreateView( LayoutInflater inflater,  ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.library_edit_popup_fragment, container, false);
+
+        btnClose = view.findViewById(R.id.imageButtonClose);
+        btnAdd = view.findViewById(R.id.imageButtonLibraryAdd);
+        btnDelete = view.findViewById(R.id.imageButtonLibraryDelete);
+        btnStorage = view.findViewById(R.id.imageButtonLibraryStorage);
+        btnPlus = view.findViewById(R.id.imageButtonLibraryPlus);
+        txtLibraryPopupMenu = view.findViewById(R.id.textViewLibraryPopupMenu);
+        // Gắn sự kiện onclick cho button
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editPopupPresenter.showNavigationFragment(R.id.FCV_Navigation_Library);
+                editPopupPresenter.resetItemViewSelected();
+            }
+        });
+        System.out.println("create");
+        return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-
-        TabLayout tabLayout = getActivity().findViewById(R.id.tabLayoutLibrary);
-        int position = tabLayout.getSelectedTabPosition();
-
-        switch (position){
-            case 1:
-                view.findViewById(R.id.imageButtonLibraryAdd).setVisibility(View.INVISIBLE);
-                break;
-            case 2:
-                view.findViewById(R.id.imageButtonLibraryAdd).setVisibility(View.INVISIBLE);
-                view.findViewById(R.id.imageButtonLibraryStorage).setVisibility(View.INVISIBLE);
-                view.findViewById(R.id.imageButtonLibraryDelete).setVisibility(View.INVISIBLE);
-                view.findViewById(R.id.imageButtonLibraryPlus).setVisibility(View.VISIBLE);
-
-                TextView textView = view.findViewById(R.id.textViewLibraryPopupMenu);
-                textView.setText("Sửa các danh sách đọc");
-                break;
-            default:
-                break;
-        }
-
-
-
-        ImageButton button = view.findViewById(R.id.imageButtonClose);
-
-        // Gắn sự kiện onclick cho button
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editPopupPresenter.showNavigationFragment(R.id.fragmentContainerViewNavigation);
-                editPopupPresenter.resetItemViewSelected();
-            }
-        });
-
-
+        editPopupPresenter.displayPopupTabSelect();
     }
 
     @Override
@@ -71,5 +62,25 @@ public class LibraryEditPopupFragment extends Fragment  implements EditPopupCont
     public boolean Visible()
     {
         return this.isVisible();
+    }
+
+
+    @Override
+    public void updatePopupmenu(int position) {
+        switch (position){
+            case 1:
+                btnAdd.setVisibility(View.INVISIBLE);
+                break;
+            case 2:
+                btnAdd.setVisibility(View.INVISIBLE);
+                btnStorage.setVisibility(View.INVISIBLE);
+                btnDelete.setVisibility(View.INVISIBLE);
+                btnPlus.setVisibility(View.VISIBLE);
+
+                txtLibraryPopupMenu.setText("Sửa các danh sách đọc");
+                break;
+            default:
+                break;
+        }
     }
 }

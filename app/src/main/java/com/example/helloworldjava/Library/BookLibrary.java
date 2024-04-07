@@ -1,6 +1,6 @@
 package com.example.helloworldjava.Library;
 
-public class Book {
+public class BookLibrary {
     private Long ID;
     private String Image;
     private String Source;
@@ -8,7 +8,7 @@ public class Book {
     private String DowloadedPDFFilePath;
     private String DowloadedImageFilePath;
 
-    public Book(Long ID, String image, String source, String title) {
+    public BookLibrary(Long ID, String image, String source, String title) {
         this.ID = ID;
         this.Image = image;
         this.Source = source;

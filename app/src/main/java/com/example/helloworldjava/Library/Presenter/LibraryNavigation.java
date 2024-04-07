@@ -18,10 +18,10 @@ public class LibraryNavigation implements LibraryNavigationContract.Presenter {
         this.libraryView = libraryView;
     }
 
-
     @Override
     public void showEditPopupFragment(int containerViewId)
     {
+        editPopupFragment.updatePopupmenu(libraryView.getTabSelected());
         libraryView.replaceFragmentToFragmentContainerView((Fragment) editPopupFragment, containerViewId);
     }
 

@@ -10,6 +10,8 @@ import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 
@@ -45,7 +47,7 @@ public class LibraryNavigationFragment extends Fragment implements LibraryNaviga
                         int itemId = item.getItemId();
 
                         if (itemId == R.id.editMenuItem) {
-                            navigationPresenter.showEditPopupFragment(R.id.fragmentContainerViewNavigation);
+                            navigationPresenter.showEditPopupFragment(R.id.FCV_Navigation_Library);
                             return true;
                         } else if (itemId == R.id.viewModeMenuItem) {
                             Toast.makeText(view.getContext(), "Chế độ xem", Toast.LENGTH_SHORT).show();
@@ -75,6 +77,9 @@ public class LibraryNavigationFragment extends Fragment implements LibraryNaviga
 
         return view;
     }
+
+
+
 
     @Override
     public void updatePopupmenu(int position)

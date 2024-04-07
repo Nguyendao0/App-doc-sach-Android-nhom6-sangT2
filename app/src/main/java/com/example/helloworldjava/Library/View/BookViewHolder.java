@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.helloworldjava.Library.Book;
+import com.example.helloworldjava.Library.BookLibrary;
 import com.example.helloworldjava.Library.LibraryInterface.CurrentReadingContract;
 import com.example.helloworldjava.R;
 
@@ -18,7 +18,7 @@ public class BookViewHolder extends RecyclerView.ViewHolder implements CurrentRe
     private ImageView imageViewSelect;
     private boolean selected = false;
     private CurrentReadingContract.Presenter presenter;
-    private Book book;
+    private BookLibrary book;
     public BookViewHolder(@NonNull View itemView, CurrentReadingContract.Presenter presenter) {
         super(itemView);
         textViewTitleBook = itemView.findViewById(R.id.titleBook);
@@ -51,7 +51,7 @@ public class BookViewHolder extends RecyclerView.ViewHolder implements CurrentRe
                 .into(this.imageViewBook);
     }
 
-    public void setLibraryBook(Book book)
+    public void setLibraryBook(BookLibrary book)
     {
         this.book = book;
     }
@@ -79,7 +79,7 @@ public class BookViewHolder extends RecyclerView.ViewHolder implements CurrentRe
 
 
     @Override
-    public Book getBook() {
+    public BookLibrary getBook() {
         return this.book;
     }
 }

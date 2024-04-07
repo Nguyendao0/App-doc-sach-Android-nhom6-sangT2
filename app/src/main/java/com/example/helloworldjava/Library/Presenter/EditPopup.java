@@ -29,4 +29,9 @@ public class EditPopup implements EditPopupContract.Presenter {
     {
         currentFragment.getItemViemSelected();
     }
+
+    @Override
+    public void displayPopupTabSelect() {
+        editPopupView.updatePopupmenu(libraryView.getTabSelected());
+    }
 }

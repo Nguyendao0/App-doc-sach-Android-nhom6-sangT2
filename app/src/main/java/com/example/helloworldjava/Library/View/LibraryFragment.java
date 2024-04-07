@@ -1,10 +1,14 @@
 package com.example.helloworldjava.Library.View;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentContainerView;
 
 import com.example.helloworldjava.Library.LibraryInterface.CurrentReadingContract;
 import com.example.helloworldjava.Library.LibraryInterface.EditPopupContract;
@@ -16,23 +20,23 @@ import com.example.helloworldjava.Library.Presenter.LibraryNavigation;
 import com.example.helloworldjava.R;
 import com.google.android.material.tabs.TabLayout;
 
-public class LibraryActivity extends AppCompatActivity implements LibraryContract.View {
+public class LibraryFragment extends Fragment implements LibraryContract.View {
 
     private EditPopupContract.View editPopupFragment;
     private LibraryNavigationContract.View navigationFragment;
     private CurrentReadingContract.View currentReadingFragment;
     private ReadingListFragment readingListFragment;
     private BookStorageFragment bookStorageFragment;
-
     private TabLayout tabLayout;
+    private FragmentContainerView fcv;
+    @Nullable
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_library);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.library_fragment, container, false);
 
+        tabLayout = (TabLayout) view.findViewById(R.id.tabLayout_Library);
+        fcv = view.findViewById(R.id.FCV_Navigation_Library);
 
-
-        tabLayout = findViewById(R.id.tabLayoutLibrary);
 
         editPopupFragment = new LibraryEditPopupFragment();
         navigationFragment = new LibraryNavigationFragment();
@@ -40,42 +44,45 @@ public class LibraryActivity extends AppCompatActivity implements LibraryContrac
         readingListFragment = new ReadingListFragment();
         bookStorageFragment = new BookStorageFragment();
 
-
         //Navigation Fragment
         LibraryNavigationContract.Presenter navigationPresenter = new LibraryNavigation(navigationFragment,editPopupFragment, this);
         navigationFragment.setNavigationPresenter(navigationPresenter);
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.fragmentContainerViewNavigation, (Fragment) navigationFragment)
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .add(R.id.FCV_Navigation_Library, (Fragment) navigationFragment)
                 .commit();
         //Navigation Fragment
 
         //EditPopupFragment
         EditPopupContract.Presenter editPopupPresenter = new EditPopup(editPopupFragment ,navigationFragment, this, currentReadingFragment);
         editPopupFragment.setEditPopupPresenter(editPopupPresenter);
+
         //EditPopupFragment
 
         //CurrentReadingFragment
         CurrentReadingContract.Presenter currentReadingPresenter = new CurrentReading(currentReadingFragment, editPopupFragment);
         currentReadingFragment.setCurrentReadingPresenter(currentReadingPresenter);
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.fragmentContainerViewLibraryContent, (Fragment) currentReadingFragment)
-                .commit();
+        getActivity().getSupportFragmentManager().
+                beginTransaction().
+                add(R.id.FCV_Content_Library, (Fragment) currentReadingFragment).
+                commit();
         //CurrentReadingFragment
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 int position = tab.getPosition();
-                navigationPresenter.onClickTabItem(position, R.id.fragmentContainerViewNavigation);
+                navigationPresenter.onClickTabItem(position, R.id.FCV_Navigation_Library);
+
                 switch (position)
                 {
                     case 0:
-                        replaceFragmentToFragmentContainerView((Fragment) currentReadingFragment, R.id.fragmentContainerViewLibraryContent);
+                        replaceFragmentToFragmentContainerView((Fragment) currentReadingFragment, R.id.FCV_Content_Library);
                         break;
                     case 1:
-//                        replaceFragmentToFragmentContainerView((Fragment) bookStorageFragment, R.id.fragmentContainerViewLibraryContent);
+                       replaceFragmentToFragmentContainerView((Fragment) bookStorageFragment, R.id.FCV_Content_Library);
                         break;
                     case 2:
-//                        replaceFragmentToFragmentContainerView((Fragment) readingListFragment, R.id.fragmentContainerViewLibraryContent);
+                        replaceFragmentToFragmentContainerView((Fragment) readingListFragment, R.id.FCV_Content_Library);
                         break;
                     default:
                         break;
@@ -92,12 +99,14 @@ public class LibraryActivity extends AppCompatActivity implements LibraryContrac
 
             }
         });
+        return view;
     }
+
 
 
     @Override
     public void replaceFragmentToFragmentContainerView(Fragment fragment, int containerView) {
-        getSupportFragmentManager().
+        getActivity().getSupportFragmentManager().
                 beginTransaction().
                 replace(containerView, fragment).
                 commit();
@@ -105,12 +114,6 @@ public class LibraryActivity extends AppCompatActivity implements LibraryContrac
 
     @Override
     public int getTabSelected() {
-        return 0;
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
+        return tabLayout.getSelectedTabPosition();
     }
 }
-

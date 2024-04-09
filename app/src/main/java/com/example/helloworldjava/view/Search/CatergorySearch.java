@@ -1,4 +1,4 @@
-package com.example.helloworldjava.view;
+package com.example.helloworldjava.view.Search;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.example.helloworldjava.view;
+package com.example.helloworldjava.view.Search;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,9 @@ import android.widget.ListView;
 import android.widget.Spinner;
 
 import com.example.helloworldjava.R;
+import com.example.helloworldjava.view.Search.AdapterListBook;
+import com.example.helloworldjava.view.Search.CatergorySearch;
+import com.example.helloworldjava.view.Search.HistorySearch;
 
 public class SearchActivity extends AppCompatActivity {
 
@@ -29,7 +32,7 @@ public class SearchActivity extends AppCompatActivity {
 
         ListView listView;
         listView = (ListView) findViewById(R.id.listBook);
-        AdapterListBook adapterListBook = new AdapterListBook(this, R.layout.modelbook,historySearch.getArrayBook());
+        AdapterListBook adapterListBook = new AdapterListBook(this, R.layout.modelbook,historySearch.getArraySach());
         listView.setAdapter(adapterListBook);
     }
 }

@@ -73,7 +73,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.SearchActivity"
+            android:name=".view.Search.SearchActivity"
             android:exported="false" />
         <activity
             android:name=".view.UserActivity"

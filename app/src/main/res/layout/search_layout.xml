@@ -31,16 +31,16 @@
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent" />
+
       <Button
           android:layout_width="60dp"
           android:layout_height="50dp"
           android:layout_marginTop="20dp"
-          android:layout_weight="0"
-          android:backgroundTintMode="@color/black"
-          android:backgroundTint="@color/black"
-          app:icon="@drawable/baseline_search_24"
           android:layout_marginRight="20dp"
-          app:iconTintMode="src_in"/>
+          android:layout_weight="0"
+          android:backgroundTintMode="screen"
+          app:icon="@drawable/baseline_search_24"
+          app:iconTintMode="src_in" />
   </LinearLayout>
 
     <LinearLayout

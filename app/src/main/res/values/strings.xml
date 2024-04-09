@@ -1,17 +1,17 @@
 <resources>
     <string name="app_name">hello world java</string>
-    <string name="date_format">dd/MM/yyyy</string>
+    <string name="date_format" translatable="false">dd/MM/yyyy</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_main2">MainActivity2</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="title_activity_main2" translatable="false">MainActivity2</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="first_fragment_label" translatable="false">First Fragment</string>
+    <string name="second_fragment_label" translatable="false">Second Fragment</string>
+    <string name="next" translatable="false">Next</string>
+    <string name="previous" translatable="false">Previous</string>
 
-    <string name="lorem_ipsum">
+    <string name="lorem_ipsum" translatable="false">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
         volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
         dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
@@ -47,12 +47,12 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
-    <string name="folder">Folder</string>
-    <string name="information_Storage">Bạn không có truyện lưu trữ nào</string>
-    <string name="information_Storage1">Nếu một truyện được cập nhật, nó sẽ tự trở về Thư viện của bạn.Truyện đã lưu trữ tốn ít dung lượng trên thiết bị hơn nhưng không thể đọc offline.</string>
-    <string name="information_Storage2">Chọn truyện để lưu trữ</string>
-    <string name="noStorage">Chưa lưu trữ</string>
-    <string name="title_activity_account_register">Account_Register</string>
+    <string name="folder" translatable="false">Folder</string>
+    <string name="information_Storage" translatable="false">Bạn không có truyện lưu trữ nào</string>
+    <string name="information_Storage1" translatable="false">Nếu một truyện được cập nhật, nó sẽ tự trở về Thư viện của bạn.Truyện đã lưu trữ tốn ít dung lượng trên thiết bị hơn nhưng không thể đọc offline.</string>
+    <string name="information_Storage2" translatable="false">Chọn truyện để lưu trữ</string>
+    <string name="noStorage" translatable="false">Chưa lưu trữ</string>
+    <string name="title_activity_account_register" translatable="false">Account_Register</string>
     <!-- TODO: Remove or change this placeholder text -->
     <!--    <string name="hello_blank_fragment">Hello blank fragment</string>-->
 </resources>

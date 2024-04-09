@@ -26,6 +26,7 @@ import com.example.helloworldjava.view.Menu.MenuActivity;
 import com.example.helloworldjava.view.MyApp;
 import com.example.helloworldjava.view.ReadBookActivity;
 import com.example.helloworldjava.view.Search.SearchActivity;
+import com.example.helloworldjava.view.SpeechBookTest.TestSpeechBookActivity;
 import com.example.helloworldjava.view.Thongbao.Noitification;
 import com.example.helloworldjava.view.UserActivity;
 
@@ -77,11 +78,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+//        Button btnReadBook = findViewById(R.id.btbReadBook);
+//        btnReadBook.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent myIntent = new Intent(MainActivity.this, ReadBookActivity.class);
+//                startActivity(myIntent);
+//            }
+//        });
+
         Button btnReadBook = findViewById(R.id.btbReadBook);
         btnReadBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(MainActivity.this, ReadBookActivity.class);
+                Intent myIntent = new Intent(MainActivity.this, TestSpeechBookActivity.class);
                 startActivity(myIntent);
             }
         });

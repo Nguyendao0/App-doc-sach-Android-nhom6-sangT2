@@ -19,6 +19,9 @@
         android:theme="@style/Theme.HelloWorldJava"
         tools:targetApi="31">
         <activity
+            android:name=".view.QRGen"
+            android:exported="false" />
+        <activity
             android:name=".view.Menu.testActivity"
             android:exported="false" />
         <activity

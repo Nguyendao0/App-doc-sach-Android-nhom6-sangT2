@@ -25,6 +25,7 @@ import com.example.helloworldjava.view.Library.LibraryActivity;
 import com.example.helloworldjava.view.Library.TESTGETPDFActivity;
 import com.example.helloworldjava.view.Menu.MenuActivity;
 import com.example.helloworldjava.view.MyApp;
+import com.example.helloworldjava.view.QRGen;
 import com.example.helloworldjava.view.SearchActivity;
 import com.example.helloworldjava.view.Thongbao.Noitification;
 import com.example.helloworldjava.view.Account_Login;
@@ -100,6 +101,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button btnQRGen = findViewById(R.id.btnQRGen);
+        btnQRGen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(MainActivity.this, QRGen.class);
+                startActivity(myIntent);
+            }
+        });
+
+
         // Khởi tạo presenter với các dao từ RoomDatabase
         MyAppDatabase database = MyApp.getDatabase();
         if (database == null) {
@@ -142,6 +153,11 @@ public class MainActivity extends AppCompatActivity {
 
     public  void gotoLogin(View view ){
         Intent intent = new Intent(this, Account_Login.class);
+        startActivity(intent);
+    }
+
+    public  void gotoQRGen(View view ){
+        Intent intent = new Intent(this, QRGen.class);
         startActivity(intent);
     }
 

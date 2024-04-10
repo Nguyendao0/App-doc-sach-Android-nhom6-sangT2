@@ -4,7 +4,7 @@ import com.example.helloworldjava.model.ProfileFeature;
 import com.example.helloworldjava.model.ProfileFeatureModel;
 import com.example.helloworldjava.model.UserModel;
 import com.example.helloworldjava.model.entity.User;
-import com.example.helloworldjava.view.UserView;
+import com.example.helloworldjava.view.user.UserView;
 
 import java.util.List;
 
@@ -25,7 +25,17 @@ public class UserPresenter {
     }
 
     public void displayUserInformation() {
-        User user = userModel.getUser();
-        userView.displayUserInformation(user);
+        userModel.getUser(new UserModel.GetUserCallback() {
+            @Override
+            public void onUserLoaded(User user) {
+                userView.displayUserInformation(user);
+            }
+
+            @Override
+            public void onError(Exception e) {
+
+            }
+        });
+
     }
 }

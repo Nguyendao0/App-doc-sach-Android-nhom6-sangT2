@@ -1,4 +1,4 @@
-package com.example.helloworldjava.view;
+package com.example.helloworldjava.view.user;
 
 import android.content.Context;
 import android.content.Intent;

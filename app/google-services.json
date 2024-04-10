@@ -1,14 +1,13 @@
 {
   "project_info": {
-    "project_number": "560220424303",
-    "firebase_url": "https://fir-demo-b4527-default-rtdb.firebaseio.com",
-    "project_id": "fir-demo-b4527",
-    "storage_bucket": "fir-demo-b4527.appspot.com"
+    "project_number": "705284224579",
+    "project_id": "read-book-65010",
+    "storage_bucket": "read-book-65010.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:560220424303:android:9266d10ad3f0f7953e659a",
+        "mobilesdk_app_id": "1:705284224579:android:18df3c0fe9ecc598efc6f6",
         "android_client_info": {
           "package_name": "com.example.helloworldjava"
         }
@@ -16,26 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCShQGoRL0g4Ua6y8VhmlaJ522WEhodi3E"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:560220424303:android:8bc6b54e7d19a7253e659a",
-        "android_client_info": {
-          "package_name": "com.example.myapplication"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCShQGoRL0g4Ua6y8VhmlaJ522WEhodi3E"
+          "current_key": "AIzaSyASIM8AEIfG0B527BAAkTgHC0nHAv5jM40"
         }
       ],
       "services": {

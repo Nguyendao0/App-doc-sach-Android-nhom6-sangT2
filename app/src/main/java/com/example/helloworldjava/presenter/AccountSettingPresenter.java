@@ -2,7 +2,7 @@ package com.example.helloworldjava.presenter;
 
 import com.example.helloworldjava.model.UserModel;
 import com.example.helloworldjava.model.entity.User;
-import com.example.helloworldjava.view.AccountSettingView;
+import com.example.helloworldjava.view.user.AccountSettingView;
 
 public class AccountSettingPresenter {
     private UserModel userModel;
@@ -15,7 +15,16 @@ public class AccountSettingPresenter {
 
 
     public void fillUserDataToEditView() {
-        User user = userModel.getUser();
-        accountSettingView.fillUserDataToEditView(user);
+        userModel.getUser(new UserModel.GetUserCallback() {
+            @Override
+            public void onUserLoaded(User user) {
+                accountSettingView.fillUserDataToEditView(user);
+            }
+
+            @Override
+            public void onError(Exception e) {
+
+            }
+        });
     }
 }

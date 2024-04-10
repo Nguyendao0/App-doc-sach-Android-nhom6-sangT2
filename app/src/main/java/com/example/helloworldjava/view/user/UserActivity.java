@@ -1,4 +1,4 @@
-package com.example.helloworldjava.view;
+package com.example.helloworldjava.view.user;
 
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -10,13 +10,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.helloworldjava.R;
 import com.example.helloworldjava.model.ProfileFeature;
 import com.example.helloworldjava.model.entity.User;
 import com.example.helloworldjava.presenter.UserPresenter;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -37,10 +35,11 @@ public class UserActivity extends AppCompatActivity implements UserView {
 
 
 
-
         UserPresenter userPresenter = new UserPresenter(this);
         userPresenter.showListProfileFeatures();
         userPresenter.displayUserInformation();
+
+
 
     }
 
@@ -57,9 +56,8 @@ public class UserActivity extends AppCompatActivity implements UserView {
     public void displayUserInformation(User user) {
         TextView usernameTextView = findViewById(R.id.username);
         usernameTextView.setText(user.getUsername());
-
         ImageView userAvatarImageView = findViewById(R.id.userAvatarImage);
-        int resID = getResources().getIdentifier(user.getAvatarImage() , "drawable", getPackageName());
+        int resID = getResources().getIdentifier(user.getAvatar() , "drawable", getPackageName());
         userAvatarImageView.setImageDrawable(AppCompatResources.getDrawable(this, resID));
         userAvatarImageView.setBackground(AppCompatResources.getDrawable(this, R.drawable.circle_outline));
     }

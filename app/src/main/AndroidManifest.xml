@@ -45,10 +45,10 @@
             android:name=".view.Library.LibraryActivity"
             android:exported="false" />
         <activity
-            android:name=".view.AccountSettingActivity"
+            android:name=".view.user.AccountSettingActivity"
             android:exported="false"
             android:label="Sửa thông tin"
-            android:parentActivityName=".view.UserActivity" />
+            android:parentActivityName=".view.user.UserActivity" />
         <activity
             android:name=".view.ReadBookActivity"
             android:exported="false"
@@ -76,7 +76,7 @@
             android:name=".view.SearchActivity"
             android:exported="false" />
         <activity
-            android:name=".view.UserActivity"
+            android:name=".view.user.UserActivity"
             android:exported="true"
             android:label="Thông tin cá nhân"
             android:parentActivityName=".MainActivity" />

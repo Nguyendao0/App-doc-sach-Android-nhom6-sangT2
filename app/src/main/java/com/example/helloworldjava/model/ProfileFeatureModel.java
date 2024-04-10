@@ -1,7 +1,7 @@
 package com.example.helloworldjava.model;
 
 import com.example.helloworldjava.R;
-import com.example.helloworldjava.view.AccountSettingActivity;
+import com.example.helloworldjava.view.user.AccountSettingActivity;
 
 import java.util.ArrayList;
 import java.util.List;

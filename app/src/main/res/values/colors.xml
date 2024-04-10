@@ -24,4 +24,5 @@
     <color name="colorSecondary">#FEEAE6</color>
     <color name="loginPageBackgroundColor">#FFFFFF</color>
     <color name="productGridBackgroundColor">#FFFFFF</color>
+    <color name="colorError">@color/design_default_color_error</color>
 </resources>

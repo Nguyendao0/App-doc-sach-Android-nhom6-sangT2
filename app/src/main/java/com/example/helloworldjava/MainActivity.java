@@ -11,16 +11,34 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.*;
 
-import com.example.helloworldjava.GioiThieuSach.BookDetailActivity;
-import com.example.helloworldjava.Library.LibraryActivity;
-import com.example.helloworldjava.Library.TESTGETPDFActivity;
-import com.example.helloworldjava.Menu.MenuActivity;
-import com.example.helloworldjava.Thongbao.Noitification;
+import com.example.helloworldjava.model.MyAppDatabase;
+import com.example.helloworldjava.model.entity.Sach;
+import com.example.helloworldjava.model.entity.TheLoaiSach;
+import com.example.helloworldjava.presenter.SachPresenter;
+import com.example.helloworldjava.presenter.TheLoaiSachPresenter;
+import com.example.helloworldjava.view.AdapterListBook;
+import com.example.helloworldjava.view.CatergorySearch;
+import com.example.helloworldjava.view.GioiThieuSach.BookDetailActivity;
+import com.example.helloworldjava.view.HistorySearch;
+import com.example.helloworldjava.view.HomeActivity;
+import com.example.helloworldjava.view.Library.LibraryActivity;
+import com.example.helloworldjava.view.Library.TESTGETPDFActivity;
+import com.example.helloworldjava.view.Menu.MenuActivity;
+import com.example.helloworldjava.view.MyApp;
+import com.example.helloworldjava.view.SearchActivity;
+import com.example.helloworldjava.view.Thongbao.Noitification;
 import com.example.helloworldjava.view.Account_Login;
+import com.example.helloworldjava.view.Account_Register;
 import com.example.helloworldjava.view.ReadBookActivity;
+import com.example.helloworldjava.view.UserActivity;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    //this is van phuoc
+
+    private SachPresenter sachPresenter;
+    private TheLoaiSachPresenter theLoaiSachPresenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,7 +100,43 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Khởi tạo presenter với các dao từ RoomDatabase
+        MyAppDatabase database = MyApp.getDatabase();
+        if (database == null) {
+            Log.d("MainActivity", "Đối tượng database là null");
+            // Xử lý trường hợp đối tượng database bị null
+        } else {
+            // Tiếp tục sử dụng đối tượng database
+            sachPresenter = new SachPresenter(database.sachDAO());
+        }
 
+//        theLoaiSachPresenter = new TheLoaiSachPresenter(database.theLoaiSachDAO());
+
+//        // Thêm sách và thể loại sách vào cơ sở dữ liệu
+//        Sach sach = new Sach();
+//        sach.idTheLoaiSach = 1; // Đặt id thể loại sách tùy ý
+//        sach.urlImage = "url_image";
+//        sach.TenSach = "Tên sách";
+//        sach.TacGia = "Tác giả";
+//        sach.NhaSanXuat = "Nhà sản xuất";
+//        sach.NamSanXuat = "Năm sản xuất";
+//        sach.MoTa = "Mô tả";
+//        sach.DanhGiaSach = 5; // Đánh giá sách
+//        sachPresenter.addSach(sach);
+//
+//        TheLoaiSach theLoaiSach = new TheLoaiSach();
+//        theLoaiSach.TenTheLoai = "Tên thể loại";
+//        theLoaiSach.MoTaTheLoai = "Mô tả thể loại";
+//        theLoaiSachPresenter.addTheLoaiSach(theLoaiSach);
+
+        // Hiển thị danh sách sách và thể loại sách trong giao diện người dùng
+//        List<Sach> sachList = sachPresenter.getAllSach();
+//        //List<TheLoaiSach> theLoaiSachList = theLoaiSachPresenter.getAllTheLoaiSach();
+//
+//        // Hiển thị tên sách trên log
+//        for (Sach sach1 : sachList) {
+//            Log.d("MainActivity", "Tên sách: " + sach1.TenSach);
+//        }
     }
 
 
@@ -103,6 +157,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToGioiThieuSach(View view) {
         Intent intent = new Intent(this, BookDetailActivity.class);
+        startActivity(intent);
+    }
+    //goToSignin
+    public void goToSignup(View view) {
+        Intent intent = new Intent(this, Account_Register.class);
         startActivity(intent);
     }
     public void ThongBao(View view) {

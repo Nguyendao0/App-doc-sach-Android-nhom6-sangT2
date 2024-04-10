@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Library.ReadingListFragment">
+    tools:context=".view.Library.ReadingListFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <ScrollView

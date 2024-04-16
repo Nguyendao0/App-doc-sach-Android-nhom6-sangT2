@@ -12,9 +12,10 @@ public interface LibraryContract {
         int getTabSelected();
     }
 
+
+
     interface Model{
             void Read(ValueListerner.ListAgrument listerner);
             void dowloadImageFile(ValueListerner.ListAgrument listerner, List<BookLibrary> bookList);
-
     }
 }

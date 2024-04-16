@@ -17,17 +17,8 @@
         android:theme="@style/Theme.HelloWorldJava"
         tools:targetApi="31">
         <activity
-            android:name=".BaitapFireBase.FBActivity"
-            android:exported="false" >
-<!--            <intent-filter>&ndash;&gt;-->
-<!--                            <action android:name="android.intent.action.MAIN" />-->
-
-<!--                            <category android:name="android.intent.category.LAUNCHER" />-->
-<!--                        </intent-filter>-->
-        </activity>
-        <activity
-            android:name=".Library.TESTGETPDFActivity"
-            android:exported="false" />
+            android:name=".TESTROOM"
+            android:exported="false"/>
         <activity
             android:name=".Library.View.QuestionActivity"
             android:exported="false" />

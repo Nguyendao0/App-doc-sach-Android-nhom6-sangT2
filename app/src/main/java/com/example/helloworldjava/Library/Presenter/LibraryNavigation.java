@@ -21,7 +21,6 @@ public class LibraryNavigation implements LibraryNavigationContract.Presenter {
     @Override
     public void showEditPopupFragment(int containerViewId)
     {
-        editPopupFragment.updatePopupmenu(libraryView.getTabSelected());
         libraryView.replaceFragmentToFragmentContainerView((Fragment) editPopupFragment, containerViewId);
     }
 

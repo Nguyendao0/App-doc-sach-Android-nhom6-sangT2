@@ -1,4 +1,4 @@
-package com.example.helloworldjava.Library.View;
+package com.example.helloworldjava.view.Library;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,60 +8,51 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-
-import com.example.helloworldjava.Library.LibraryInterface.LibraryNavigationContract;
+import com.example.helloworldjava.Library.View.QuestionActivity;
+import com.example.helloworldjava.LibraryContractInterface.LibraryContract;
+import com.example.helloworldjava.LibraryContractInterface.NavigationContract;
 import com.example.helloworldjava.R;
 
-
-public class LibraryNavigationFragment extends Fragment implements LibraryNavigationContract.View{
-
+public class NavigationFragment extends Fragment implements NavigationContract.View {
     private PopupMenu popupMenu;
-    private LibraryNavigationContract.Presenter navigationPresenter;
-
+    private ImageButton moreButton;
+    private ImageButton questionButton;
+    private NavigationContract.Presenter navigationPresenter;
+    private LibraryContract.Presenter libraryPresenter;
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.library_fragment_navigation, container, false);
 
+        moreButton = view.findViewById(R.id.imageButtonMore);
+        questionButton = view.findViewById(R.id.imageButtonQuestion);
 
-        ImageButton button = view.findViewById(R.id.imageButtonMore);
-
-        ImageButton questionButton = view.findViewById(R.id.imageButtonQuestion);
-
-        popupMenu = new PopupMenu(view.getContext(), button);
+        popupMenu = new PopupMenu(view.getContext(), moreButton);
         popupMenu.getMenuInflater().inflate(R.menu.library_menu, popupMenu.getMenu());
 
-        button.setOnClickListener(new View.OnClickListener() {
+        moreButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
+            public void onClick(View view) {
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-
                     @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-                        int itemId = item.getItemId();
-
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        int itemId = menuItem.getItemId();
                         if (itemId == R.id.editMenuItem) {
-                            navigationPresenter.showEditPopupFragment(R.id.FCV_Navigation_Library);
+                            libraryPresenter.replaceFragmentInNavigationContainer("EditPopupFragment");
                             return true;
                         } else if (itemId == R.id.viewModeMenuItem) {
-                            Toast.makeText(view.getContext(), "Chế độ xem", Toast.LENGTH_SHORT).show();
                             return true;
                         } else if (itemId == R.id.titleMenuItem) {
-                            Toast.makeText(view.getContext(), "Tiêu đề", Toast.LENGTH_SHORT).show();
                             return true;
                         }
-
                         return false;
                     }
-
                 });
-
                 popupMenu.show();
             }
         });
@@ -73,17 +64,11 @@ public class LibraryNavigationFragment extends Fragment implements LibraryNaviga
                 startActivity(intent);
             }
         });
-
-
         return view;
     }
 
-
-
-
     @Override
-    public void updatePopupmenu(int position)
-    {
+    public void showLibraryMenu(int position) {
         switch (position) {
             case 0:
                 popupMenu.getMenu().findItem(R.id.readRecentlyMenuItem).setVisible(true);
@@ -91,10 +76,13 @@ public class LibraryNavigationFragment extends Fragment implements LibraryNaviga
                 popupMenu.getMenu().findItem(R.id.addRecentlyMenuItem).setVisible(true);
                 popupMenu.getMenu().findItem(R.id.sortMenuItem).setVisible(true);
                 popupMenu.getMenu().findItem(R.id.viewModeMenuItem).setVisible(true);
+                break;
             case 1:
                 popupMenu.getMenu().findItem(R.id.readRecentlyMenuItem).setVisible(false);
                 popupMenu.getMenu().findItem(R.id.updateRecentlyMenuItem).setVisible(false);
                 popupMenu.getMenu().findItem(R.id.addRecentlyMenuItem).setVisible(false);
+                popupMenu.getMenu().findItem(R.id.sortMenuItem).setVisible(true);
+                popupMenu.getMenu().findItem(R.id.viewModeMenuItem).setVisible(true);
                 break;
             case 2:
                 popupMenu.getMenu().findItem(R.id.sortMenuItem).setVisible(false);
@@ -106,18 +94,13 @@ public class LibraryNavigationFragment extends Fragment implements LibraryNaviga
     }
 
     @Override
-    public void resetPopupMenu()
+    public void setPresenter(NavigationContract.Presenter navigationPresenter)
     {
-        popupMenu.getMenu().findItem(R.id.sortMenuItem).setVisible(true);
-        popupMenu.getMenu().findItem(R.id.viewModeMenuItem).setVisible(true);
-        popupMenu.getMenu().findItem(R.id.readRecentlyMenuItem).setVisible(true);
-        popupMenu.getMenu().findItem(R.id.updateRecentlyMenuItem).setVisible(true);
-        popupMenu.getMenu().findItem(R.id.addRecentlyMenuItem).setVisible(true);
+        this.navigationPresenter = navigationPresenter;
     }
 
-
-
-    public void setNavigationPresenter(LibraryNavigationContract.Presenter navigationPresenter) {
-        this.navigationPresenter = navigationPresenter;
+    @Override
+    public void setLibraryPresenter(LibraryContract.Presenter libraryPresenter) {
+        this.libraryPresenter = libraryPresenter;
     }
 }

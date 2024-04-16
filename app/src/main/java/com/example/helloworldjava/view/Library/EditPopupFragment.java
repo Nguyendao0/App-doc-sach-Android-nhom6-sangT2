@@ -1,4 +1,4 @@
-package com.example.helloworldjava.Library.View;
+package com.example.helloworldjava.view.Library;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,23 +11,22 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.helloworldjava.Library.LibraryInterface.EditPopupContract;
+import com.example.helloworldjava.LibraryContractInterface.EditPopupContract;
+import com.example.helloworldjava.LibraryContractInterface.LibraryContract;
 import com.example.helloworldjava.R;
-import com.google.android.material.tabs.TabLayout;
 
-public class LibraryEditPopupFragment extends Fragment  implements EditPopupContract.View {
-
-    private EditPopupContract.Presenter editPopupPresenter;
+public class EditPopupFragment extends Fragment implements EditPopupContract.View {
+    private EditPopupContract.Presenter presenter;
+    private LibraryContract.Presenter libraryPresenter;
     private ImageButton btnClose;
     private ImageButton btnAdd;
     private ImageButton btnStorage;
     private ImageButton btnDelete;
     private ImageButton btnPlus;
     private TextView txtLibraryPopupMenu;
-
-
+    @Nullable
     @Override
-    public View onCreateView( LayoutInflater inflater,  ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.library_edit_popup_fragment, container, false);
 
         btnClose = view.findViewById(R.id.imageButtonClose);
@@ -36,36 +35,20 @@ public class LibraryEditPopupFragment extends Fragment  implements EditPopupCont
         btnStorage = view.findViewById(R.id.imageButtonLibraryStorage);
         btnPlus = view.findViewById(R.id.imageButtonLibraryPlus);
         txtLibraryPopupMenu = view.findViewById(R.id.textViewLibraryPopupMenu);
-        // Gắn sự kiện onclick cho button
+
+        presenter.setItemsPopup(libraryPresenter.getTabSelected());
+
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                editPopupPresenter.showNavigationFragment(R.id.FCV_Navigation_Library);
-                editPopupPresenter.resetItemViewSelected();
+            public void onClick(View view) {
+                libraryPresenter.replaceFragmentInNavigationContainer("NavigationFragment");
             }
         });
         return view;
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        editPopupPresenter.displayPopupTabSelect();
-    }
-
-    @Override
-    public void setEditPopupPresenter(EditPopupContract.Presenter editPopupPresenter) {
-        this.editPopupPresenter = editPopupPresenter;
-    }
-
-    @Override
-    public boolean Visible()
-    {
-        return this.isVisible();
-    }
-
-
-    @Override
-    public void updatePopupmenu(int position) {
+    public void updatePopup(int position) {
         switch (position){
             case 1:
                 btnAdd.setVisibility(View.INVISIBLE);
@@ -81,5 +64,20 @@ public class LibraryEditPopupFragment extends Fragment  implements EditPopupCont
             default:
                 break;
         }
+    }
+
+    @Override
+    public void setPresenter(EditPopupContract.Presenter editPopuptPresenter) {
+        this.presenter = editPopuptPresenter;
+    }
+
+    @Override
+    public void setLibraryPresenter(LibraryContract.Presenter libraryPresenter) {
+        this.libraryPresenter = libraryPresenter;
+    }
+
+    @Override
+    public boolean visible() {
+         return this.isVisible();
     }
 }

@@ -1,8 +1,9 @@
 package com.example.helloworldjava.model.Realm;
 
 
+import io.realm.RealmObject;
 
-public class LuotDoc {
+public class LuotDoc extends RealmObject {
     private NguoiDung nguoidung;
 
     public LuotDoc() {

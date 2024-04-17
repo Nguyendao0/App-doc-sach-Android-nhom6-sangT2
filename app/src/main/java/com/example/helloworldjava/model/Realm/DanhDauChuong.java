@@ -1,8 +1,9 @@
 package com.example.helloworldjava.model.Realm;
 
 
+import io.realm.RealmObject;
 
-public class DanhDauChuong {
+public class DanhDauChuong extends RealmObject {
     private Sach sach;
     private Chuong chuong;
     private boolean DanhDau;

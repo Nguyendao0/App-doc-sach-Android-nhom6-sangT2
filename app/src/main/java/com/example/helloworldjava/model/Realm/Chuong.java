@@ -1,10 +1,13 @@
 package com.example.helloworldjava.model.Realm;
 
 
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
-public class Chuong  {
 
+public class Chuong extends RealmObject {
 
+    @PrimaryKey
     private int ID;
     private String NoiDung;
     private String TenChuong;
@@ -34,5 +37,14 @@ public class Chuong  {
 
     public void setTenChuong(String tenChuong) {
         TenChuong = tenChuong;
+    }
+
+    @Override
+    public String toString() {
+        return "Chuong{" +
+                "ID=" + ID +
+                ", NoiDung='" + NoiDung + '\'' +
+                ", TenChuong='" + TenChuong + '\'' +
+                '}';
     }
 }

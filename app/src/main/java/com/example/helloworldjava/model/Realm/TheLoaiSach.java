@@ -1,11 +1,15 @@
 package com.example.helloworldjava.model.Realm;
 
 
+import io.realm.RealmList;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
-public class TheLoaiSach {
+public class TheLoaiSach extends RealmObject {
 
+    @PrimaryKey
     private int ID;
-
+    private RealmList<Sach> Sach_Items;
     private String TenTheLoai;
     private String MoTaTheLoai;
 
@@ -20,6 +24,14 @@ public class TheLoaiSach {
         this.ID = ID;
     }
 
+
+    public RealmList<Sach> getSach_Items() {
+        return Sach_Items;
+    }
+
+    public void setSach_Items(RealmList<Sach> sach_Items) {
+        Sach_Items = sach_Items;
+    }
 
     public String getTenTheLoai() {
         return TenTheLoai;

@@ -2,8 +2,10 @@ package com.example.helloworldjava.model.Realm;
 
 import java.util.Date;
 
+import io.realm.RealmObject;
 
-public class ThuVienSachCaNhan  {
+
+public class ThuVienSachCaNhan  extends RealmObject {
 private Sach sach;
 private Date NgayThem;
 private Boolean SachYeuThich;

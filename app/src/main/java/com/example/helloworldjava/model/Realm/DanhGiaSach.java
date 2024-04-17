@@ -1,8 +1,9 @@
 package com.example.helloworldjava.model.Realm;
 
 
+import io.realm.RealmObject;
 
-public class DanhGiaSach{
+public class DanhGiaSach extends RealmObject {
     private NguoiDung nguoidung;
     private int SoSaoDanhGia;
     private String MoTaDanhGia;
@@ -34,3 +35,4 @@ public class DanhGiaSach{
         MoTaDanhGia = moTaDanhGia;
     }
 }
+

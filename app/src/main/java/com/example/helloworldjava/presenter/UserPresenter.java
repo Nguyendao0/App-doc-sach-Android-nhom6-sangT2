@@ -9,9 +9,9 @@ import com.example.helloworldjava.view.user.UserView;
 import java.util.List;
 
 public class UserPresenter {
-    private ProfileFeatureModel profileFeatureModel;
-    private UserModel userModel;
-    private UserView userView;
+    private final ProfileFeatureModel profileFeatureModel;
+    private final UserModel userModel;
+    private final UserView userView;
 
     public UserPresenter(UserView userView) {
         this.profileFeatureModel = new ProfileFeatureModel();
@@ -25,7 +25,8 @@ public class UserPresenter {
     }
 
     public void displayUserInformation() {
-        userModel.getUser(new UserModel.GetUserCallback() {
+        String userId = "3lxkrwmfj4qEV9WowcSX";
+        userModel.getUserById(userId, new UserModel.GetUserCallback() {
             @Override
             public void onUserLoaded(User user) {
                 userView.displayUserInformation(user);

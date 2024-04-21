@@ -1,16 +1,18 @@
 package com.example.helloworldjava.model.entity;
 
 public class User {
+    private String id;
     private String username;
     private String email;
     private String password;
     private String avatar;
-    private String level;
+    private String role;
 
 
     public User() {}
 
-    public User(String username, String email, String password, String avatar) {
+    public User(String id, String username, String email, String password, String avatar) {
+        this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
@@ -49,11 +51,19 @@ public class User {
         this.avatar = avatar;
     }
 
-    public String getLevel() {
-        return level;
+    public String getRole() {
+        return role;
     }
 
-    public void setLevel(String level) {
-        this.level = level;
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

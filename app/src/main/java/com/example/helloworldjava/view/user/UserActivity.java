@@ -14,6 +14,7 @@ import com.example.helloworldjava.R;
 import com.example.helloworldjava.model.ProfileFeature;
 import com.example.helloworldjava.model.entity.User;
 import com.example.helloworldjava.presenter.UserPresenter;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 import java.util.Objects;
@@ -57,8 +58,9 @@ public class UserActivity extends AppCompatActivity implements UserView {
         TextView usernameTextView = findViewById(R.id.username);
         usernameTextView.setText(user.getUsername());
         ImageView userAvatarImageView = findViewById(R.id.userAvatarImage);
-        int resID = getResources().getIdentifier(user.getAvatar() , "drawable", getPackageName());
-        userAvatarImageView.setImageDrawable(AppCompatResources.getDrawable(this, resID));
-        userAvatarImageView.setBackground(AppCompatResources.getDrawable(this, R.drawable.circle_outline));
+        Picasso.get().load(user.getAvatar()).into(userAvatarImageView);
+//        int resID = getResources().getIdentifier(user.getAvatar() , "drawable", getPackageName());
+//        userAvatarImageView.setImageDrawable(AppCompatResources.getDrawable(this, resID));
+//        userAvatarImageView.setBackground(AppCompatResources.getDrawable(this, R.drawable.circle_outline));
     }
 }

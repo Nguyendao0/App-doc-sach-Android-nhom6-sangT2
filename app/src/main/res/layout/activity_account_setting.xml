@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
-        android:theme="?attr/actionBarTheme"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -46,7 +46,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/editAvatarImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/circle_background_primary"
@@ -75,13 +75,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/usernameTextInputLayout"
 
-                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-                android:textColorHint="@color/textColorPrimary"
-                app:boxStrokeColor="@color/textColorPrimary"
-                app:cursorColor="@color/textColorPrimary"
-                app:hintTextColor="@color/textColorPrimary"
-                app:boxBackgroundColor="@color/colorAccent"
-
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="8dp"
@@ -98,12 +92,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/passwordTextInputLayout"
 
-                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-                android:textColorHint="@color/textColorPrimary"
-                app:boxStrokeColor="@color/textColorPrimary"
-                app:cursorColor="@color/textColorPrimary"
-                app:hintTextColor="@color/textColorPrimary"
-                app:boxBackgroundColor="@color/colorAccent"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="8dp"
@@ -123,12 +112,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/emailTextInputLayout"
 
-                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-                android:textColorHint="@color/textColorPrimary"
-                app:boxStrokeColor="@color/textColorPrimary"
-                app:cursorColor="@color/textColorPrimary"
-                app:hintTextColor="@color/textColorPrimary"
-                app:boxBackgroundColor="@color/colorAccent"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="8dp"

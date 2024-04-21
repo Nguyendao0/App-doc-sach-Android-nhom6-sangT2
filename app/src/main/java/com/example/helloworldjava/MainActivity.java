@@ -27,7 +27,6 @@ import com.example.helloworldjava.view.MyApp;
 import com.example.helloworldjava.view.ReadBookActivity;
 import com.example.helloworldjava.view.Search.SearchActivity;
 import com.example.helloworldjava.view.SpeechBookTest.SpeechActivity;
-import com.example.helloworldjava.view.SpeechBookTest.TestSpeechBookActivity;
 import com.example.helloworldjava.view.Thongbao.Noitification;
 import com.example.helloworldjava.view.UserActivity;
 

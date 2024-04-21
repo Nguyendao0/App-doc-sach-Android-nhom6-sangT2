@@ -9,6 +9,16 @@ public class SachContent {
     public String Name_chapter;
     public int numberofpage;
 
+    public int numberofchapter;
+
+    public int getNumberofchapter() {
+        return numberofchapter;
+    }
+
+    public void setNumberofchapter(int numberofchapter) {
+        this.numberofchapter = numberofchapter;
+    }
+
     public int getId_Sach() {
         return id_Sach;
     }
@@ -44,4 +54,6 @@ public class SachContent {
     public SachContent(String content) {
         this.Content = content;
     }
+
+    public SachContent(){}
 }

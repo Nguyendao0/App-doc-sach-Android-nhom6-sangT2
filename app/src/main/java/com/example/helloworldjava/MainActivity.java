@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         Sach s = new Sach();
 
         Chuong c = new Chuong();
-        c.setNoiDung("zzzaa");
+        c.setNoiDung("zzzaaaaaaaaaaaaaaaaaaa");
         c.setTenChuong("2");
         RealmList r = new RealmList<Chuong>();
         r.add(c);
@@ -43,14 +43,10 @@ public class MainActivity extends AppCompatActivity {
         s.setTenSach("clb wibi");
 
 
-        NguoiDung n = new NguoiDung();
-        n.setTenNguoiDung("fasoihoang");
 
 
         AddSachTask at = new AddSachTask();
         at.execute(s);
-        Add1Task and = new Add1Task();
-        and.execute(n);
     }
 
     private class AddSachTask extends AsyncTask<Sach, Void, Void> {
@@ -73,43 +69,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private class Add1Task extends AsyncTask<NguoiDung, Void, Void> {
 
-        @Override
-        protected Void doInBackground(NguoiDung... nguoiDungs) {
-            NguoiDungDAO nd = new NguoiDungDAO();
-            DanhDauChuong dc = new DanhDauChuong();
-            DanhDauChuong dc1 = new DanhDauChuong();
-            SachDAO sd = new SachDAO();
-            dc.setSach(sd.getById(2));
-            dc1.setSach(sd.getById(3));
 
-            RealmList r = new RealmList<DanhDauChuong>();
-            r.add(dc);
-            r.add(dc1);
-            nguoiDungs[0].setDanhDauChuong_Items(r);
-
-            nd.add(nguoiDungs[0]);
-
-            for(NguoiDung n : nd.getAll())
-            {
-                System.out.println(n.toString());
-                for(DanhDauChuong d : n.getDanhDauChuong_Items())
-                {
-                    System.out.println(d.toString());
-                    System.out.println(d.getSach().toString());
-                }
-            }
-            return null;
-        }
-    }
-
-    private class Add2Task extends AsyncTask<TheLoaiSach, Void, Void> {
-
-        @Override
-        protected Void doInBackground(TheLoaiSach... theLoaiSaches) {
-
-            return null;
-        }
-    }
 }

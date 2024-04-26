@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import com.example.helloworldjava.view.Thongbao.NoitificationFragment;
+
 public class ViewPagerAdapter extends FragmentStateAdapter {
 
 
@@ -27,7 +29,7 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
             case 3:
                 return  new TestFragment();
             case 4:
-                return  new TestFragment();
+                return  new NoitificationFragment();
             default:
                 return new TestFragment();
         }

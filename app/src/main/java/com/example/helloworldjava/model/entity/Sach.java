@@ -94,4 +94,13 @@ public class Sach {
     public void setDanhGiaSach(int danhGiaSach) {
         DanhGiaSach = danhGiaSach;
     }
+
+    public Sach() {
+    }
+
+    public Sach(String moTa, String tenSach, String urlImage) {
+        this.urlImage = urlImage;
+        this.TenSach = tenSach;
+        this.MoTa = moTa;
+    }
 }

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".view.SpeechBookTest.SpeechActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15sp"
+        android:layout_marginTop="15sp"
+        android:background="@drawable/back_button" />
+
+    <TextView
+        android:id="@+id/book_name_speech"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="18dp"
+        android:text="ĐĂC NHÂN TÂM"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="171dp"
+        tools:layout_editor_absoluteY="37dp" />
+
+    <TextView
+        android:id="@+id/chapter_name_speech"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Chương 6 : Làm sao cho người ta ưa mình liền ."
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="171dp"
+        tools:layout_editor_absoluteY="37dp" />
+
+    <LinearLayout
+        android:id="@+id/layout_play_speech"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="250dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/skip_next"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="20sp"
+            android:background="@drawable/skip_previous_speech"
+            android:backgroundTint="#090606"
+            android:backgroundTintMode="screen"
+            android:contentDescription="NULL"
+            app:iconTintMode="screen" />
+
+        <Button
+            android:id="@+id/pause"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="20sp"
+            android:background="@drawable/pause"
+            android:contentDescription="NULL"
+            android:backgroundTint="#FAFFFFFF" />
+
+        <Button
+            android:id="@+id/play"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="20sp"
+            android:contentDescription="NULL"
+            android:background="@drawable/play_speech"
+            android:backgroundTint="#FAFFFFFF" />
+
+        <Button
+            android:id="@+id/skip_previous"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="20sp"
+            android:contentDescription="NULL"
+            android:background="@drawable/skip_next_speech"
+            android:backgroundTint="#FCFFFFFF" />
+    </LinearLayout>
+
+    <SeekBar
+        android:id="@+id/seedbar_play"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#0C0606"
+        android:backgroundTintMode="screen"
+        android:progressTint="#0A1FDA" />
+
+    <LinearLayout
+        android:id="@+id/menu_and_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="150dp"
+        android:orientation="horizontal">
+
+        <ImageView
+
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/baseline_menu_24" />
+
+        <TextView
+            android:id="@+id/btn_open_list_chapter"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginRight="150dp"
+            android:text="DS Chương"
+            android:textAlignment="center" />
+
+        <ImageView
+            android:id="@+id/btn_setting"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/settings_24px" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="5sp"
+            android:text="Cài Đặt" />
+
+    </LinearLayout>
+
+</LinearLayout>

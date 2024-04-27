@@ -12,8 +12,6 @@ import android.widget.ListView;
 import android.widget.*;
 
 import com.example.helloworldjava.model.MyAppDatabase;
-import com.example.helloworldjava.model.entity.Sach;
-import com.example.helloworldjava.model.entity.TheLoaiSach;
 import com.example.helloworldjava.presenter.SachPresenter;
 import com.example.helloworldjava.presenter.TheLoaiSachPresenter;
 import com.example.helloworldjava.view.AdapterListBook;
@@ -30,9 +28,7 @@ import com.example.helloworldjava.view.Thongbao.Noitification;
 import com.example.helloworldjava.view.Account_Login;
 import com.example.helloworldjava.view.Account_Register;
 import com.example.helloworldjava.view.ReadBookActivity;
-import com.example.helloworldjava.view.UserActivity;
-
-import java.util.List;
+import com.example.helloworldjava.view.user.UserActivity;
 
 public class MainActivity extends AppCompatActivity {
 

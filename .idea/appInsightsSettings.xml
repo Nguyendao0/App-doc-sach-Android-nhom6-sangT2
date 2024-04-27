@@ -9,9 +9,9 @@
               <option name="connection">
                 <ConnectionSetting>
                   <option name="appId" value="com.example.helloworldjava" />
-                  <option name="mobileSdkAppId" value="1:560220424303:android:9266d10ad3f0f7953e659a" />
-                  <option name="projectId" value="fir-demo-b4527" />
-                  <option name="projectNumber" value="560220424303" />
+                  <option name="mobileSdkAppId" value="1:705284224579:android:18df3c0fe9ecc598efc6f6" />
+                  <option name="projectId" value="read-book-65010" />
+                  <option name="projectNumber" value="705284224579" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

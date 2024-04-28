@@ -127,7 +127,9 @@ public class NguoiDungModel {
     public void createNguoiDung(NguoiDung nguoiDung, CreateNguoiDungCallback callback) {
         DocumentReference newNguoiDungRef = db.collection(COLLECTION_PATH).document();
         nguoiDung.setID(newNguoiDungRef.getId());
-        nguoiDung.setMatKhau(getRandomString(8));
+        if (nguoiDung.getMatKhau() == null) {
+            nguoiDung.setMatKhau(getRandomString(8));
+        }
 
         newNguoiDungRef.set(nguoiDung).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override

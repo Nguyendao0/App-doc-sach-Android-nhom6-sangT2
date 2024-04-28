@@ -22,7 +22,7 @@
             android:name=".view.SpeechBookTest.SpeechActivity"
             android:exported="false" />
         <activity
-            android:name=".view.SpeechBookTest.SpeechActivity"
+            android:name=".view.QRGen"
             android:exported="false" />
         <activity
             android:name=".view.Menu.testActivity"

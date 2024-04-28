@@ -33,7 +33,7 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
     ListBooksHomeRecyclerViewAdapter adapter;
-
+    ViewPager2 viewPager2;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,7 +44,7 @@ public class HomeFragment extends Fragment {
 //        View view1 = inflater.inflate(R.layout.menu_layout, container, false);
 //
 //        // Tìm ViewPager2 trong layout của Fragment bằng cách sử dụng getView()
-//        ViewPager2 viewPager2 = view1.findViewById(R.id.view_pager);
+//        viewPager2 = view1.findViewById(R.id.view_pager);
 //
 //        // Khởi tạo và gán ViewPagerAdapter cho ViewPager2
 //        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(requireActivity(), viewPager2);
@@ -74,15 +74,16 @@ public class HomeFragment extends Fragment {
                     else {
                         titleListBooks = "PHỔ BIỂN";
                     }
-
-                    // Truyền dữ liệu vào Fragment thông qua ViewModel hoặc Constructor
+//
+//                    // Truyền dữ liệu vào Fragment thông qua ViewModel hoặc Constructor
 //                    ListBooksFragment fragment = new ListBooksFragment();
 //                    Bundle bundle = new Bundle();
 //                    bundle.putString("titleListBooks", titleListBooks);
 //                    fragment.setArguments(bundle);
 //
 //                     // Gọi phương thức setCurrentItem của adapter để thay đổi trang hiện tại của ViewPager2
-//                    viewPagerAdapter.setCurrentItem(1); // Thay position bằng vị trí của Fragment bạn muốn hiển thị
+//                    viewPagerAdapter.setCurrentItem(0); // Thay position bằng vị trí của Fragment bạn muốn hiển thị
+
                     Intent intent = new Intent(requireActivity(), ListBooksActity.class);
                     intent.putExtra("titleListBooks", titleListBooks);
                     requireActivity().startActivity(intent);

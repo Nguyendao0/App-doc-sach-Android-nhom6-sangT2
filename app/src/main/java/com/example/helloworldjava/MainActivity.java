@@ -29,6 +29,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Sach s = new Sach();
+        s.setTenSach("abc");
+        s.setNhaXuatBan("asd");
+        s.setImg("sadas");
+        s.setLuotDoc_Items(null);
+        s.setDanhGiaSach_Items(null);
+        s.setMota("dfvbajvdjqvujevqw");
+
+        AddSachTask addSachTask = new AddSachTask();
+        addSachTask.execute(s);
+
         FirebaseMessaging.getInstance().subscribeToTopic("sach")
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

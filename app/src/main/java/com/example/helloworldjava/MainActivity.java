@@ -1,5 +1,6 @@
 package com.example.helloworldjava;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.AsyncTask;
@@ -14,6 +15,10 @@ import com.example.helloworldjava.model.Realm.DanhGiaSach;
 import com.example.helloworldjava.model.Realm.NguoiDung;
 import com.example.helloworldjava.model.Realm.Sach;
 import com.example.helloworldjava.model.Realm.TheLoaiSach;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.FirebaseMessagingService;
 
 import io.realm.RealmList;
 
@@ -24,29 +29,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SachDAO sd = new SachDAO();
-        Sach s = new Sach();
-
-        Chuong c = new Chuong();
-        c.setNoiDung("zzzaaaaaaaaaaaaaaaaaaa");
-        c.setTenChuong("2");
-        RealmList r = new RealmList<Chuong>();
-        r.add(c);
-
-
-        s.setChuong_Items(r);
-        s.setDanhGiaSach_Items(null);
-        s.setLuotDoc_Items(null);
-        s.setImg("png");
-        s.setNamXuatBan(2022);
-        s.setNhaXuatBan("xuân đồng");
-        s.setTenSach("clb wibi");
-
-
-
-
-        AddSachTask at = new AddSachTask();
-        at.execute(s);
+        FirebaseMessaging.getInstance().subscribeToTopic("sach")
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        String msg = "Done";
+                        System.out.println("dasdas");
+                        if(task.isSuccessful())
+                        {
+                            msg = "Failed";
+                            System.out.println("abasdas");
+                        }
+                    }
+                });
     }
 
     private class AddSachTask extends AsyncTask<Sach, Void, Void> {

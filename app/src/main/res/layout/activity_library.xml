@@ -6,94 +6,67 @@
     android:layout_height="match_parent"
     tools:context=".view.Library.LibraryActivity">
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/VPA"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topMenu"
-        app:layout_constraintVertical_bias="0.0" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="0dp"
-        android:layout_height="98dp"
-        app:layout_constraintBottom_toTopOf="@+id/topMenu"
+        android:layout_height="73dp"
+        app:layout_constraintBottom_toTopOf="@+id/tabLayoutLibrary"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView"
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragmentContainerViewNavigation"
+            android:name="com.example.helloworldjava.Library.View.LibraryNavigationFragment"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:gravity="center_vertical"
-            android:text="  Thư viện"
-            android:textAlignment="textStart"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="48dp"
-            android:layout_height="0dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="Help"
-            android:onClick="showQuestion"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageButtonMore"
-            app:layout_constraintStart_toEndOf="@+id/textView"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/baseline_help_outline_24" />
-
-        <ImageButton
-            android:id="@+id/imageButtonMore"
-            android:layout_width="48dp"
-            android:layout_height="0dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="More"
-            android:onClick="showOptions"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageButton"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/baseline_more_vert_24" />
-
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/topMenu"
+        android:id="@+id/tabLayoutLibrary"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/fragmentContainerViewLibraryContent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab0"
+            android:id="@+id/currentReadingTab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Monday" />
+            android:text="Truyện đang đọc"
+            tools:layout_editor_absoluteX="-1dp"
+            tools:layout_editor_absoluteY="102dp" />
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab1"
+            android:id="@+id/storageTab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tuesday" />
+            android:text="Lưu trữ"
+            tools:layout_editor_absoluteX="139dp"
+            tools:layout_editor_absoluteY="100dp" />
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab2"
+            android:id="@+id/readingListTab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Wednesday" />
+            android:text="Danh sách đọc" />
     </com.google.android.material.tabs.TabLayout>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerViewLibraryContent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabLayoutLibrary" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

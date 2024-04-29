@@ -15,23 +15,15 @@ import com.example.helloworldjava.presenter.SachPresenter;
 import com.example.helloworldjava.presenter.TheLoaiSachPresenter;
 import com.example.helloworldjava.view.Account_Login;
 import com.example.helloworldjava.view.Account_Register;
-import com.example.helloworldjava.view.Search.AdapterListBook;
-import com.example.helloworldjava.view.Search.CatergorySearch;
 import com.example.helloworldjava.view.GioiThieuSach.BookDetailActivity;
-import com.example.helloworldjava.view.Search.HistorySearch;
 import com.example.helloworldjava.view.HomeActivity;
-import com.example.helloworldjava.view.Library.LibraryActivity;
-import com.example.helloworldjava.view.Library.TESTGETPDFActivity;
 import com.example.helloworldjava.view.Menu.MenuActivity;
 import com.example.helloworldjava.view.MyApp;
 import com.example.helloworldjava.view.QRGen;
 import com.example.helloworldjava.view.Search.SearchActivity;
 import com.example.helloworldjava.view.Thongbao.Noitification;
-import com.example.helloworldjava.view.Account_Login;
-import com.example.helloworldjava.view.Account_Register;
 import com.example.helloworldjava.view.ReadBookActivity;
 import com.example.helloworldjava.view.SpeechBookTest.SpeechActivity;
-import com.example.helloworldjava.view.Thongbao.Noitification;
 import com.example.helloworldjava.view.UserActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -198,16 +190,16 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Noitification.class);
         startActivity(intent);
     }
-    public void GoToLibraryActivity(View view)
-    {
-        Intent intent = new Intent(this, LibraryActivity.class);
-        startActivity(intent);
-    }
-    public void goToPDF(View view)
-    {
-        Intent intent = new Intent(this, TESTGETPDFActivity.class);
-        startActivity(intent);
-    }
+//    public void GoToLibraryActivity(View view)
+//    {
+//        Intent intent = new Intent(this, LibraryActivity.class);
+//        startActivity(intent);
+//    }
+//    public void goToPDF(View view)
+//    {
+//        Intent intent = new Intent(this, TESTGETPDFActivity.class);
+//        startActivity(intent);
+//    }
 
 
 

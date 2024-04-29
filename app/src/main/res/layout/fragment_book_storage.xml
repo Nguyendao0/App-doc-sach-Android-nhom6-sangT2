@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:visibility="visible"
-    tools:context=".view.Library.BookStorageFragment">
+    tools:context=".Library.View.BookStorageFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/noStorage"
-                android:layout_width="408dp"
+                android:layout_width="0dp"
                 android:layout_height="287dp"
                 android:contentDescription="@string/noStorage"
                 android:visibility="visible"
@@ -43,7 +43,7 @@
                 <TextView
                     android:id="@+id/textView11"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_marginBottom="32dp"
                     android:text="@string/information_Storage"
                     android:textAlignment="center"
@@ -71,7 +71,7 @@
                 <Button
                     android:id="@+id/button3"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_marginBottom="20dp"
                     android:text="@string/information_Storage2"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -83,7 +83,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView2"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"

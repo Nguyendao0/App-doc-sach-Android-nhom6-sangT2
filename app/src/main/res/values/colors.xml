@@ -25,4 +25,6 @@
     <color name="loginPageBackgroundColor">#FFFFFF</color>
     <color name="productGridBackgroundColor">#FFFFFF</color>
     <color name="colorError">@color/design_default_color_error</color>
+    <color name="your_blue_color">#FF0000FF</color>
+    <color name="check_color">#00B2B2</color>
 </resources>

@@ -9,14 +9,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.helloworldjava.LibraryContractInterface.ReadingListContract;
+import com.example.helloworldjava.LibraryContractInterface.StorageContract;
 import com.example.helloworldjava.R;
 
-public class ReadingListFragment extends Fragment implements ReadingListContract.View {
+public class StorageFragment extends Fragment implements StorageContract.View {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_reading_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_book_storage, container, false);
         return view;
     }
 }

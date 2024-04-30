@@ -10,7 +10,6 @@ import android.widget.*;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.helloworldjava.model.MyAppDatabase;
 import com.example.helloworldjava.presenter.SachPresenter;
 import com.example.helloworldjava.presenter.TheLoaiSachPresenter;
 import com.example.helloworldjava.view.Account_Login;
@@ -18,7 +17,6 @@ import com.example.helloworldjava.view.Account_Register;
 import com.example.helloworldjava.view.GioiThieuSach.BookDetailActivity;
 import com.example.helloworldjava.view.HomeActivity;
 import com.example.helloworldjava.view.Menu.MenuActivity;
-import com.example.helloworldjava.view.MyApp;
 import com.example.helloworldjava.view.QRGen;
 import com.example.helloworldjava.view.Search.SearchActivity;
 import com.example.helloworldjava.view.Thongbao.Noitification;
@@ -111,15 +109,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        // Khởi tạo presenter với các dao từ RoomDatabase
-        MyAppDatabase database = MyApp.getDatabase();
-        if (database == null) {
-            Log.d("MainActivity", "Đối tượng database là null");
-            // Xử lý trường hợp đối tượng database bị null
-        } else {
-            // Tiếp tục sử dụng đối tượng database
-            sachPresenter = new SachPresenter(database.sachDAO());
-        }
+
 
 //        theLoaiSachPresenter = new TheLoaiSachPresenter(database.theLoaiSachDAO());
 

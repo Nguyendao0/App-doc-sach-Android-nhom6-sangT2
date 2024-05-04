@@ -113,4 +113,11 @@ dependencies {
 
     // Picaso for loading image from url
     implementation("com.squareup.picasso:picasso:2.8")
+
+    // Retrofit and GSON
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.3.0")
+
+    // Logging
+    implementation("com.squareup.okhttp3:logging-interceptor:3.9.0")
 }

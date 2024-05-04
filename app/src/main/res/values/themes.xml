@@ -1,11 +1,16 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.HelloWorldJava" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.HelloWorldJava" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your light theme here. -->
-        <item name="colorPrimary">@color/colorAccent</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorOnPrimary">@color/textColorPrimary</item>
+<!--        <item name="colorPrimary">@color/colorAccent</item>-->
+<!--        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+<!--        <item name="colorAccent">@color/colorAccent</item>-->
+<!--        <item name="colorOnPrimary">@color/textColorPrimary</item>-->
+
+<!--        <item name="colorPrimary">@color/design_default_color_primary</item>-->
+<!--        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+<!--        <item name="colorAccent">@color/design_default_color_on_primary</item>-->
+<!--        <item name="colorOnPrimary">@color/design_default_color_on_primary</item>-->
     </style>
 
 

@@ -1,18 +1,22 @@
 package com.example.helloworldjava.model.entity;
 
 public class User {
+    private String id;
     private String username;
     private String email;
     private String password;
-    private String avatarImage;
+    private String avatar;
+    private String role;
+
 
     public User() {}
 
-    public User(String username, String email, String password, String avatarImage) {
+    public User(String id, String username, String email, String password, String avatar) {
+        this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.avatarImage = avatarImage;
+        this.avatar = avatar;
     }
 
     public String getUsername() {
@@ -39,11 +43,27 @@ public class User {
         this.password = password;
     }
 
-    public String getAvatarImage() {
-        return avatarImage;
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setAvatarImage(String avatarImage) {
-        this.avatarImage = avatarImage;
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

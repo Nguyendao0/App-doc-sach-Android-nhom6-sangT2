@@ -11,11 +11,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.*;
 
-import com.example.helloworldjava.model.MyAppDatabase;
-import com.example.helloworldjava.model.entity.Sach;
-import com.example.helloworldjava.model.entity.TheLoaiSach;
-import com.example.helloworldjava.presenter.SachPresenter;
-import com.example.helloworldjava.presenter.TheLoaiSachPresenter;
 import com.example.helloworldjava.view.AdapterListBook;
 import com.example.helloworldjava.view.CatergorySearch;
 import com.example.helloworldjava.view.GioiThieuSach.BookDetailActivity;
@@ -31,14 +26,8 @@ import com.example.helloworldjava.view.Thongbao.Noitification;
 import com.example.helloworldjava.view.Account_Login;
 import com.example.helloworldjava.view.Account_Register;
 import com.example.helloworldjava.view.ReadBookActivity;
-import com.example.helloworldjava.view.UserActivity;
-
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
 
-    private SachPresenter sachPresenter;
-    private TheLoaiSachPresenter theLoaiSachPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,15 +100,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        // Khởi tạo presenter với các dao từ RoomDatabase
-        MyAppDatabase database = MyApp.getDatabase();
-        if (database == null) {
-            Log.d("MainActivity", "Đối tượng database là null");
-            // Xử lý trường hợp đối tượng database bị null
-        } else {
-            // Tiếp tục sử dụng đối tượng database
-            sachPresenter = new SachPresenter(database.sachDAO());
-        }
+
 
 //        theLoaiSachPresenter = new TheLoaiSachPresenter(database.theLoaiSachDAO());
 

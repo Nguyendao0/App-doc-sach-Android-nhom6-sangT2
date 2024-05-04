@@ -1,22 +1,17 @@
 package com.example.helloworldjava.model.entity;
 
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-
-@Entity(tableName = "TheLoaiSach")
 public class TheLoaiSach {
-    @PrimaryKey(autoGenerate = true)
-    public int idTheLoaiSach;
+    public String id;
 
     public String TenTheLoai;
     public String MoTaTheLoai;
 
-    public int getIdTheLoaiSach() {
-        return idTheLoaiSach;
+    public String getId() {
+        return id;
     }
 
-    public void setIdTheLoaiSach(int idTheLoaiSach) {
-        this.idTheLoaiSach = idTheLoaiSach;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getTenTheLoai() {
@@ -33,5 +28,14 @@ public class TheLoaiSach {
 
     public void setMoTaTheLoai(String moTaTheLoai) {
         MoTaTheLoai = moTaTheLoai;
+    }
+
+    @Override
+    public String toString() {
+        return "TheLoaiSach{" +
+                "id='" + id + '\'' +
+                ", TenTheLoai='" + TenTheLoai + '\'' +
+                ", MoTaTheLoai='" + MoTaTheLoai + '\'' +
+                '}';
     }
 }

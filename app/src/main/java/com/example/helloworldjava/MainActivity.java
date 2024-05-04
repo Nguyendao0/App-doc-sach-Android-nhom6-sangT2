@@ -19,13 +19,14 @@ import com.example.helloworldjava.view.HomeActivity;
 import com.example.helloworldjava.view.Library.LibraryActivity;
 import com.example.helloworldjava.view.Library.TESTGETPDFActivity;
 import com.example.helloworldjava.view.Menu.MenuActivity;
-import com.example.helloworldjava.view.MyApp;
 import com.example.helloworldjava.view.QRGen;
 import com.example.helloworldjava.view.SearchActivity;
 import com.example.helloworldjava.view.Thongbao.Noitification;
 import com.example.helloworldjava.view.Account_Login;
 import com.example.helloworldjava.view.Account_Register;
 import com.example.helloworldjava.view.ReadBookActivity;
+import com.example.helloworldjava.view.user.UserActivity;
+
 public class MainActivity extends AppCompatActivity {
 
 

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.helloworldjava.R;
 import com.google.zxing.BarcodeFormat;
@@ -26,6 +27,14 @@ public class QRGen extends AppCompatActivity {
         edit_input = findViewById(R.id.edit_input);
         btn_generate = findViewById(R.id.btn_generate);
         iv_qr = findViewById(R.id.iv_qr);
+
+        // Lay id cua sach
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String idSach = extras.getString("idSach");
+            edit_input.setText(idSach);
+        }
+
 
         btn_generate.setOnClickListener(v->{
             geneateQR();

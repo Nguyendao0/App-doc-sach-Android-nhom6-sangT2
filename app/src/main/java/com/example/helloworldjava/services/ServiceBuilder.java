@@ -15,7 +15,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceBuilder {
-    private static final String URL = "http://192.168.1.8:3000/api/";
+    private static final String URL = "http://192.168.1.22:3000/api/";
 
     // Create logger
     private static HttpLoggingInterceptor logger =

@@ -2,6 +2,7 @@ package com.example.helloworldjava;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,7 +29,9 @@ import com.example.helloworldjava.view.ReadBookActivity;
 import com.example.helloworldjava.view.user.UserActivity;
 
 public class MainActivity extends AppCompatActivity {
-
+    @SuppressLint("StaticFieldLeak")
+    public static TextView resultTExtView;
+    Button scan_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        resultTExtView = findViewById(R.id.result_Text);
+        scan_btn = findViewById(R.id.btn_scan);
+        scan_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), ScanCodeActivity.class));
             }
         });
         Log.d("MainActivity" ,"Hello world");
@@ -194,6 +206,7 @@ public class MainActivity extends AppCompatActivity {
         AdapterListBook adapterListBook = new AdapterListBook(this, R.layout.modelbook,historySearch.getArrayBook());
         listView.setAdapter(adapterListBook);
     }
+
 
 
 }

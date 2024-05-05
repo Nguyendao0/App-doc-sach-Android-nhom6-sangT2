@@ -85,6 +85,8 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     implementation ("com.journeyapps:zxing-android-embedded:4.3.0")
+    implementation("com.google.android.gms:play-services-auth:18.1.0")
+    implementation("me.dm7.barcodescanner:zxing:1.9")
 
     //Roomdatabase
     implementation ("androidx.room:room-runtime:2.4.0")

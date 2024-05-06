@@ -19,7 +19,7 @@ import com.example.helloworldjava.view.HomeActivity;
 import com.example.helloworldjava.view.Menu.MenuActivity;
 import com.example.helloworldjava.view.QRGen;
 import com.example.helloworldjava.view.Search.SearchActivity;
-import com.example.helloworldjava.view.Thongbao.Noitification;
+import com.example.helloworldjava.view.Thongbao.NoitificationActivity;
 import com.example.helloworldjava.view.ReadBookActivity;
 import com.example.helloworldjava.view.SpeechBookTest.SpeechActivity;
 import com.example.helloworldjava.view.UserActivity;
@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void ThongBao(View view) {
 
-        Intent intent = new Intent(this, Noitification.class);
+        Intent intent = new Intent(this, NoitificationActivity.class);
         startActivity(intent);
     }
 //    public void GoToLibraryActivity(View view)

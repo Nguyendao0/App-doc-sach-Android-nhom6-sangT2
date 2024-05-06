@@ -44,7 +44,7 @@
             android:name=".view.Account_Login"
             android:exported="false" />
         <activity
-            android:name=".view.Thongbao.Noitification"
+            android:name=".view.Thongbao.NoitificationActivity"
             android:exported="false" />
         <activity
             android:name=".view.GioiThieuSach.BookDetailActivity"

@@ -1,33 +1,27 @@
 package com.example.helloworldjava.view.Thongbao;
 
-import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.helloworldjava.R;
+import com.example.helloworldjava.view.Menu.ViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-
-public class NoitificationFragment extends Fragment {
+public class NoitificationActivity extends AppCompatActivity {
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.notification_layout, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.notification_layout);
+
         //tabLayout2
-        TabLayout tabLayout = view.findViewById(R.id.tabLayoutNoiti);
-        ViewPager2 viewPager = view.findViewById(R.id.vp_noiti);
-        FragmentActivity activity = requireActivity();
-        ViewPagerAdapterNoiti adapter = new ViewPagerAdapterNoiti(activity);
+        TabLayout tabLayout = findViewById(R.id.tabLayoutNoiti);
+        ViewPager2 viewPager = findViewById(R.id.vp_noiti);
+        ViewPagerAdapterNoiti adapter = new ViewPagerAdapterNoiti(this);
         viewPager.setAdapter(adapter);
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
             switch (position) {
@@ -48,8 +42,5 @@ public class NoitificationFragment extends Fragment {
                 Log.d("ViewPager", "Page selected: " + position);
             }
         });
-        // Inflate the layout for this fragment
-        return view;
     }
-
 }

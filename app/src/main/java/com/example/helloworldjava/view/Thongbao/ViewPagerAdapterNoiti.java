@@ -6,10 +6,6 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.example.helloworldjava.view.Menu.HomeFragment;
-import com.example.helloworldjava.view.Menu.TestFragment;
-import com.example.helloworldjava.view.Search.SearchFragment;
-
 public class ViewPagerAdapterNoiti extends FragmentStateAdapter {
     private ViewPager2 viewPager;
 

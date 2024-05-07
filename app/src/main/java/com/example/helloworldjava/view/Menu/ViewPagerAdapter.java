@@ -10,6 +10,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.example.helloworldjava.view.Library.LibraryFragment;
 import com.example.helloworldjava.view.Search.SearchFragment;
 import com.example.helloworldjava.view.Thongbao.NoitificationFragment;
+import com.example.helloworldjava.view.dangtruyen.DangTruyenFragment;
 
 public class ViewPagerAdapter extends FragmentStateAdapter {
 
@@ -36,11 +37,11 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
             case 2:
                 return new LibraryFragment();
             case 3:
-                return  new TestFragment();
+                return  new DangTruyenFragment();
             case 4:
                 return  new NoitificationFragment();
             default:
-                return new TestFragment();
+                return null;
         }
     }
 

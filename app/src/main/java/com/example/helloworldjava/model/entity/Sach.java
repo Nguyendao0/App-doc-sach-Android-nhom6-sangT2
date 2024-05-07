@@ -84,12 +84,5 @@ public class Sach {
                 '}';
     }
 
-    public Sach() {
-    }
 
-    public Sach(String moTa, String tenSach, String urlImage) {
-        this.urlImage = urlImage;
-        this.TenSach = tenSach;
-        this.MoTa = moTa;
-    }
 }

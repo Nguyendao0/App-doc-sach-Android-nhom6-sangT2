@@ -273,6 +273,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/tv_mo_ta_sach"
             android:text="Sách cung cấp hướng dẫn toàn diện về lập trình ứng dụng Android với ngôn ngữ Kotlin. Nội dung sách bao gồm cài đặt môi trường lập trình, cấu trúc ứng dụng Android, các thành phần giao diện người dùng, xử lý dữ liệu, v.v. Sách phù hợp cho người mới bắt đầu cũng như những người đã có kinh nghiệm lập trình Android."
             android:layout_margin="15dp"
             android:textSize="18dp"

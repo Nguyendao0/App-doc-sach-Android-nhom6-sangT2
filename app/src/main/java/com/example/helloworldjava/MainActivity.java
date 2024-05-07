@@ -12,6 +12,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.helloworldjava.presenter.SachPresenter;
 import com.example.helloworldjava.presenter.TheLoaiSachPresenter;
+import com.example.helloworldjava.view.AdapterListBook;
+import com.example.helloworldjava.view.CatergorySearch;
+import com.example.helloworldjava.view.GioiThieuSach.BookDetailActivity;
+import com.example.helloworldjava.view.HistorySearch;
+import com.example.helloworldjava.view.HomeActivity;
+import com.example.helloworldjava.view.Library.LibraryActivity;
+import com.example.helloworldjava.view.Library.TESTGETPDFActivity;
+import com.example.helloworldjava.view.Menu.MenuActivity;
+import com.example.helloworldjava.view.SearchActivity;
+import com.example.helloworldjava.view.Thongbao.Noitification;
 import com.example.helloworldjava.view.Account_Login;
 import com.example.helloworldjava.view.Account_Register;
 import com.example.helloworldjava.view.GioiThieuSach.BookDetailActivity;
@@ -22,12 +32,10 @@ import com.example.helloworldjava.view.Search.SearchActivity;
 import com.example.helloworldjava.view.Thongbao.NoitificationActivity;
 import com.example.helloworldjava.view.ReadBookActivity;
 import com.example.helloworldjava.view.SpeechBookTest.SpeechActivity;
-import com.example.helloworldjava.view.UserActivity;
+import com.example.helloworldjava.view.user.UserActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private SachPresenter sachPresenter;
-    private TheLoaiSachPresenter theLoaiSachPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,4 +1,4 @@
-package com.example.helloworldjava.view;
+package com.example.helloworldjava.view.user;
 
 import com.example.helloworldjava.model.ProfileFeature;
 import com.example.helloworldjava.model.entity.User;

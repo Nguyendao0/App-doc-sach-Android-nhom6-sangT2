@@ -98,9 +98,10 @@ public class Sach {
     public Sach() {
     }
 
-    public Sach(String moTa, String tenSach, String urlImage) {
+    public Sach(String tenSach,String tacGia ,String urlImage) {
         this.urlImage = urlImage;
         this.TenSach = tenSach;
-        this.MoTa = moTa;
+        this.TacGia = tacGia;
+        ;
     }
 }

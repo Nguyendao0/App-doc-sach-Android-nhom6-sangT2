@@ -2,6 +2,7 @@ package com.example.helloworldjava.view.SpeechBookTest;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
@@ -69,27 +70,39 @@ public class SpeechActivity extends AppCompatActivity {
         btnPrevious = (Button) findViewById(R.id.skip_previous);
 
         // Xu li nut play
-        btnPlay.setOnClickListener(v -> {
+//        btnPlay.setOnClickListener(v -> {textToSpeech.synthesizeToFile(wakeUpText, myHashRender, destFileName);
+////            textToSpeech.synthesizeToFile(wakeUpText,utteranceId,destFileName,utteranceId);
+//
+//            Toast.makeText(this, demobook.getContent(), Toast.LENGTH_SHORT).show();
+//            textToSpeech.speak(demobook.Content, TextToSpeech.QUEUE_FLUSH,null,utteranceId);
+//            HashMap<String, String> myHashRender = new HashMap();
+//            String wakeUpText = "Are you up yet?";
+//            String destFileName = "/sdcard/myAppCache/wakeUp.wav";
+//            myHashRender.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, wakeUpText);
+//
+//        });
+//        // Xu li nut Pause
+//        btnPause.setOnClickListener(v -> {
+//                    Toast.makeText(this, "Check OK", Toast.LENGTH_SHORT).show();
+//                    textToSpeech.stop();
+//        });
 
-            Toast.makeText(this, demobook.getContent(), Toast.LENGTH_SHORT).show();
-            textToSpeech.speak(demobook.Content, TextToSpeech.QUEUE_FLUSH,null,utteranceId);
-        });
-        // Xu li nut Pause
-        btnPause.setOnClickListener(v -> {
-                    Toast.makeText(this, "Check OK", Toast.LENGTH_SHORT).show();
-                    textToSpeech.stop();
-        });
 
-        File root = android.os.Environment.getExternalStorageDirectory();
-        File dir = new File(root.getAbsolutePath() + "/me");
-        dir.mkdirs();
-        File file = new File(dir, "myData.wav");
-        Log.d("Debug ","Path : "+file.getAbsolutePath());
-        HashMap<String, String> params = new HashMap<>();
-        params.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, demobook.Content);
-        if (textToSpeech.synthesizeToFile(demobook.Content,params,file.getAbsolutePath()) == TextToSpeech.ERROR){
 
-        }
+//        MediaRecorder recorder = new MediaRecorder();
+//        recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+//        recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+//        recorder.setOutputFile("/sdcard/audiofile.mp3");
+//        recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+//
+//        recorder.start();
+//        recorder.stop();
+//        recorder.release();
+//
+//        textToSpeech.shutdown();
+
+
+
     }
 
 }

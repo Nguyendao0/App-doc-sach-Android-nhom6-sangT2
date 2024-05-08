@@ -1,34 +1,50 @@
 package com.example.helloworldjava.model.entity;
 
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.PrimaryKey;
 
-import java.util.List;
-
+@Entity(tableName = "Sach", foreignKeys = @ForeignKey(entity = TheLoaiSach.class,
+        parentColumns = "idTheLoaiSach",
+        childColumns = "idTheLoaiSach",
+        onDelete = ForeignKey.CASCADE))
 public class Sach {
-    private String id;
-    private String img;
-    private String TenSach;
-    private String NhaXuatBan;
-    private int NamXuatBan;
-    private String Mota;
-    private List<TheLoaiSach> ListTheLoai;
+    @PrimaryKey(autoGenerate = true)
+    public int id_Sach;
+    public int idTheLoaiSach; // Khóa ngoại đến bảng TheLoaiSach
+    public String urlImage;
+    public String TenSach;
+    public String TacGia;
+    public String NhaSanXuat;
 
-    public Sach() {
+    public String NamSanXuat;
+
+    public String MoTa;
+
+    public int DanhGiaSach;
+
+    public int getId_Sach() {
+        return id_Sach;
     }
 
-    public String getId() {
-        return id;
+    public void setId_Sach(int id_Sach) {
+        this.id_Sach = id_Sach;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public int getIdTheLoaiSach() {
+        return idTheLoaiSach;
     }
 
-    public String getImg() {
-        return img;
+    public void setIdTheLoaiSach(int idTheLoaiSach) {
+        this.idTheLoaiSach = idTheLoaiSach;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public String getUrlImage() {
+        return urlImage;
+    }
+
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
     }
 
     public String getTenSach() {
@@ -39,50 +55,52 @@ public class Sach {
         TenSach = tenSach;
     }
 
-    public String getNhaXuatBan() {
-        return NhaXuatBan;
+    public String getTacGia() {
+        return TacGia;
     }
 
-    public void setNhaXuatBan(String nhaXuatBan) {
-        NhaXuatBan = nhaXuatBan;
+    public void setTacGia(String tacGia) {
+        TacGia = tacGia;
     }
 
-    public int getNamXuatBan() {
-        return NamXuatBan;
+    public String getNhaSanXuat() {
+        return NhaSanXuat;
     }
 
-    public void setNamXuatBan(int namXuatBan) {
-        NamXuatBan = namXuatBan;
+    public void setNhaSanXuat(String nhaSanXuat) {
+        NhaSanXuat = nhaSanXuat;
     }
 
-    public String getMota() {
-        return Mota;
+    public String getNamSanXuat() {
+        return NamSanXuat;
     }
 
-    public void setMota(String mota) {
-        Mota = mota;
+    public void setNamSanXuat(String namSanXuat) {
+        NamSanXuat = namSanXuat;
     }
 
-    public List<TheLoaiSach> getListTheLoai() {
-        return ListTheLoai;
+    public String getMoTa() {
+        return MoTa;
     }
 
-    public void setListTheLoai(List<TheLoaiSach> listTheLoai) {
-        ListTheLoai = listTheLoai;
+    public void setMoTa(String moTa) {
+        MoTa = moTa;
     }
 
-    @Override
-    public String toString() {
-        return "Sach{" +
-                "ID=" + id +
-                ", img='" + img + '\'' +
-                ", TenSach='" + TenSach + '\'' +
-                ", NhaXuatBan='" + NhaXuatBan + '\'' +
-                ", NamXuatBan=" + NamXuatBan +
-                ", Mota='" + Mota + '\'' +
-                ", ListTheLoai='" + ListTheLoai + "'"+
-                '}';
+    public int getDanhGiaSach() {
+        return DanhGiaSach;
     }
 
+    public void setDanhGiaSach(int danhGiaSach) {
+        DanhGiaSach = danhGiaSach;
+    }
 
+    public Sach() {
+    }
+
+    public Sach(String moTa, String tenSach, String urlImage) {
+        this.urlImage = urlImage;
+        this.TenSach = tenSach;
+        this.MoTa = moTa;
+    }
 }

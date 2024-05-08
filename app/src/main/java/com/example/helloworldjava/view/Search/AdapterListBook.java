@@ -48,8 +48,8 @@ public class AdapterListBook extends BaseAdapter {
         TextView text_decription = convertView.findViewById(R.id.mota);
         ImageView img = convertView.findViewById(R.id.imageBook);
         text_name.setText(book.getTenSach());
-        text_decription.setText(book.getMota());
-        img.setImageResource(Integer.parseInt(book.getImg()));
+        text_decription.setText(book.getMoTa());
+        img.setImageResource(Integer.parseInt(book.getUrlImage()));
 
         return convertView;
     }

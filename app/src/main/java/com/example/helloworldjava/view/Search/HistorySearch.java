@@ -20,10 +20,10 @@ public class HistorySearch {
 
     public HistorySearch() {
         ArrayList<Sach> array = new ArrayList<Sach>();
-//        array.add(new Sach("Watanabe Kazuko","Hạnh Phúc Hay Không Do Ta Quyết Định", String.valueOf(R.drawable.sach01)));
-//        array.add(new Sach("Be Kind","Hãy có lòng tốt",String.valueOf(sach02)));
-//        array.add(new Sach("Minh Niệm","Làm Như Chơi ",String.valueOf(R.drawable.sach03)));
-//        array.add(new Sach("Nhà xuất bản Trẻ","Tư vấn tâm lý học đường. ",String.valueOf(R.drawable.sach04)));
+        array.add(new Sach("Watanabe Kazuko","Hạnh Phúc Hay Không Do Ta Quyết Định", String.valueOf(R.drawable.sach01)));
+        array.add(new Sach("Be Kind","Hãy có lòng tốt",String.valueOf(sach02)));
+        array.add(new Sach("Minh Niệm","Làm Như Chơi ",String.valueOf(R.drawable.sach03)));
+        array.add(new Sach("Nhà xuất bản Trẻ","Tư vấn tâm lý học đường. ",String.valueOf(R.drawable.sach04)));
 
         this.arraySach = array;
     }

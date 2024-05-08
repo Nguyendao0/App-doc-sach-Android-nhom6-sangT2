@@ -3,13 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
     <uses-feature android:name="android.hardware.microphone" />
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".MyApplication"
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -19,19 +18,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HelloWorldJava"
         tools:targetApi="31">
-        <service
-            android:name=".FCM.MyFireBaseMessagingService"
-            android:exported="false">
-
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
         <activity
             android:name=".view.SpeechBookTest.SpeechActivity"
             android:exported="false" />
         <activity
-            android:name=".view.QRGen"
+            android:name=".view.SpeechBookTest.SpeechActivity"
             android:exported="false" />
         <activity
             android:name=".view.Menu.testActivity"
@@ -45,7 +36,7 @@
             android:name=".view.Account_Login"
             android:exported="false" />
         <activity
-            android:name=".view.Thongbao.NoitificationActivity"
+            android:name=".view.Thongbao.Noitification"
             android:exported="false" />
         <activity
             android:name=".view.GioiThieuSach.BookDetailActivity"
@@ -53,17 +44,17 @@
         <activity
             android:name=".view.Menu.MenuActivity"
             android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".view.Library.QuestionActivity"-->
-<!--            android:exported="false" />-->
-<!--        <activity-->
-<!--            android:name=".view.Library.LibraryActivity"-->
-<!--            android:exported="false" />-->
         <activity
-            android:name=".view.user.AccountSettingActivity"
+            android:name=".view.Library.QuestionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.Library.LibraryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.AccountSettingActivity"
             android:exported="false"
             android:label="Sửa thông tin"
-            android:parentActivityName=".view.user.UserActivity" />
+            android:parentActivityName=".view.UserActivity" />
         <activity
             android:name=".view.ReadBookActivity"
             android:exported="false"
@@ -79,18 +70,6 @@
             android:name=".view.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".model.Realm.REALMActivity"
-            android:exported="false" />
-        <activity
-            android:name=".TESTROOM"
-            android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".Library.View.QuestionActivity"-->
-<!--            android:exported="false" />-->
-<!--        <activity-->
-<!--            android:name=".Library.View.LibraryActivity"-->
-<!--            android:exported="false" />-->
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -103,7 +82,7 @@
             android:name=".view.Search.SearchActivity"
             android:exported="false" />
         <activity
-            android:name=".view.user.UserActivity"
+            android:name=".view.UserActivity"
             android:exported="true"
             android:label="Thông tin cá nhân"
             android:parentActivityName=".MainActivity" />

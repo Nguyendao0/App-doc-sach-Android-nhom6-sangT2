@@ -10,21 +10,30 @@ import android.widget.*;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
-import com.example.helloworldjava.view.GioiThieuSach.BookDetailActivity;
-import com.example.helloworldjava.view.HomeActivity;
-import com.example.helloworldjava.view.Menu.MenuActivity;
+import com.example.helloworldjava.model.MyAppDatabase;
+import com.example.helloworldjava.presenter.SachPresenter;
+import com.example.helloworldjava.presenter.TheLoaiSachPresenter;
 import com.example.helloworldjava.view.Account_Login;
 import com.example.helloworldjava.view.Account_Register;
-import com.example.helloworldjava.view.QRGen;
-import com.example.helloworldjava.view.Search.SearchActivity;
-import com.example.helloworldjava.view.Thongbao.NoitificationActivity;
+import com.example.helloworldjava.view.Search.AdapterListBook;
+import com.example.helloworldjava.view.Search.CatergorySearch;
+import com.example.helloworldjava.view.GioiThieuSach.BookDetailActivity;
+import com.example.helloworldjava.view.Search.HistorySearch;
+import com.example.helloworldjava.view.HomeActivity;
+import com.example.helloworldjava.view.Library.LibraryActivity;
+import com.example.helloworldjava.view.Library.TESTGETPDFActivity;
+import com.example.helloworldjava.view.Menu.MenuActivity;
+import com.example.helloworldjava.view.MyApp;
 import com.example.helloworldjava.view.ReadBookActivity;
+import com.example.helloworldjava.view.Search.SearchActivity;
 import com.example.helloworldjava.view.SpeechBookTest.SpeechActivity;
-import com.example.helloworldjava.view.user.UserActivity;
+import com.example.helloworldjava.view.Thongbao.Noitification;
+import com.example.helloworldjava.view.UserActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    private SachPresenter sachPresenter;
+    private TheLoaiSachPresenter theLoaiSachPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,17 +105,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button btnQRGen = findViewById(R.id.btnQRGen);
-        btnQRGen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent myIntent = new Intent(MainActivity.this, QRGen.class);
-                startActivity(myIntent);
-            }
-        });
-
-
-
+        // Khởi tạo presenter với các dao từ RoomDatabase
+        MyAppDatabase database = MyApp.getDatabase();
+        if (database == null) {
+            Log.d("MainActivity", "Đối tượng database là null");
+            // Xử lý trường hợp đối tượng database bị null
+        } else {
+            // Tiếp tục sử dụng đối tượng database
+            sachPresenter = new SachPresenter(database.sachDAO());
+        }
 
 //        theLoaiSachPresenter = new TheLoaiSachPresenter(database.theLoaiSachDAO());
 
@@ -143,11 +150,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public  void gotoQRGen(View view ){
-        Intent intent = new Intent(this, QRGen.class);
-        startActivity(intent);
-    }
-
     public  void gotoSearch(View view ){
         Intent intent = new Intent(this, SearchActivity.class);
         startActivity(intent);
@@ -174,19 +176,19 @@ public class MainActivity extends AppCompatActivity {
     }
     public void ThongBao(View view) {
 
-        Intent intent = new Intent(this, NoitificationActivity.class);
+        Intent intent = new Intent(this, Noitification.class);
         startActivity(intent);
     }
-//    public void GoToLibraryActivity(View view)
-//    {
-//        Intent intent = new Intent(this, LibraryActivity.class);
-//        startActivity(intent);
-//    }
-//    public void goToPDF(View view)
-//    {
-//        Intent intent = new Intent(this, TESTGETPDFActivity.class);
-//        startActivity(intent);
-//    }
+    public void GoToLibraryActivity(View view)
+    {
+        Intent intent = new Intent(this, LibraryActivity.class);
+        startActivity(intent);
+    }
+    public void goToPDF(View view)
+    {
+        Intent intent = new Intent(this, TESTGETPDFActivity.class);
+        startActivity(intent);
+    }
 
 
 

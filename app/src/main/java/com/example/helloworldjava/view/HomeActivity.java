@@ -68,7 +68,7 @@ public class HomeActivity extends AppCompatActivity {
 
         RecyclerView listYourLibraryRV = findViewById(R.id.list_your_library);
         listYourLibraryRV.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        adapter = new ListBooksHomeRecyclerViewAdapter(this, data, R.layout.list_your_library_item);
+        adapter = new ListBooksHomeRecyclerViewAdapter( this, data, R.layout.list_your_library_item);
         listYourLibraryRV.setAdapter(adapter);
 
         // set up the RecyclerView

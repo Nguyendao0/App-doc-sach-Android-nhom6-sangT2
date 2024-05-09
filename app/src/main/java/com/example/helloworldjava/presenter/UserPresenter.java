@@ -4,14 +4,14 @@ import com.example.helloworldjava.model.ProfileFeature;
 import com.example.helloworldjava.model.ProfileFeatureModel;
 import com.example.helloworldjava.model.UserModel;
 import com.example.helloworldjava.model.entity.User;
-import com.example.helloworldjava.view.UserView;
+import com.example.helloworldjava.view.user.UserView;
 
 import java.util.List;
 
 public class UserPresenter {
-    private ProfileFeatureModel profileFeatureModel;
-    private UserModel userModel;
-    private UserView userView;
+    private final ProfileFeatureModel profileFeatureModel;
+    private final UserModel userModel;
+    private final UserView userView;
 
     public UserPresenter(UserView userView) {
         this.profileFeatureModel = new ProfileFeatureModel();
@@ -25,7 +25,18 @@ public class UserPresenter {
     }
 
     public void displayUserInformation() {
-        User user = userModel.getUser();
-        userView.displayUserInformation(user);
+        String userId = "3lxkrwmfj4qEV9WowcSX";
+        userModel.getUserById(userId, new UserModel.GetUserCallback() {
+            @Override
+            public void onUserLoaded(User user) {
+                userView.displayUserInformation(user);
+            }
+
+            @Override
+            public void onError(Exception e) {
+
+            }
+        });
+
     }
 }

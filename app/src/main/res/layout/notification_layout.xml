@@ -36,7 +36,7 @@
 
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
+        android:id="@+id/tabLayoutNoiti"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_smoke"
@@ -59,22 +59,15 @@
     </com.google.android.material.tabs.TabLayout>
 
 
-    <TextView
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vp_noiti"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:gravity="center"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:text="Bạn không có thông báo nào tại thời điểm này."
-        android:textSize="20dp"
-
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
-        app:layout_constraintVertical_bias="0.094" />
+        app:layout_constraintTop_toBottomOf="@+id/tabLayoutNoiti" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,12 +1,9 @@
 package com.example.helloworldjava.view.Library;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.helloworldjava.R;
 

@@ -16,7 +16,7 @@ public class ListBooksHomeRecyclerViewAdapter extends RecyclerView.Adapter<ListB
     private int itemLayoutResId;
 
     // data is passed into the constructor
-    ListBooksHomeRecyclerViewAdapter(Context context, String[] data, int itemLayoutResId) {
+    public ListBooksHomeRecyclerViewAdapter(Context context, String[] data, int itemLayoutResId) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
         this.itemLayoutResId = itemLayoutResId;

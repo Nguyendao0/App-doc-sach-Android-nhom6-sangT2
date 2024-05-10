@@ -249,18 +249,20 @@
             android:layout_height="60dp">
 
             <LinearLayout
-                android:gravity="center"
-                android:background="@drawable/bg_circle"
-                android:layout_margin="15dp"
-                android:orientation="horizontal"
+                android:id="@+id/btnDocSach"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@drawable/bg_circle"
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_marginRight="5dp"
-                    android:src="@drawable/ic_book_white"
                     android:layout_width="30dp"
-                    android:layout_height="30dp"/>
+                    android:layout_height="30dp"
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/ic_book_white" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"

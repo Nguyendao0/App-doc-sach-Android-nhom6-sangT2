@@ -52,7 +52,7 @@
         android:background="@drawable/comment" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout9"
+        android:id="@+id/btnDSChuong"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFDBE9"

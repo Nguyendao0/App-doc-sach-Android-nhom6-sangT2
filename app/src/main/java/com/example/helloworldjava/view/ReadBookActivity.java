@@ -18,6 +18,7 @@ import com.example.helloworldjava.model.Realm.Chuong;
 import com.example.helloworldjava.model.entity.Sach;
 import com.example.helloworldjava.services.ChuongService;
 import com.example.helloworldjava.services.ServiceBuilder;
+import com.example.helloworldjava.view.GioiThieuSach.BookDetailActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,6 +32,16 @@ public class ReadBookActivity extends AppCompatActivity implements PopupMenu.OnM
 
         Intent intent =  getIntent();
         String idSach = intent.getStringExtra("idSach");
+
+        View btnDSChuong = findViewById(R.id.btnDSChuong);
+        btnDSChuong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myintent = new Intent(ReadBookActivity.this, DanhsachchuongActivity.class);
+                myintent.putExtra("idSach", idSach);
+                startActivity(myintent);
+            }
+        });
 
         ChuongService chuongService = ServiceBuilder.buildService(ChuongService.class);
         Call<Chuong> request = chuongService.getChuong("1YbO0c6lh42znmZUc9zI");
@@ -92,6 +103,7 @@ public class ReadBookActivity extends AppCompatActivity implements PopupMenu.OnM
             return false;
         }
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

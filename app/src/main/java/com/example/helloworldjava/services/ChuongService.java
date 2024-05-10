@@ -10,8 +10,12 @@ import retrofit2.http.Path;
 
 public interface ChuongService {
     @GET("`chuong`")
-    Call<List<Chuong>> getListChuong();
+    Call<List<Chuong>> getListChuongg();
 
     @GET("chuong/{id}")
     Call<Chuong> getChuong(@Path("id")String id);
+
+    @GET("sach/{idSach}/chuong")
+    Call<List<Chuong>> getListChuong(@Path("idSach") String idSach);
+
 }

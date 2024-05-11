@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/navhome"
+        android:title="Home"
+        android:icon="@drawable/home"/>
+    <item android:id="@+id/navreels"
+        android:title="Reels"
+        android:icon="@drawable/reels"/>
+    <item android:id="@+id/navsearch"
+        android:title="Search"
+        android:icon="@drawable/search"/>
+    <item android:id="@+id/navnotification"
+        android:title="Notification"
+        android:icon="@drawable/notification"/>
+    <item android:id="@+id/navaccount"
+        android:title="Account"
+        android:icon="@drawable/account"/>
+</menu>

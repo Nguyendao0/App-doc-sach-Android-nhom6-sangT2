@@ -1,5 +1,6 @@
 package com.example.helloworldjava.model;
 
+
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class FirebaseHelper {

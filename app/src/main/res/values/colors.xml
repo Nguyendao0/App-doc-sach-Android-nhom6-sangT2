@@ -31,4 +31,7 @@
     <color name="colorError">@color/design_default_color_error</color>
     <color name="your_blue_color">#FF0000FF</color>
     <color name="check_color">#00B2B2</color>
+    <color name="normal_button_color">#2D9500</color>
+    <color name="normal_pressed_color">#4BF700</color>
+    <color name="normal_disabled_color">#C4FFAA</color>
 </resources>

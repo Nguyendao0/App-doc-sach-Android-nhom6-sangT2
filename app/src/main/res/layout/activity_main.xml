@@ -5,7 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-
+    <Button
+        android:id="@+id/btn_openwebview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="openwebview"
+        android:text="openwebview"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_gotomenu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
     <Button
         android:id="@+id/btn_gotomenu"
         android:layout_width="wrap_content"

@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.example.helloworldjava.R;
 import com.example.helloworldjava.model.entity.Sach;
 import com.example.helloworldjava.services.SachService;
-import com.example.helloworldjava.services.ServiceBuilder;
+// import com.example.helloworldjava.services.ServiceBuilder;
 
 import org.w3c.dom.Text;
 
@@ -27,7 +27,7 @@ public class BookDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.introduce_book);
 
-        SachService sachService = ServiceBuilder.buildService(SachService.class);
+        SachService sachService = com.example.helloworldjava.Services.ServiceBuilder.buildService(SachService.class);
         Call<Sach> request = sachService.getSach("NVGGDJnCQhAkLe5UscYu");
 
         request.enqueue(new Callback<Sach>() {

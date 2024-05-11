@@ -14,15 +14,11 @@ import com.example.helloworldjava.Services.ServiceBuilder;
 import com.example.helloworldjava.Services.UserService;
 
 import com.example.helloworldjava.model.entity.User;
-import com.example.helloworldjava.presenter.SachPresenter;
-import com.example.helloworldjava.presenter.TheLoaiSachPresenter;
 import com.example.helloworldjava.view.Account_Login;
 import com.example.helloworldjava.view.Account_Register;
 import com.example.helloworldjava.view.GioiThieuSach.BookDetailActivity;
 import com.example.helloworldjava.view.HomeActivity;
 import com.example.helloworldjava.view.Menu.MenuActivity;
-import com.example.helloworldjava.view.Account_Login;
-import com.example.helloworldjava.view.Account_Register;
 import com.example.helloworldjava.view.QRGen;
 import com.example.helloworldjava.view.Search.SearchActivity;
 import com.example.helloworldjava.view.Thongbao.NoitificationActivity;

@@ -1,4 +1,5 @@
-package com.example.helloworldjava.services;
+package com.example.helloworldjava.Services;
+
 
 import android.os.Build;
 
@@ -15,9 +16,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceBuilder {
-    private static final String URL = "https://backend-app-doc-sach-android-nhom6-sangt2.onrender.com/api/";
+//    private static final String URL = "https://backend-app-doc-sach-android-nhom6-sangt2.onrender.com/api/";
+    private static final String URL = "http://192.168.0.102:3000/api/";
 
-    // Create logger
     private static HttpLoggingInterceptor logger =
             new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
 

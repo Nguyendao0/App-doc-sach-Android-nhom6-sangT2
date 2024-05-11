@@ -14,8 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.helloworldjava.R;
 import com.example.helloworldjava.model.ProfileFeature;
-import com.example.helloworldjava.presenter.LoginPresenter;
-import com.example.helloworldjava.view.Account_Login;
 
 import java.util.List;
 
@@ -83,11 +81,6 @@ public class ProfileFeaturesAdapter extends RecyclerView.Adapter<ProfileFeatures
                 mContext.startActivity(intent);
             }
 
-            if (profileFeature.getImageResourceId() == R.drawable.logout) {
-                LoginPresenter.logoutNguoiDungFromSharedFref(mContext);
-                Intent intent = new Intent(mContext, Account_Login.class);
-                mContext.startActivity(intent);
-            }
         }
     }
 }

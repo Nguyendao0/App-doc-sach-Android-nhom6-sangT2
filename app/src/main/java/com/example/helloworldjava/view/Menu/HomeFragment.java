@@ -1,12 +1,15 @@
 package com.example.helloworldjava.view.Menu;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.helloworldjava.API.BookService;
+import com.example.helloworldjava.APIResponeModel.ApiResponseSachModle;
 import com.example.helloworldjava.R;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
@@ -30,11 +33,15 @@ import com.example.helloworldjava.view.Menu.ViewPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class HomeFragment extends Fragment {
     ListBooksHomeRecyclerViewAdapter adapter;
     ViewPager2 viewPager2;
-
+    List<ApiResponseSachModle> data = new ArrayList<ApiResponseSachModle>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -55,7 +62,24 @@ public class HomeFragment extends Fragment {
         ImageView iconMoreTrendingBooks = (ImageView) view.findViewById(R.id.ic_more_trending_books);
 
         List<ImageView> listMoreBooks = new ArrayList<>();
+        BookService.api.ListBook("wVtlXbDWiRmCmETfixgd").enqueue(new Callback<List<ApiResponseSachModle>>() {
+            @Override
+            public void onResponse(Call<List<ApiResponseSachModle>> call, Response<List<ApiResponseSachModle>> response) {
+                if(response.isSuccessful()){
+                    Log.w("Api Start","------Sussecs-------");
+                    data = response.body();
+                    Log.w("Api Start","------"+data.stream().count()+"-------");
+                    Log.w("Api Start","-----------------");
+                }
+            }
 
+            @Override
+            public void onFailure(Call<List<ApiResponseSachModle>> call, Throwable throwable) {
+                Log.w("Api Start","------errorr-------");
+                Log.w("Api Start","------"+throwable.toString()+"-------");
+                Log.w("Api Start","-----------------");
+            }
+        });
         listMoreBooks.add(iconMoreYourLibrary);
         listMoreBooks.add(iconMoreNewBooks);
         listMoreBooks.add(iconMoreTrendingBooks);
@@ -101,7 +125,7 @@ public class HomeFragment extends Fragment {
         });
 
         // data to populate the RecyclerView with
-        String[] data = {"1", "2", "3", "4"};
+
 
         RecyclerView listYourLibraryRV = view.findViewById(R.id.list_your_library);
         listYourLibraryRV.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));

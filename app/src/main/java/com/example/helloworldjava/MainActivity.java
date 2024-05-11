@@ -21,6 +21,7 @@ import com.example.helloworldjava.view.Search.SearchActivity;
 import com.example.helloworldjava.view.Thongbao.NoitificationActivity;
 import com.example.helloworldjava.view.ReadBookActivity;
 import com.example.helloworldjava.view.SpeechBookTest.SpeechActivity;
+import com.example.helloworldjava.view.WebViewGoogleActivity;
 import com.example.helloworldjava.view.user.UserActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -83,6 +84,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent myIntent = new Intent(MainActivity.this, ReadBookActivity.class);
+                startActivity(myIntent);
+            }
+        });
+        Button btnopenWebview = findViewById(R.id.btn_openwebview);
+        btnopenWebview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(MainActivity.this, WebViewGoogleActivity.class);
                 startActivity(myIntent);
             }
         });

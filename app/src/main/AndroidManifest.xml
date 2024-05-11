@@ -29,6 +29,9 @@
         <activity
             android:name=".view.WebViewGoogleActivity"
             android:exported="false" />
+        <activity
+            android:name=".view.DanhsachchuongActivity"
+            android:exported="false" />
 
         <service
             android:name=".FCM.MyFireBaseMessagingService"

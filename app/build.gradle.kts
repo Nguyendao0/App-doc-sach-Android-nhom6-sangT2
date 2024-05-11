@@ -99,6 +99,13 @@ dependencies {
     implementation ("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.23")
     implementation("com.google.firebase:firebase-messaging:23.4.1")
 
+    // Retrofit and GSON
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.3.0")
+
+    // Logging
+    implementation("com.squareup.okhttp3:logging-interceptor:3.9.0")
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

@@ -34,7 +34,6 @@
         app:layout_constraintVertical_bias="0.0" />
 
 
-
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayoutNoiti"
         android:layout_width="match_parent"
@@ -42,32 +41,41 @@
         android:background="@drawable/bg_smoke"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_capnhat"
-        app:layout_constraintVertical_bias="0.034">
+        app:layout_constraintVertical_bias="0.034"
+        tools:layout_editor_absoluteX="16dp">
 
         <com.google.android.material.tabs.TabItem
-            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="THÔNG BÁO"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:textStyle="bold" />
 
         <com.google.android.material.tabs.TabItem
-            android:textStyle="bold"
-            android:text="TIN NHẮN"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="TIN NHẮN"
+            android:textStyle="bold" />
 
     </com.google.android.material.tabs.TabLayout>
 
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/vp_noiti"
-        android:layout_width="match_parent"
+    <ScrollView
+        android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayoutNoiti" />
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

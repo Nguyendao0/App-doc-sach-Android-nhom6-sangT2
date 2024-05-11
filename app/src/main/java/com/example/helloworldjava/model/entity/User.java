@@ -1,23 +1,27 @@
 package com.example.helloworldjava.model.entity;
 
+import com.example.helloworldjava.Services.Notification;
+
+import java.util.List;
+
 public class User {
     private String id;
     private String username;
     private String email;
     private String password;
     private String avatar;
-    private String role;
 
 
     public User() {}
 
-    public User(String id, String username, String email, String password, String avatar) {
-        this.id = id;
+    public User(String username, String email, String password, String avatar) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.avatar = avatar;
     }
+
+
 
     public String getUsername() {
         return username;
@@ -51,19 +55,14 @@ public class User {
         this.avatar = avatar;
     }
 
-    public String getRole() {
-        return role;
-    }
+    @Override
+    public String toString() {
 
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+        return "User{" +
+                "username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", avatarImage='" + avatar + '\'' +
+                '}';
     }
 }

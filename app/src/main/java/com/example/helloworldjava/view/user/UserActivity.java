@@ -58,9 +58,8 @@ public class UserActivity extends AppCompatActivity implements UserView {
         TextView usernameTextView = findViewById(R.id.username);
         usernameTextView.setText(user.getUsername());
         ImageView userAvatarImageView = findViewById(R.id.userAvatarImage);
-        Picasso.get().load(user.getAvatar()).into(userAvatarImageView);
-//        int resID = getResources().getIdentifier(user.getAvatar() , "drawable", getPackageName());
-//        userAvatarImageView.setImageDrawable(AppCompatResources.getDrawable(this, resID));
-//        userAvatarImageView.setBackground(AppCompatResources.getDrawable(this, R.drawable.circle_outline));
+        int resID = getResources().getIdentifier(user.getAvatar() , "drawable", getPackageName());
+        userAvatarImageView.setImageDrawable(AppCompatResources.getDrawable(this, resID));
+        userAvatarImageView.setBackground(AppCompatResources.getDrawable(this, R.drawable.circle_outline));
     }
 }

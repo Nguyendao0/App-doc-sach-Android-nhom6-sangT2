@@ -1,6 +1,7 @@
 package com.example.helloworldjava.model.Realm.DAO;
 
 import com.example.helloworldjava.model.Realm.NguoiDung;
+import com.example.helloworldjava.model.Realm.Sach;
 import com.example.helloworldjava.model.Realm.TheLoaiSach;
 
 import java.util.List;
@@ -19,24 +20,69 @@ public class TheLoaiSachDAO {
         return maxId != null ? maxId.intValue() + 1 : 1;
     }
 
-    public void add(TheLoaiSach theLoaiSach) {
-        realm.executeTransaction(realm -> {
-            theLoaiSach.setID(getNextId(realm));
-            realm.copyToRealmOrUpdate(theLoaiSach);
-        });
-    }
+    public void add(TheLoaiSach theLoaiSach, Interface_Success_Fail callback) {
 
-    public void delete(int IDTheLoaiSach) {
-        realm.executeTransaction(realm -> {
-            TheLoaiSach theLoaiSach = realm.where(TheLoaiSach.class).equalTo("ID", IDTheLoaiSach).findFirst();
-            if (theLoaiSach != null) {
-                theLoaiSach.deleteFromRealm();
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                theLoaiSach.setID(getNextId(realm));
+                realm.copyToRealmOrUpdate(theLoaiSach);
+            }
+        }, new Realm.Transaction.OnSuccess() {
+            @Override
+            public void onSuccess() {
+                callback.onSuccess();
+            }
+        }, new Realm.Transaction.OnError() {
+            @Override
+            public void onError(Throwable error) {
+                callback.onFail(error);
             }
         });
     }
 
-    public void update(TheLoaiSach theLoaiSach) {
-        realm.executeTransaction(realm -> realm.copyToRealmOrUpdate(theLoaiSach));
+    public void delete(int IDTheLoaiSach, Interface_Success_Fail callback) {
+
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                TheLoaiSach theLoaiSach = realm.where(TheLoaiSach.class).equalTo("ID", IDTheLoaiSach).findFirst();
+                if (theLoaiSach != null) {
+                    theLoaiSach.deleteFromRealm();
+                }
+            }
+        }, new Realm.Transaction.OnSuccess() {
+            @Override
+            public void onSuccess() {
+                callback.onSuccess();
+            }
+        }, new Realm.Transaction.OnError() {
+            @Override
+            public void onError(Throwable error) {
+                callback.onFail(error);
+            }
+        });
+    }
+
+    public void update(TheLoaiSach theLoaiSach, Interface_Success_Fail callback) {
+
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                realm.copyToRealmOrUpdate(theLoaiSach);
+            }
+        }, new Realm.Transaction.OnSuccess() {
+            @Override
+            public void onSuccess() {
+                callback.onSuccess();
+            }
+        }, new Realm.Transaction.OnError() {
+            @Override
+            public void onError(Throwable error) {
+                callback.onFail(error);
+            }
+        });
+
     }
 
     public TheLoaiSach getById(int IDTheLoaiSach) {

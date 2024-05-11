@@ -10,6 +10,10 @@ import android.widget.*;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.helloworldjava.Services.ServiceBuilder;
+import com.example.helloworldjava.Services.UserService;
+
+import com.example.helloworldjava.model.entity.User;
 import com.example.helloworldjava.presenter.SachPresenter;
 import com.example.helloworldjava.presenter.TheLoaiSachPresenter;
 import com.example.helloworldjava.view.Account_Login;
@@ -24,10 +28,15 @@ import com.example.helloworldjava.view.ReadBookActivity;
 import com.example.helloworldjava.view.SpeechBookTest.SpeechActivity;
 import com.example.helloworldjava.view.UserActivity;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class MainActivity extends AppCompatActivity {
 
     private SachPresenter sachPresenter;
     private TheLoaiSachPresenter theLoaiSachPresenter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,20 +53,22 @@ public class MainActivity extends AppCompatActivity {
         });
         Log.d("MainActivity" ,"Hello world");
 
-//         tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
-//            @Override
-//            public void onInit(int status) {
-//                if (status == TextToSpeech.SUCCESS) {
-//                    // Set language (US English in this case)
-//                    tts.setLanguage(Locale.US);
-//                    String text = "Hello, this is a sample text.";
-//                    tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
-//
-//                } else {
-//                    Log.e("MainActivity", "TTS initialization failed");
-//                }
-//            }
-//        });
+        UserService userService = ServiceBuilder.buildService(UserService.class);
+        Call<User> request = userService.getNguoiDungById("LTN");
+
+
+        request.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                User user = response.body();
+                System.out.println(user.toString());
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable throwable) {
+                System.out.println("Lỗi main" + throwable.getMessage());
+            }
+        });
 
 
 //        Toolbar toolbar = findViewById(R.id.toolbar);

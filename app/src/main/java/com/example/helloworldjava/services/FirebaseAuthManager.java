@@ -1,14 +1,19 @@
 package com.example.helloworldjava.services;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import com.example.helloworldjava.DemoActivity;
 import com.example.helloworldjava.view.Menu.MenuActivity;
 import com.example.helloworldjava.view.login.Account_Login;
 import com.example.helloworldjava.view.register.Account_Register;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.concurrent.Executor;
 
 public class FirebaseAuthManager {
     private FirebaseAuth firebaseAuth;

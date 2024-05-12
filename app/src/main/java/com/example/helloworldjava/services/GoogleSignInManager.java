@@ -16,11 +16,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.helloworldjava.model.entity.NguoiDung;
+import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -41,6 +43,7 @@ public class GoogleSignInManager {
     private ActivityResultLauncher<Intent> signInLauncher;
     private NguoiDungService nguoiDungService;
     private FirebaseAuthManager firebaseAuthManager;
+    private GoogleApiClient googleApiClient;
 
 
     public GoogleSignInManager(AppCompatActivity activity, NguoiDungService nguoiDungService, FirebaseAuthManager firebaseAuthManager) {
@@ -57,6 +60,8 @@ public class GoogleSignInManager {
                 .requestEmail()
                 .build();
         googleSignInClient = GoogleSignIn.getClient(activity, gso);
+        googleApiClient = new GoogleApiClient.Builder(activity).addApi(Auth.GOOGLE_SIGN_IN_API, gso).build();
+        googleApiClient.connect();
     }
 
     private void initializeActivityLauncher() {
@@ -73,6 +78,11 @@ public class GoogleSignInManager {
 
     public void signIn() {
         Intent signInIntent = googleSignInClient.getSignInIntent();
+
+        if (googleApiClient != null && googleApiClient.isConnected()) {
+            googleApiClient.clearDefaultAccountAndReconnect();
+        }
+
         signInLauncher.launch(signInIntent);
     }
 

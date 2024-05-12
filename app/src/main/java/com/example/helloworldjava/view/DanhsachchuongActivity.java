@@ -85,6 +85,7 @@ public class DanhsachchuongActivity extends AppCompatActivity implements DanhSac
         Intent goToDetailChuongIntent = new Intent(this, ReadBookActivity.class);
         goToDetailChuongIntent.putExtra("idChuong", chuong.getId());
         goToDetailChuongIntent.putExtra("idSach", sach.getId());
+        goToDetailChuongIntent.putExtra("TenSach", sach.getTenSach());
         startActivity(goToDetailChuongIntent);
     }
 }

@@ -252,7 +252,7 @@
             <LinearLayout
                 android:id="@+id/btnDocSach"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="18dp"
                 android:layout_margin="15dp"
                 android:background="@drawable/bg_circle"
                 android:gravity="center"

@@ -19,6 +19,7 @@ import com.example.helloworldjava.model.entity.Sach;
 import com.example.helloworldjava.services.ChuongService;
 import com.example.helloworldjava.services.ServiceBuilder;
 import com.example.helloworldjava.view.GioiThieuSach.BookDetailActivity;
+import com.example.helloworldjava.view.SpeechBookTest.SpeechActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,10 +30,13 @@ public class ReadBookActivity extends AppCompatActivity implements PopupMenu.OnM
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_read_book);
-
+        TextView tv_TenChuong = findViewById(R.id.tv_tenchuong);
+        TextView tv_noidungChuong = findViewById(R.id.tv_noidungChuong);
+        TextView tv_sochuong = findViewById(R.id.tvchuong);
         Intent intent =  getIntent();
         String idSach = intent.getStringExtra("idSach");
         String idChuong = intent.getStringExtra("idChuong");
+        String tensach = intent.getStringExtra("TenSach");
 
         View btnDSChuong = findViewById(R.id.btnDSChuong);
         btnDSChuong.setOnClickListener(new View.OnClickListener() {
@@ -52,9 +56,6 @@ public class ReadBookActivity extends AppCompatActivity implements PopupMenu.OnM
             public void onResponse(@NonNull Call<Chuong> call, @NonNull Response<Chuong> response) {
                 Chuong chuong = response.body();
                 System.out.println(chuong);
-                TextView tv_TenChuong = findViewById(R.id.tv_tenchuong);
-                TextView tv_noidungChuong = findViewById(R.id.tv_noidungChuong);
-                TextView tv_sochuong = findViewById(R.id.tvchuong);
                 tv_TenChuong.setText(chuong.getTenChuong());
                 tv_noidungChuong.setText(chuong.getNoiDung());
                 tv_sochuong.setText("Chương " + chuong.getSoThuTu() + ":");
@@ -67,6 +68,7 @@ public class ReadBookActivity extends AppCompatActivity implements PopupMenu.OnM
         });
 
         ImageView imageViewComment = findViewById(R.id.imageView_comment);
+        ImageView imageViewSpeech = findViewById(R.id.imageView_Speech);
         imageViewComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,6 +77,17 @@ public class ReadBookActivity extends AppCompatActivity implements PopupMenu.OnM
             }
         });
 
+        imageViewSpeech.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(ReadBookActivity.this, SpeechActivity.class);
+                myIntent.putExtra("TenSach", tensach);
+                myIntent.putExtra("TenChuong", tv_TenChuong.getText());
+                myIntent.putExtra("NoiDung", tv_noidungChuong.getText());
+
+                ReadBookActivity.this.startActivity(myIntent);
+            }
+        });
 
 
     }

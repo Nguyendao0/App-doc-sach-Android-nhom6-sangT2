@@ -12,7 +12,6 @@ public class Chuong extends RealmObject {
     private String NoiDung;
     private String TenChuong;
     private int soThuTu;
-
     private boolean isDanhDau = false;
     public Chuong() {
     }

@@ -101,5 +101,20 @@ public class CurrentReadingFragment extends Fragment implements CurrentReadingCo
         return this.isVisible();
     }
 
+    @Override
+    public void setProgressBar(Sach sach) {
+        ArrayList<Sach> list = new ArrayList<>();
+       for(Sach s : bookAdapter.getSachList())
+       {
+           if(s.getID() == sach.getID())
+           {
+                s.setChuong_Items(sach.getChuong_Items());
+           }
+           list.add(s);
+       }
+
+       setSachList(list);
+    }
+
 
 }

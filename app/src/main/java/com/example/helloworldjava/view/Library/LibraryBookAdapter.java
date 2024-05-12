@@ -27,6 +27,10 @@ public class LibraryBookAdapter extends RecyclerView.Adapter<LibraryBookViewHold
         this.isDowloaded = isDowloaded;
     }
 
+    public ArrayList<Sach> getSachList()
+    {
+        return this.sachList;
+    }
 
     @NonNull
     @Override

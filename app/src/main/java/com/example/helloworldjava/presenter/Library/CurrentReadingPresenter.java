@@ -87,6 +87,8 @@ public class CurrentReadingPresenter implements CurrentReadingContract.Presenter
                     chuongRealm.add(c);
                 }
                 sach.setChuong_Items(chuongRealm);
+
+                CurrentReadingView.setProgressBar(sach);
             }
 
             @Override

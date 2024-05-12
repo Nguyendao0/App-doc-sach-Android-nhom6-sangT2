@@ -58,8 +58,7 @@ public class LibraryBookViewHolder  extends RecyclerView.ViewHolder{
                 }
             }
             int tongChuong = this.sach.getChuong_Items().size();
-
-            int prog = tongChuongDaDoc / tongChuong * 100;
+            int prog = (int) ((tongChuongDaDoc / (float) tongChuong) * 100);
             progressBar.setProgress(prog);
         }
     }

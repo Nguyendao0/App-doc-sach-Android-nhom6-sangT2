@@ -15,6 +15,7 @@ public interface CurrentReadingContract {
         void setSachOfflineList(ArrayList<Sach> list);
         void setCurrentPresenter( Presenter presenter);
         boolean Visible();
+        void setProgressBar(Sach sach);
     }
 
     interface Presenter{

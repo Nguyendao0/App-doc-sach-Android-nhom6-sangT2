@@ -22,7 +22,7 @@ public class ListBooksHomeRecyclerViewAdapter extends RecyclerView.Adapter<ListB
 
     private List<Sach> mData;
     private LayoutInflater mInflater;
-    private ListBooksRecyclerViewAdapter.ItemClickListener mClickListener;
+    private ListBooksHomeRecyclerViewAdapter.ItemClickListener mClickListener;
     private int itemLayoutResId;
 
     // data is passed into the constructor
@@ -89,7 +89,9 @@ public class ListBooksHomeRecyclerViewAdapter extends RecyclerView.Adapter<ListB
     }
 
     // allows clicks events to be caught
-    void setClickListener(BookCategoryRecyclerViewAdapter.ItemClickListener itemClickListener) {
+    void setClickListener(ListBooksHomeRecyclerViewAdapter.ItemClickListener itemClickListener) {
+        this.mClickListener = itemClickListener;
+
     }
 
     // parent activity will implement this method to respond to click events

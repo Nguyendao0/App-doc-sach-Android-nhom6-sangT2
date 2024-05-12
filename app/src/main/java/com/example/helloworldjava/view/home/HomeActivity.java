@@ -32,13 +32,13 @@ public class HomeActivity extends AppCompatActivity {
 
         ImageView iconMoreYourLibrary = findViewById(R.id.ic_more_your_library);
         ImageView iconMoreNewBooks = findViewById(R.id.ic_more_new_books);
-        ImageView iconMoreTrendingBooks = findViewById(R.id.ic_more_trending_books);
+//        ImageView iconMoreTrendingBooks = findViewById(R.id.ic_more_trending_books);
 
         List<ImageView> listMoreBooks = new ArrayList<>();
 
         listMoreBooks.add(iconMoreYourLibrary);
         listMoreBooks.add(iconMoreNewBooks);
-        listMoreBooks.add(iconMoreTrendingBooks);
+//        listMoreBooks.add(iconMoreTrendingBooks);
         Log.w("Api Start","-----------------------");
         Gson js = new Gson();
 
@@ -64,14 +64,14 @@ public class HomeActivity extends AppCompatActivity {
             });
         }
 
-        ImageView iconMoreCategoryBooks = findViewById(R.id.ic_more_category_books);
-        iconMoreCategoryBooks.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this, BookCategoryActivity.class);
-                startActivity(intent);
-            }
-        });
+//        ImageView iconMoreCategoryBooks = findViewById(R.id.ic_more_category_books);
+//        iconMoreCategoryBooks.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(HomeActivity.this, BookCategoryActivity.class);
+//                startActivity(intent);
+//            }
+//        });
         Log.w("Api Start","-----------------------");
         // data to populate the RecyclerView with
         //String[] data = {"1", "2", "3", "4"};

@@ -81,7 +81,7 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Page 1"
+            android:text="Page 2"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="20sp"
@@ -90,6 +90,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/imageView_Speech"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+
+            android:background="@drawable/speak"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
         <ImageView
             android:id="@+id/imageView_comment"
             android:layout_width="40dp"

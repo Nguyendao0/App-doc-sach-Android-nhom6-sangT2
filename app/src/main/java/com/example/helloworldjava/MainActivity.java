@@ -2,13 +2,19 @@ package com.example.helloworldjava;
 
 
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 
 import com.example.helloworldjava.view.GioiThieuSach.BookDetailActivity;
@@ -23,6 +29,7 @@ import com.example.helloworldjava.view.ReadBookActivity;
 import com.example.helloworldjava.view.SpeechBookTest.SpeechActivity;
 import com.example.helloworldjava.view.login.WebViewGoogleActivity;
 import com.example.helloworldjava.view.user.UserActivity;
+import com.example.helloworldjava.view.welcome.WelcomePagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,6 +38,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Kiểm tra nếu đây là lần đầu chạy ứng dụng
+        boolean isFirstRun = checkFirstRun();
+
+        //showWelcomeDialog();
+        if (isFirstRun) {
+            showWelcomeDialog();
+        }
+
+
 
         Button button_home = findViewById(R.id.button_home);
         button_home.setOnClickListener(new View.OnClickListener() {
@@ -42,24 +59,6 @@ public class MainActivity extends AppCompatActivity {
         });
         Log.d("MainActivity" ,"Hello world");
 
-//         tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
-//            @Override
-//            public void onInit(int status) {
-//                if (status == TextToSpeech.SUCCESS) {
-//                    // Set language (US English in this case)
-//                    tts.setLanguage(Locale.US);
-//                    String text = "Hello, this is a sample text.";
-//                    tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
-//
-//                } else {
-//                    Log.e("MainActivity", "TTS initialization failed");
-//                }
-//            }
-//        });
-
-
-//        Toolbar toolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
 
         Button btnUser = findViewById(R.id.btnUser);
         btnUser.setOnClickListener(new View.OnClickListener() {
@@ -71,14 +70,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-//        Button btnReadBook = findViewById(R.id.btbReadBook);
-//        btnReadBook.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent myIntent = new Intent(MainActivity.this, ReadBookActivity.class);
-//                startActivity(myIntent);
-//            }
-//        });
 
         Button btnReadBook = findViewById(R.id.btbReadBook);
         btnReadBook.setOnClickListener(new View.OnClickListener() {
@@ -116,42 +107,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
-
-//        theLoaiSachPresenter = new TheLoaiSachPresenter(database.theLoaiSachDAO());
-
-//        // Thêm sách và thể loại sách vào cơ sở dữ liệu
-//        Sach sach = new Sach();
-//        sach.idTheLoaiSach = 1; // Đặt id thể loại sách tùy ý
-//        sach.urlImage = "url_image";
-//        sach.TenSach = "Tên sách";
-//        sach.TacGia = "Tác giả";
-//        sach.NhaSanXuat = "Nhà sản xuất";
-//        sach.NamSanXuat = "Năm sản xuất";
-//        sach.MoTa = "Mô tả";
-//        sach.DanhGiaSach = 5; // Đánh giá sách
-//        sachPresenter.addSach(sach);
-//
-//        TheLoaiSach theLoaiSach = new TheLoaiSach();
-//        theLoaiSach.TenTheLoai = "Tên thể loại";
-//        theLoaiSach.MoTaTheLoai = "Mô tả thể loại";
-//        theLoaiSachPresenter.addTheLoaiSach(theLoaiSach);
-
-        // Hiển thị danh sách sách và thể loại sách trong giao diện người dùng
-//        List<Sach> sachList = sachPresenter.getAllSach();
-//        //List<TheLoaiSach> theLoaiSachList = theLoaiSachPresenter.getAllTheLoaiSach();
-//
-//        // Hiển thị tên sách trên log
-//        for (Sach sach1 : sachList) {
-//            Log.d("MainActivity", "Tên sách: " + sach1.TenSach);
-//        }
     }
 
-    // tái sử chuyển activity
-    public void goToActivity(Class<?> activityClass) {
-        Intent intent = new Intent(this, activityClass);
-        startActivity(intent);
-    }
 
     public  void gotoLogin(View view ){
         Intent intent = new Intent(this, Account_Login.class);
@@ -192,33 +149,48 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, NoitificationActivity.class);
         startActivity(intent);
     }
-//    public void GoToLibraryActivity(View view)
-//    {
-//        Intent intent = new Intent(this, LibraryActivity.class);
-//        startActivity(intent);
-//    }
-//    public void goToPDF(View view)
-//    {
-//        Intent intent = new Intent(this, TESTGETPDFActivity.class);
-//        startActivity(intent);
-//    }
 
 
+    // Kiểm tra lần đầu chạy ứng dụng
+    private boolean checkFirstRun() {
+        // Sử dụng SharedPreferences để lưu trạng thái đã chạy ứng dụng
+        // Ở đây, giả sử tên file SharedPreferences là "MyPrefs" và tên key là "isFirstRun"
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        boolean isFirstRun = sharedPreferences.getBoolean("isFirstRun", true);
 
-//    protected void runArrayList(){
-//        CatergorySearch catergorySearch = new CatergorySearch();
-//        HistorySearch historySearch = new HistorySearch();
-//
-//        Spinner spinner;
-//        spinner = (Spinner) findViewById(R.id.spinner);
-//        ArrayAdapter arrayAdapter = new ArrayAdapter(this, androidx.constraintlayout.widget.R.layout.support_simple_spinner_dropdown_item,catergorySearch.getArrayCatergory());
-//        spinner.setAdapter(arrayAdapter);
-//
-//        ListView listView;
-//        listView = (ListView) findViewById(R.id.listBook);
-//        AdapterListBook adapterListBook = new AdapterListBook(this, R.layout.modelbook,historySearch.getArraySach());
-//        listView.setAdapter(adapterListBook);
-//    }
+        // Nếu đây là lần đầu chạy ứng dụng, lưu trạng thái đã chạy
+        if (isFirstRun) {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("isFirstRun", false);
+            editor.apply();
+        }
+
+        return isFirstRun;
+    }
+
+    // Hiển thị hộp thoại chào mừng
+    private void showWelcomeDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this,
+                android.R.style.Theme_DeviceDefault_Light_NoActionBar_Fullscreen);
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.dialog_welcome, null);
+        builder.setView(dialogView);
+
+        ViewPager2 viewPager = dialogView.findViewById(R.id.viewPager);
+        WelcomePagerAdapter adapter = new WelcomePagerAdapter();
+        viewPager.setAdapter(adapter);
+
+        builder.setPositiveButton("Hoàn thành", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        builder.setCancelable(false);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
 
 
 }

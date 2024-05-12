@@ -221,6 +221,7 @@
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/yeu_thich"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"

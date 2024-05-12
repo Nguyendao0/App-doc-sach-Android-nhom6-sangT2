@@ -11,6 +11,7 @@ import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
@@ -31,4 +32,7 @@ public interface NguoiDungService {
 
     @GET("/api/nguoi-dung/{idNguoiDung}/thu-vien-sach")
     Call<List<ThuVienSachCaNhan>> getListSachTrongThuVien(@Path("idNguoiDung") String idNguoiDung);
+
+    @PATCH("nguoi-dung/{id}")
+    Call<NguoiDung> updateNguoiDung(@Path("id") String id, @Body NguoiDung nguoiDung);
 }

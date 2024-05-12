@@ -17,6 +17,8 @@ import com.example.helloworldjava.services.FirebaseAuthManager;
 import com.example.helloworldjava.services.GoogleSignInManager;
 import com.example.helloworldjava.services.NguoiDungService;
 import com.example.helloworldjava.services.ServiceBuilder;
+import com.example.helloworldjava.view.Menu.MenuActivity;
+import com.example.helloworldjava.view.register.Account_Register;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -44,6 +46,8 @@ public class Account_Login extends AppCompatActivity{
     private EditText txtEmail;
     private EditText txtPassword;
     Button btnLogin;
+    Button btnRegister;
+    // btnsignup
     View signInWithGoogle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +78,16 @@ public class Account_Login extends AppCompatActivity{
             public void onClick(View view) {
 
                 googleSignInManager.signIn();
+            }
+        });
+
+        // chuyển hướng đăng ký
+        btnRegister = findViewById(R.id.btnsignup);
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Account_Login.this, Account_Register.class);
+                startActivity(intent);
             }
         });
     }

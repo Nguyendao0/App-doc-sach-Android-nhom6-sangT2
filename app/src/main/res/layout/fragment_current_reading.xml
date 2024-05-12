@@ -33,10 +33,10 @@
                     android:id="@+id/constraintLayout4"
                     android:layout_width="0dp"
                     android:layout_height="56dp"
-                    app:layout_constraintBottom_toTopOf="@+id/scrollView3"
+                    app:layout_constraintBottom_toTopOf="@+id/RVOthersBooks"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/scrollView4">
+                    app:layout_constraintTop_toBottomOf="@+id/RVOfflineBooks">
 
                     <TextView
                         android:id="@+id/textView7"
@@ -70,7 +70,7 @@
                     android:id="@+id/constraintLayout3"
                     android:layout_width="0dp"
                     android:layout_height="52dp"
-                    app:layout_constraintBottom_toTopOf="@+id/scrollView4"
+                    app:layout_constraintBottom_toTopOf="@+id/RVOfflineBooks"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -99,53 +99,27 @@
                         app:layout_constraintVertical_bias="0.533" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <ScrollView
-                    android:id="@+id/scrollView3"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical" />
-                </ScrollView>
-
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/RVOthersBooks"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_max="600dp"
+                    app:layout_constraintHeight_min="100dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/scrollView3" />
-
-                <ScrollView
-                    android:id="@+id/scrollView4"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    app:layout_constraintBottom_toTopOf="@+id/constraintLayout4"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical" />
-                </ScrollView>
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/RVOfflineBooks"
                     android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/scrollView4"
-                    app:layout_constraintEnd_toEndOf="@+id/scrollView4"
-                    app:layout_constraintStart_toStartOf="@+id/scrollView4"
-                    app:layout_constraintTop_toTopOf="@+id/scrollView4" />
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toTopOf="@+id/constraintLayout4"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_max="600dp"
+                    app:layout_constraintHeight_min="10dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

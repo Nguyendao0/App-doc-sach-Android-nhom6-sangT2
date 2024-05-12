@@ -32,8 +32,8 @@ public class EditPopupFragment extends Fragment implements EditPopupContract.Vie
         btnClose = view.findViewById(R.id.imageButtonClose);
         btnAdd = view.findViewById(R.id.imageButtonLibraryAdd);
         btnDelete = view.findViewById(R.id.imageButtonLibraryDelete);
-        btnStorage = view.findViewById(R.id.imageButtonLibraryStorage);
-        btnPlus = view.findViewById(R.id.imageButtonLibraryPlus);
+
+
         txtLibraryPopupMenu = view.findViewById(R.id.textViewLibraryPopupMenu);
 
         presenter.setItemsPopup(libraryPresenter.getTabSelected());
@@ -42,6 +42,7 @@ public class EditPopupFragment extends Fragment implements EditPopupContract.Vie
             @Override
             public void onClick(View view) {
                 libraryPresenter.replaceFragmentInNavigationContainer("NavigationFragment");
+                libraryPresenter.clearSelectBookView();
             }
         });
         return view;

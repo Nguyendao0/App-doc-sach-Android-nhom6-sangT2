@@ -107,6 +107,7 @@ public class Account_Register extends AppCompatActivity {
                     newNguoiDung.setEmail(email);
                     newNguoiDung.setTenNguoiDung(username);
                     newNguoiDung.setMatKhau(password);
+                    newNguoiDung.setUuid(firebaseAuth.getCurrentUser().getUid());
                     createNewUser(newNguoiDung);
                 } else {
                     // If sign in fails, display a message to the user.

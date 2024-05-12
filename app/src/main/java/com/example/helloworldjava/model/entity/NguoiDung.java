@@ -3,12 +3,13 @@ package com.example.helloworldjava.model.entity;
 public class NguoiDung {
 
     private String id;
-    private String TenNguoiDung;
-    private String Email;
-    private String MatKhau;
-    private String PhanCap;
-    private String Avatar;
+    private String tenNguoiDung;
+    private String email;
+    private String matKhau;
+    private String phanCap;
+    private String avatar;
     private String googleId;
+    private String uuid;
 
     public NguoiDung() {
     }
@@ -22,43 +23,43 @@ public class NguoiDung {
     }
 
     public String getTenNguoiDung() {
-        return TenNguoiDung;
+        return tenNguoiDung;
     }
 
     public void setTenNguoiDung(String tenNguoiDung) {
-        TenNguoiDung = tenNguoiDung;
+        this.tenNguoiDung = tenNguoiDung;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getMatKhau() {
-        return MatKhau;
+        return matKhau;
     }
 
     public void setMatKhau(String matKhau) {
-        MatKhau = matKhau;
+        this.matKhau = matKhau;
     }
 
     public String getPhanCap() {
-        return PhanCap;
+        return phanCap;
     }
 
     public void setPhanCap(String phanCap) {
-        PhanCap = phanCap;
+        this.phanCap = phanCap;
     }
 
     public String getAvatar() {
-        return Avatar;
+        return avatar;
     }
 
     public void setAvatar(String avatar) {
-        Avatar = avatar;
+        this.avatar = avatar;
     }
 
     public String getGoogleId() {
@@ -67,5 +68,13 @@ public class NguoiDung {
 
     public void setGoogleId(String googleId) {
         this.googleId = googleId;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 }

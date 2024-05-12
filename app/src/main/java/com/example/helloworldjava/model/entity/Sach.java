@@ -11,6 +11,7 @@ public class Sach {
     private int NamXuatBan;
     private String Mota;
     private List<TheLoaiSach> ListTheLoai;
+    private int tongSoLuotDoc;
 
     public Sach() {
     }

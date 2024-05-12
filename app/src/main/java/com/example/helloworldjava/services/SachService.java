@@ -1,5 +1,6 @@
 package com.example.helloworldjava.services;
 
+import com.example.helloworldjava.model.Realm.Chuong;
 import com.example.helloworldjava.model.entity.Sach;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface SachService {
     @GET("`sach`")
@@ -33,6 +35,12 @@ public interface SachService {
             @Field("NhaXuatBan")String NhaXuatBan,
             @Field("NamXuatBan")int NamXuatBan,
             @Field("Mota")int Mota
+    );
+
+    @GET("sach/{sachId}/chuong")
+    Call<Chuong> getChuongList(
+            @Path("sachId") String sachId,
+            @Query("idNguoiDung") String idNguoiDung
     );
 
     @DELETE("sach/{id}")

@@ -23,7 +23,7 @@
 
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/txtEmailLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -33,14 +33,14 @@
         android:drawablePadding="20dp"
         android:fontFamily="@font/carter_one"
         android:padding="20dp"
-        android:text="Username"
+        android:text="Email"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/login"
         tools:layout_editor_absoluteX="10dp" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/txtPasswordLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -53,7 +53,7 @@
         android:text="Password"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/username"
+        app:layout_constraintTop_toBottomOf="@+id/txtEmailLogin"
         tools:layout_editor_absoluteX="10dp" />
 
     <TextView
@@ -69,7 +69,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.010"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintTop_toBottomOf="@+id/txtPasswordLogin" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnlogin"

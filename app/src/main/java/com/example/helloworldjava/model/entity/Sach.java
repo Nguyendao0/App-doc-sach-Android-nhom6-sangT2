@@ -12,6 +12,7 @@ public class Sach {
     private String Mota;
     private List<TheLoaiSach> ListTheLoai;
     private int tongSoLuotDoc;
+    private String idNguoiDung;
 
     public Sach() {
     }
@@ -76,6 +77,21 @@ public class Sach {
         this.TenSach = tenSach;
         this.NhaXuatBan = nxb;
         this.img = img;
+    }
+    public int getTongSoLuotDoc() {
+        return tongSoLuotDoc;
+    }
+
+    public void setTongSoLuotDoc(int tongSoLuotDoc) {
+        this.tongSoLuotDoc = tongSoLuotDoc;
+    }
+
+    public String getIdNguoiDung() {
+        return idNguoiDung;
+    }
+
+    public void setIdNguoiDung(String idNguoiDung) {
+        this.idNguoiDung = idNguoiDung;
     }
 
     @Override

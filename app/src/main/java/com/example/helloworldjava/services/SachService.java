@@ -20,8 +20,16 @@ public interface SachService {
     @GET("`sach`")
     Call<List<Sach>> getListSachs();
 
+    @GET("sach")
+    Call<List<Sach>> getListSachYourLibrary(@Query("idNguoiDung") String idNguoiDung);
+
+    @GET("sach")
+    Call<List<Sach>> getListSachPhoBien(@Query("xemNhieuNhat") Boolean xemNhieuNhat);
+
+
     @GET("sach/{id}")
     Call<Sach> getSach(@Path("id")String id);
+
 
     @POST("sach")
     Call<Sach> createSach(@Body Sach newSach);

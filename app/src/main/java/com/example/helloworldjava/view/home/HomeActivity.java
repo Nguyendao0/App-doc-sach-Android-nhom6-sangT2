@@ -77,45 +77,45 @@ public class HomeActivity extends AppCompatActivity {
         //String[] data = {"1", "2", "3", "4"};
 
         String gdata = "";
-        BookService.api.ListBook("wVtlXbDWiRmCmETfixgd").enqueue(new Callback<List<ApiResponseSachModle>>() {
-            @Override
-            public void onResponse(Call<List<ApiResponseSachModle>> call, Response<List<ApiResponseSachModle>> response) {
-                if(response.isSuccessful()){
-                    Log.w("Api Start","------Sussecs-------");
-                    data = response.body();
-                    RecyclerView listYourLibraryRV = findViewById(R.id.list_your_library);
-                    listYourLibraryRV.setLayoutManager(new LinearLayoutManager(HomeActivity.this, LinearLayoutManager.HORIZONTAL, false));
-                    adapter = new ListBooksHomeRecyclerViewAdapter( HomeActivity.this, data, R.layout.list_your_library_item);
-                    Log.w("Api Start","------2"+js.toJson(data)+"-------");
-                    listYourLibraryRV.setAdapter(adapter);
-
-                    // set up the RecyclerView
-                    RecyclerView listNewBooksRV = findViewById(R.id.list_new_books);
-                    listNewBooksRV.setLayoutManager(new LinearLayoutManager(HomeActivity.this, LinearLayoutManager.HORIZONTAL, false));
-                    adapter = new ListBooksHomeRecyclerViewAdapter(HomeActivity.this, data, R.layout.list_books_item_home);
-                    listNewBooksRV.setAdapter(adapter);
-
-                    // set up the RecyclerView
-                    RecyclerView listBooksTrendingRV = findViewById(R.id.list_books_trending);
-                    listBooksTrendingRV.setLayoutManager(new LinearLayoutManager(HomeActivity.this, LinearLayoutManager.HORIZONTAL, false));
-                    adapter = new ListBooksHomeRecyclerViewAdapter(HomeActivity.this, data, R.layout.list_books_item_home);
-                    listBooksTrendingRV.setAdapter(adapter);
-
-                    // set up the RecyclerView
-                    RecyclerView listBooksCategoryRV = findViewById(R.id.list_books_category);
-                    listBooksCategoryRV.setLayoutManager(new LinearLayoutManager(HomeActivity.this, LinearLayoutManager.HORIZONTAL, false));
-                    adapter = new ListBooksHomeRecyclerViewAdapter(HomeActivity.this, data, R.layout.list_books_item_home);
-                    listBooksCategoryRV.setAdapter(adapter);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<ApiResponseSachModle>> call, Throwable throwable) {
-                Log.w("Api Start","------errorr-------");
-                Log.w("Api Start","------"+throwable.toString()+"-------");
-                Log.w("Api Start","-----------------");
-            }
-        });
+//        BookService.api.ListBook("wVtlXbDWiRmCmETfixgd").enqueue(new Callback<List<ApiResponseSachModle>>() {
+//            @Override
+//            public void onResponse(Call<List<ApiResponseSachModle>> call, Response<List<ApiResponseSachModle>> response) {
+//                if(response.isSuccessful()){
+//                    Log.w("Api Start","------Sussecs-------");
+//                    data = response.body();
+//                    RecyclerView listYourLibraryRV = findViewById(R.id.list_your_library);
+//                    listYourLibraryRV.setLayoutManager(new LinearLayoutManager(HomeActivity.this, LinearLayoutManager.HORIZONTAL, false));
+//                    adapter = new ListBooksHomeRecyclerViewAdapter( HomeActivity.this, data, R.layout.list_your_library_item);
+//                    Log.w("Api Start","------2"+js.toJson(data)+"-------");
+//                    listYourLibraryRV.setAdapter(adapter);
+//
+//                    // set up the RecyclerView
+//                    RecyclerView listNewBooksRV = findViewById(R.id.list_new_books);
+//                    listNewBooksRV.setLayoutManager(new LinearLayoutManager(HomeActivity.this, LinearLayoutManager.HORIZONTAL, false));
+//                    adapter = new ListBooksHomeRecyclerViewAdapter(HomeActivity.this, data, R.layout.list_books_item_home);
+//                    listNewBooksRV.setAdapter(adapter);
+//
+//                    // set up the RecyclerView
+//                    RecyclerView listBooksTrendingRV = findViewById(R.id.list_books_trending);
+//                    listBooksTrendingRV.setLayoutManager(new LinearLayoutManager(HomeActivity.this, LinearLayoutManager.HORIZONTAL, false));
+//                    adapter = new ListBooksHomeRecyclerViewAdapter(HomeActivity.this, data, R.layout.list_books_item_home);
+//                    listBooksTrendingRV.setAdapter(adapter);
+//
+//                    // set up the RecyclerView
+//                    RecyclerView listBooksCategoryRV = findViewById(R.id.list_books_category);
+//                    listBooksCategoryRV.setLayoutManager(new LinearLayoutManager(HomeActivity.this, LinearLayoutManager.HORIZONTAL, false));
+//                    adapter = new ListBooksHomeRecyclerViewAdapter(HomeActivity.this, data, R.layout.list_books_item_home);
+//                    listBooksCategoryRV.setAdapter(adapter);
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<ApiResponseSachModle>> call, Throwable throwable) {
+//                Log.w("Api Start","------errorr-------");
+//                Log.w("Api Start","------"+throwable.toString()+"-------");
+//                Log.w("Api Start","-----------------");
+//            }
+//        });
 
 
     }

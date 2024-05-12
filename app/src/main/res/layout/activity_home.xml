@@ -196,13 +196,20 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_expand_circle_right" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/list_your_library"
+                <HorizontalScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ic_more_your_library" />
+                    app:layout_constraintTop_toBottomOf="@+id/ic_more_your_library">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/list_your_library"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/ic_more_your_library" />
+                </HorizontalScrollView>
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

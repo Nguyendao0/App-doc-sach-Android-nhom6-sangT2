@@ -31,6 +31,7 @@ public class DanhsachchuongActivity extends AppCompatActivity implements DanhSac
 
     DanhSachChuongAdapter adapter;
     int numberOfRows = 5;
+    private Sach sach;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +45,7 @@ public class DanhsachchuongActivity extends AppCompatActivity implements DanhSac
         requestone.enqueue(new Callback<Sach>() {
             @Override
             public void onResponse(Call<Sach> call, Response<Sach> response) {
-                Sach sach = response.body();
+                sach = response.body();
                 System.out.println(sach);
                 TextView tv_TenSach = findViewById(R.id.tv_tenSach);
                 tv_TenSach.setText(sach.getTenSach());
@@ -59,7 +60,7 @@ public class DanhsachchuongActivity extends AppCompatActivity implements DanhSac
         });
 
         ChuongService chuongService = ServiceBuilder.buildService(ChuongService.class);
-        Call<List<Chuong>> request = chuongService.getListChuong("NVGGDJnCQhAkLe5UscYu");
+        Call<List<Chuong>> request = chuongService.getListChuong(idSach);
 
         request.enqueue(new Callback<List<Chuong>>() {
             @Override
@@ -83,6 +84,10 @@ public class DanhsachchuongActivity extends AppCompatActivity implements DanhSac
 
     @Override
     public void onItemClick(View view, int position) {
-
+        Chuong chuong = adapter.getChuong(position);
+        Intent goToDetailChuongIntent = new Intent(this, ReadBookActivity.class);
+        goToDetailChuongIntent.putExtra("idChuong", chuong.getId());
+        goToDetailChuongIntent.putExtra("idSach", sach.getId());
+        startActivity(goToDetailChuongIntent);
     }
 }

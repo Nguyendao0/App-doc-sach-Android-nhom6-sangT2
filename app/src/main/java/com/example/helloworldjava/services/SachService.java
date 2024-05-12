@@ -38,7 +38,7 @@ public interface SachService {
     );
 
     @GET("sach/{sachId}/chuong")
-    Call<Chuong> getChuongList(
+    Call<List<Chuong>> getChuongList(
             @Path("sachId") String sachId,
             @Query("idNguoiDung") String idNguoiDung
     );

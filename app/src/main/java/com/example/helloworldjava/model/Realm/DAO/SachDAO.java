@@ -1,7 +1,7 @@
 package com.example.helloworldjava.model.Realm.DAO;
 
 import com.example.helloworldjava.model.Realm.Sach;
-
+import io.realm.RealmResults;
 import java.util.List;
 
 import io.realm.Realm;
@@ -16,7 +16,7 @@ public class SachDAO {
 
     public Sach getById(String IDSach) {
 
-        return realm.where(Sach.class).equalTo("ID", IDSach).findFirst();
+        return realm.where(Sach.class).equalTo("id", IDSach).findFirst();
     }
 
     public List<Sach> getAll() {
@@ -43,6 +43,26 @@ public class SachDAO {
         });
     }
 
+    public void addBooks(List<Sach> sachList, Interface_Success_Fail callback) {
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                for (Sach sach : sachList) {
+                    realm.copyToRealmOrUpdate(sach);
+                }
+            }
+        }, new Realm.Transaction.OnSuccess() {
+            @Override
+            public void onSuccess() {
+                callback.onSuccess();
+            }
+        }, new Realm.Transaction.OnError() {
+            @Override
+            public void onError(Throwable error) {
+                callback.onFail(error);
+            }
+        });
+    }
     public void delete(String IDSach, Interface_Success_Fail callback) {
 
         realm.executeTransactionAsync(new Realm.Transaction() {
@@ -66,6 +86,25 @@ public class SachDAO {
         });
     }
 
+    public void deleteBooks(List<String> sachIDs, Interface_Success_Fail callback) {
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                RealmResults<Sach> sachResults = realm.where(Sach.class).in("id", sachIDs.toArray(new String[0])).findAll();
+                sachResults.deleteAllFromRealm();
+            }
+        }, new Realm.Transaction.OnSuccess() {
+            @Override
+            public void onSuccess() {
+                callback.onSuccess();
+            }
+        }, new Realm.Transaction.OnError() {
+            @Override
+            public void onError(Throwable error) {
+                callback.onFail(error);
+            }
+        });
+    }
     public void update(Sach sach, Interface_Success_Fail callback) {
         realm.executeTransactionAsync(new Realm.Transaction() {
             @Override

@@ -2,7 +2,7 @@ package com.example.helloworldjava.model.entity;
 
 public class NguoiDung {
 
-    private String ID;
+    private String id;
     private String TenNguoiDung;
     private String Email;
     private String MatKhau;
@@ -13,12 +13,12 @@ public class NguoiDung {
     public NguoiDung() {
     }
 
-    public String getID() {
-        return ID;
+    public String getId() {
+        return id;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getTenNguoiDung() {

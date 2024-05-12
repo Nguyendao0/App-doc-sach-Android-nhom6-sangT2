@@ -22,6 +22,7 @@ import android.widget.ImageView;
 
 import com.example.helloworldjava.R;
 import com.example.helloworldjava.model.FirebaseStorageHelper;
+import com.example.helloworldjava.model.entity.NguoiDung;
 import com.example.helloworldjava.model.entity.User;
 import com.example.helloworldjava.presenter.AccountSettingPresenter;
 import com.google.android.gms.tasks.Continuation;
@@ -44,7 +45,7 @@ public class AccountSettingActivity extends AppCompatActivity implements Account
     private ImageView ivButtonEditAvatar;
     private ImageView ivAvatar;
     private AccountSettingPresenter accountSettingPresenter;
-    private User user;
+    private NguoiDung nguoiDung;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,28 +111,28 @@ public class AccountSettingActivity extends AppCompatActivity implements Account
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.itemSave) {
             // Save the user data
-            user.setUsername(txtUsername.getText().toString());
-            user.setPassword(txtPassword.getText().toString());
-            user.setEmail(txtEmail.getText().toString());
-            accountSettingPresenter.uploadImage(user, ((BitmapDrawable) ivAvatar.getDrawable()).getBitmap());
+            nguoiDung.setTenNguoiDung(txtUsername.getText().toString());
+            nguoiDung.setMatKhau(txtPassword.getText().toString());
+            accountSettingPresenter.uploadImage(nguoiDung, ((BitmapDrawable) ivAvatar.getDrawable()).getBitmap());
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
+
     @Override
-    public void fillUserDataToEditView(User user) {
-        this.user = user;
-        txtUsername.setText(user.getUsername());
-        txtPassword.setText(user.getPassword());
-        txtEmail.setText(user.getEmail());
-        Picasso.get().load(user.getAvatar()).into(ivAvatar);
+    public void fillUserDataToEditView(NguoiDung nguoiDung) {
+        this.nguoiDung = nguoiDung;
+        txtUsername.setText(nguoiDung.getTenNguoiDung());
+        txtEmail.setText(nguoiDung.getEmail());
+        txtPassword.setText(nguoiDung.getMatKhau());
+        Picasso.get().load(nguoiDung.getAvatar()).into(ivAvatar);
     }
 
     @Override
     public void onUploadSuccess(String uri) {
-        user.setAvatar(uri);
-        accountSettingPresenter.updateUserData(user);
+        nguoiDung.setAvatar(uri);
+        accountSettingPresenter.updateUserData(nguoiDung);
         navigateUpTo(getParentActivityIntent());
     }
 }

@@ -71,6 +71,12 @@ public class Sach {
         ListTheLoai = listTheLoai;
     }
 
+    public Sach(String tenSach, String nxb, String img){
+        this.TenSach = tenSach;
+        this.NhaXuatBan = nxb;
+        this.img = img;
+    }
+
     @Override
     public String toString() {
         return "Sach{" +

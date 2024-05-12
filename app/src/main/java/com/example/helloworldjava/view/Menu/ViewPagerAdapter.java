@@ -11,6 +11,7 @@ import com.example.helloworldjava.view.Library.LibraryFragment;
 import com.example.helloworldjava.view.Search.SearchFragment;
 import com.example.helloworldjava.view.Thongbao.NoitificationFragment;
 import com.example.helloworldjava.view.dangtruyen.DangTruyenFragment;
+import com.example.helloworldjava.view.home.HomeFragment;
 
 public class ViewPagerAdapter extends FragmentStateAdapter {
 

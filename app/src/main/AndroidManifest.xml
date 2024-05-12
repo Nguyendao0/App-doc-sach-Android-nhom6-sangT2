@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
     <uses-feature android:name="android.hardware.microphone" />
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".MyApplication"
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -18,15 +18,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HelloWorldJava"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".HomePageDemoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DemoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.login.WebViewGoogleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.DanhsachchuongActivity"
+            android:exported="false" />
+
         <service
             android:name=".FCM.MyFireBaseMessagingService"
             android:exported="false">
-
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
         <activity
             android:name=".view.SpeechBookTest.SpeechActivity"
             android:exported="false" />
@@ -37,12 +51,12 @@
             android:name=".view.Menu.testActivity"
             android:exported="false" />
         <activity
-            android:name=".view.Account_Register"
+            android:name=".view.register.Account_Register"
             android:exported="false"
             android:label="@string/title_activity_account_register"
             android:theme="@style/Theme.HelloWorldJava" />
         <activity
-            android:name=".view.Account_Login"
+            android:name=".view.login.Account_Login"
             android:exported="false" />
         <activity
             android:name=".view.Thongbao.NoitificationActivity"
@@ -52,13 +66,12 @@
             android:exported="false" />
         <activity
             android:name=".view.Menu.MenuActivity"
-            android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".view.Library.QuestionActivity"-->
-<!--            android:exported="false" />-->
-<!--        <activity-->
-<!--            android:name=".view.Library.LibraryActivity"-->
-<!--            android:exported="false" />-->
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".view.Library.QuestionActivity" -->
+        <!-- android:exported="false" /> -->
+        <!-- <activity -->
+        <!-- android:name=".view.Library.LibraryActivity" -->
+        <!-- android:exported="false" /> -->
         <activity
             android:name=".view.user.AccountSettingActivity"
             android:exported="false"
@@ -70,26 +83,25 @@
             android:label="Book Name"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".view.BookCategoryActivity"
+            android:name=".view.home.BookCategoryActivity"
             android:exported="false" />
         <activity
-            android:name=".view.ListBooksActity"
+            android:name=".view.home.ListBooksActity"
             android:exported="false" />
         <activity
-            android:name=".view.HomeActivity"
+            android:name=".view.home.HomeActivity"
             android:exported="false" />
         <activity
             android:name=".model.Realm.REALMActivity"
             android:exported="false" />
         <activity
             android:name=".TESTROOM"
-            android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".Library.View.QuestionActivity"-->
-<!--            android:exported="false" />-->
-<!--        <activity-->
-<!--            android:name=".Library.View.LibraryActivity"-->
-<!--            android:exported="false" />-->
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".Library.View.QuestionActivity" -->
+        <!-- android:exported="false" /> -->
+        <!-- <activity -->
+        <!-- android:name=".Library.View.LibraryActivity" -->
+        <!-- android:exported="false" /> -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -112,6 +124,10 @@
             android:exported="true"
             android:label="Comment"
             android:parentActivityName=".view.ReadBookActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_page"
-    tools:context=".view.Account_Login">
+    tools:context=".view.login.Account_Login">
 
     <TextView
         android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="50dp"
+        android:layout_margin="120dp"
+        android:fontFamily="@font/carter_one"
         android:gravity="center"
         android:text="Log in"
         android:textColor="@color/white"
@@ -20,15 +21,17 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="49dp"></TextView>
 
+
     <EditText
         android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:layout_marginTop="20dp"
-        android:background="#30ffffff"
+        android:background="@drawable/rounded_button"
         android:drawableLeft="@drawable/baseline_person_outline_24"
         android:drawablePadding="20dp"
+        android:fontFamily="@font/carter_one"
         android:padding="20dp"
         android:text="Username"
         android:textColor="@color/white"
@@ -38,53 +41,69 @@
 
     <EditText
         android:id="@+id/password"
-        android:text="Password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:layout_marginTop="10dp"
-        android:background="#30ffffff"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_button"
         android:drawableLeft="@drawable/password_login"
         android:drawablePadding="20dp"
+        android:fontFamily="@font/carter_one"
         android:padding="20dp"
+        android:text="Password"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/username"
-        tools:layout_editor_absoluteX="50dp" />
+        tools:layout_editor_absoluteX="10dp" />
+
+    <TextView
+        android:id="@+id/forgotpass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/carter_one"
+        android:text="For got Password?"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.010"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnlogin"
         android:layout_width="112dp"
         android:layout_height="48dp"
         android:layout_margin="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="16dp"
         android:backgroundTint="#6FD4D4"
+        android:fontFamily="@font/carter_one"
         android:text="LOGIN"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintTop_toBottomOf="@+id/forgotpass" />
 
-    <TextView
-        android:id="@+id/forgotpass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnsignup"
+        android:layout_width="112dp"
+        android:layout_height="48dp"
         android:layout_margin="20dp"
-        android:layout_marginTop="60dp"
-        android:text="For got Password?"
-        android:textColor="@color/white"
-        android:textSize="20sp"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#6FD4D4"
+        android:fontFamily="@font/carter_one"
+        android:text="SING UP"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signInWithGoogle" />
+        app:layout_constraintTop_toBottomOf="@+id/forgotpass" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center">
 
-    </LinearLayout>
+
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/signInWithGoogle"
@@ -112,6 +131,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:layout_marginEnd="40dp"
+            android:fontFamily="@font/carter_one"
             android:text="Sign in with Google"
             android:textColor="@color/black"
             android:textSize="18sp"
@@ -119,6 +139,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView5"
             app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="41dp"
+        android:layout_marginTop="20dp"
+        android:background="#F6F2F2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signInWithGoogle">
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints"
+            android:visibility="gone"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

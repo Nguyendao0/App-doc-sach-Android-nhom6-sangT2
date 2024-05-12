@@ -3,7 +3,10 @@ package com.example.helloworldjava.view.GioiThieuSach;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -11,6 +14,8 @@ import com.example.helloworldjava.R;
 import com.example.helloworldjava.model.entity.Sach;
 import com.example.helloworldjava.services.SachService;
 import com.example.helloworldjava.services.ServiceBuilder;
+import com.example.helloworldjava.view.DanhsachchuongActivity;
+import com.example.helloworldjava.view.ReadBookActivity;
 
 import org.w3c.dom.Text;
 
@@ -43,6 +48,15 @@ public class BookDetailActivity extends AppCompatActivity {
                 tv_theLoai.setText("");
                 sach.getListTheLoai().forEach(theLoaiSach -> {
                     tv_theLoai.append(theLoaiSach.getTenTheLoai() + ", ");
+                });
+                View btnDocSach = findViewById(R.id.btnDocSach);
+                btnDocSach.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent myintent = new Intent(BookDetailActivity.this, DanhsachchuongActivity.class);
+                        myintent.putExtra("idSach", sach.getId());
+                        startActivity(myintent);
+                    }
                 });
             }
 

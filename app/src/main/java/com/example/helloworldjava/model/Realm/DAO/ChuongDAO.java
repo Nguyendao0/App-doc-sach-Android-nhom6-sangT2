@@ -20,7 +20,7 @@ public class ChuongDAO {
 
     public void add(Chuong chuong) {
         realm.executeTransaction(realm -> {
-            chuong.setID(getNextId(realm));
+            chuong.setId(String.valueOf(getNextId(realm)));
             realm.copyToRealmOrUpdate(chuong);
         });
     }

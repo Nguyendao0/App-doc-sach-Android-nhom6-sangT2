@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+        <ImageView
+            android:id="@+id/img_book"
+            android:src="@drawable/test_img"
+            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </ImageView>
+
+        <TextView
+            android:id="@+id/name_author"
+            android:background="#A8000000"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:textSize="10dp"
+            android:textColor="@color/white"
+            android:text="Sach"
+            android:layout_height="30dp">
+
+        </TextView>
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/name_book"
+        android:padding="5dp"
+        android:gravity="center"
+        android:text="Ten truyen tranh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </TextView>
+</LinearLayout>

@@ -8,19 +8,20 @@ import io.realm.annotations.PrimaryKey;
 public class Chuong extends RealmObject {
 
     @PrimaryKey
-    private int ID;
+    private String id;
     private String NoiDung;
     private String TenChuong;
+    private int soThuTu;
 
     public Chuong() {
     }
 
-    public int getID() {
-        return ID;
+    public String getId() {
+        return id;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getNoiDung() {
@@ -39,12 +40,21 @@ public class Chuong extends RealmObject {
         TenChuong = tenChuong;
     }
 
+    public int getSoThuTu() {
+        return soThuTu;
+    }
+
+    public void setSoThuTu(int soThuTu) {
+        this.soThuTu = soThuTu;
+    }
+
     @Override
     public String toString() {
         return "Chuong{" +
-                "ID=" + ID +
+                "ID=" + id +
                 ", NoiDung='" + NoiDung + '\'' +
                 ", TenChuong='" + TenChuong + '\'' +
+                ", SoThuTu='" + soThuTu + '\'' +
                 '}';
     }
 }

@@ -1,4 +1,4 @@
-package com.example.helloworldjava.view;
+package com.example.helloworldjava.view.home;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;

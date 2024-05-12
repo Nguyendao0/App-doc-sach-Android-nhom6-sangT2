@@ -64,7 +64,7 @@ public class SearchFragment extends Fragment {
         });
 
         adapterListBook = new AdapterListBook(getContext(),R.layout.item_book,listSach);
-
+        gridView.setAdapter(adapterListBook);
         //Xu li onClick
         editText.addTextChangedListener(new TextWatcher() {
             @Override

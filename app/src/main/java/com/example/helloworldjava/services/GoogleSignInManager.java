@@ -110,6 +110,7 @@ public class GoogleSignInManager {
                         newNguoiDung.setAvatar(newUser.getPhotoUrl().toString());
                         newNguoiDung.setTenNguoiDung(newUser.getDisplayName());
                         newNguoiDung.setMatKhau("123123");
+                        newNguoiDung.setUuid(newUser.getUid());
 
                         // Bắt đầu gọi api
                         nguoiDungService.loginByGoogleId(account.getId()).enqueue(new Callback<NguoiDung>() {

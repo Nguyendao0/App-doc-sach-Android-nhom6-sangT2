@@ -1,23 +1,20 @@
 package com.example.helloworldjava.view.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.helloworldjava.API.BookService;
 import com.example.helloworldjava.APIResponeModel.ApiResponseSachModle;
 import com.example.helloworldjava.R;
-
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.widget.ViewPager2;
-
-import android.content.Intent;
-import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,76 +23,81 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
 public class HomeFragment extends Fragment {
     ListBooksHomeRecyclerViewAdapter adapter;
-    ViewPager2 viewPager2;
-    List<ApiResponseSachModle> data = new ArrayList<ApiResponseSachModle>();
+    List<ApiResponseSachModle> data = new ArrayList<>();
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the fragment layout
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_home, container, false);
 
-//        View view1 = inflater.inflate(R.layout.menu_layout, container, false);
-//
-//        // Tìm ViewPager2 trong layout của Fragment bằng cách sử dụng getView()
-//        viewPager2 = view1.findViewById(R.id.view_pager);
-//
-//        // Khởi tạo và gán ViewPagerAdapter cho ViewPager2
-//        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(requireActivity(), viewPager2);
-//        viewPager2.setAdapter(viewPagerAdapter);
-
-        ImageView iconMoreYourLibrary = (ImageView) view.findViewById(R.id.ic_more_your_library);
-        ImageView iconMoreNewBooks = (ImageView) view.findViewById(R.id.ic_more_new_books);
-        ImageView iconMoreTrendingBooks = (ImageView) view.findViewById(R.id.ic_more_trending_books);
+        ImageView iconMoreYourLibrary = view.findViewById(R.id.ic_more_your_library);
+        ImageView iconMoreNewBooks = view.findViewById(R.id.ic_more_new_books);
+        ImageView iconMoreTrendingBooks = view.findViewById(R.id.ic_more_trending_books);
 
         List<ImageView> listMoreBooks = new ArrayList<>();
+
         BookService.api.ListBook("wVtlXbDWiRmCmETfixgd").enqueue(new Callback<List<ApiResponseSachModle>>() {
             @Override
             public void onResponse(Call<List<ApiResponseSachModle>> call, Response<List<ApiResponseSachModle>> response) {
-                if(response.isSuccessful()){
-                    Log.w("Api Start","------Sussecs-------");
+                if (response.isSuccessful()) {
+                    Log.w("Api Start", "------Sussecs-------");
+                    Log.w("Api Start", "------" + data.stream().count() + "-------");
+                    Log.w("Api Start", "-----------------");
                     data = response.body();
-                    Log.w("Api Start","------"+data.stream().count()+"-------");
-                    Log.w("Api Start","-----------------");
+
+                    RecyclerView listYourLibraryRV = view.findViewById(R.id.list_your_library);
+                    listYourLibraryRV.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
+                    adapter = new ListBooksHomeRecyclerViewAdapter(requireContext(), data, R.layout.list_your_library_item);
+                    listYourLibraryRV.setAdapter(adapter);
+
+                    // set up the RecyclerView
+                    RecyclerView listNewBooksRV = view.findViewById(R.id.list_new_books);
+                    listNewBooksRV.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
+                    adapter = new ListBooksHomeRecyclerViewAdapter(requireContext(), data, R.layout.list_books_item_home);
+                    listNewBooksRV.setAdapter(adapter);
+
+                    // set up the RecyclerView
+                    RecyclerView listBooksTrendingRV = view.findViewById(R.id.list_books_trending);
+                    listBooksTrendingRV.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
+                    adapter = new ListBooksHomeRecyclerViewAdapter(requireContext(), data, R.layout.list_books_item_home);
+                    listBooksTrendingRV.setAdapter(adapter);
+
+                    // set up the RecyclerView
+                    RecyclerView listBooksCategoryRV = view.findViewById(R.id.list_books_category);
+                    listBooksCategoryRV.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
+                    adapter = new ListBooksHomeRecyclerViewAdapter(requireContext(), data, R.layout.list_books_item_home);
+                    listBooksCategoryRV.setAdapter(adapter);
                 }
             }
 
             @Override
             public void onFailure(Call<List<ApiResponseSachModle>> call, Throwable throwable) {
-                Log.w("Api Start","------errorr-------");
-                Log.w("Api Start","------"+throwable.toString()+"-------");
-                Log.w("Api Start","-----------------");
+                Log.w("Api Start", "------errorr-------");
+                Log.w("Api Start", "------" + throwable.toString() + "-------");
+                Log.w("Api Start", "-----------------");
             }
         });
+
         listMoreBooks.add(iconMoreYourLibrary);
         listMoreBooks.add(iconMoreNewBooks);
         listMoreBooks.add(iconMoreTrendingBooks);
 
-        for (ImageView imageView :listMoreBooks) {
+        for (ImageView imageView : listMoreBooks) {
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     String titleListBooks;
                     if (imageView.getId() == R.id.ic_more_your_library) {
                         titleListBooks = "THƯ VIỆN CỦA BẠN";
-                    }
-                    else if (imageView.getId() == R.id.ic_more_new_books) {
+                    } else if (imageView.getId() == R.id.ic_more_new_books) {
                         titleListBooks = "MỚI";
-                    }
-                    else {
+                    } else if(imageView.getId() == R.id.ic_more_new_books) {
                         titleListBooks = "PHỔ BIỂN";
                     }
-//
-//                    // Truyền dữ liệu vào Fragment thông qua ViewModel hoặc Constructor
-//                    ListBooksFragment fragment = new ListBooksFragment();
-//                    Bundle bundle = new Bundle();
-//                    bundle.putString("titleListBooks", titleListBooks);
-//                    fragment.setArguments(bundle);
-//
-//                     // Gọi phương thức setCurrentItem của adapter để thay đổi trang hiện tại của ViewPager2
-//                    viewPagerAdapter.setCurrentItem(0); // Thay position bằng vị trí của Fragment bạn muốn hiển thị
+                    else{
+                        titleListBooks = "DANH MỤC SÁCH";
+                    }
 
                     Intent intent = new Intent(requireActivity(), ListBooksActity.class);
                     intent.putExtra("titleListBooks", titleListBooks);
@@ -113,34 +115,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        // data to populate the RecyclerView with
-
-
-        RecyclerView listYourLibraryRV = view.findViewById(R.id.list_your_library);
-        listYourLibraryRV.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
-        adapter = new ListBooksHomeRecyclerViewAdapter( requireContext(), data, R.layout.list_your_library_item);
-        listYourLibraryRV.setAdapter(adapter);
-
-        // set up the RecyclerView
-        RecyclerView listNewBooksRV = view.findViewById(R.id.list_new_books);
-        listNewBooksRV.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
-        adapter = new ListBooksHomeRecyclerViewAdapter(requireContext(), data, R.layout.list_books_item_home);
-        listNewBooksRV.setAdapter(adapter);
-
-        // set up the RecyclerView
-        RecyclerView listBooksTrendingRV = view.findViewById(R.id.list_books_trending);
-        listBooksTrendingRV.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
-        adapter = new ListBooksHomeRecyclerViewAdapter(requireContext(), data, R.layout.list_books_item_home);
-        listBooksTrendingRV.setAdapter(adapter);
-
-        // set up the RecyclerView
-        RecyclerView listBooksCategoryRV = view.findViewById(R.id.list_books_category);
-        listBooksCategoryRV.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
-        adapter = new ListBooksHomeRecyclerViewAdapter(requireContext(), data, R.layout.list_books_item_home);
-        listBooksCategoryRV.setAdapter(adapter);
 
         return view;
     }
-
-
 }

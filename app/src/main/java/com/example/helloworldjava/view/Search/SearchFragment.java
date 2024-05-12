@@ -36,10 +36,17 @@ public class SearchFragment extends Fragment {
     EditText editText;
     Button btn;
     List<Sach> listSach;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the fragment layout
-
+        super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.search_layout, container, false);
         // Find views
 
@@ -64,6 +71,7 @@ public class SearchFragment extends Fragment {
         });
 
         adapterListBook = new AdapterListBook(getContext(),R.layout.item_book,listSach);
+        gridView.setAdapter(adapterListBook);
 
         //Xu li onClick
         editText.addTextChangedListener(new TextWatcher() {
@@ -86,13 +94,6 @@ public class SearchFragment extends Fragment {
         return view;
     }
 
-//    @Override
-//    public void onCreate(@Nullable Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        anhXa();
-//        setClick();
-//
-//    }
 
 
 
@@ -120,4 +121,6 @@ public class SearchFragment extends Fragment {
             }
         });
     }
+
+
 }

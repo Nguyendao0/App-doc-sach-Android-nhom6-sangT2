@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.helloworldjava.R;
+import com.google.firebase.Firebase;
+import com.google.firebase.storage.FirebaseStorage;
 
 import org.w3c.dom.Text;
 
@@ -90,6 +92,11 @@ public class SpeechActivity extends AppCompatActivity {
         if (textToSpeech.synthesizeToFile(demobook.Content,params,file.getAbsolutePath()) == TextToSpeech.ERROR){
 
         }
+    }
+
+    public void fetchDataContent(){
+        FirebaseStorage db = FirebaseStorage.getInstance();
+        
     }
 
 }

@@ -5,9 +5,12 @@ import com.example.helloworldjava.model.ProfileFeatureModel;
 import com.example.helloworldjava.model.UserModel;
 import com.example.helloworldjava.model.entity.NguoiDung;
 import com.example.helloworldjava.model.entity.User;
+import com.example.helloworldjava.services.FirebaseAuthManager;
 import com.example.helloworldjava.services.NguoiDungService;
 import com.example.helloworldjava.services.ServiceBuilder;
 import com.example.helloworldjava.view.user.UserView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 
@@ -20,7 +23,7 @@ public class UserPresenter {
     private final UserModel userModel;
     private final UserView userView;
     private NguoiDungService nguoiDungService;
-
+    private FirebaseAuthManager firebaseAuthManager;
     public UserPresenter(UserView userView) {
         this.profileFeatureModel = new ProfileFeatureModel();
         this.userModel = new UserModel();
@@ -33,7 +36,15 @@ public class UserPresenter {
     }
 
     public void displayUserInformation() {
-        String userId = "fYw3HzyQGqdME6zPzDF6YSXPtPu1";
+        String userId;
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // Lấy id người dùng từ Firebase
+            userId = user.getUid();
+        } else {
+            userId = "fYw3HzyQGqdME6zPzDF6YSXPtPu1";
+        }
+
         nguoiDungService = ServiceBuilder.buildService(NguoiDungService.class);
         nguoiDungService.getNguoiDungById(userId).enqueue(new Callback<NguoiDung>() {
             @Override

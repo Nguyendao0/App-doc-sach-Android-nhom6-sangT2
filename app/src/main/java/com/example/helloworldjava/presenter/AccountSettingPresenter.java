@@ -1,5 +1,7 @@
 package com.example.helloworldjava.presenter;
 
+import static java.security.AccessController.getContext;
+
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.util.Log;
@@ -8,9 +10,12 @@ import com.example.helloworldjava.model.FirebaseStorageHelper;
 import com.example.helloworldjava.model.UserModel;
 import com.example.helloworldjava.model.entity.NguoiDung;
 import com.example.helloworldjava.model.entity.User;
+import com.example.helloworldjava.services.FirebaseAuthManager;
 import com.example.helloworldjava.services.NguoiDungService;
 import com.example.helloworldjava.services.ServiceBuilder;
 import com.example.helloworldjava.view.user.AccountSettingView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.StorageReference;
 
 import java.io.ByteArrayOutputStream;
@@ -22,6 +27,8 @@ import retrofit2.Response;
 public class AccountSettingPresenter {
     private final UserModel userModel;
     private final AccountSettingView accountSettingView;
+    private FirebaseAuthManager firebaseAuthManager;
+
     private NguoiDungService nguoiDungService = ServiceBuilder.buildService(NguoiDungService.class);
 
 
@@ -32,7 +39,18 @@ public class AccountSettingPresenter {
 
 
     public void fillUserDataToEditView() {
-        String userId = "fYw3HzyQGqdME6zPzDF6YSXPtPu1";
+        String userId;
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // Lấy id người dùng từ Firebase
+            userId = user.getUid();
+
+        }
+        else{
+            userId = "fYw3HzyQGqdME6zPzDF6YSXPtPu1";
+        }
+
+
         nguoiDungService.getNguoiDungById(userId).enqueue(new Callback<NguoiDung>() {
             @Override
             public void onResponse(Call<NguoiDung> call, Response<NguoiDung> response) {

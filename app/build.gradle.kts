@@ -54,8 +54,7 @@ android {
 dependencies {
     implementation ("com.google.android.material:material:1.5.0")
     implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
-    implementation ("com.itextpdf:itext7-core:7.1.15")
-    implementation ("org.apache.pdfbox:pdfbox:2.0.24")
+
     implementation ("com.github.bumptech.glide:glide:4.14.2")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")

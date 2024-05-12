@@ -1,6 +1,7 @@
 package com.example.helloworldjava.view.home;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,17 +12,21 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.helloworldjava.R;
 import com.example.helloworldjava.model.entity.Sach;
 import com.example.helloworldjava.services.FirebaseAuthManager;
 import com.example.helloworldjava.services.SachService;
 import com.example.helloworldjava.services.ServiceBuilder;
+import com.example.helloworldjava.view.user.UserActivity;
+import com.google.firebase.auth.FirebaseUser;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +59,26 @@ public class HomeFragment extends Fragment {
         ImageView iconMoreYourLibrary = (ImageView) view.findViewById(R.id.ic_more_your_library);
         ImageView iconMoreNewBooks = (ImageView) view.findViewById(R.id.ic_more_new_books);
         ImageView iconMoreTrendingBooks = (ImageView) view.findViewById(R.id.ic_more_trending_books);
+
+        ImageView imgUser = view.findViewById(R.id.img_user);
+
+        TextView tvUser = view.findViewById(R.id.tv_username);
+        FirebaseUser user = firebaseAuthManager.getCurrentUser();
+        if (user != null) {
+            String username = user.getDisplayName(); // Lấy tên người dùng từ Firebase
+            Uri photoUri = user.getPhotoUrl(); // Lấy URL ảnh đại diện người dùng từ Firebase
+
+            tvUser.setText(username);
+
+            if (photoUri != null) {
+                String photoUrl = photoUri.toString(); // Chuyển đổi Uri thành chuỗi String
+
+                // Sử dụng thư viện Glide để tải và hiển thị hình ảnh người dùng
+                Glide.with(requireContext())
+                        .load(photoUrl)
+                        .into(imgUser);
+            }
+        }
 
         List<ImageView> listMoreBooks = new ArrayList<>();
 
@@ -130,6 +155,14 @@ public class HomeFragment extends Fragment {
             }
         });
 
+
+        imgUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(requireActivity(), UserActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // set up the RecyclerView
 //        listNewBooksRV.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));

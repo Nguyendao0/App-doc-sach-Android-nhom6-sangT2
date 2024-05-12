@@ -14,6 +14,7 @@ import com.example.helloworldjava.R;
 import com.example.helloworldjava.model.entity.Sach;
 import com.example.helloworldjava.services.SachService;
 import com.example.helloworldjava.services.ServiceBuilder;
+import com.example.helloworldjava.view.DanhsachchuongActivity;
 import com.example.helloworldjava.view.ReadBookActivity;
 
 import org.w3c.dom.Text;
@@ -52,7 +53,7 @@ public class BookDetailActivity extends AppCompatActivity {
                 btnDocSach.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent myintent = new Intent(BookDetailActivity.this, ReadBookActivity.class);
+                        Intent myintent = new Intent(BookDetailActivity.this, DanhsachchuongActivity.class);
                         myintent.putExtra("idSach", sach.getId());
                         startActivity(myintent);
                     }

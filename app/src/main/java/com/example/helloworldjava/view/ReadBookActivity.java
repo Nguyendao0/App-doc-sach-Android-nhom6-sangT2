@@ -32,6 +32,7 @@ public class ReadBookActivity extends AppCompatActivity implements PopupMenu.OnM
 
         Intent intent =  getIntent();
         String idSach = intent.getStringExtra("idSach");
+        String idChuong = intent.getStringExtra("idChuong");
 
         View btnDSChuong = findViewById(R.id.btnDSChuong);
         btnDSChuong.setOnClickListener(new View.OnClickListener() {
@@ -44,7 +45,7 @@ public class ReadBookActivity extends AppCompatActivity implements PopupMenu.OnM
         });
 
         ChuongService chuongService = ServiceBuilder.buildService(ChuongService.class);
-        Call<Chuong> request = chuongService.getChuong("1YbO0c6lh42znmZUc9zI");
+        Call<Chuong> request = chuongService.getChuong(idChuong);
 
         request.enqueue(new Callback<Chuong>() {
             @Override

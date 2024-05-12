@@ -57,6 +57,10 @@ public class DanhSachChuongAdapter extends RecyclerView.Adapter<DanhSachChuongAd
         }
     }
 
+    public Chuong getChuong(int position) {
+        return mData.get(position);
+    }
+
     void setClickListener(DanhSachChuongAdapter.ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;
     }

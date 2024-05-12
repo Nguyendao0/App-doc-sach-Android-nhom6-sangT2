@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         if (isFirstRun) {
             showWelcomeDialog();
         }
-
+        // goToMenu();
 
 
         Button button_home = findViewById(R.id.button_home);
@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void goToMenu(View view) {
+    public void goToMenu(View v) {
         Intent intent = new Intent(this, MenuActivity.class);
         startActivity(intent);
     }

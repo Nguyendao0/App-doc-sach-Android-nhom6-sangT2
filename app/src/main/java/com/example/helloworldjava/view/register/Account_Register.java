@@ -1,4 +1,4 @@
-package com.example.helloworldjava.view;
+package com.example.helloworldjava.view.register;
 
 import androidx.appcompat.app.AppCompatActivity;
 

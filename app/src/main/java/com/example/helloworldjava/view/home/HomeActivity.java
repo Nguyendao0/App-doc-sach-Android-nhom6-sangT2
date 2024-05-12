@@ -1,4 +1,4 @@
-package com.example.helloworldjava.view;
+package com.example.helloworldjava.view.home;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import com.example.helloworldjava.API.BookService;
 import com.example.helloworldjava.APIResponeModel.ApiResponseSachModle;
 import com.example.helloworldjava.R;
-import com.example.helloworldjava.model.entity.Sach;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;

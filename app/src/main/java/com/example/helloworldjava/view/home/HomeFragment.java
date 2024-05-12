@@ -1,4 +1,4 @@
-package com.example.helloworldjava.view.Menu;
+package com.example.helloworldjava.view.home;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -11,24 +11,13 @@ import androidx.fragment.app.Fragment;
 import com.example.helloworldjava.API.BookService;
 import com.example.helloworldjava.APIResponeModel.ApiResponseSachModle;
 import com.example.helloworldjava.R;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
-
-import com.example.helloworldjava.R;
-import com.example.helloworldjava.view.BookCategoryActivity;
-import com.example.helloworldjava.view.HomeActivity;
-import com.example.helloworldjava.view.ListBooksActity;
-import com.example.helloworldjava.view.ListBooksFragment;
-import com.example.helloworldjava.view.ListBooksHomeRecyclerViewAdapter;
-import com.example.helloworldjava.view.Menu.ViewPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

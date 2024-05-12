@@ -1,4 +1,4 @@
-package com.example.helloworldjava.view;
+package com.example.helloworldjava.view.home;
 
 import android.content.Context;
 import android.util.Log;
@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.helloworldjava.APIResponeModel.ApiResponseSachModle;
 import com.example.helloworldjava.R;
-import com.google.gson.Gson;
 
 import java.util.List;
 

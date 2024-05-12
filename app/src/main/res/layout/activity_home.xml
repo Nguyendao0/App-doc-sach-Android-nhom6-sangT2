@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingHorizontal="8dp"
-    tools:context=".view.HomeActivity">
+    tools:context=".view.home.HomeActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -28,7 +28,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/img_user"
                     android:layout_width="42dp"
                     android:layout_height="47dp"
                     android:layout_marginStart="16dp"

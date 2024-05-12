@@ -8,7 +8,7 @@ import com.example.helloworldjava.Fragment.AccountFragment;
 import com.example.helloworldjava.Fragment.NotificationFragment;
 import com.example.helloworldjava.Fragment.ReelsFragment;
 import com.example.helloworldjava.Fragment.SearchFragment;
-import com.example.helloworldjava.view.Menu.HomeFragment;
+import com.example.helloworldjava.view.home.HomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 

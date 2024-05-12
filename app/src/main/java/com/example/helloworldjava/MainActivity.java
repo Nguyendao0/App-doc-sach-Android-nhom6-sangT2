@@ -12,16 +12,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import com.example.helloworldjava.view.GioiThieuSach.BookDetailActivity;
-import com.example.helloworldjava.view.HomeActivity;
+import com.example.helloworldjava.view.home.HomeActivity;
 import com.example.helloworldjava.view.Menu.MenuActivity;
-import com.example.helloworldjava.view.Account_Login;
-import com.example.helloworldjava.view.Account_Register;
+import com.example.helloworldjava.view.login.Account_Login;
+import com.example.helloworldjava.view.register.Account_Register;
 import com.example.helloworldjava.view.QRGen;
 import com.example.helloworldjava.view.Search.SearchActivity;
 import com.example.helloworldjava.view.Thongbao.NoitificationActivity;
 import com.example.helloworldjava.view.ReadBookActivity;
 import com.example.helloworldjava.view.SpeechBookTest.SpeechActivity;
-import com.example.helloworldjava.view.WebViewGoogleActivity;
+import com.example.helloworldjava.view.login.WebViewGoogleActivity;
 import com.example.helloworldjava.view.user.UserActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
 //        Button btnReadBook = findViewById(R.id.btbReadBook);
 //        btnReadBook.setOnClickListener(new View.OnClickListener() {
@@ -146,6 +147,11 @@ public class MainActivity extends AppCompatActivity {
 //        }
     }
 
+    // tái sử chuyển activity
+    public void goToActivity(Class<?> activityClass) {
+        Intent intent = new Intent(this, activityClass);
+        startActivity(intent);
+    }
 
     public  void gotoLogin(View view ){
         Intent intent = new Intent(this, Account_Login.class);

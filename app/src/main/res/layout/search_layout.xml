@@ -15,6 +15,7 @@
         android:gravity="end"
         android:orientation="horizontal"
         tools:context=".MainActivity">
+
         <EditText
             android:id="@+id/search_text"
             android:layout_width="wrap_content"
@@ -23,8 +24,13 @@
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
             android:layout_weight="3"
+            android:drawableLeft="@drawable/search"
             android:hint="Search here !"
             android:hyphenationFrequency="fullFast"
+            android:lines="1"
+            android:maxLines="1"
+            android:inputType="text"
+
             android:textSize="20dp"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -40,7 +40,6 @@ public class CurrentReadingPresenter implements CurrentReadingContract.Presenter
                 ArrayList<Sach> listSach = new ArrayList<>();
                 for (ThuVienSachCaNhan tvs: thuVienSachCaNhanList)
                 {
-                    System.out.println(tvs.getSach().getImg());
                     listSach.add(tvs.getSach());
                 }
                 CurrentReadingView.setSachList((ArrayList<Sach>) listSach);

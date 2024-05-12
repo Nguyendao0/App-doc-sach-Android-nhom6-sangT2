@@ -79,20 +79,13 @@ public class CurrentReadingFragment extends Fragment implements CurrentReadingCo
     @Override
     public void setSachList(ArrayList<Sach> list)
     {
-
         bookAdapter.setSachList(list);
-        bookAdapter.notifyDataSetChanged();
         amountOthersBook.setText(list.size() +" truyện");
     }
 
     @Override
     public void setSachOfflineList(ArrayList<Sach> list) {
-        for (Sach s : list)
-        {
-           System.out.println(s.toString());
-        }
         bookAdapter1.setSachList(list);
-        bookAdapter1.notifyDataSetChanged();
         amountOfflineBook.setText(list.size() +" truyện");
     }
 
@@ -105,7 +98,6 @@ public class CurrentReadingFragment extends Fragment implements CurrentReadingCo
     public void addBookOffline(Sach sach) {
         SachDAO sachDAO = new SachDAO();
         DowloadFile(sach.getImg(), sach);
-        System.out.println(sach.getImg());
         sachDAO.add(sach, new Interface_Success_Fail() {
             @Override
             public void onSuccess() {
@@ -116,11 +108,7 @@ public class CurrentReadingFragment extends Fragment implements CurrentReadingCo
                     list.add(s);
                 }
 
-                bookAdapter1.setSachList(list);
-                bookAdapter1.notifyDataSetChanged();
-
-
-
+                setSachOfflineList(list);
             }
 
             @Override
@@ -183,10 +171,7 @@ public class CurrentReadingFragment extends Fragment implements CurrentReadingCo
                 {
                     list.add(s);
                 }
-
-
-                bookAdapter1.setSachList(list);
-                bookAdapter1.notifyDataSetChanged();
+                setSachOfflineList(list);
 
             }
 

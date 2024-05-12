@@ -79,13 +79,20 @@ public class CurrentReadingFragment extends Fragment implements CurrentReadingCo
     @Override
     public void setSachList(ArrayList<Sach> list)
     {
+
         bookAdapter.setSachList(list);
+        bookAdapter.notifyDataSetChanged();
         amountOthersBook.setText(list.size() +" truyện");
     }
 
     @Override
     public void setSachOfflineList(ArrayList<Sach> list) {
+        for (Sach s : list)
+        {
+           System.out.println(s.toString());
+        }
         bookAdapter1.setSachList(list);
+        bookAdapter1.notifyDataSetChanged();
         amountOfflineBook.setText(list.size() +" truyện");
     }
 
@@ -97,6 +104,8 @@ public class CurrentReadingFragment extends Fragment implements CurrentReadingCo
     @Override
     public void addBookOffline(Sach sach) {
         SachDAO sachDAO = new SachDAO();
+        DowloadFile(sach.getImg(), sach);
+        System.out.println(sach.getImg());
         sachDAO.add(sach, new Interface_Success_Fail() {
             @Override
             public void onSuccess() {
@@ -107,7 +116,9 @@ public class CurrentReadingFragment extends Fragment implements CurrentReadingCo
                     list.add(s);
                 }
 
-                setSachOfflineList(list);
+                bookAdapter1.setSachList(list);
+                bookAdapter1.notifyDataSetChanged();
+
 
 
             }
@@ -117,6 +128,49 @@ public class CurrentReadingFragment extends Fragment implements CurrentReadingCo
 
             }
         });
+    }
+    private void DowloadFile(String imageUrl, Sach sach)
+    {
+
+// Tạo một đối tượng File để lưu trữ ảnh từ truyện được tải xuống
+        String fileName = Uri.parse(imageUrl).getLastPathSegment();
+        File file = new File(requireContext().getFilesDir(), fileName);
+
+        Picasso.get()
+                .load(imageUrl)
+                .into(new Target() {
+                    @Override
+                    public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                        try {
+                            // Lưu ảnh từ truyện xuống thiết bị
+                            FileOutputStream outputStream = new FileOutputStream(file);
+                            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+
+                            outputStream.flush();
+                            outputStream.close();
+
+                            sach.setImg(file.getAbsolutePath());
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                            System.out.println("LỖI TẢI ẢNH: " + e);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            System.out.println("LỖI TẢI ẢNH: " + e);
+                        }
+                    }
+
+                    @Override
+                    public void onBitmapFailed(Exception e, Drawable errorDrawable) {
+
+                    }
+
+                    @Override
+                    public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+                    }
+
+                    // ...
+                });
     }
     @Override
     public void removeBookOffline(String IDSach) {
@@ -130,7 +184,10 @@ public class CurrentReadingFragment extends Fragment implements CurrentReadingCo
                     list.add(s);
                 }
 
-                setSachOfflineList(list);
+
+                bookAdapter1.setSachList(list);
+                bookAdapter1.notifyDataSetChanged();
+
             }
 
             @Override

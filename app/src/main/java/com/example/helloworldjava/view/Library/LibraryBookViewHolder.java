@@ -64,8 +64,8 @@ public class LibraryBookViewHolder  extends RecyclerView.ViewHolder{
             public void onClick(View view) {
                 if(isDowloaded == false && itemPresenter.isCurreadingVisible() == true)
                 {
-                    String fileName = Uri.parse(sach.getImg()).getLastPathSegment();
-                    sach.setImg("/data/user/0/com.example.helloworldjava/files/"+fileName);
+
+
                     itemPresenter.addBookOffline(sach);
                 }
                 else if(isDowloaded == true && itemPresenter.isCurreadingVisible() == true){

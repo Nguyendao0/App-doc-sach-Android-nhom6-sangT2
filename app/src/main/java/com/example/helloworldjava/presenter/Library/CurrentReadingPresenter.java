@@ -31,14 +31,16 @@ public class CurrentReadingPresenter implements CurrentReadingContract.Presenter
     @Override
     public void readSach() {
 
-        Call<List<ThuVienSachCaNhan>> request = userService.findAll("wVtlXbDWiRmCmETfixgd");
+        Call<List<ThuVienSachCaNhan>> request = userService.findAll("qRZuZFlnE6jxJcdP6HRk");
         request.enqueue(new Callback<List<ThuVienSachCaNhan>>() {
             @Override
             public void onResponse(Call<List<ThuVienSachCaNhan>> call, Response<List<ThuVienSachCaNhan>> response) {
+
                 List<ThuVienSachCaNhan> thuVienSachCaNhanList = response.body();
-                ArrayList< com.example.helloworldjava.model.Realm.Sach> listSach = new ArrayList<>();
+                ArrayList<Sach> listSach = new ArrayList<>();
                 for (ThuVienSachCaNhan tvs: thuVienSachCaNhanList)
                 {
+                    System.out.println(tvs.getSach().getImg());
                     listSach.add(tvs.getSach());
                 }
                 CurrentReadingView.setSachList((ArrayList<Sach>) listSach);

@@ -13,11 +13,23 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.helloworldjava.R;
+import com.example.helloworldjava.presenter.Thongbao.NotificationFCMPresenter;
+import com.example.helloworldjava.services.NotificationService;
+import com.example.helloworldjava.services.ServiceBuilder;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class NoitificationFragment extends Fragment {
+
+    NotificationFCMPresenter presenter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,6 +41,7 @@ public class NoitificationFragment extends Fragment {
         FragmentActivity activity = requireActivity();
         ViewPagerAdapterNoiti adapter = new ViewPagerAdapterNoiti(activity);
         viewPager.setAdapter(adapter);
+        presenter.getListSach();
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
             switch (position) {
                 case 0:
@@ -41,6 +54,9 @@ public class NoitificationFragment extends Fragment {
             }
         }).attach();
 
+
+
+
         viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
@@ -52,4 +68,8 @@ public class NoitificationFragment extends Fragment {
         return view;
     }
 
+    private void  setListSach()
+    {
+
+    }
 }

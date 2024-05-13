@@ -21,6 +21,9 @@ import com.example.helloworldjava.presenter.Library.LibraryPresenter;
 import com.example.helloworldjava.presenter.Library.NavigationPresenter;
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LibraryFragment extends Fragment implements LibraryContract.View {
 
     private TabLayout tabLayout;
@@ -29,6 +32,7 @@ public class LibraryFragment extends Fragment implements LibraryContract.View {
     private EditPopupContract.View editPopupFragment;
     private CurrentReadingContract.View curReadingFragment;
 
+    private CurrentReadingContract.Presenter currentReadingPresenter;
 
 
     @Nullable
@@ -57,7 +61,7 @@ public class LibraryFragment extends Fragment implements LibraryContract.View {
         editPopupFragment.setPresenter(editPopupPresenter);
         editPopupFragment.setLibraryPresenter(presenter);
 
-        CurrentReadingContract.Presenter currentReadingPresenter = new CurrentReadingPresenter(curReadingFragment, getContext());
+        currentReadingPresenter = new CurrentReadingPresenter(curReadingFragment);
         curReadingFragment.setLibraryPresenter(presenter);
         curReadingFragment.setCurrentPresenter(currentReadingPresenter);
 
@@ -135,16 +139,59 @@ public class LibraryFragment extends Fragment implements LibraryContract.View {
         return tabLayout.getSelectedTabPosition();
     }
 
+    @Override
+    public void removeBooksLibrary() {
+        ArrayList<String> list = new ArrayList<>();
+        for(LibraryBookViewHolder bookViewHolder: presenter.getSelectBookItem())
+        {
+            if(bookViewHolder.getIsDowloaded() == false)
+            {
+                list.add(bookViewHolder.getSach().getID());
+            }
+        }
+        if(list!=null)
+        {
+            currentReadingPresenter.removeBooksLibrary(list);
+        }
+
+    }
 
 
     @Override
     public void addBookOffline(Sach sach) {
-        curReadingFragment.addBookOffline(sach);
+        currentReadingPresenter.addBookOffline(sach, getContext());
+    }
+
+    @Override
+    public void addBooksOffline() {
+
+        ArrayList<Sach> list = new ArrayList<>();
+        for(LibraryBookViewHolder bookViewHolder: presenter.getSelectBookItem())
+        {
+            list.add(bookViewHolder.getSach());
+        }
+        currentReadingPresenter.addBooksOffline(list, getContext());
+    }
+
+    @Override
+    public void removeBooksOffline() {
+        ArrayList<String> list = new ArrayList<>();
+        for(LibraryBookViewHolder bookViewHolder: presenter.getSelectBookItem())
+        {
+            if(bookViewHolder.getIsDowloaded() == true)
+            {
+                list.add(bookViewHolder.getSach().getID());
+            }
+        }
+        if(list!=null)
+        {
+            currentReadingPresenter.removesBookOffline(list);
+        }
     }
 
     @Override
     public void removeBookOffline(String IDSach) {
-        curReadingFragment.removeBookOffline(IDSach);
+        currentReadingPresenter.removeBookOffline(IDSach);
     }
 
     @Override

@@ -94,56 +94,26 @@ public class CurrentReadingFragment extends Fragment implements CurrentReadingCo
         this.currentReadingPresenter = currentReadingPresenterresenter;
     }
 
-    @Override
-    public void addBookOffline(Sach sach) {
-        SachDAO sachDAO = new SachDAO();
-        sachDAO.add(sach, new Interface_Success_Fail() {
-            @Override
-            public void onSuccess() {
-
-                ArrayList<Sach> list = new ArrayList<>();
-                for (Sach s:sachDAO.getAll())
-                {
-                    list.add(s);
-                }
-
-                setSachOfflineList(list);
-
-
-            }
-
-            @Override
-            public void onFail(Throwable error) {
-
-            }
-        });
-    }
-    @Override
-    public void removeBookOffline(String IDSach) {
-        SachDAO sachDAO = new SachDAO();
-        sachDAO.delete(IDSach, new Interface_Success_Fail() {
-            @Override
-            public void onSuccess() {
-                ArrayList<Sach> list = new ArrayList<>();
-                for (Sach s:sachDAO.getAll())
-                {
-                    list.add(s);
-                }
-
-                setSachOfflineList(list);
-            }
-
-            @Override
-            public void onFail(Throwable error) {
-
-            }
-        });
-    }
 
 
     @Override
     public boolean Visible() {
         return this.isVisible();
+    }
+
+    @Override
+    public void setProgressBar(Sach sach) {
+        ArrayList<Sach> list = new ArrayList<>();
+       for(Sach s : bookAdapter.getSachList())
+       {
+           if(s.getID() == sach.getID())
+           {
+                s.setChuong_Items(sach.getChuong_Items());
+           }
+           list.add(s);
+       }
+
+       setSachList(list);
     }
 
 

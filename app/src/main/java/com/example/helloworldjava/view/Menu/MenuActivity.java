@@ -42,7 +42,7 @@ public class MenuActivity extends AppCompatActivity {
                     tab.setIcon(R.drawable.ic_pen);
                     break;
                 case 4:
-                    //tab.setText("Notification");
+                    //tab.setText("NotificationFCM");
                     tab.setIcon(R.drawable.ic_bell);
                     break;
             }

@@ -144,7 +144,7 @@ public class LibraryFragment extends Fragment implements LibraryContract.View {
         ArrayList<String> list = new ArrayList<>();
         for(LibraryBookViewHolder bookViewHolder: presenter.getSelectBookItem())
         {
-            if(bookViewHolder.getIsDowloaded() == true)
+            if(bookViewHolder.getIsDowloaded() == false)
             {
                 list.add(bookViewHolder.getSach().getID());
             }

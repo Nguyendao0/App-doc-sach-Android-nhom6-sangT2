@@ -170,9 +170,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 //        sendNotificaction();
-        findAllNotification();
-        sendTokenToFCM();
-        sendNotificationToFB();
+//        findAllNotification();
+//        sendTokenToFCM();
+//        sendNotificationToFB();
 
         Button button_home = findViewById(R.id.button_home);
         button_home.setOnClickListener(new View.OnClickListener() {

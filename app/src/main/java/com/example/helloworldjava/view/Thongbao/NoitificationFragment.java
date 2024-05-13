@@ -41,7 +41,6 @@ public class NoitificationFragment extends Fragment {
         FragmentActivity activity = requireActivity();
         ViewPagerAdapterNoiti adapter = new ViewPagerAdapterNoiti(activity);
         viewPager.setAdapter(adapter);
-        presenter = new NotificationFCMPresenter(this.NoitificationFragment.class);
         presenter.getListSach();
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
             switch (position) {

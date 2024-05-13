@@ -31,13 +31,13 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         ImageView iconMoreYourLibrary = findViewById(R.id.ic_more_your_library);
-        ImageView iconMoreNewBooks = findViewById(R.id.ic_more_new_books);
+//        ImageView iconMoreNewBooks = findViewById(R.id.ic_more_new_books);
 //        ImageView iconMoreTrendingBooks = findViewById(R.id.ic_more_trending_books);
 
         List<ImageView> listMoreBooks = new ArrayList<>();
 
         listMoreBooks.add(iconMoreYourLibrary);
-        listMoreBooks.add(iconMoreNewBooks);
+//        listMoreBooks.add(iconMoreNewBooks);
 //        listMoreBooks.add(iconMoreTrendingBooks);
         Log.w("Api Start","-----------------------");
         Gson js = new Gson();
@@ -46,15 +46,9 @@ public class HomeActivity extends AppCompatActivity {
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    String titleListBooks;
+                    String titleListBooks = "";
                     if (imageView.getId() == R.id.ic_more_your_library) {
                         titleListBooks = "THƯ VIỆN CỦA BẠN";
-                    }
-                    else if (imageView.getId() == R.id.ic_more_new_books) {
-                        titleListBooks = "MỚI";
-                    }
-                    else {
-                        titleListBooks = "PHỔ BIỂN";
                     }
 
                     Intent intent = new Intent(HomeActivity.this, ListBooksActity.class);

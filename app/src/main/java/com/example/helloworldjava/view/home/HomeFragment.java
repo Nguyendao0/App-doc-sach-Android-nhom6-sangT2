@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -59,7 +60,7 @@ public class HomeFragment extends Fragment implements ListBooksHomeRecyclerViewA
         sachService = ServiceBuilder.buildService(SachService.class);
 
         ImageView iconMoreYourLibrary = (ImageView) view.findViewById(R.id.ic_more_your_library);
-        ImageView iconMoreNewBooks = (ImageView) view.findViewById(R.id.ic_more_new_books);
+//        ImageView iconMoreNewBooks = (ImageView) view.findViewById(R.id.ic_more_new_books);
 //        ImageView iconMoreTrendingBooks = (ImageView) view.findViewById(R.id.ic_more_trending_books);
 
         ImageView imgUser = view.findViewById(R.id.img_user);
@@ -85,23 +86,24 @@ public class HomeFragment extends Fragment implements ListBooksHomeRecyclerViewA
         List<ImageView> listMoreBooks = new ArrayList<>();
 
         listMoreBooks.add(iconMoreYourLibrary);
-        listMoreBooks.add(iconMoreNewBooks);
+//        listMoreBooks.add(iconMoreNewBooks);
 //        listMoreBooks.add(iconMoreTrendingBooks);
 
         for (ImageView imageView : listMoreBooks) {
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    String titleListBooks;
+                    String titleListBooks = "";
                     Intent intent = new Intent(requireActivity(), ListBooksActity.class);
 
                     if (imageView.getId() == R.id.ic_more_your_library) {
                         titleListBooks = "THƯ VIỆN CỦA BẠN";
-                    } else if (imageView.getId() == R.id.ic_more_new_books) {
-                        titleListBooks = "MỚI";
-                    } else if(imageView.getId() == R.id.ic_more_new_books) {
-                        titleListBooks = "PHỔ BIỂN";
                     }
+//                    else if (imageView.getId() == R.id.ic_more_new_books) {
+//                        titleListBooks = "MỚI";
+//                    } else if(imageView.getId() == R.id.ic_more_new_books) {
+//                        titleListBooks = "PHỔ BIỂN";
+//                    }
 
                     intent.putExtra("titleListBooks", titleListBooks);
                     requireActivity().startActivity(intent);
@@ -131,7 +133,7 @@ public class HomeFragment extends Fragment implements ListBooksHomeRecyclerViewA
 
         // Find recycleView
         RecyclerView listYourLibraryRV = view.findViewById(R.id.list_your_library);
-        RecyclerView listNewBooksRV = view.findViewById(R.id.list_new_books);
+//        RecyclerView listNewBooksRV = view.findViewById(R.id.list_new_books);
 //        RecyclerView listBooksTrendingRV = view.findViewById(R.id.list_books_trending);
 //        RecyclerView listBooksCategoryRV = view.findViewById(R.id.list_books_category);
 
@@ -142,7 +144,7 @@ public class HomeFragment extends Fragment implements ListBooksHomeRecyclerViewA
             public void onResponse(Call<List<Sach>> call, Response<List<Sach>> response) {
                 List<Sach> listYourLibrarySach = response.body();
                 System.out.println(listYourLibrarySach.size());
-                listYourLibraryRV.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
+                listYourLibraryRV.setLayoutManager(new GridLayoutManager(requireContext(), 3));
                 listYourLibraryAdapter = new ListBooksHomeRecyclerViewAdapter( requireContext(), listYourLibrarySach,  R.layout.list_books_item_home);
                 listYourLibraryAdapter.setClickListener(HomeFragment.this::onItemClick);
                 listYourLibraryRV.setAdapter(listYourLibraryAdapter);
@@ -196,13 +198,13 @@ public class HomeFragment extends Fragment implements ListBooksHomeRecyclerViewA
         return view;
     }
 
-    public void loadBookRecycleView(RecyclerView recyclerView, List<Sach> listSach, int layoutId,
-                                    ListBooksHomeRecyclerViewAdapter adapter) {
-        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
-        adapter = new ListBooksHomeRecyclerViewAdapter( requireContext(), listSach, layoutId);
-        adapter.setClickListener(this::onItemClick);
-        recyclerView.setAdapter(adapter);
-    }
+//    public void loadBookRecycleView(RecyclerView recyclerView, List<Sach> listSach, int layoutId,
+//                                    ListBooksHomeRecyclerViewAdapter adapter) {
+//        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
+//        adapter = new ListBooksHomeRecyclerViewAdapter(requireContext(), listSach, layoutId);
+//        adapter.setClickListener(this::onItemClick);
+//        recyclerView.setAdapter(adapter);
+//    }
 
     @Override
     public void onItemClick(View view, int position) {

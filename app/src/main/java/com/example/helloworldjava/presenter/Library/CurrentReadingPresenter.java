@@ -1,6 +1,9 @@
 package com.example.helloworldjava.presenter.Library;
 
+import android.content.Context;
+
 import com.example.helloworldjava.LibraryContractInterface.CurrentReadingContract;
+import com.example.helloworldjava.services.FirebaseAuthManager;
 import com.example.helloworldjava.services.SachService;
 import com.example.helloworldjava.services.ServiceBuilder;
 import com.example.helloworldjava.services.UserService;
@@ -21,17 +24,20 @@ public class CurrentReadingPresenter implements CurrentReadingContract.Presenter
     private CurrentReadingContract.View CurrentReadingView;
     private  SachService sachService;
     private UserService userService;
+    private Context context;
 
-    public CurrentReadingPresenter(CurrentReadingContract.View currentReadingView) {
+    public CurrentReadingPresenter(CurrentReadingContract.View currentReadingView, Context context) {
         CurrentReadingView = currentReadingView;
         sachService = ServiceBuilder.buildService(SachService.class);
         userService = ServiceBuilder.buildService(UserService.class);
+        this.context = context;
     }
 
     @Override
     public void readSach() {
-
-        Call<List<ThuVienSachCaNhan>> request = userService.findAll("wVtlXbDWiRmCmETfixgd");
+        FirebaseAuthManager firebaseAuthManager = new FirebaseAuthManager(context);
+        String idNguoiDung = firebaseAuthManager.getCurrentUser().getUid();
+        Call<List<ThuVienSachCaNhan>> request = userService.findAll(idNguoiDung);
         request.enqueue(new Callback<List<ThuVienSachCaNhan>>() {
             @Override
             public void onResponse(Call<List<ThuVienSachCaNhan>> call, Response<List<ThuVienSachCaNhan>> response) {

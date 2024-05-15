@@ -61,7 +61,7 @@ public class LibraryFragment extends Fragment implements LibraryContract.View {
         editPopupFragment.setPresenter(editPopupPresenter);
         editPopupFragment.setLibraryPresenter(presenter);
 
-        currentReadingPresenter = new CurrentReadingPresenter(curReadingFragment);
+        currentReadingPresenter = new CurrentReadingPresenter(getContext(), curReadingFragment);
         curReadingFragment.setLibraryPresenter(presenter);
         curReadingFragment.setCurrentPresenter(currentReadingPresenter);
 

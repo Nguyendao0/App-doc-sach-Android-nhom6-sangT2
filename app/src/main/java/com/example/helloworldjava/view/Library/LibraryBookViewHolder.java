@@ -1,5 +1,6 @@
 package com.example.helloworldjava.view.Library;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -16,6 +17,7 @@ import com.example.helloworldjava.R;
 
 import com.example.helloworldjava.model.Realm.Chuong;
 import com.example.helloworldjava.model.Realm.Sach;
+import com.example.helloworldjava.view.GioiThieuSach.BookDetailActivity;
 
 import java.io.File;
 
@@ -118,6 +120,11 @@ public class LibraryBookViewHolder  extends RecyclerView.ViewHolder{
                     } else if(selected == false  && itemPresenter.getIsADD() == false ){
                         addToListBookView();
                     }
+                }
+                else {
+                    Intent intent = new Intent(view.getContext(), BookDetailActivity.class);
+                    intent.putExtra("idSach", sach.getID());
+                    view.getContext().startActivity(intent);
                 }
             }
         });

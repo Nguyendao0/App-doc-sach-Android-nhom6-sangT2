@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.helloworldjava.R;
 import com.example.helloworldjava.model.Realm.ThuVienSachCaNhan;
 import com.example.helloworldjava.model.entity.Sach;
+import com.example.helloworldjava.services.FirebaseAuthManager;
 import com.example.helloworldjava.services.SachService;
 import com.example.helloworldjava.services.ServiceBuilder;
 import com.example.helloworldjava.services.UserService;
@@ -94,10 +95,11 @@ public class BookDetailActivity extends AppCompatActivity {
                 });
 
                 LinearLayout yeu_thich = findViewById(R.id.yeu_thich);
+                FirebaseAuthManager firebaseAuthManager = new FirebaseAuthManager(getApplicationContext());
                 yeu_thich.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Call<ThuVienSachCaNhan> request1 = userService.addSachToThuVienSach("LTN", sach.getId());
+                        Call<ThuVienSachCaNhan> request1 = userService.addSachToThuVienSach(firebaseAuthManager.getCurrentUser().getUid(), sach.getId());
 
                         request1.enqueue(new Callback<ThuVienSachCaNhan>() {
                             @Override

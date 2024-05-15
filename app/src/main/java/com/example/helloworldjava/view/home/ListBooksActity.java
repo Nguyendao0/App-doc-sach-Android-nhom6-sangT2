@@ -63,7 +63,7 @@ public class ListBooksActity extends AppCompatActivity implements ListBooksRecyc
             TextView txtListBooks = findViewById(R.id.txtListMore);
             txtListBooks.setText(titleListBooks);
 
-            if (titleListBooks.equalsIgnoreCase("THƯ VIỆN CỦA BẠN"))
+            if (titleListBooks.equalsIgnoreCase("KHO SÁCH"))
             {
                 btnDangSach.setVisibility(View.VISIBLE);
                 btnDangSach.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +82,7 @@ public class ListBooksActity extends AppCompatActivity implements ListBooksRecyc
 
     public void loadListThuVienCuaBan() {
         String idNguoiDung = firebaseAuthManager.getCurrentUser().getUid();
-        sachService.getListSachYourLibrary(idNguoiDung).enqueue(new Callback<List<Sach>>() {
+        sachService.getListSachs().enqueue(new Callback<List<Sach>>() {
             @Override
             public void onResponse(Call<List<Sach>> call, Response<List<Sach>> response) {
                 List<Sach> listYourLibrarySach = response.body();

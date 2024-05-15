@@ -97,7 +97,7 @@ public class HomeFragment extends Fragment implements ListBooksHomeRecyclerViewA
                     Intent intent = new Intent(requireActivity(), ListBooksActity.class);
 
                     if (imageView.getId() == R.id.ic_more_your_library) {
-                        titleListBooks = "THƯ VIỆN CỦA BẠN";
+                        titleListBooks = "KHO SÁCH";
                     }
 //                    else if (imageView.getId() == R.id.ic_more_new_books) {
 //                        titleListBooks = "MỚI";
@@ -139,7 +139,7 @@ public class HomeFragment extends Fragment implements ListBooksHomeRecyclerViewA
 
         // data to populate the RecyclerView with
         String idNguoiDung = firebaseAuthManager.getCurrentUser().getUid();
-        sachService.getListSachYourLibrary(idNguoiDung).enqueue(new Callback<List<Sach>>() {
+        sachService.getListSachs().enqueue(new Callback<List<Sach>>() {
             @Override
             public void onResponse(Call<List<Sach>> call, Response<List<Sach>> response) {
                 List<Sach> listYourLibrarySach = response.body();

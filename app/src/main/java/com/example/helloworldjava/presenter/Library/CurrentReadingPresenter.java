@@ -9,6 +9,7 @@ import com.example.helloworldjava.LibraryContractInterface.CurrentReadingContrac
 import com.example.helloworldjava.model.Realm.Chuong;
 import com.example.helloworldjava.model.Realm.DAO.Interface_Success_Fail;
 import com.example.helloworldjava.services.ChuongService;
+import com.example.helloworldjava.services.FirebaseAuthManager;
 import com.example.helloworldjava.services.SachService;
 import com.example.helloworldjava.services.ServiceBuilder;
 import com.example.helloworldjava.services.UserService;
@@ -37,18 +38,23 @@ public class CurrentReadingPresenter implements CurrentReadingContract.Presenter
     private  SachService sachService;
     private UserService userService;
     private ChuongService chuongService;
+    private Context context;
+    private FirebaseAuthManager firebaseAuthManager;
 
-    public CurrentReadingPresenter(CurrentReadingContract.View currentReadingView) {
+    public CurrentReadingPresenter(Context context, CurrentReadingContract.View currentReadingView) {
         CurrentReadingView = currentReadingView;
         sachService = ServiceBuilder.buildService(SachService.class);
         userService = ServiceBuilder.buildService(UserService.class);
         chuongService = ServiceBuilder.buildService(ChuongService.class);
+        this.context = context;
     }
 
     @Override
     public void readSach() {
 
-        Call<List<ThuVienSachCaNhan>> request = userService.findAll("wVtlXbDWiRmCmETfixgd");
+        firebaseAuthManager = new FirebaseAuthManager(context);
+        String idNguoiDung = firebaseAuthManager.getCurrentUser().getUid();
+        Call<List<ThuVienSachCaNhan>> request = userService.findAll(idNguoiDung);
         request.enqueue(new Callback<List<ThuVienSachCaNhan>>() {
             @Override
             public void onResponse(Call<List<ThuVienSachCaNhan>> call, Response<List<ThuVienSachCaNhan>> response) {
@@ -267,7 +273,7 @@ public class CurrentReadingPresenter implements CurrentReadingContract.Presenter
         AtomicInteger completedRequests = new AtomicInteger(0);
 
         for (String id : sachIDs) {
-            Call<Void> request = userService.deleteSach("wVtlXbDWiRmCmETfixgd", id);
+            Call<Void> request = userService.deleteSach(firebaseAuthManager.getCurrentUser().getUid(), id);
             request.enqueue(new Callback<Void>() {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {

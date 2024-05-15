@@ -42,10 +42,10 @@ public class MainActivity extends AppCompatActivity {
         // Kiểm tra nếu đây là lần đầu chạy ứng dụng
         boolean isFirstRun = checkFirstRun();
 
-        //showWelcomeDialog();
-        if (isFirstRun) {
-            showWelcomeDialog();
-        }
+        showWelcomeDialog();
+//        if (isFirstRun) {
+//            showWelcomeDialog();
+//        }
         // goToMenu();
 
 

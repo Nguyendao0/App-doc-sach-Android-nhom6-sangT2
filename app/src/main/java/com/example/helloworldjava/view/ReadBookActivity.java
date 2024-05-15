@@ -1,18 +1,29 @@
 package com.example.helloworldjava.view;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
+import androidx.core.content.res.ResourcesCompat;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.SeekBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.content.res.Resources;
 import com.example.helloworldjava.R;
 import com.example.helloworldjava.model.Realm.Chuong;
 import com.example.helloworldjava.model.entity.Sach;
@@ -37,6 +48,9 @@ public class ReadBookActivity extends AppCompatActivity implements PopupMenu.OnM
         String idSach = intent.getStringExtra("idSach");
         String idChuong = intent.getStringExtra("idChuong");
         String tensach = intent.getStringExtra("TenSach");
+
+        checkSavedFont(tv_noidungChuong);
+        setFontSizeFromSharedPreferences(tv_noidungChuong);
 
         View btnDSChuong = findViewById(R.id.btnDSChuong);
         btnDSChuong.setOnClickListener(new View.OnClickListener() {
@@ -89,6 +103,13 @@ public class ReadBookActivity extends AppCompatActivity implements PopupMenu.OnM
             }
         });
 
+        ImageView imgSetting = findViewById(R.id.img_seting);
+        imgSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showSettingDialog(tv_noidungChuong);
+            }
+        });
 
     }
     public void showPopup (View v){
@@ -123,5 +144,150 @@ public class ReadBookActivity extends AppCompatActivity implements PopupMenu.OnM
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_readbook, menu);
         return true;
+    }
+
+    private void showSettingDialog(TextView tv_noidungChuong) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Cài đặt");
+
+        // Tạo layout cho hộp thoại
+        View view = getLayoutInflater().inflate(R.layout.dialog_setting, null);
+        builder.setView(view);
+
+        // Tìm các view trong layout
+        SeekBar seekBarFontSize = view.findViewById(R.id.seekBar_fontSize);
+        Spinner spinnerFontFamily = view.findViewById(R.id.spinner_fontFamily);
+
+        // Thiết lập giá trị mặc định cho các view
+
+        // Thiết lập sự kiện khi người dùng thay đổi cỡ chữ
+        int defaultValue = 25; // Giá trị mặc định (25sp)
+        int minValue = 0; // Giá trị tối thiểu của SeekBar
+        int maxValue = 100; // Giá trị tối đa của SeekBar
+
+        int progress = (int) (((float) defaultValue - minValue) / (maxValue - minValue) * (seekBarFontSize.getMax() - seekBarFontSize.getMin())) + seekBarFontSize.getMin();
+        seekBarFontSize.setProgress(progress);
+        seekBarFontSize.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                // Thay đổi cỡ chữ cho TextView
+                // Tính toán giá trị kích thước chữ tương ứng
+                int minValue = 10; // Giá trị tối thiểu của SeekBar (10sp)
+                int maxValue = 100; // Giá trị tối đa của SeekBar (100sp)
+                int range = maxValue - minValue; // Phạm vi giá trị của SeekBar
+
+                float fontSize = (float) (minValue + progress * (range / (float) seekBar.getMax())); // Tính toán kích thước chữ
+                tv_noidungChuong.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
+
+                SharedPreferences sharedPreferences = getSharedPreferences("fontSize", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putFloat("selectedFontSize", fontSize);
+                editor.apply();
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
+
+
+        // Thiết lập sự kiện khi người dùng thay đổi font chữ
+        String[] fontFamilies = {"Alex brush", "Basic","Bad script"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, fontFamilies);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerFontFamily.setAdapter(adapter);
+        spinnerFontFamily.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // Thay đổi font chữ cho TextView
+                String fontFamily = parent.getItemAtPosition(position).toString();
+                if(fontFamily.equals("Bad script")){
+                    savefont(tv_noidungChuong, "bad_script", "Bad script" );
+                }
+                if(fontFamily.equals("Basic")){
+                    savefont(tv_noidungChuong, "annie_use_your_telescope", "Basic" );
+                }
+                if(fontFamily.equals("Alex brush")){
+                    savefont(tv_noidungChuong, "alex_brush", "Alex brush" );
+                }
+
+                Log.d("FontChange", "Đã chọn font chữ: " + fontFamily);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+
+        // Thiết lập nút "Đồng ý" trong hộp thoại
+        builder.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Xử lý khi người dùng ấn nút "Đồng ý"
+            }
+        });
+
+        // Thiết lập nút "Hủy" trong hộp thoại
+        builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Xử lý khi người dùng ấn nút "Hủy"
+                // ...
+            }
+        });
+
+        // Hiển thị hộp thoại
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    public void savefont(TextView tv_noidungChuong , String font, String fontname){
+        // Lưu thông tin font vào Shared Preferences
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("selectedFontFamily", fontname);
+        editor.apply();
+
+        // Lưu thông tin font vào Shared Preferences
+        SharedPreferences sharedPreferencesfont = getSharedPreferences("fonts", MODE_PRIVATE);
+        SharedPreferences.Editor editorf = sharedPreferencesfont.edit();
+        editorf.putString("selectedFontName", font);
+        editorf.apply();
+
+        int fontResourceId = getResources().getIdentifier(font, "font", getPackageName());
+        if (fontResourceId != 0) {
+            Typeface typeface = ResourcesCompat.getFont(ReadBookActivity.this, fontResourceId);
+            tv_noidungChuong.setTypeface(typeface);
+        }
+    }
+
+    public void checkSavedFont(TextView v) {
+        // Truy xuất thông tin font từ Shared Preferences
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        String selectedFontFamily = sharedPreferences.getString("selectedFontFamily", null);
+
+        SharedPreferences sharedPreferencesFont = getSharedPreferences("fonts", MODE_PRIVATE);
+        String selectedFontName = sharedPreferencesFont.getString("selectedFontName", null);
+
+        if (selectedFontFamily != null && selectedFontName != null) {
+            // Kiểm tra thông tin font đã lưu
+            Log.d("Font", "Selected Font Family: " + selectedFontFamily);
+            Log.d("Font", "Selected Font Name: " + selectedFontName);
+            savefont(v, selectedFontName, selectedFontFamily );
+        } else {
+            // Xử lý trường hợp không có dữ liệu font được lưu trữ
+        }
+    }
+    // Thiết lập kích thước font từ Shared Preferences
+    public void setFontSizeFromSharedPreferences(TextView textView) {
+        // Truy xuất thông tin kích thước font từ Shared Preferences
+        SharedPreferences sharedPreferences = getSharedPreferences("fontSize", MODE_PRIVATE);
+        float fontSize = sharedPreferences.getFloat("selectedFontSize", 0);
+
+        if (fontSize != 0) {
+            // Thiết lập kích thước font cho TextView
+            textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
+        }
     }
 }

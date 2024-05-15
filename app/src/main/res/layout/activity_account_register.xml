@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="50dp"
         android:gravity="center"
-        android:text="Sign Up"
+        android:text="Register"
         android:textColor="@color/white"
         android:textSize="40dp"
         android:textStyle="bold"
@@ -49,7 +49,7 @@
         app:layout_constraintTop_toBottomOf="@+id/username_register"
         tools:layout_editor_absoluteX="3dp" />
     <EditText
-        android:id="@+id/phone"
+        android:id="@+id/phone_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -63,7 +63,7 @@
         app:layout_constraintTop_toBottomOf="@+id/password_register"
         tools:layout_editor_absoluteX="3dp" />
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/email_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -74,15 +74,16 @@
         android:text="Email: "
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/phone"
+        app:layout_constraintTop_toBottomOf="@+id/phone_register"
         tools:layout_editor_absoluteX="3dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout9"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="52dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email">
+        app:layout_constraintTop_toBottomOf="@+id/email_register">
 
         <Button
             android:id="@+id/cancel"
@@ -98,7 +99,7 @@
             tools:layout_editor_absoluteY="12dp" />
 
         <Button
-            android:id="@+id/register"
+            android:id="@+id/btnRegister"
             android:layout_width="120dp"
             android:layout_height="match_parent"
             android:layout_marginEnd="80dp"
@@ -109,6 +110,43 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             tools:layout_editor_absoluteY="10dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/signUpWithGoogle"
+        android:layout_width="wrap_content"
+        android:layout_height="41dp"
+        android:layout_marginTop="20dp"
+        android:background="#F6F2F2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/constraintLayout9">
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/google" />
+
+        <TextView
+            android:id="@+id/others"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_marginEnd="40dp"
+            android:fontFamily="@font/carter_one"
+            android:text="Sign in with Google"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView5"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

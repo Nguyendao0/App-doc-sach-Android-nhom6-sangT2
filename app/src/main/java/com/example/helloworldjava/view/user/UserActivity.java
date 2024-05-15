@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.helloworldjava.R;
 import com.example.helloworldjava.model.ProfileFeature;
+import com.example.helloworldjava.model.entity.NguoiDung;
 import com.example.helloworldjava.model.entity.User;
 import com.example.helloworldjava.presenter.UserPresenter;
 import com.squareup.picasso.Picasso;
@@ -34,8 +35,6 @@ public class UserActivity extends AppCompatActivity implements UserView {
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
-
-
         UserPresenter userPresenter = new UserPresenter(this);
         userPresenter.showListProfileFeatures();
         userPresenter.displayUserInformation();
@@ -54,13 +53,14 @@ public class UserActivity extends AppCompatActivity implements UserView {
     }
 
     @Override
-    public void displayUserInformation(User user) {
+    public void displayUserInformation(NguoiDung nguoiDung) {
         TextView usernameTextView = findViewById(R.id.username);
-        usernameTextView.setText(user.getUsername());
+        usernameTextView.setText(nguoiDung.getTenNguoiDung());
         ImageView userAvatarImageView = findViewById(R.id.userAvatarImage);
-        Picasso.get().load(user.getAvatar()).into(userAvatarImageView);
+        Picasso.get().load(nguoiDung.getAvatar()).into(userAvatarImageView);
 //        int resID = getResources().getIdentifier(user.getAvatar() , "drawable", getPackageName());
 //        userAvatarImageView.setImageDrawable(AppCompatResources.getDrawable(this, resID));
 //        userAvatarImageView.setBackground(AppCompatResources.getDrawable(this, R.drawable.circle_outline));
     }
+
 }

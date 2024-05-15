@@ -1,15 +1,14 @@
 package com.example.helloworldjava.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.helloworldjava.R;
 import com.example.helloworldjava.model.Realm.Chuong;
@@ -19,8 +18,6 @@ import com.example.helloworldjava.services.SachService;
 import com.example.helloworldjava.services.ServiceBuilder;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import retrofit2.Call;
@@ -88,6 +85,7 @@ public class DanhsachchuongActivity extends AppCompatActivity implements DanhSac
         Intent goToDetailChuongIntent = new Intent(this, ReadBookActivity.class);
         goToDetailChuongIntent.putExtra("idChuong", chuong.getId());
         goToDetailChuongIntent.putExtra("idSach", sach.getId());
+        goToDetailChuongIntent.putExtra("TenSach", sach.getTenSach());
         startActivity(goToDetailChuongIntent);
     }
 }

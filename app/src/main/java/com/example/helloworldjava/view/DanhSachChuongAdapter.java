@@ -27,7 +27,7 @@ public class DanhSachChuongAdapter extends RecyclerView.Adapter<DanhSachChuongAd
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.list_chuong_item, parent, false);
+        View view = mInflater.inflate(R.layout.list_chuong_item, parent, false); // set data to RecyclerView
         return new ViewHolder(view);
     }
 

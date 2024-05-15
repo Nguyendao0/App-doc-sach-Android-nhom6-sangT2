@@ -13,9 +13,9 @@ import com.example.helloworldjava.LibraryContractInterface.CurrentReadingContrac
 import com.example.helloworldjava.LibraryContractInterface.EditPopupContract;
 import com.example.helloworldjava.LibraryContractInterface.LibraryContract;
 import com.example.helloworldjava.LibraryContractInterface.NavigationContract;
-import com.example.helloworldjava.LibraryContractInterface.ReadingListContract;
-import com.example.helloworldjava.LibraryContractInterface.StorageContract;
 import com.example.helloworldjava.R;
+import com.example.helloworldjava.model.Realm.Sach;
+import com.example.helloworldjava.presenter.Library.CurrentReadingPresenter;
 import com.example.helloworldjava.presenter.Library.EditPopupPresenter;
 import com.example.helloworldjava.presenter.Library.LibraryPresenter;
 import com.example.helloworldjava.presenter.Library.NavigationPresenter;
@@ -28,8 +28,9 @@ public class LibraryFragment extends Fragment implements LibraryContract.View {
     private NavigationContract.View navigationFragment;
     private EditPopupContract.View editPopupFragment;
     private CurrentReadingContract.View curReadingFragment;
-    private StorageContract.View storageFragment;
-    private ReadingListContract.View readListFragment;
+
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -38,8 +39,7 @@ public class LibraryFragment extends Fragment implements LibraryContract.View {
         navigationFragment = new NavigationFragment();
         editPopupFragment = new EditPopupFragment();
         curReadingFragment = new CurrentReadingFragment();
-        storageFragment = new StorageFragment();
-        readListFragment = new ReadingListFragment();
+
 
         presenter = new LibraryPresenter();
         presenter.setLibraryView(this);
@@ -57,6 +57,10 @@ public class LibraryFragment extends Fragment implements LibraryContract.View {
         editPopupFragment.setPresenter(editPopupPresenter);
         editPopupFragment.setLibraryPresenter(presenter);
 
+        CurrentReadingContract.Presenter currentReadingPresenter = new CurrentReadingPresenter(curReadingFragment, getContext());
+        curReadingFragment.setLibraryPresenter(presenter);
+        curReadingFragment.setCurrentPresenter(currentReadingPresenter);
+
         tabLayout = (TabLayout) view.findViewById(R.id.tabLayout_Library);
         initUI();
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -71,12 +75,6 @@ public class LibraryFragment extends Fragment implements LibraryContract.View {
                 {
                     case 0:
                         replaceFragmentInContentContainer((Fragment) curReadingFragment);
-                        break;
-                    case 1:
-                        replaceFragmentInContentContainer((Fragment) storageFragment);
-                        break;
-                    case 2:
-                        replaceFragmentInContentContainer((Fragment) readListFragment);
                         break;
                     default:
                         break;
@@ -137,7 +135,26 @@ public class LibraryFragment extends Fragment implements LibraryContract.View {
         return tabLayout.getSelectedTabPosition();
     }
 
+
+
+    @Override
+    public void addBookOffline(Sach sach) {
+        curReadingFragment.addBookOffline(sach);
+    }
+
+    @Override
+    public void removeBookOffline(String IDSach) {
+        curReadingFragment.removeBookOffline(IDSach);
+    }
+
+    @Override
+    public boolean isCurreadingVisible() {
+        return curReadingFragment.Visible();
+    }
+
     private void setPresenter(LibraryContract.Presenter presenter) {
         this.presenter = presenter;
     }
+
+
 }

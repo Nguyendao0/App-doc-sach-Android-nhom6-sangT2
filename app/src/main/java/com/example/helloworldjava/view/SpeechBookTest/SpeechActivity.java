@@ -2,14 +2,19 @@ package com.example.helloworldjava.view.SpeechBookTest;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.helloworldjava.R;
+import com.example.helloworldjava.view.ReadBookActivity;
 
 import org.w3c.dom.Text;
 
@@ -20,8 +25,11 @@ import java.util.UUID;
 
 public class SpeechActivity extends AppCompatActivity {
     TextToSpeech textToSpeech;
+    TextView bookName, chapterName;
+    ImageView btnBack;
     Button btnPlay;
     Button btnPause;
+    SeekBar seekBar;
     Button btnNext;
     Button btnPrevious;
     @Override
@@ -38,16 +46,16 @@ public class SpeechActivity extends AppCompatActivity {
 
         // Tao demobook de doc thu
         SachContent demobook = new SachContent();
-        demobook.Name_chapter = "Cuối cùng chu kỳ, cầu thông hắc ám";
-        demobook.numberofpage = 200;
-        demobook.numberofchapter = 1328;
+        Intent intent =  getIntent();
+        String tenSach = intent.getStringExtra("TenSach");
+        String tenChuong = intent.getStringExtra("TenChuong");
+        String noiDung = intent.getStringExtra("NoiDung");
 
-        demobook.setContent("Nhớ lại năm 1898, một thảm kịch đã xảy ra tại thị trấn Rorland - New York. Buổi sáng đầy tuyết lạnh và trơn trợt hôm đó, Joe Farley ra chuồng ngựa, đấm yên cương để dự đám tang một đứa bé thì con ngựa bỗng dưng trở chứng và tung một cú đá hầu, làm anh tử vong tại chỗ để lại vợ và ba đứa con trai cùng vài trăm đô-la tiền bảo hiểm.\n" +
-                "\n" +
-                " Người con trai lớn nhất của anh, Jim, 10 tuổi, phải bỏ học để làm việc kiếm sống tại một nhà máy gạch. Cậu làm đủ mọi việc từ đẩy xe xúc, đổ đất vào khuôn rồi sắp gạch đi phơi nắng. Jim không được may mắn học hành đến nơi đến chốn nhưng với tánh tình vui vẻ tự nhiên, cậu rất dễ làm cho người khác yêu mến mình. Năm tháng trôi qua, cậu bé ngày xưa đã trở thành một người đàn ông từng trải bước vào chính trường và trở thành một chính trị gia có tài nhớ tên người một cách kỳ lạ.\n" +
-                "\n" +
-                "Ông chưa bao giờ được nghe giảng ở một trường Đại học nào cả nhưng trước năm 46 tuổi, 4 trường Đại học đã tặng cho ông nhiều học vị danh dự rồi ông trở thành Chủ tịch Uỷ ban toàn Quốc đảng Dân Chủ và là Tổng Giám Đốc của bưu điện Mỹ. Tôi đã có lần phỏng vấn và hỏi Jim Farley về bí quyết thành công. Ông trả lời : \"Cần cù làm việc\" Tôi đáp lại : \"Ông đừng nói đùa nhé !\" Ông hỏi ngược lại là theo tôi thì lý do gì khiến ông thành công. Tôi đáp : \"Tôi biết ông có thể nhớ tên riêng của 10.000 người\" Ông đáp lại : \"Không ! Ông sai rồi. Tôi có thể nhớ tên riêng của 50.000 người\". Chính khả năng đặc biệt này đã giúp cho Jim Farley đưa Franklin Roosevelt vào Nhà trắng khi ông điều hành chiến dịch tranh cử Tổng thống cho Roosevelt vào năm 1932.");
+        bookName = findViewById(R.id.book_name);
+        chapterName = findViewById(R.id.chapter_name);
 
+        bookName.setText(tenSach);
+        chapterName.setText(tenChuong);
 
         // Tao class texttospeech, set locale tieng viet
         textToSpeech = new TextToSpeech(getApplicationContext(), status -> {
@@ -63,21 +71,61 @@ public class SpeechActivity extends AppCompatActivity {
             }
         });
         String utteranceId = UUID.randomUUID().toString();
+        seekBar = (SeekBar) findViewById(R.id.seedbar_play) ;
         btnPause= (Button) findViewById(R.id.pause);
+        btnPause.setVisibility(View.INVISIBLE);
         btnPlay = (Button) findViewById(R.id.play);
         btnNext = (Button) findViewById(R.id.skip_next);
         btnPrevious = (Button) findViewById(R.id.skip_previous);
-
+        btnBack = (ImageView) findViewById(R.id.btnBack);
         // Xu li nut play
         btnPlay.setOnClickListener(v -> {
+            // Toast.makeText(this, demobook.getContent(), Toast.LENGTH_SHORT).show();
+           btnPlay.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                   textToSpeech.speak(noiDung, TextToSpeech.QUEUE_FLUSH,null,utteranceId);
+                   btnPause.setVisibility(View.VISIBLE);
+                   btnPlay.setVisibility(View.INVISIBLE);
+               }
+           });
 
-            Toast.makeText(this, demobook.getContent(), Toast.LENGTH_SHORT).show();
-            textToSpeech.speak(demobook.Content, TextToSpeech.QUEUE_FLUSH,null,utteranceId);
+            seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    float lound = (float) seekBar.getProgress() / 50;
+                    if (lound < 0.1) lound = 0.1f;
+                    textToSpeech.setSpeechRate(lound);
+                    textToSpeech.speak(noiDung, TextToSpeech.QUEUE_FLUSH,null,utteranceId);
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+
+                }
+            });
         });
         // Xu li nut Pause
         btnPause.setOnClickListener(v -> {
-                    Toast.makeText(this, "Check OK", Toast.LENGTH_SHORT).show();
                     textToSpeech.stop();
+                    btnPause.setVisibility(View.INVISIBLE);
+            btnPlay.setVisibility(View.VISIBLE);
+        });
+
+        // Xu li nut back
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(SpeechActivity.this, ReadBookActivity.class);
+                SpeechActivity.this.startActivity(i);
+                textToSpeech.stop();
+
+            }
         });
 
         File root = android.os.Environment.getExternalStorageDirectory();

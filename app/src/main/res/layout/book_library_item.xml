@@ -56,7 +56,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageBook">
 
         <ImageButton
-            android:id="@+id/imageButton3"
+            android:id="@+id/imgButtonDowload"
             android:layout_width="0dp"
             android:layout_height="31dp"
             android:layout_marginEnd="1dp"
@@ -76,7 +76,7 @@
             android:layout_marginEnd="2dp"
             android:backgroundTint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton3"
+            app:layout_constraintEnd_toStartOf="@+id/imgButtonDowload"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

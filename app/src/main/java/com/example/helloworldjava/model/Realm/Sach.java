@@ -8,10 +8,10 @@ import io.realm.annotations.PrimaryKey;
 public class Sach extends RealmObject {
 
     @PrimaryKey
-    private int ID;
-    private RealmList<DanhGiaSach> DanhGiaSach_Items;
-    private RealmList<LuotDoc> LuotDoc_Items;
-    private RealmList<Chuong> Chuong_Items;
+    private String id;
+    private RealmList<DanhGiaSach> DanhGiaSach_Items=null;
+    private RealmList<LuotDoc> LuotDoc_Items =null;
+    private RealmList<Chuong> Chuong_Items=null;
     private String img;
     private String TenSach;
     private String NhaXuatBan;
@@ -21,12 +21,12 @@ public class Sach extends RealmObject {
     public Sach() {
     }
 
-    public int getID() {
-        return ID;
+    public String getID() {
+        return id;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setID(String ID) {
+        this.id = ID;
     }
 
     public RealmList<Chuong> getChuong_Items() {
@@ -96,7 +96,7 @@ public class Sach extends RealmObject {
     @Override
     public String toString() {
         return "Sach{" +
-                "ID=" + ID +
+                "ID=" + id +
                 ", img='" + img + '\'' +
                 ", TenSach='" + TenSach + '\'' +
                 ", NhaXuatBan='" + NhaXuatBan + '\'' +

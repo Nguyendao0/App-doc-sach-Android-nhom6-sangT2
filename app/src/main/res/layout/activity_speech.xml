@@ -8,6 +8,7 @@
     tools:context=".view.SpeechBookTest.SpeechActivity">
 
     <ImageView
+        android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15sp"
@@ -15,7 +16,7 @@
         android:background="@drawable/back_button" />
 
     <TextView
-        android:id="@+id/book_name_speech"
+        android:id="@+id/book_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -28,7 +29,7 @@
         tools:layout_editor_absoluteY="37dp" />
 
     <TextView
-        android:id="@+id/chapter_name_speech"
+        android:id="@+id/chapter_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -59,7 +60,12 @@
             android:contentDescription="NULL"
             app:iconTintMode="screen" />
 
-        <Button
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <Button
             android:id="@+id/pause"
             android:layout_width="60dp"
             android:layout_height="60dp"
@@ -67,19 +73,21 @@
             android:background="@drawable/pause"
             android:contentDescription="NULL"
             android:backgroundTint="#FAFFFFFF" />
+            <Button
+                android:id="@+id/play"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/play_speech"
+                android:backgroundTint="#FAFFFFFF"
+                android:contentDescription="NULL" />
 
-        <Button
-            android:id="@+id/play"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginRight="20sp"
-            android:contentDescription="NULL"
-            android:background="@drawable/play_speech"
-            android:backgroundTint="#FAFFFFFF" />
+        </RelativeLayout>
+
 
         <Button
             android:id="@+id/skip_previous"
             android:layout_width="60dp"
+
             android:layout_height="60dp"
             android:layout_marginRight="20sp"
             android:contentDescription="NULL"
@@ -93,6 +101,7 @@
         android:layout_height="20dp"
         android:layout_marginTop="20dp"
         android:backgroundTint="#0C0606"
+        android:progress="50"
         android:backgroundTintMode="screen"
         android:progressTint="#0A1FDA" />
 

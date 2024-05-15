@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,19 +13,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.helloworldjava.APIResponeModel.ApiResponseSachModle;
 import com.example.helloworldjava.R;
+import com.example.helloworldjava.model.entity.Sach;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class ListBooksHomeRecyclerViewAdapter extends RecyclerView.Adapter<ListBooksHomeRecyclerViewAdapter.ViewHolder> {
 
-    private List<ApiResponseSachModle> mData;
-    private String gdata;
+    private List<Sach> mData;
     private LayoutInflater mInflater;
-    private ListBooksRecyclerViewAdapter.ItemClickListener mClickListener;
+    private ListBooksHomeRecyclerViewAdapter.ItemClickListener mClickListener;
     private int itemLayoutResId;
 
     // data is passed into the constructor
-    public ListBooksHomeRecyclerViewAdapter(Context context, List<ApiResponseSachModle> data, int itemLayoutResId) {
+    public ListBooksHomeRecyclerViewAdapter(Context context, List<Sach> data, int itemLayoutResId) {
         this.mInflater = LayoutInflater.from(context);
         this.mData =  data;
         this.itemLayoutResId = itemLayoutResId;
@@ -41,22 +43,26 @@ public class ListBooksHomeRecyclerViewAdapter extends RecyclerView.Adapter<ListB
     // binds the data to the TextView in each cell
     @Override
     public void onBindViewHolder(@NonNull ListBooksHomeRecyclerViewAdapter.ViewHolder holder, int position) {
-        ApiResponseSachModle dataItem = mData.get(position);
+        Sach sach = mData.get(position);
         Log.w("Api Start","------Sussecs-------");
-        Log.w("Api Start","------"+dataItem.getSach().getTenSach()+"-------");
+        Log.w("Api Start","------"+sach.getTenSach()+"-------");
         Log.w("Api Start","-----------------");
-        if (holder.tvcontent != null && dataItem != null && dataItem.getSach() != null) {
-            String tenSach = dataItem.getSach().getTenSach();
+        if (holder.tvcontent != null) {
+            String tenSach = sach.getTenSach();
             if(tenSach != null){
                 holder.tvcontent.setText(tenSach);
             }
+        }
+
+        if (sach.getImg() != null) {
+            Picasso.get().load(sach.getImg()).into(holder.imageViewBookHome);
         }
     }
 
     // total number of cells
     @Override
     public int getItemCount() {
-        return (int) mData.stream().count();
+        return mData.size();
     }
 
 
@@ -64,9 +70,11 @@ public class ListBooksHomeRecyclerViewAdapter extends RecyclerView.Adapter<ListB
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView tvcontent, tvdatecreate;
+        ImageView imageViewBookHome;
         ViewHolder(View itemView) {
             super(itemView);
             tvcontent = itemView.findViewById(R.id.booktextbook);
+            imageViewBookHome = itemView.findViewById(R.id.imageViewBookHome);
             itemView.setOnClickListener(this);
         }
 
@@ -76,12 +84,14 @@ public class ListBooksHomeRecyclerViewAdapter extends RecyclerView.Adapter<ListB
         }
     }
     // convenience method for getting data at click position
-    ApiResponseSachModle getItem(int id) {
+    Sach getItem(int id) {
         return mData.get(id);
     }
 
     // allows clicks events to be caught
-    void setClickListener(BookCategoryRecyclerViewAdapter.ItemClickListener itemClickListener) {
+    void setClickListener(ListBooksHomeRecyclerViewAdapter.ItemClickListener itemClickListener) {
+        this.mClickListener = itemClickListener;
+
     }
 
     // parent activity will implement this method to respond to click events

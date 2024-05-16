@@ -94,8 +94,8 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
                 .setContentIntent(pendingIntent)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setDefaults(NotificationCompat.DEFAULT_ALL)
-                .setCategory(NotificationCompat.CATEGORY_CALL)
-                .setSmallIcon(R.drawable.baseline_check_circle_24)
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .setSmallIcon(R.drawable.ic_launcher)
                 .setAutoCancel(true);
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);

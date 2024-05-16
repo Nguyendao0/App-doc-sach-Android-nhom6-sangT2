@@ -13,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import com.example.helloworldjava.FCM.TopicFCM;
+import com.example.helloworldjava.FCM.Tutorial.ActivityNotification;
 import com.example.helloworldjava.services.NotificationService;
 import com.example.helloworldjava.services.ServiceBuilder;
 import com.example.helloworldjava.services.TokenService;
@@ -40,59 +42,10 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    private void findAllNotification()
-    {
-        NotificationService notificationService = ServiceBuilder.buildService(NotificationService.class);
-        Call<List<NotificationFCM>> request = notificationService.findAllNotificationById("zed");
-        request.enqueue(new Callback<List<NotificationFCM>>() {
-            @Override
-            public void onResponse(Call<List<NotificationFCM>> call, Response<List<NotificationFCM>> response) {
-                if (response.isSuccessful()) {
-                    List<NotificationFCM> notis = response.body();
-
-                    for (NotificationFCM n:notis)
-                    {
-                        System.out.println(notis.toString());
-                    }
-                } else {
-                    System.out.println("Response failed: " + response.code());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<NotificationFCM>> call, Throwable throwable) {
-                System.out.println("Error: " + throwable.getMessage());
-            }
-        });
-    }
 
 
-    private void sendNotificationToFB()
-    {
-        NotificationService notificationService = ServiceBuilder.buildService(NotificationService.class);
-        NotificationFCM notificationFCM = new NotificationFCM();
-        notificationFCM.setContent("yasuasdaso");
-        notificationFCM.setTitle("milkitsadasa");
 
-        Call<String> request = notificationService.createNotificationById("zed", notificationFCM);
 
-        request.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                if (response.isSuccessful()) {
-                    String thongbao = response.body();
-                    System.out.println("response: " + thongbao);
-                } else {
-                    System.out.println("Response failed: " + response.code());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<String> call, Throwable throwable) {
-                System.out.println("Error: " + throwable.getMessage());
-            }
-        });
-    }
 
     private void sendNotificaction()
     {
@@ -122,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         boolean isSettoken = sharedPreferences.getBoolean("isSettoken", false);
 
         if (!isSettoken) {
+            sendNotificaction();
             FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
                 @Override
                 public void onComplete(@NonNull Task<String> task) {
@@ -167,6 +121,8 @@ public class MainActivity extends AppCompatActivity {
 //        sendNotificaction();
 //        findAllNotification();
         sendTokenToFCM();
+        TopicFCM topicFCM = new TopicFCM();
+        topicFCM.subcribeTopic("sach");
 //        sendNotificationToFB();
 
         Button button_home = findViewById(R.id.button_home);
@@ -324,11 +280,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Account_Register.class);
         startActivity(intent);
     }
-//    public void ThongBao(View view) {
-//
-//        Intent intent = new Intent(this, NoitificationActivity.class);
-//        startActivity(intent);
-//    }
+    public void ThongBao(View view) {
+
+        Intent intent = new Intent(this, ActivityNotification.class);
+        startActivity(intent);
+    }
 //    public void GoToLibraryActivity(View view)
 //    {
 //        Intent intent = new Intent(this, LibraryActivity.class);

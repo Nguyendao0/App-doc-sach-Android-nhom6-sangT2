@@ -161,8 +161,10 @@ public class LibraryFragment extends Fragment implements LibraryContract.View {
 
     @Override
     public void initData() {
-        currentReadingPresenter.readSachOffline();
+        if (currentReadingPresenter != null){
+            currentReadingPresenter.readSachOffline();
         currentReadingPresenter.readSach();
+    }
     }
 
     private void setPresenter(LibraryContract.Presenter presenter) {

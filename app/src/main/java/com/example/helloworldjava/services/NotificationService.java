@@ -17,7 +17,6 @@ public interface NotificationService {
     @POST("notification/createIDNotification/{id}")
     Call<String> createIDNotification(@Path("id") String id);
 
-
     @POST("notification/createNotificationById/{id}")
     Call<String> createNotificationById(@Path("id") String id, @Body NotificationFCM createNotificationDto);
 
@@ -29,6 +28,13 @@ public interface NotificationService {
             @Path("id") String id,
             @Query("keys") String[] keys
     );
+
+    @POST("notification/sendFCMToTopics")
+    Call<Void> sendFCMToTopics(@Query("topics") String[] topics, @Body NotificationFCM createNotificationDto);
+
+    @POST("notification/sendFCMToSingleTopic")
+    Call<Void> sendFCMToSingleTopic(@Query("topic") String topic, @Body NotificationFCM createNotificationDto);
+
 }
 
 

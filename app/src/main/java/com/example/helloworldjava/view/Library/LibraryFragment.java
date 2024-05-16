@@ -19,14 +19,12 @@ import com.example.helloworldjava.presenter.Library.CurrentReadingPresenter;
 import com.example.helloworldjava.presenter.Library.EditPopupPresenter;
 import com.example.helloworldjava.presenter.Library.LibraryPresenter;
 import com.example.helloworldjava.presenter.Library.NavigationPresenter;
-import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class LibraryFragment extends Fragment implements LibraryContract.View {
 
-    private TabLayout tabLayout;
+
     private LibraryContract.Presenter presenter;
     private NavigationContract.View navigationFragment;
     private EditPopupContract.View editPopupFragment;
@@ -65,38 +63,12 @@ public class LibraryFragment extends Fragment implements LibraryContract.View {
         curReadingFragment.setLibraryPresenter(presenter);
         curReadingFragment.setCurrentPresenter(currentReadingPresenter);
 
-        tabLayout = (TabLayout) view.findViewById(R.id.tabLayout_Library);
         initUI();
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                int position = tab.getPosition();
-                navigationPresenter.updateLibraryMenu(position);
 
-                isEditPopupOpen(editPopupPresenter);
-
-                switch (position)
-                {
-                    case 0:
-                        replaceFragmentInContentContainer((Fragment) curReadingFragment);
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
         return view;
     }
+
+
 
     private void isEditPopupOpen(EditPopupContract.Presenter editPopupPresenter)
     {
@@ -104,14 +76,6 @@ public class LibraryFragment extends Fragment implements LibraryContract.View {
         {
             showFragmentInNavigationContainer((Fragment) navigationFragment);
         }
-    }
-
-    private void replaceFragmentInContentContainer(Fragment fragment)
-    {
-        getFragmentManager().
-                beginTransaction().
-                replace(R.id.FCV_Content_Library, fragment).
-                commit();
     }
 
     private void initUI()
@@ -134,10 +98,6 @@ public class LibraryFragment extends Fragment implements LibraryContract.View {
                 commit();
     }
 
-    @Override
-    public int tabSelected() {
-        return tabLayout.getSelectedTabPosition();
-    }
 
     @Override
     public void removeBooksLibrary() {
@@ -197,6 +157,12 @@ public class LibraryFragment extends Fragment implements LibraryContract.View {
     @Override
     public boolean isCurreadingVisible() {
         return curReadingFragment.Visible();
+    }
+
+    @Override
+    public void initData() {
+        currentReadingPresenter.readSachOffline();
+        currentReadingPresenter.readSach();
     }
 
     private void setPresenter(LibraryContract.Presenter presenter) {

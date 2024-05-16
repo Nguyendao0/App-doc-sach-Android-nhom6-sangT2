@@ -18,18 +18,31 @@ import androidx.viewpager2.widget.ViewPager2;
 
 
 import com.example.helloworldjava.view.GioiThieuSach.BookDetailActivity;
+import com.example.helloworldjava.services.NotificationService;
+import com.example.helloworldjava.services.ServiceBuilder;
+import com.example.helloworldjava.services.TokenService;
+import com.example.helloworldjava.view.GioiThieuSach.BookDetailActivity;
+import com.example.helloworldjava.FCM.NotificationFCM;
 import com.example.helloworldjava.view.home.HomeActivity;
 import com.example.helloworldjava.view.Menu.MenuActivity;
 import com.example.helloworldjava.view.login.Account_Login;
 import com.example.helloworldjava.view.register.Account_Register;
 import com.example.helloworldjava.view.QRGen;
 import com.example.helloworldjava.view.Search.SearchActivity;
-import com.example.helloworldjava.view.Thongbao.NoitificationActivity;
 import com.example.helloworldjava.view.ReadBookActivity;
 import com.example.helloworldjava.view.SpeechBookTest.SpeechActivity;
 import com.example.helloworldjava.view.login.WebViewGoogleActivity;
 import com.example.helloworldjava.view.user.UserActivity;
 import com.example.helloworldjava.view.welcome.WelcomePagerAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,6 +61,10 @@ public class MainActivity extends AppCompatActivity {
 //        }
         // goToMenu();
 
+//        sendNotificaction();
+//        findAllNotification();
+        sendTokenToFCM();
+//        sendNotificationToFB();
 
         Button button_home = findViewById(R.id.button_home);
         button_home.setOnClickListener(new View.OnClickListener() {
@@ -144,11 +161,22 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Account_Register.class);
         startActivity(intent);
     }
-    public void ThongBao(View view) {
-
-        Intent intent = new Intent(this, NoitificationActivity.class);
-        startActivity(intent);
-    }
+    
+//    public void ThongBao(View view) {
+//
+//        Intent intent = new Intent(this, NoitificationActivity.class);
+//        startActivity(intent);
+//    }
+//    public void GoToLibraryActivity(View view)
+//    {
+//        Intent intent = new Intent(this, LibraryActivity.class);
+//        startActivity(intent);
+//    }
+//    public void goToPDF(View view)
+//    {
+//        Intent intent = new Intent(this, TESTGETPDFActivity.class);
+//        startActivity(intent);
+//    }
 
 
     // Kiểm tra lần đầu chạy ứng dụng

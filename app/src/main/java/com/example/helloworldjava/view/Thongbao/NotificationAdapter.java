@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.helloworldjava.R;
+import com.example.helloworldjava.FCM.NotificationFCM;
 
 import java.util.ArrayList;
 
@@ -30,7 +31,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationViewHo
 
     @Override
     public void onBindViewHolder(@NonNull NotificationViewHolder holder, int position) {
-
+        holder.BindData(listNotification.get(position));
     }
 
     @Override
@@ -40,5 +41,16 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationViewHo
             return 0;
         }
         return listNotification.size();
+    }
+
+    public ArrayList<NotificationFCM> getListNotification()
+    {
+        return this.listNotification;
+    }
+
+    public void setListNotification(ArrayList<NotificationFCM> list)
+    {
+        this.listNotification = list;
+        notifyDataSetChanged();
     }
 }

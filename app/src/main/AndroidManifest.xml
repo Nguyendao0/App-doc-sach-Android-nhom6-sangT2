@@ -44,6 +44,7 @@
             </intent-filter>
         </service>
 
+
         <activity
             android:name=".view.SpeechBookTest.SpeechActivity"
             android:exported="false" />
@@ -60,9 +61,6 @@
             android:theme="@style/Theme.HelloWorldJava" />
         <activity
             android:name=".view.login.Account_Login"
-            android:exported="false" />
-        <activity
-            android:name=".view.Thongbao.NoitificationActivity"
             android:exported="false" />
         <activity
             android:name=".view.GioiThieuSach.BookDetailActivity"
@@ -93,9 +91,6 @@
             android:exported="false" />
         <activity
             android:name=".view.home.HomeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".model.Realm.REALMActivity"
             android:exported="false" />
         <activity
             android:name=".TESTROOM"

@@ -34,7 +34,7 @@ public class EditPopupFragment extends Fragment implements EditPopupContract.Vie
 
         txtLibraryPopupMenu = view.findViewById(R.id.textViewLibraryPopupMenu);
 
-        presenter.setItemsPopup(libraryPresenter.getTabSelected());
+
 
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override

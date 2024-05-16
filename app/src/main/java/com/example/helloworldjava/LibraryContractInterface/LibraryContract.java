@@ -11,7 +11,6 @@ import java.util.ArrayList;
 public interface LibraryContract {
     interface View {
         void showFragmentInNavigationContainer(Fragment fragment);
-        int tabSelected();
 
         void removeBooksLibrary();
         void addBookOffline(Sach sach);
@@ -19,14 +18,13 @@ public interface LibraryContract {
         void removeBooksOffline();
         void removeBookOffline(String IDSach);
         boolean isCurreadingVisible();
-//        void removeBookLibrary(String IDSach);
+        void initData();
     }
     interface Presenter{
         void setNavigationView(NavigationContract.View navigationFragment);
         void setEditPopupView(EditPopupContract.View editPopupFragment);
         void setLibraryView(LibraryContract.View libraryView);
         void replaceFragmentInNavigationContainer(String nameFragment);
-        int getTabSelected();
         void addToListBookView(LibraryBookViewHolder libraryBookViewHolder);
         void removeOutOfListBookView(LibraryBookViewHolder libraryBookViewHolder);
         boolean checkEditVisible();

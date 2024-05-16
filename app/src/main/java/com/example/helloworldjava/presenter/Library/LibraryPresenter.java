@@ -51,10 +51,7 @@ public class LibraryPresenter implements LibraryContract.Presenter {
         }
     }
 
-    @Override
-    public int getTabSelected() {
-        return libraryView.tabSelected();
-    }
+
 
     @Override
     public void addToListBookView(LibraryBookViewHolder libraryBookViewHolder) {

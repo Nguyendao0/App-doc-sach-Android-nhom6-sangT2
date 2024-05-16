@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.helloworldjava.Fragment.AccountFragment;
-import com.example.helloworldjava.Fragment.NotificationFragment;
 import com.example.helloworldjava.Fragment.ReelsFragment;
 import com.example.helloworldjava.Fragment.SearchFragment;
 import com.example.helloworldjava.view.home.HomeFragment;
@@ -18,7 +17,7 @@ import com.google.android.material.navigation.NavigationBarView;
 public class DemoActivity extends AppCompatActivity {
     AccountFragment accountFragment = new AccountFragment();
     HomeFragment homeFragment = new HomeFragment();
-    NotificationFragment notificationFragment = new NotificationFragment();
+
     ReelsFragment reelsFragment = new ReelsFragment();
     SearchFragment searchFragment = new SearchFragment();
     BottomNavigationView bottomNavigationView;
@@ -44,8 +43,6 @@ public class DemoActivity extends AppCompatActivity {
                     case 2:getSupportFragmentManager().beginTransaction().replace(R.id.container,reelsFragment).commit();
                         return true;
                     case 3:getSupportFragmentManager().beginTransaction().replace(R.id.container,searchFragment).commit();
-                        return true;
-                    case 4:getSupportFragmentManager().beginTransaction().replace(R.id.container,notificationFragment).commit();
                         return true;
                     case 5:getSupportFragmentManager().beginTransaction().replace(R.id.container,accountFragment).commit();
                         return true;

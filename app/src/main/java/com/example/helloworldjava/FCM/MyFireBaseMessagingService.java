@@ -16,31 +16,72 @@ import androidx.core.app.NotificationManagerCompat;
 import com.example.helloworldjava.MainActivity;
 import com.example.helloworldjava.MyApplication;
 import com.example.helloworldjava.R;
+import com.example.helloworldjava.services.NotificationService;
+import com.example.helloworldjava.services.ServiceBuilder;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
 import java.util.Map;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class MyFireBaseMessagingService extends FirebaseMessagingService {
+
+
+    public static final String ACTION_FCM_NOTIFICATION = "com.example.app.ACTION_FCM_NOTIFICATION";
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
+
+
+
         String title;
         String content;
-        String strIcon;
-        String strID;
 
         Map<String, String> data = remoteMessage.getData();
         if (data != null) {
             title = data.get("title");
             content = data.get("content");
-//            strIcon = data.get("icon");
-//            strID = data.get("idNotification");
         } else {
             return;
         }
 
+
+
+        createNotification(title, content);
         sendNoti(title, content);
+    }
+
+    private void createNotification(String title, String content)
+    {
+        NotificationService notificationService = ServiceBuilder.buildService(NotificationService.class);
+        NotificationFCM notificationFCM = new NotificationFCM();
+        notificationFCM.setContent(content);
+        notificationFCM.setTitle(title);
+
+        Call<String> request = notificationService.createNotificationById("zed", notificationFCM);
+
+        request.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if (response.isSuccessful()) {
+                    Intent broadcastIntent = new Intent(ACTION_FCM_NOTIFICATION);
+                    sendBroadcast(broadcastIntent);
+
+                    String thongbao = response.body();
+                    System.out.println("response: " + thongbao);
+                } else {
+                    System.out.println("Response failed: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable throwable) {
+                System.out.println("Error: " + throwable.getMessage());
+            }
+        });
     }
 
     private void sendNoti(String title, String content)

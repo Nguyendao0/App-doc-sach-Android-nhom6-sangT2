@@ -9,26 +9,9 @@
         android:id="@+id/FCV_Navigation_Library"
         android:layout_width="411dp"
         android:layout_height="70dp"
-        app:layout_constraintBottom_toTopOf="@+id/tabLayout_Library"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout_Library"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/FCV_Content_Library"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/FCV_Navigation_Library">
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Truyện đang đọc" />
-
-    </com.google.android.material.tabs.TabLayout>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/FCV_Content_Library"
@@ -38,5 +21,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout_Library" />
+        app:layout_constraintTop_toBottomOf="@+id/FCV_Navigation_Library" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

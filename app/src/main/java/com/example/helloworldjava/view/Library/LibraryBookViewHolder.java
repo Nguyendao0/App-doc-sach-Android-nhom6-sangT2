@@ -52,11 +52,11 @@ public class LibraryBookViewHolder  extends RecyclerView.ViewHolder{
     {
         if(sach.getChuong_Items() != null) {
             int tongChuongDaDoc = 0;
-            for (Chuong c : sach.getChuong_Items()) {
-                if (c.isDanhDau() == true) {
-                    tongChuongDaDoc++;
-                }
-            }
+//            for (Chuong c : sach.getChuong_Items()) {
+//                if (c.isDanhDau() == true) {
+//                    tongChuongDaDoc++;
+//                }
+//            }
             int tongChuong = this.sach.getChuong_Items().size();
             int prog = (int) ((tongChuongDaDoc / (float) tongChuong) * 100);
             progressBar.setProgress(prog);

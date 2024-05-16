@@ -13,21 +13,17 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-import com.example.helloworldjava.model.Realm.Sach;
-import com.example.helloworldjava.model.Realm.ThuVienSachCaNhan;
 import com.example.helloworldjava.services.NotificationService;
-import com.example.helloworldjava.services.SachService;
 import com.example.helloworldjava.services.ServiceBuilder;
 import com.example.helloworldjava.services.TokenService;
 import com.example.helloworldjava.view.GioiThieuSach.BookDetailActivity;
-import com.example.helloworldjava.view.Thongbao.NotificationFCM;
+import com.example.helloworldjava.FCM.NotificationFCM;
 import com.example.helloworldjava.view.home.HomeActivity;
 import com.example.helloworldjava.view.Menu.MenuActivity;
 import com.example.helloworldjava.view.login.Account_Login;
 import com.example.helloworldjava.view.register.Account_Register;
 import com.example.helloworldjava.view.QRGen;
 import com.example.helloworldjava.view.Search.SearchActivity;
-import com.example.helloworldjava.view.Thongbao.NoitificationActivity;
 import com.example.helloworldjava.view.ReadBookActivity;
 import com.example.helloworldjava.view.SpeechBookTest.SpeechActivity;
 import com.example.helloworldjava.view.login.WebViewGoogleActivity;
@@ -36,7 +32,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.messaging.FirebaseMessaging;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -171,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
 
 //        sendNotificaction();
 //        findAllNotification();
-//        sendTokenToFCM();
+        sendTokenToFCM();
 //        sendNotificationToFB();
 
         Button button_home = findViewById(R.id.button_home);
@@ -329,11 +324,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Account_Register.class);
         startActivity(intent);
     }
-    public void ThongBao(View view) {
-
-        Intent intent = new Intent(this, NoitificationActivity.class);
-        startActivity(intent);
-    }
+//    public void ThongBao(View view) {
+//
+//        Intent intent = new Intent(this, NoitificationActivity.class);
+//        startActivity(intent);
+//    }
 //    public void GoToLibraryActivity(View view)
 //    {
 //        Intent intent = new Intent(this, LibraryActivity.class);

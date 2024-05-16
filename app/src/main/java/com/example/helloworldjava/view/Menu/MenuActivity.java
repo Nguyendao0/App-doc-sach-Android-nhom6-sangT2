@@ -20,7 +20,7 @@ public class MenuActivity extends AppCompatActivity {
         //tabLayout2
         TabLayout tabLayout = findViewById(R.id.tabLayout2);
         ViewPager2 viewPager = findViewById(R.id.view_pager);
-        ViewPagerAdapter adapter = new ViewPagerAdapter(this);
+        ViewPagerAdapter adapter = new ViewPagerAdapter(this, viewPager);
         viewPager.setAdapter(adapter);
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
             switch (position) {
@@ -48,13 +48,6 @@ public class MenuActivity extends AppCompatActivity {
             }
         }).attach();
 
-        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-            @Override
-            public void onPageSelected(int position) {
-                // Xử lý khi trang được chọn
-                Log.d("ViewPager", "Page selected: " + position);
-            }
-        });
 
     }
 }

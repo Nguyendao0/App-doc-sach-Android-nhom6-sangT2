@@ -1,9 +1,9 @@
 package com.example.helloworldjava.presenter.Thongbao;
 
-import com.example.helloworldjava.Fragment.NotificationFragment;
+import com.example.helloworldjava.NotificationContractInterface.Notification;
 import com.example.helloworldjava.services.NotificationService;
 import com.example.helloworldjava.services.ServiceBuilder;
-import com.example.helloworldjava.view.Thongbao.NotificationFCM;
+import com.example.helloworldjava.FCM.NotificationFCM;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,16 +12,17 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class NotificationFCMPresenter {
+public class NotificationFCMPresenter implements Notification.Presenter {
 
-    private NotificationFragment view ;
+    private Notification.View view ;
 
-    public NotificationFCMPresenter(NotificationFragment view) {
+    public NotificationFCMPresenter(Notification.View view) {
         this.view = view;
     }
 
-    public void getListSach()
-    {
+
+    @Override
+    public void getListNotifications() {
         NotificationService notificationService = ServiceBuilder.buildService(NotificationService.class);
         Call<List<NotificationFCM>> request = notificationService.findAllNotificationById("zed");
         request.enqueue(new Callback<List<NotificationFCM>>() {
@@ -35,6 +36,7 @@ public class NotificationFCMPresenter {
                         list.add(n);
                     }
 
+                view.setListNotifications(list);
 
                 } else {
                     System.out.println("Response failed: " + response.code());
@@ -47,5 +49,4 @@ public class NotificationFCMPresenter {
             }
         });
     }
-
 }

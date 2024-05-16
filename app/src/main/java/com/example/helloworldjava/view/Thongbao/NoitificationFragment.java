@@ -147,7 +147,6 @@ public class NoitificationFragment extends Fragment implements Notification.View
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
                     presenter.getListNotifications();
-                    showToast("Bạn đã xóa hết thông báo");
                 } else {
                     System.out.println("Response failed: " + response.code());
                 }

@@ -327,7 +327,7 @@ public class MainActivity extends AppCompatActivity {
         WelcomePagerAdapter adapter = new WelcomePagerAdapter();
         viewPager.setAdapter(adapter);
 
-        builder.setPositiveButton("Hoàn thành", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Bỏ qua", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();

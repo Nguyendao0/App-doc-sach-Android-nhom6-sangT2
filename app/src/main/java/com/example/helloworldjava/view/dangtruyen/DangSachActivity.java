@@ -13,10 +13,16 @@ import android.os.Bundle;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -46,7 +52,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DangSachFragment extends Fragment {
+public class DangSachActivity extends AppCompatActivity {
 
     private TextInputEditText txtTenSach;
     private TextInputEditText txtNhaXuatBan;
@@ -65,20 +71,30 @@ public class DangSachFragment extends Fragment {
     private boolean[] selectedTheLoai;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.activity_dang_sach, container, false);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_dang_sach);
 
-        txtTenSach = view.findViewById(R.id.txtNewTenSach);
-        txtNhaXuatBan = view.findViewById(R.id.txtNewNhaXuatBan);
-        txtNamXuatBan = view.findViewById(R.id.txtNewNamXuatBan);
-        txtMoTa = view.findViewById(R.id.txtMoTa);
-        imageViewDangSach = view.findViewById(R.id.imageViewDangSach);
-        editImageDangSach = view.findViewById(R.id.editImageDangSach);
+        // Set up the toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+        txtTenSach = findViewById(R.id.txtNewTenSach);
+        txtNhaXuatBan = findViewById(R.id.txtNewNhaXuatBan);
+        txtNamXuatBan = findViewById(R.id.txtNewNamXuatBan);
+        txtMoTa = findViewById(R.id.txtMoTa);
+        imageViewDangSach = findViewById(R.id.imageViewDangSach);
+        editImageDangSach = findViewById(R.id.editImageDangSach);
         Picasso.get().load(defaultImage).into(imageViewDangSach);
 
-        firebaseAuthManager = new FirebaseAuthManager(getContext());
+        firebaseAuthManager = new FirebaseAuthManager(this);
 
         TheLoaiService theLoaiService = ServiceBuilder.buildService(TheLoaiService.class);
         theLoaiService.getListTheLoai().enqueue(new Callback<List<TheLoaiSach>>() {
@@ -109,7 +125,7 @@ public class DangSachFragment extends Fragment {
             }
         });
 
-        btnDangSach = view.findViewById(R.id.btnXacNhanDangSach);
+        btnDangSach = findViewById(R.id.btnXacNhanDangSach);
         btnDangSach.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -117,12 +133,12 @@ public class DangSachFragment extends Fragment {
             }
         });
 
-        TextView tvSelectTheLoai = view.findViewById(R.id.tvSelectTheLoai);
+        TextView tvSelectTheLoai = findViewById(R.id.tvSelectTheLoai);
         tvSelectTheLoai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Initialize alert dialog
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder(DangSachActivity.this);
 
                 // set title
                 builder.setTitle("Chọn thể loại");
@@ -194,10 +210,12 @@ public class DangSachFragment extends Fragment {
                 builder.show();
             }
         });
-
-        return view;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
 
     ActivityResultLauncher<Intent> galleryLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             result -> {
@@ -209,7 +227,7 @@ public class DangSachFragment extends Fragment {
                         try {
                             final Uri imageUri = data.getData();
                             final InputStream imageStream;
-                            imageStream = getContext().getContentResolver().openInputStream(imageUri);
+                            imageStream = getContentResolver().openInputStream(imageUri);
                             final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
                             imageViewDangSach.setImageBitmap(selectedImage);
                             hasUploadImage = true;
@@ -274,7 +292,7 @@ public class DangSachFragment extends Fragment {
         sachService.createSach(sach).enqueue(new Callback<Sach>() {
             @Override
             public void onResponse(Call<Sach> call, Response<Sach> response) {
-                startActivity(new Intent(getContext(), MenuActivity.class));
+                startActivity(new Intent(DangSachActivity.this, MenuActivity.class));
             }
 
             @Override

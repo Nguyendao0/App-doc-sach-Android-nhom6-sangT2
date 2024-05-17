@@ -62,6 +62,10 @@
         <activity
             android:name=".view.GioiThieuSach.BookDetailActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".view.dangtruyen.DangSachActivity"
+            android:exported="false" />
         <activity
             android:name=".view.Menu.MenuActivity"
             android:exported="false" /> <!-- <activity -->

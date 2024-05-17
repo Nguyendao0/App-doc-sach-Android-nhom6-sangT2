@@ -32,9 +32,6 @@
         <activity
             android:name=".view.DanhsachchuongActivity"
             android:exported="false" />
-        <activity
-            android:name=".view.dangtruyen.DangSachActivity"
-            android:exported="false" />
 
         <service
             android:name=".FCM.MyFireBaseMessagingService"

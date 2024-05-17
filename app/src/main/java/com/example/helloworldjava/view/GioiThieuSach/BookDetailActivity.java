@@ -71,11 +71,13 @@ public class BookDetailActivity extends AppCompatActivity {
                 TextView tv_TenTruyen = findViewById(R.id.tv_TenTruyen);
                 TextView tv_moTa = findViewById(R.id.tv_mo_ta_sach);
                 TextView tv_theLoai = findViewById(R.id.tv_Theloai);
+                TextView tv_nxb = findViewById(R.id.tv_TenTacGia);
 
                 // Fill data
                 Picasso.get().load(sach.getImg()).into(iv_TrangBia);
                 tv_TenTruyen.setText(sach.getTenSach());
                 tv_moTa.setText(sach.getMota());
+                tv_nxb.setText(sach.getNhaXuatBan());
                 tv_theLoai.setText("");
                 if (sach.getListTheLoai() != null) {
                     sach.getListTheLoai().forEach(theLoaiSach -> {

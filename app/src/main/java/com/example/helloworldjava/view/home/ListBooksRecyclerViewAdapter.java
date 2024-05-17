@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,7 +32,7 @@ public class ListBooksRecyclerViewAdapter extends RecyclerView.Adapter<ListBooks
     @Override
     @NonNull
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.list_books_item, parent, false);
+        View view = mInflater.inflate(R.layout.list_books_item_home, parent, false);
         return new ViewHolder(view);
     }
 
@@ -39,7 +40,11 @@ public class ListBooksRecyclerViewAdapter extends RecyclerView.Adapter<ListBooks
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Sach sach = mData.get(position);
-        Picasso.get().load(sach.getImg()).into(holder.imageViewBookItem);
+        Picasso.get().load(sach.getImg()).into(holder.imageViewBookHome);
+        String tenSach = sach.getTenSach();
+        if(tenSach != null){
+            holder.tvcontent.setText(tenSach);
+        }
     }
 
     // total number of cells
@@ -51,11 +56,12 @@ public class ListBooksRecyclerViewAdapter extends RecyclerView.Adapter<ListBooks
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        ImageView imageViewBookItem;
-
+        TextView tvcontent, tvdatecreate;
+        ImageView imageViewBookHome;
         ViewHolder(View itemView) {
             super(itemView);
-            imageViewBookItem = itemView.findViewById(R.id.imageViewBookItem);
+            tvcontent = itemView.findViewById(R.id.booktextbook);
+            imageViewBookHome = itemView.findViewById(R.id.imageViewBookHome);
             itemView.setOnClickListener(this);
         }
 

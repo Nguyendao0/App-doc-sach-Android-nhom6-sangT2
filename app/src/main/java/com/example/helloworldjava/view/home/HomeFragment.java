@@ -23,11 +23,6 @@ import com.example.helloworldjava.view.user.UserActivity;
 import com.google.firebase.auth.FirebaseUser;
 import com.example.helloworldjava.view.GioiThieuSach.BookDetailActivity;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -40,7 +35,7 @@ import retrofit2.Response;
 
 public class HomeFragment extends Fragment implements ListBooksHomeRecyclerViewAdapter.ItemClickListener {
     private ListBooksHomeRecyclerViewAdapter listYourLibraryAdapter;
-    private ListBooksHomeRecyclerViewAdapter listTrendingBookAdapter;
+    private ListBooksHomeRecyclerViewAdapter listNewBookAdapter;
     private SachService sachService;
     private FirebaseAuthManager firebaseAuthManager;
     @Override
@@ -60,7 +55,7 @@ public class HomeFragment extends Fragment implements ListBooksHomeRecyclerViewA
         sachService = ServiceBuilder.buildService(SachService.class);
 
         ImageView iconMoreYourLibrary = (ImageView) view.findViewById(R.id.ic_more_your_library);
-//        ImageView iconMoreNewBooks = (ImageView) view.findViewById(R.id.ic_more_new_books);
+        ImageView iconMoreNewBooks = (ImageView) view.findViewById(R.id.ic_more_list_books);
 //        ImageView iconMoreTrendingBooks = (ImageView) view.findViewById(R.id.ic_more_trending_books);
 
         ImageView imgUser = view.findViewById(R.id.img_user);
@@ -86,7 +81,7 @@ public class HomeFragment extends Fragment implements ListBooksHomeRecyclerViewA
         List<ImageView> listMoreBooks = new ArrayList<>();
 
         listMoreBooks.add(iconMoreYourLibrary);
-//        listMoreBooks.add(iconMoreNewBooks);
+        listMoreBooks.add(iconMoreNewBooks);
 //        listMoreBooks.add(iconMoreTrendingBooks);
 
         for (ImageView imageView : listMoreBooks) {
@@ -97,11 +92,12 @@ public class HomeFragment extends Fragment implements ListBooksHomeRecyclerViewA
                     Intent intent = new Intent(requireActivity(), ListBooksActity.class);
 
                     if (imageView.getId() == R.id.ic_more_your_library) {
+                        titleListBooks = "THƯ VIỆN CỦA BẠN";
+                    }
+                    else if (imageView.getId() == R.id.ic_more_list_books) {
                         titleListBooks = "KHO SÁCH";
                     }
-//                    else if (imageView.getId() == R.id.ic_more_new_books) {
-//                        titleListBooks = "MỚI";
-//                    } else if(imageView.getId() == R.id.ic_more_new_books) {
+//                    else if(imageView.getId() == R.id.ic_more_new_books) {
 //                        titleListBooks = "PHỔ BIỂN";
 //                    }
 
@@ -133,21 +129,37 @@ public class HomeFragment extends Fragment implements ListBooksHomeRecyclerViewA
 
         // Find recycleView
         RecyclerView listYourLibraryRV = view.findViewById(R.id.list_your_library);
-//        RecyclerView listNewBooksRV = view.findViewById(R.id.list_new_books);
+        RecyclerView listNewBooksRV = view.findViewById(R.id.list_books);
 //        RecyclerView listBooksTrendingRV = view.findViewById(R.id.list_books_trending);
 //        RecyclerView listBooksCategoryRV = view.findViewById(R.id.list_books_category);
 
         // data to populate the RecyclerView with
         String idNguoiDung = firebaseAuthManager.getCurrentUser().getUid();
+        sachService.getListSachYourLibrary(idNguoiDung).enqueue(new Callback<List<Sach>>() {
+            @Override
+            public void onResponse(Call<List<Sach>> call, Response<List<Sach>> response) {
+                List<Sach> listYourLibrarySach = response.body();
+                listYourLibraryRV.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
+                listYourLibraryAdapter = new ListBooksHomeRecyclerViewAdapter( requireContext(), listYourLibrarySach,  R.layout.list_books_item_home);
+                listYourLibraryAdapter.setClickListener(HomeFragment.this::onItemClick);
+                listYourLibraryRV.setAdapter(listYourLibraryAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<Sach>> call, Throwable throwable) {
+
+            }
+        });
+
+
         sachService.getListSachs().enqueue(new Callback<List<Sach>>() {
             @Override
             public void onResponse(Call<List<Sach>> call, Response<List<Sach>> response) {
                 List<Sach> listYourLibrarySach = response.body();
-                System.out.println(listYourLibrarySach.size());
-                listYourLibraryRV.setLayoutManager(new GridLayoutManager(requireContext(), 3));
-                listYourLibraryAdapter = new ListBooksHomeRecyclerViewAdapter( requireContext(), listYourLibrarySach,  R.layout.list_books_item_home);
-                listYourLibraryAdapter.setClickListener(HomeFragment.this::onItemClick);
-                listYourLibraryRV.setAdapter(listYourLibraryAdapter);
+                listNewBooksRV.setLayoutManager(new GridLayoutManager(getContext(), 3));
+                listNewBookAdapter = new ListBooksHomeRecyclerViewAdapter( requireContext(), listYourLibrarySach,  R.layout.list_books_item_home);
+                listNewBookAdapter.setClickListener(HomeFragment.this::onItemClick);
+                listNewBooksRV.setAdapter(listNewBookAdapter);
             }
 
             @Override

@@ -12,7 +12,7 @@ import com.example.helloworldjava.NotificationContractInterface.Notification;
 import com.example.helloworldjava.view.Library.LibraryFragment;
 import com.example.helloworldjava.view.Search.SearchFragment;
 import com.example.helloworldjava.view.Thongbao.NoitificationFragment;
-import com.example.helloworldjava.view.dangtruyen.DangTruyenFragment;
+import com.example.helloworldjava.view.dangtruyen.DangSachFragment;
 import com.example.helloworldjava.view.home.HomeFragment;
 
 public class ViewPagerAdapter extends FragmentStateAdapter {
@@ -63,7 +63,7 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
             case 2:
                 return (Fragment) libraryFragment;
             case 3:
-                return  new DangTruyenFragment();
+                return  new DangSachFragment();
             case 4:
                 return (Fragment) noitificationFragment;
             default:

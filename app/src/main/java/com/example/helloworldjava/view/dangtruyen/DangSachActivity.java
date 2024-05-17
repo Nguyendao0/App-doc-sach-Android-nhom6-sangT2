@@ -51,6 +51,7 @@ public class DangSachActivity extends AppCompatActivity {
     private ImageView editImageDangSach;
     private FirebaseAuthManager firebaseAuthManager;
     private String defaultImage = "https://upload.wikimedia.org/wikipedia/vi/b/b7/Doraemon1.jpg";
+    private boolean hasUploadImage = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,11 +66,6 @@ public class DangSachActivity extends AppCompatActivity {
         Picasso.get().load(defaultImage).into(imageViewDangSach);
 
         firebaseAuthManager = new FirebaseAuthManager(this);
-
-        // Set up the toolbar
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         editImageDangSach.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,6 +100,7 @@ public class DangSachActivity extends AppCompatActivity {
                             imageStream = getContentResolver().openInputStream(imageUri);
                             final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
                             imageViewDangSach.setImageBitmap(selectedImage);
+                            hasUploadImage = true;
                         } catch (FileNotFoundException e) {
                             throw new RuntimeException(e);
                         }

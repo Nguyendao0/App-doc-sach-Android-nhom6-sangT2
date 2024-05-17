@@ -151,12 +151,12 @@
                 <TextView
                     android:id="@+id/tvSelectTheLoai"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_centerInParent="true"
                     android:background="@android:drawable/editbox_background"
                     android:drawableRight="@android:drawable/arrow_down_float"
                     android:drawablePadding="16dp"
-                    android:hint="Select Language"
+                    android:hint="Chọn thể loại"
                     android:padding="12dp" />
 
 
@@ -168,7 +168,7 @@
                         android:id="@+id/btnXacNhanDangSach"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Đăng sách"
+                        android:text="Thêm sách"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />

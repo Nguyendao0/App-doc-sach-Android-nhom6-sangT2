@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--    <item-->
+    <!--        android:id="@+id/action_search"-->
+    <!--        android:icon="@drawable/search"-->
+    <!--        android:title="Search"-->
+    <!--        app:showAsAction="ifRoom" />-->
+    <!--    <item-->
+    <!--        android:id="@+id/action_bookmark"-->
+    <!--        android:icon="@drawable/bookmark"-->
+    <!--        android:title="Bookmark"-->
+    <!--        app:showAsAction="ifRoom"/>-->
+    <!--    <item-->
+    <!--        android:id="@+id/action_size"-->
+    <!--        android:icon="@drawable/size"-->
+    <!--        android:title="Size"-->
+    <!--        app:showAsAction="ifRoom"/>-->
     <item
-        android:id="@+id/action_search"
-        android:icon="@drawable/search"
-        android:title="Search"
-        app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/action_bookmark"
-        android:icon="@drawable/bookmark"
-        android:title="Bookmark"
+        android:id="@+id/action_sua_chuong"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:title="Sửa"
         app:showAsAction="ifRoom"/>
+
     <item
-        android:id="@+id/action_size"
-        android:icon="@drawable/size"
-        android:title="Size"
+        android:id="@+id/action_xoa_chuong"
+        android:icon="@android:drawable/ic_menu_delete"
+        android:title="Xóa"
         app:showAsAction="ifRoom"/>
 </menu>

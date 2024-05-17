@@ -30,13 +30,13 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        ImageView iconMoreYourLibrary = findViewById(R.id.ic_more_your_library);
+//        ImageView iconMoreYourLibrary = findViewById(R.id.ic_more_your_library);
 //        ImageView iconMoreNewBooks = findViewById(R.id.ic_more_new_books);
 //        ImageView iconMoreTrendingBooks = findViewById(R.id.ic_more_trending_books);
 
         List<ImageView> listMoreBooks = new ArrayList<>();
 
-        listMoreBooks.add(iconMoreYourLibrary);
+//        listMoreBooks.add(iconMoreYourLibrary);
 //        listMoreBooks.add(iconMoreNewBooks);
 //        listMoreBooks.add(iconMoreTrendingBooks);
         Log.w("Api Start","-----------------------");
@@ -47,9 +47,9 @@ public class HomeActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     String titleListBooks = "";
-                    if (imageView.getId() == R.id.ic_more_your_library) {
-                        titleListBooks = "THƯ VIỆN CỦA BẠN";
-                    }
+//                    if (imageView.getId() == R.id.ic_more_your_library) {
+//                        titleListBooks = "THƯ VIỆN CỦA BẠN";
+//                    }
 
                     Intent intent = new Intent(HomeActivity.this, ListBooksActity.class);
                     intent.putExtra("titleListBooks", titleListBooks);

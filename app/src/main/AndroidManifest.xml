@@ -124,6 +124,11 @@
             android:label="Comment"
             android:parentActivityName=".view.ReadBookActivity" />
 
+        <activity
+            android:name=".view.dangtruyen.DangChuongActivity"
+            android:exported="true"
+            android:label="Thông tin cá nhân"/>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

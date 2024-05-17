@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_them_chuong"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="Thêm chương"
+        app:showAsAction="ifRoom" />
+    />
+
+    <item
+        android:id="@+id/action_xoa_chuong"
+        android:icon="@android:drawable/ic_menu_delete"
+        android:title="Xóa chương"
+        app:showAsAction="ifRoom"/>
+</menu>

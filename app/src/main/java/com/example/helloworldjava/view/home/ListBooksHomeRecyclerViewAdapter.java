@@ -86,12 +86,12 @@ public class ListBooksHomeRecyclerViewAdapter extends RecyclerView.Adapter<ListB
         }
     }
     // convenience method for getting data at click position
-    Sach getItem(int id) {
+    public Sach getItem(int id) {
         return mData.get(id);
     }
 
     // allows clicks events to be caught
-    void setClickListener(ListBooksHomeRecyclerViewAdapter.ItemClickListener itemClickListener) {
+    public void setClickListener(ListBooksHomeRecyclerViewAdapter.ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;
 
     }

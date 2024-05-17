@@ -79,6 +79,7 @@ public class DangSachActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("THÊM SÁCH MỚI");
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -292,7 +293,10 @@ public class DangSachActivity extends AppCompatActivity {
         sachService.createSach(sach).enqueue(new Callback<Sach>() {
             @Override
             public void onResponse(Call<Sach> call, Response<Sach> response) {
-                startActivity(new Intent(DangSachActivity.this, MenuActivity.class));
+                Sach newSach = response.body();
+                Intent intentGoToDangChuong = new Intent(getApplicationContext(), DangChuongActivity.class);
+                intentGoToDangChuong.putExtra("idSach", newSach.getId());
+                startActivity(intentGoToDangChuong);
             }
 
             @Override

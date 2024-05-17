@@ -125,7 +125,7 @@ public class DangSachFragment extends Fragment {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
                 // set title
-                builder.setTitle("Select Language");
+                builder.setTitle("Chọn thể loại");
 
                 // set dialog non cancelable
                 builder.setCancelable(false);

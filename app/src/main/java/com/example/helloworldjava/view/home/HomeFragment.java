@@ -140,7 +140,7 @@ public class HomeFragment extends Fragment implements ListBooksHomeRecyclerViewA
             public void onResponse(Call<List<Sach>> call, Response<List<Sach>> response) {
                 List<Sach> listYourLibrarySach = response.body();
                 listYourLibraryRV.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
-                listYourLibraryAdapter = new ListBooksHomeRecyclerViewAdapter( requireContext(), listYourLibrarySach,  R.layout.list_books_item_home);
+                listYourLibraryAdapter = new ListBooksHomeRecyclerViewAdapter( requireContext(), listYourLibrarySach,  R.layout.list_books_item_home, "ListYourLibrary");
                 listYourLibraryAdapter.setClickListener(HomeFragment.this::onItemClick);
                 listYourLibraryRV.setAdapter(listYourLibraryAdapter);
             }
@@ -157,7 +157,7 @@ public class HomeFragment extends Fragment implements ListBooksHomeRecyclerViewA
             public void onResponse(Call<List<Sach>> call, Response<List<Sach>> response) {
                 List<Sach> listYourLibrarySach = response.body();
                 listNewBooksRV.setLayoutManager(new GridLayoutManager(getContext(), 3));
-                listNewBookAdapter = new ListBooksHomeRecyclerViewAdapter( requireContext(), listYourLibrarySach,  R.layout.list_books_item_home);
+                listNewBookAdapter = new ListBooksHomeRecyclerViewAdapter( requireContext(), listYourLibrarySach,  R.layout.list_books_item_home, "ListBook");
                 listNewBookAdapter.setClickListener(HomeFragment.this::onItemClick);
                 listNewBooksRV.setAdapter(listNewBookAdapter);
             }
@@ -219,7 +219,7 @@ public class HomeFragment extends Fragment implements ListBooksHomeRecyclerViewA
 //    }
 
     @Override
-    public void onItemClick(View view, int position) {
+    public void onItemClick(View view, int position, String name) {
         Sach sach = listYourLibraryAdapter.getItem(position);
         Intent goToBookDetailIntent = new Intent(getContext(), BookDetailActivity.class);
         goToBookDetailIntent.putExtra("idSach", sach.getId());

@@ -65,6 +65,7 @@ public class FirebaseAuthManager {
     }
 
     public void loginSuccess() {
+        initNotificationID();
         context.startActivity(new Intent(context, MenuActivity.class));
     }
 

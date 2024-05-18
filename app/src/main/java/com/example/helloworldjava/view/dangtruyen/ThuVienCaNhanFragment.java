@@ -19,7 +19,9 @@ import com.example.helloworldjava.services.SachService;
 import com.example.helloworldjava.services.ServiceBuilder;
 import com.example.helloworldjava.view.GioiThieuSach.BookDetailActivity;
 import com.example.helloworldjava.view.home.HomeFragment;
+import com.example.helloworldjava.view.home.ListBooksActity;
 import com.example.helloworldjava.view.home.ListBooksHomeRecyclerViewAdapter;
+import com.example.helloworldjava.view.home.ListBooksRecyclerViewAdapter;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.List;
@@ -38,6 +40,18 @@ public class ThuVienCaNhanFragment extends Fragment implements ListBooksHomeRecy
     private TextView tvTongSoSachTrongThuVien;
 
     @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            loadListThuVienCuaBan();
+        }
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadListThuVienCuaBan();
+    }
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -54,7 +68,32 @@ public class ThuVienCaNhanFragment extends Fragment implements ListBooksHomeRecy
             }
         });
 
+
         // data to populate the RecyclerView with
+        loadListThuVienCuaBan();
+//        String idNguoiDung = firebaseAuthManager.getCurrentUser().getUid();
+//        sachService.getListSachYourLibrary(idNguoiDung).enqueue(new Callback<List<Sach>>() {
+//            @Override
+//            public void onResponse(Call<List<Sach>> call, Response<List<Sach>> response) {
+//                List<Sach> listYourLibrarySach = response.body();
+//                listYourLibraryRV.setLayoutManager(new GridLayoutManager(requireContext(), 3));
+//                listYourLibraryAdapter = new ListBooksHomeRecyclerViewAdapter( requireContext(), listYourLibrarySach,  R.layout.list_books_item_home, "ListYourLibrary");
+//                listYourLibraryAdapter.setClickListener(ThuVienCaNhanFragment.this);
+//                listYourLibraryRV.setAdapter(listYourLibraryAdapter);
+//                tvTongSoSachTrongThuVien.setText(String.valueOf(listYourLibrarySach.size()));
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<Sach>> call, Throwable throwable) {
+//                throwable.printStackTrace();
+//            }
+//        });
+
+
+        return view;
+    }
+
+    public void loadListThuVienCuaBan() {
         String idNguoiDung = firebaseAuthManager.getCurrentUser().getUid();
         sachService.getListSachYourLibrary(idNguoiDung).enqueue(new Callback<List<Sach>>() {
             @Override
@@ -72,9 +111,6 @@ public class ThuVienCaNhanFragment extends Fragment implements ListBooksHomeRecy
                 throwable.printStackTrace();
             }
         });
-
-
-        return view;
     }
 
     public void findView(View view) {

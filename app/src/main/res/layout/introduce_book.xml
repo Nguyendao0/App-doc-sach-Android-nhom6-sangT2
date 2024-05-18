@@ -31,13 +31,13 @@
             app:layout_constraintStart_toEndOf="@+id/btnBack"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
-            android:id="@+id/btnMenu"
+        <ImageView
+            android:id="@+id/btnOpenQRDiaglog"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:background="@android:color/transparent"
             android:padding="8dp"
-            android:src="@drawable/ic_menu_ngang"
+            android:src="@drawable/qr_code_2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

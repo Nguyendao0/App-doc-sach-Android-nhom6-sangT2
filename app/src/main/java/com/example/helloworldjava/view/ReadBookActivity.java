@@ -46,6 +46,7 @@ public class ReadBookActivity extends AppCompatActivity implements PopupMenu.OnM
     private Menu menu;
     private FirebaseAuthManager firebaseAuthManager = new FirebaseAuthManager(this);
     private Chuong chuong;
+    private ImageView imageViewDanhDauChuong;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,8 @@ public class ReadBookActivity extends AppCompatActivity implements PopupMenu.OnM
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Đọc truyện");
+
+        imageViewDanhDauChuong = findViewById(R.id.imageViewDanhDauChuong);
 
 //        TextView tv_TenChuong = findViewById(R.id.tv_tenchuong);
         TextView tv_noidungChuong = findViewById(R.id.tv_noidungChuong);
@@ -95,7 +98,7 @@ public class ReadBookActivity extends AppCompatActivity implements PopupMenu.OnM
         });
 
         ChuongService chuongService = ServiceBuilder.buildService(ChuongService.class);
-        Call<Chuong> request = chuongService.getChuong(idChuong);
+        Call<Chuong> request = chuongService.getChuong(idChuong, firebaseAuthManager.getCurrentUser().getUid());
 
         request.enqueue(new Callback<Chuong>() {
             @Override
@@ -106,6 +109,9 @@ public class ReadBookActivity extends AppCompatActivity implements PopupMenu.OnM
                 tv_noidungChuong.setText(chuong.getNoiDung());
 //                tv_sochuong.setText("Chương " + chuong.getSoThuTu() + ":");
                 getSupportActionBar().setTitle("CHƯƠNG " + chuong.getSoThuTu() + ": " + chuong.getTenChuong().toUpperCase());
+                if (chuong.isDanhDau()) {
+                    imageViewDanhDauChuong.setImageResource(R.drawable.star);
+                }
             }
 
             @Override
@@ -142,6 +148,10 @@ public class ReadBookActivity extends AppCompatActivity implements PopupMenu.OnM
             public void onClick(View v) {
                 showSettingDialog(tv_noidungChuong);
             }
+        });
+
+        imageViewDanhDauChuong.setOnClickListener(v -> {
+            danhDauChuong();
         });
 
     }
@@ -353,5 +363,42 @@ public class ReadBookActivity extends AppCompatActivity implements PopupMenu.OnM
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         return false;
+    }
+
+    public void danhDauChuong() {
+        // Call API danhDauChuong
+        String idNguoiDung = firebaseAuthManager.getCurrentUser().getUid();
+        String idChuong = chuong.getId();
+        if (chuong.isDanhDau()) {
+            ChuongService chuongService = ServiceBuilder.buildService(ChuongService.class);
+            chuongService.boDanhDauChuong(idChuong, idNguoiDung).enqueue(new Callback<Void>() {
+                @Override
+                public void onResponse(Call<Void> call, Response<Void> response) {
+                    Toast.makeText(ReadBookActivity.this, "Bỏ đánh dấu chương thành công", Toast.LENGTH_SHORT).show();
+                    imageViewDanhDauChuong.setImageResource(R.drawable.star_outline);
+                }
+
+                @Override
+                public void onFailure(Call<Void> call, Throwable t) {
+                    t.printStackTrace();
+                }
+            });
+            return;
+        }
+
+
+        ChuongService chuongService = ServiceBuilder.buildService(ChuongService.class);
+        chuongService.danhDauChuong(idChuong, idNguoiDung).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                Toast.makeText(ReadBookActivity.this, "Đánh dấu chương thành công", Toast.LENGTH_SHORT).show();
+                imageViewDanhDauChuong.setImageResource(R.drawable.star);
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
     }
 }

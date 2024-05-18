@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -35,6 +36,11 @@ public class DanhSachChuongAdapter extends RecyclerView.Adapter<DanhSachChuongAd
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Chuong chuong = mData.get(position);
         holder.myTextView.setText("Chương " + chuong.getSoThuTu() + ": " + chuong.getTenChuong());
+        if (chuong.isDanhDau()) {
+            holder.imageViewIsDanhDau.setVisibility(View.VISIBLE);
+        } else {
+            holder.imageViewIsDanhDau.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override
@@ -44,10 +50,12 @@ public class DanhSachChuongAdapter extends RecyclerView.Adapter<DanhSachChuongAd
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView myTextView;
+        ImageView imageViewIsDanhDau;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             myTextView = itemView.findViewById(R.id.list_chuong_id);
+            imageViewIsDanhDau = itemView.findViewById(R.id.imageViewIsDanhDau);
             itemView.setOnClickListener(this);
         }
 

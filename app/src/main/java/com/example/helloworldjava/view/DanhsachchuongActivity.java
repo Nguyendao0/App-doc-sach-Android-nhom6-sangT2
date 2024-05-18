@@ -75,7 +75,7 @@ public class DanhsachchuongActivity extends AppCompatActivity implements DanhSac
         });
 
         ChuongService chuongService = ServiceBuilder.buildService(ChuongService.class);
-        Call<List<Chuong>> request = chuongService.getListChuong(idSach);
+        Call<List<Chuong>> request = chuongService.getListChuong(idSach, firebaseAuthManager.getCurrentUser().getUid());
 
         request.enqueue(new Callback<List<Chuong>>() {
             @Override

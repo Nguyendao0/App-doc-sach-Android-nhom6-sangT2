@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.helloworldjava.FCM.TopicFCM;
 import com.example.helloworldjava.R;
 import com.example.helloworldjava.model.Realm.ThuVienSachCaNhan;
 import com.example.helloworldjava.model.entity.Sach;
@@ -131,6 +132,8 @@ public class BookDetailActivity extends AppCompatActivity {
                 yeu_thich.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        TopicFCM topicFCM = new TopicFCM();
+                        topicFCM.subcribeTopic(sach.getId());
                         Call<ThuVienSachCaNhan> request1 = userService.addSachToThuVienSach(firebaseAuthManager.getCurrentUser().getUid(), sach.getId());
 
                         request1.enqueue(new Callback<ThuVienSachCaNhan>() {

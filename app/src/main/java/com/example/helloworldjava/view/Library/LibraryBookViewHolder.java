@@ -15,11 +15,8 @@ import com.bumptech.glide.Glide;
 import com.example.helloworldjava.LibraryContractInterface.LibraryContract;
 import com.example.helloworldjava.R;
 
-import com.example.helloworldjava.model.Realm.Chuong;
 import com.example.helloworldjava.model.Realm.Sach;
 import com.example.helloworldjava.view.GioiThieuSach.BookDetailActivity;
-
-import java.io.File;
 
 public class LibraryBookViewHolder  extends RecyclerView.ViewHolder{
     private TextView textViewTitleBook;
@@ -30,9 +27,9 @@ public class LibraryBookViewHolder  extends RecyclerView.ViewHolder{
     private boolean selected = false;
     private boolean isDowloaded = false;
     private Sach sach;
-    private LibraryContract.Presenter itemPresenter;
+    private LibraryContract.Presenter presenter;
 
-    public LibraryBookViewHolder(@NonNull View itemView ,LibraryContract.Presenter itemPresenter, boolean isDowloaded) {
+    public LibraryBookViewHolder(@NonNull View itemView , LibraryContract.Presenter presenter, boolean isDowloaded) {
         super(itemView);
 
         textViewTitleBook = itemView.findViewById(R.id.titleBook);
@@ -42,7 +39,7 @@ public class LibraryBookViewHolder  extends RecyclerView.ViewHolder{
         progressBar = itemView.findViewById(R.id.progress);
 
         this.isDowloaded = isDowloaded;
-        this.itemPresenter = itemPresenter;
+        this.presenter = presenter;
 
         setOnclickDowload();
         setImgButtonDowload();
@@ -79,16 +76,16 @@ public class LibraryBookViewHolder  extends RecyclerView.ViewHolder{
         imgButtonDowload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isDowloaded == false && itemPresenter.isCurreadingVisible() == true)
+                if(isDowloaded == false && presenter.isCurreadingVisible() == true)
                 {
-                    itemPresenter.addBookOffline(sach);
+                    presenter.addBookOffline(sach);
                 }
-                else if(isDowloaded == true && itemPresenter.isCurreadingVisible() == true){
-                    String filePath = sach.getImg();
-
-                    File file = new File(filePath);
-                    file.delete();
-                    itemPresenter.removeBookOffline(sach.getID());
+                else if(isDowloaded == true && presenter.isCurreadingVisible() == true){
+//                    String filePath = sach.getImg();
+//
+//                    File file = new File(filePath);
+//                    file.delete();
+                    presenter.removeBookOffline(sach.getID());
                 }
             }
         });
@@ -100,24 +97,24 @@ public class LibraryBookViewHolder  extends RecyclerView.ViewHolder{
         this.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (itemPresenter.checkEditVisible()) {
-                    if (selected == true  && itemPresenter.getIsADD() == true && isDowloaded == false) {
+                if (presenter.checkEditVisible()) {
+                    if (selected == true  && presenter.getIsADD() == true && isDowloaded == false) {
                         removeOutOfListBookView();
-                    } else if(selected == false  && itemPresenter.getIsADD() == true && isDowloaded == false){
+                    } else if(selected == false  && presenter.getIsADD() == true && isDowloaded == false){
                         addToListBookView();
                     }
 
-                    if(selected == true  && itemPresenter.getIsADD() == false && isDowloaded == true)
+                    if(selected == true  && presenter.getIsADD() == false && isDowloaded == true)
                     {
                         removeOutOfListBookView();
                     }
-                    else if(selected == false  && itemPresenter.getIsADD() == false && isDowloaded == true)
+                    else if(selected == false  && presenter.getIsADD() == false && isDowloaded == true)
                     {
                         addToListBookView();
                     }
-                    else if (selected == true  && itemPresenter.getIsADD() == false) {
+                    else if (selected == true  && presenter.getIsADD() == false) {
                         removeOutOfListBookView();
-                    } else if(selected == false  && itemPresenter.getIsADD() == false ){
+                    } else if(selected == false  && presenter.getIsADD() == false ){
                         addToListBookView();
                     }
                 }
@@ -136,15 +133,15 @@ public class LibraryBookViewHolder  extends RecyclerView.ViewHolder{
     }
     private void addToListBookView()
     {
-        itemPresenter.selectBookItem(LibraryBookViewHolder.this, false);
+        presenter.selectBookItem(LibraryBookViewHolder.this, false);
         this.selected = true;
-        itemPresenter.addToListBookView(LibraryBookViewHolder.this);
+        presenter.addToListBookView(LibraryBookViewHolder.this);
     }
 
     private void removeOutOfListBookView(){
-        itemPresenter.selectBookItem(LibraryBookViewHolder.this, true);
+        presenter.selectBookItem(LibraryBookViewHolder.this, true);
         this.selected = false;
-        itemPresenter.removeOutOfListBookView(LibraryBookViewHolder.this);
+        presenter.removeOutOfListBookView(LibraryBookViewHolder.this);
     }
 
     public void bindData(Sach sach)

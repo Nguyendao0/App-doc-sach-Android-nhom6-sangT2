@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 
+import com.example.helloworldjava.FCM.TopicFCM;
 import com.example.helloworldjava.LibraryContractInterface.CurrentReadingContract;
 import com.example.helloworldjava.model.Realm.Chuong;
 import com.example.helloworldjava.model.Realm.DAO.Interface_Success_Fail;
@@ -273,6 +274,8 @@ public class CurrentReadingPresenter implements CurrentReadingContract.Presenter
         AtomicInteger completedRequests = new AtomicInteger(0);
 
         for (String id : sachIDs) {
+            TopicFCM topicFCM = new TopicFCM();
+            topicFCM.unsubcribeTopic(id);
             Call<Void> request = userService.deleteSach(firebaseAuthManager.getCurrentUser().getUid(), id);
             request.enqueue(new Callback<Void>() {
                 @Override

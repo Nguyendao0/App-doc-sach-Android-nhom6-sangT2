@@ -30,7 +30,7 @@ public class NotificationFCMPresenter implements Notification.Presenter {
         String idNguoiDung = firebaseAuthManager.getCurrentUser().getUid();
 
         NotificationService notificationService = ServiceBuilder.buildService(NotificationService.class);
-        Call<List<NotificationFCM>> request = notificationService.findAllNotificationById("zed");
+        Call<List<NotificationFCM>> request = notificationService.findAllNotificationById(idNguoiDung);
         request.enqueue(new Callback<List<NotificationFCM>>() {
             @Override
             public void onResponse(Call<List<NotificationFCM>> call, Response<List<NotificationFCM>> response) {

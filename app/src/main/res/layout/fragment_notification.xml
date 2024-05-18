@@ -11,7 +11,7 @@
         android:id="@+id/constraintLayout11"
         android:layout_width="0dp"
         android:layout_height="83dp"
-        app:layout_constraintBottom_toTopOf="@+id/txtClear"
+        app:layout_constraintBottom_toTopOf="@+id/txSub"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,12 +26,13 @@
             android:textSize="24dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/txSub"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/txtClear"
+            android:id="@+id/txSub"
             android:layout_width="98dp"
             android:layout_height="53dp"
             android:gravity="center_horizontal|center_vertical"
@@ -46,7 +47,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RVNotification"
+        android:id="@+id/RVNotificationt"
         android:layout_width="0dp"
         android:layout_height="652dp"
         android:minHeight="100dp"

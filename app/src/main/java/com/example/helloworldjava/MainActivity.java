@@ -75,32 +75,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void sendNotificationToFB()
-    {
-        NotificationService notificationService = ServiceBuilder.buildService(NotificationService.class);
-        NotificationFCM notificationFCM = new NotificationFCM();
-        notificationFCM.setContent("yasuasdaso");
-        notificationFCM.setTitle("milkitsadasa");
 
-        Call<String> request = notificationService.createNotificationById("zed", notificationFCM);
 
-        request.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                if (response.isSuccessful()) {
-                    String thongbao = response.body();
-                    System.out.println("response: " + thongbao);
-                } else {
-                    System.out.println("Response failed: " + response.code());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<String> call, Throwable throwable) {
-                System.out.println("Error: " + throwable.getMessage());
-            }
-        });
-    }
 
 
 

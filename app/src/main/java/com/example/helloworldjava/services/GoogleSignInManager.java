@@ -3,13 +3,10 @@ package com.example.helloworldjava.services;
 import static androidx.activity.result.ActivityResultCallerKt.registerForActivityResult;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
@@ -95,7 +92,7 @@ public class GoogleSignInManager {
             Toast.makeText(activity, account.getEmail(), Toast.LENGTH_SHORT).show();
 
             // Thực hiện đăng nhập bằng firebaseAuth
-            FirebaseAuth firebaseAuth = firebaseAuthManager.getFirebaseAuth();
+            FirebaseAuth firebaseAuth = firebaseAuthManager.getFirebaseAuthManager();
             firebaseAuth.signInWithCredential(firebaseCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
@@ -155,4 +152,5 @@ public class GoogleSignInManager {
             Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
         }
     }
+
 }

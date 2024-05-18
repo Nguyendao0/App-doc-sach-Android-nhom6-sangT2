@@ -11,18 +11,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
 
 import com.example.helloworldjava.view.GioiThieuSach.BookDetailActivity;
 import com.example.helloworldjava.services.NotificationService;
 import com.example.helloworldjava.services.ServiceBuilder;
-import com.example.helloworldjava.services.TokenService;
-import com.example.helloworldjava.view.GioiThieuSach.BookDetailActivity;
 import com.example.helloworldjava.FCM.NotificationFCM;
 import com.example.helloworldjava.view.home.HomeActivity;
 import com.example.helloworldjava.view.Menu.MenuActivity;
@@ -35,9 +31,6 @@ import com.example.helloworldjava.view.SpeechBookTest.SpeechActivity;
 import com.example.helloworldjava.view.login.WebViewGoogleActivity;
 import com.example.helloworldjava.view.user.UserActivity;
 import com.example.helloworldjava.view.welcome.WelcomePagerAdapter;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.List;
 

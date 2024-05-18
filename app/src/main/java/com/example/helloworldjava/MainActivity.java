@@ -233,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button btnQRGen = findViewById(R.id.btnQRGen);
+        Button btnQRGen = findViewById(R.id.btnQRGen2);
         btnQRGen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

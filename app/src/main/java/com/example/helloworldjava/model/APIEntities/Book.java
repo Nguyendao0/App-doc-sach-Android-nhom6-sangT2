@@ -1,6 +1,4 @@
-package com.example.helloworldjava.APIEntities;
-
-import com.example.helloworldjava.model.entity.TheLoaiSach;
+package com.example.helloworldjava.model.APIEntities;
 
 import java.io.Serializable;
 import java.util.List;

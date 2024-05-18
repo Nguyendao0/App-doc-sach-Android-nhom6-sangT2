@@ -1,4 +1,4 @@
-package com.example.helloworldjava.APIModel;
+package com.example.helloworldjava.model.APIModel;
 
 public class NgayThem {
     private long _seconds;

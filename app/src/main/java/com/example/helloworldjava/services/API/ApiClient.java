@@ -1,4 +1,4 @@
-package com.example.helloworldjava.API;
+package com.example.helloworldjava.services.API;
 import com.example.helloworldjava.Config.ConfigData;
 
 import okhttp3.OkHttpClient;

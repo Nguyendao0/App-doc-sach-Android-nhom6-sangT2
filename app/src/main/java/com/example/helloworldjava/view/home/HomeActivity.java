@@ -1,8 +1,6 @@
 package com.example.helloworldjava.view.home;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,17 +8,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.example.helloworldjava.API.BookService;
-import com.example.helloworldjava.APIResponeModel.ApiResponseSachModle;
+import com.example.helloworldjava.model.APIResponeModel.ApiResponseSachModle;
 import com.example.helloworldjava.R;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class HomeActivity extends AppCompatActivity {
     ListBooksHomeRecyclerViewAdapter adapter;

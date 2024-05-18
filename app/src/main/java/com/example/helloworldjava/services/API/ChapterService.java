@@ -1,6 +1,6 @@
-package com.example.helloworldjava.API;
+package com.example.helloworldjava.services.API;
 
-import com.example.helloworldjava.APIEntities.ModelString;
+import com.example.helloworldjava.model.APIEntities.ModelString;
 import com.example.helloworldjava.Config.ConfigData;
 import com.example.helloworldjava.model.entity.Sach;
 import com.google.gson.Gson;
@@ -14,7 +14,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
-import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
 

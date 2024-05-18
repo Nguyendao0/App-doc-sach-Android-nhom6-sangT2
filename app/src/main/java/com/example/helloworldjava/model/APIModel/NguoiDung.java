@@ -1,8 +1,6 @@
-package com.example.helloworldjava.APIEntities;
+package com.example.helloworldjava.model.APIModel;
 
-import java.io.Serializable;
-
-public class Account  implements Serializable {
+public class NguoiDung {
 
     private String ID;
     private String TenNguoiDung;
@@ -11,7 +9,8 @@ public class Account  implements Serializable {
     private String PhanCap;
     private String Avatar;
     private String googleId;
-    public Account() {
+
+    public NguoiDung() {
     }
 
     public String getID() {

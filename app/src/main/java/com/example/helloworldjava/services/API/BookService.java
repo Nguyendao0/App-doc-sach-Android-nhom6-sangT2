@@ -1,17 +1,14 @@
-package com.example.helloworldjava.API;
+package com.example.helloworldjava.services.API;
 
-import com.example.helloworldjava.APIEntities.Book;
-import com.example.helloworldjava.APIEntities.Chaper;
-import com.example.helloworldjava.APIResponeModel.ApiResponseSachModle;
+import com.example.helloworldjava.model.APIEntities.Book;
+import com.example.helloworldjava.model.APIEntities.Chaper;
+import com.example.helloworldjava.model.APIResponeModel.ApiResponseSachModle;
 import com.example.helloworldjava.Config.ConfigData;
-import com.example.helloworldjava.model.entity.Sach;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.util.List;
 
-import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

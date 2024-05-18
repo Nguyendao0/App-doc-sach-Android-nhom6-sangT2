@@ -1,20 +1,16 @@
-package com.example.helloworldjava.API;
-import com.example.helloworldjava.APIEntities.ModelString;
+package com.example.helloworldjava.services.API;
+import com.example.helloworldjava.model.APIEntities.ModelString;
 import com.example.helloworldjava.Config.ConfigData;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.util.List;
-import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
-import retrofit2.http.Multipart;
 import retrofit2.http.POST;
-import retrofit2.http.Part;
-import retrofit2.http.Query;
+
 public interface AccountService {
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
     AccountService api = new Retrofit.Builder()

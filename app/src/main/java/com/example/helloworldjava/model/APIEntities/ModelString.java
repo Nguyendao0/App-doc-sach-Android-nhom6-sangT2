@@ -1,4 +1,4 @@
-package com.example.helloworldjava.APIEntities;
+package com.example.helloworldjava.model.APIEntities;
 import java.io.Serializable;
 public class ModelString implements Serializable {
     String data1;

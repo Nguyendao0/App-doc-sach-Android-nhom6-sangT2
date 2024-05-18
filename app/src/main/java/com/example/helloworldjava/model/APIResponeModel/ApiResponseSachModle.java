@@ -1,8 +1,7 @@
-package com.example.helloworldjava.APIResponeModel;
+package com.example.helloworldjava.model.APIResponeModel;
 
-import com.example.helloworldjava.APIModel.NgayThem;
-import com.example.helloworldjava.APIModel.Sach;
-import com.example.helloworldjava.APIModel.TheLoai;
+import com.example.helloworldjava.model.APIModel.NgayThem;
+import com.example.helloworldjava.model.APIModel.Sach;
 
 public class ApiResponseSachModle {
     private String id;

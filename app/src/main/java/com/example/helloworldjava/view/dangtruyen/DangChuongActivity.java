@@ -13,6 +13,7 @@ import com.example.helloworldjava.R;
 import com.example.helloworldjava.model.Realm.Chuong;
 import com.example.helloworldjava.model.entity.Sach;
 import com.example.helloworldjava.services.ChuongService;
+import com.example.helloworldjava.services.FirebaseAuthManager;
 import com.example.helloworldjava.services.SachService;
 import com.example.helloworldjava.services.ServiceBuilder;
 import com.example.helloworldjava.view.GioiThieuSach.BookDetailActivity;
@@ -34,7 +35,7 @@ public class DangChuongActivity extends AppCompatActivity {
     private TextInputEditText txtNoiDungChuong;
     private MaterialButton btnXacNhanThemChuong;
     private boolean isEdit = false;
-
+    private FirebaseAuthManager firebaseAuthManager = new FirebaseAuthManager(this);
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +51,7 @@ public class DangChuongActivity extends AppCompatActivity {
             btnXacNhanThemChuong.setText("Cập nhật chương");
             getSupportActionBar().setTitle("Sửa nội dung chương");
             // get chuong data from server
-            chuongService.getChuong(getIntent().getStringExtra("idChuong")).enqueue(new Callback<Chuong>() {
+            chuongService.getChuong(getIntent().getStringExtra("idChuong"), firebaseAuthManager.getCurrentUser().getUid()).enqueue(new Callback<Chuong>() {
                 @Override
                 public void onResponse(Call<Chuong> call, Response<Chuong> response) {
                     if (response.isSuccessful()) {

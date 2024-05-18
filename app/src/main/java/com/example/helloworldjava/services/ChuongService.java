@@ -11,16 +11,17 @@ import retrofit2.http.GET;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ChuongService {
     @GET("`chuong`")
     Call<List<Chuong>> getListChuongg();
 
     @GET("chuong/{id}")
-    Call<Chuong> getChuong(@Path("id")String id);
+    Call<Chuong> getChuong(@Path("id")String id, @Query("idNguoiDung") String idNguoiDung);
 
     @GET("sach/{idSach}/chuong")
-    Call<List<Chuong>> getListChuong(@Path("idSach") String idSach);
+    Call<List<Chuong>> getListChuong(@Path("idSach") String idSach, @Query("idNguoiDung") String idNguoiDung);
 
     @POST("sach/{idSach}/chuong")
     Call<Chuong> addChuong(
@@ -39,4 +40,15 @@ public interface ChuongService {
             @Path("idChuong") String idChuong
     );
 
+    @POST("chuong/{idChuong}/danh-dau/{idNguoiDung}")
+    Call<Void> danhDauChuong(
+            @Path("idChuong") String idChuong,
+            @Path("idNguoiDung") String idNguoiDung
+    );
+
+    @DELETE("chuong/{idChuong}/danh-dau/{idNguoiDung}")
+    Call<Void> boDanhDauChuong(
+            @Path("idChuong") String idChuong,
+            @Path("idNguoiDung") String idNguoiDung
+    );
 }

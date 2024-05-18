@@ -64,9 +64,9 @@ public class CurrentReadingPresenter implements CurrentReadingContract.Presenter
                 for (ThuVienSachCaNhan tvs: thuVienSachCaNhanList)
                 {
                     listSach.add(tvs.getSach());
-                    setChuongForSach(tvs.getSach(), "wVtlXbDWiRmCmETfixgd");
+                    setChuongForSach(tvs.getSach(), idNguoiDung);
                 }
-                CurrentReadingView.setSachList((ArrayList<Sach>) listSach);
+                CurrentReadingView.setSachList(listSach);
             }
 
             @Override

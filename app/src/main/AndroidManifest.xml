@@ -93,9 +93,7 @@
         <activity
             android:name=".view.home.HomeActivity"
             android:exported="false" />
-        <activity
-            android:name=".TESTROOM"
-            android:exported="false" /> <!-- <activity -->
+     <!-- <activity -->
         <!-- android:name=".Library.View.QuestionActivity" -->
         <!-- android:exported="false" /> -->
         <!-- <activity -->

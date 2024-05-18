@@ -18,15 +18,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.helloworldjava.FCM.BroadCastFCM;
-import com.example.helloworldjava.FCM.MyFireBaseMessagingService;
 import com.example.helloworldjava.NotificationContractInterface.Notification;
 import com.example.helloworldjava.R;
 import com.example.helloworldjava.FCM.NotificationFCM;
 import com.example.helloworldjava.presenter.Thongbao.NotificationFCMPresenter;
 import com.example.helloworldjava.services.NotificationService;
 import com.example.helloworldjava.services.ServiceBuilder;
-import com.google.firebase.messaging.FirebaseMessagingService;
 
 import java.util.ArrayList;
 
@@ -85,7 +82,7 @@ public class NoitificationFragment extends Fragment implements Notification.View
         itemTouchHelper.attachToRecyclerView(recyclerView);
 
         presenter = new NotificationFCMPresenter(this);
-        presenter.getListNotifications();
+        presenter.getListNotifications(getContext());
 
         return view;
     }
@@ -94,8 +91,7 @@ public class NoitificationFragment extends Fragment implements Notification.View
         @Override
         public void onReceive(Context context, Intent intent) {
             if(ACTION_FCM_NOTIFICATION.equals(intent.getAction())){
-                System.out.println("GỬI NHẬN RỒI");
-                presenter.getListNotifications();
+                presenter.getListNotifications(getContext());
             }
         }
     };
@@ -123,7 +119,7 @@ public class NoitificationFragment extends Fragment implements Notification.View
     public void initData() {
         if(presenter !=null)
         {
-            presenter.getListNotifications();
+            presenter.getListNotifications(getContext());
         }
     }
 
@@ -146,8 +142,7 @@ public class NoitificationFragment extends Fragment implements Notification.View
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
-                    presenter.getListNotifications();
-                    showToast("Bạn đã xóa hết thông báo");
+                    presenter.getListNotifications(getContext());
                 } else {
                     System.out.println("Response failed: " + response.code());
                 }

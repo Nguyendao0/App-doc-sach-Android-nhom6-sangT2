@@ -16,6 +16,7 @@ import androidx.core.app.NotificationManagerCompat;
 import com.example.helloworldjava.MainActivity;
 import com.example.helloworldjava.MyApplication;
 import com.example.helloworldjava.R;
+import com.example.helloworldjava.services.FirebaseAuthManager;
 import com.example.helloworldjava.services.NotificationService;
 import com.example.helloworldjava.services.ServiceBuilder;
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -29,7 +30,7 @@ import retrofit2.Response;
 
 public class MyFireBaseMessagingService extends FirebaseMessagingService {
 
-
+    private FirebaseAuthManager firebaseAuthManager;
     public static final String ACTION_FCM_NOTIFICATION = "com.example.app.ACTION_FCM_NOTIFICATION";
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
@@ -56,12 +57,15 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
 
     private void createNotification(String title, String content)
     {
+        firebaseAuthManager = new FirebaseAuthManager(this);
+        String idNguoiDung = firebaseAuthManager.getCurrentUser().getUid();
+
         NotificationService notificationService = ServiceBuilder.buildService(NotificationService.class);
         NotificationFCM notificationFCM = new NotificationFCM();
         notificationFCM.setContent(content);
         notificationFCM.setTitle(title);
 
-        Call<String> request = notificationService.createNotificationById("zed", notificationFCM);
+        Call<String> request = notificationService.createNotificationById(idNguoiDung, notificationFCM);
 
         request.enqueue(new Callback<String>() {
             @Override

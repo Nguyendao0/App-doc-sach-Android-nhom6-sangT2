@@ -1,5 +1,7 @@
 package com.example.helloworldjava.NotificationContractInterface;
 
+import android.content.Context;
+
 import com.example.helloworldjava.FCM.NotificationFCM;
 
 import java.util.ArrayList;
@@ -11,6 +13,6 @@ public interface Notification {
     }
 
     interface Presenter{
-        void getListNotifications();
+        void getListNotifications(Context context);
     }
 }

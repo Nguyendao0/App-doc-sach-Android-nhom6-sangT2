@@ -102,70 +102,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void sendNotificaction()
-    {
-        NotificationService notificationService = ServiceBuilder.buildService(NotificationService.class);
-        Call<String> request = notificationService.createIDNotification("zed");
 
-        request.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                if (response.isSuccessful()) {
-                    String thongbao = response.body();
-                    System.out.println("response: " + thongbao);
-                } else {
-                    System.out.println("Response failed: " + response.code());
-                }
-            }
 
-            @Override
-            public void onFailure(Call<String> call, Throwable throwable) {
-                System.out.println("Error: " + throwable.getMessage());
-            }
-        });
-    }
-
-    private void sendTokenToFCM() {
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", this.MODE_PRIVATE);
-        boolean isSettoken = sharedPreferences.getBoolean("isSettoken", false);
-
-        if (!isSettoken) {
-            FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
-                @Override
-                public void onComplete(@NonNull Task<String> task) {
-                    if (!task.isSuccessful()) {
-                        System.out.println("Fetching FCM registration token failed: " + task.getException());
-                        return;
-                    }
-
-                    String token = task.getResult();
-
-                    TokenService tokenService = ServiceBuilder.buildService(TokenService.class);
-                    Call<String> request = tokenService.createTokenById(token, "zed");
-
-                    request.enqueue(new Callback<String>() {
-                        @Override
-                        public void onResponse(Call<String> call, Response<String> response) {
-                            if (response.isSuccessful()) {
-                                String thongbao = response.body();
-                                SharedPreferences.Editor editor = sharedPreferences.edit();
-                                editor.putBoolean("isSettoken", true); // Lưu giá trị true khi token đã được thiết lập
-                                editor.apply();
-                                System.out.println("response: " + thongbao);
-                            } else {
-                                System.out.println("Response failed: " + response.code());
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<String> call, Throwable throwable) {
-                            System.out.println("Error: " + throwable.getMessage());
-                        }
-                    });
-                }
-            });
-        }
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -180,10 +118,7 @@ public class MainActivity extends AppCompatActivity {
 //        }
         // goToMenu();
 
-//        sendNotificaction();
-//        findAllNotification();
-        sendTokenToFCM();
-//        sendNotificationToFB();
+
 
         Button button_home = findViewById(R.id.button_home);
         button_home.setOnClickListener(new View.OnClickListener() {

@@ -1,6 +1,9 @@
 package com.example.helloworldjava.presenter.Thongbao;
 
+import android.content.Context;
+
 import com.example.helloworldjava.NotificationContractInterface.Notification;
+import com.example.helloworldjava.services.FirebaseAuthManager;
 import com.example.helloworldjava.services.NotificationService;
 import com.example.helloworldjava.services.ServiceBuilder;
 import com.example.helloworldjava.FCM.NotificationFCM;
@@ -15,14 +18,17 @@ import retrofit2.Response;
 public class NotificationFCMPresenter implements Notification.Presenter {
 
     private Notification.View view ;
-
+    private FirebaseAuthManager firebaseAuthManager;
     public NotificationFCMPresenter(Notification.View view) {
         this.view = view;
     }
 
 
     @Override
-    public void getListNotifications() {
+    public void getListNotifications(Context context) {
+        firebaseAuthManager = new FirebaseAuthManager(context);
+        String idNguoiDung = firebaseAuthManager.getCurrentUser().getUid();
+
         NotificationService notificationService = ServiceBuilder.buildService(NotificationService.class);
         Call<List<NotificationFCM>> request = notificationService.findAllNotificationById("zed");
         request.enqueue(new Callback<List<NotificationFCM>>() {

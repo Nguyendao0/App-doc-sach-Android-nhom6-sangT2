@@ -9,11 +9,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.helloworldjava.FCM.NotificationFCM;
 import com.example.helloworldjava.R;
 import com.example.helloworldjava.model.Realm.Chuong;
 import com.example.helloworldjava.model.entity.Sach;
 import com.example.helloworldjava.services.ChuongService;
 import com.example.helloworldjava.services.FirebaseAuthManager;
+import com.example.helloworldjava.services.NotificationService;
 import com.example.helloworldjava.services.SachService;
 import com.example.helloworldjava.services.ServiceBuilder;
 import com.example.helloworldjava.view.GioiThieuSach.BookDetailActivity;
@@ -134,6 +136,7 @@ public class DangChuongActivity extends AppCompatActivity {
             public void onResponse(Call<Chuong> call, Response<Chuong> response) {
                 if (response.isSuccessful()) {
                     // finish activity and go to detail book activity
+                    sendFCMToSingleTopic(sach.getTenSach(), "Có chương mới : "+ chuong.getTenChuong(), sach.getId());
                     Intent goToBookDetailIntent = new Intent(getApplicationContext(), BookDetailActivity.class);
                     goToBookDetailIntent.putExtra("idSach", sach.getId());
                     startActivity(goToBookDetailIntent);
@@ -161,6 +164,7 @@ public class DangChuongActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Chuong> call, Response<Chuong> response) {
                 if (response.isSuccessful()) {
+                    sendFCMToSingleTopic(sach.getTenSach(), "Cập nhật chương : "+ chuong.getTenChuong(), sach.getId());
                     // finish activity and go back
                     finish();
                 }
@@ -169,6 +173,29 @@ public class DangChuongActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Chuong> call, Throwable throwable) {
                 throwable.printStackTrace();
+            }
+        });
+    }
+
+
+    private void sendFCMToSingleTopic(String title, String content, String topic)
+    {
+        NotificationService notificationService = ServiceBuilder.buildService(NotificationService.class);
+        NotificationFCM notificationFCM = new NotificationFCM();
+        notificationFCM.setContent(content);
+        notificationFCM.setTitle(title);
+
+        Call<Void> request = notificationService.sendFCMToSingleTopic(topic, notificationFCM);
+
+        request.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable throwable) {
+                System.out.println("Error: " + throwable.getMessage());
             }
         });
     }

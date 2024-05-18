@@ -18,7 +18,6 @@ import com.example.helloworldjava.services.FirebaseAuthManager;
 import com.example.helloworldjava.services.SachService;
 import com.example.helloworldjava.services.ServiceBuilder;
 import com.example.helloworldjava.view.GioiThieuSach.BookDetailActivity;
-import com.example.helloworldjava.view.dangtruyen.DangSachActivity;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.List;
@@ -33,17 +32,13 @@ public class ListBooksActity extends AppCompatActivity implements ListBooksRecyc
     private SachService sachService = ServiceBuilder.buildService(SachService.class);
     private FirebaseAuthManager firebaseAuthManager;
     private MaterialButton btnDangSach;
+    private TextView tvTongSoSach;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_books);
 
         firebaseAuthManager = new FirebaseAuthManager(this);
-
-        String[] listArrangeBooks = getResources().getStringArray(R.array.listArrangeBooks);
-        ArrayAdapter<String> listArrangeBooksAdapter = new ArrayAdapter<>(this, R.layout.list_item, listArrangeBooks);
-        AutoCompleteTextView autoCompleteTextView = findViewById(R.id.listArrangeBookAutoCompleTextView);
-        autoCompleteTextView.setAdapter(listArrangeBooksAdapter);
 
         ImageView btnBackHome = findViewById(R.id.iconBackHome);
 
@@ -65,14 +60,16 @@ public class ListBooksActity extends AppCompatActivity implements ListBooksRecyc
 
             if (titleListBooks.equalsIgnoreCase("THƯ VIỆN CỦA BẠN"))
             {
-                btnDangSach.setVisibility(View.VISIBLE);
-                btnDangSach.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        startActivity(new Intent(ListBooksActity.this, DangSachActivity.class));
-                    }
-                });
+//                btnDangSach.setVisibility(View.VISIBLE);
+//                btnDangSach.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        startActivity(new Intent(ListBooksActity.this, DangSachActivity.class));
+//                    }
+//                });
                 loadListThuVienCuaBan();
+            } else {
+                loadKhoSach();
             }
 
         }
@@ -91,6 +88,30 @@ public class ListBooksActity extends AppCompatActivity implements ListBooksRecyc
                 adapter = new ListBooksRecyclerViewAdapter(ListBooksActity.this, listYourLibrarySach);
                 adapter.setClickListener(ListBooksActity.this);
                 recyclerView.setAdapter(adapter);
+                tvTongSoSach = findViewById(R.id.tv_tong_sach);
+                tvTongSoSach.setText("(" + listYourLibrarySach.size() + ")");
+            }
+
+            @Override
+            public void onFailure(Call<List<Sach>> call, Throwable throwable) {
+
+            }
+        });
+    }
+
+    public void loadKhoSach() {
+        String idNguoiDung = firebaseAuthManager.getCurrentUser().getUid();
+        sachService.getListSachs().enqueue(new Callback<List<Sach>>() {
+            @Override
+            public void onResponse(Call<List<Sach>> call, Response<List<Sach>> response) {
+                List<Sach> listYourLibrarySach = response.body();
+                RecyclerView recyclerView = findViewById(R.id.list_book);
+                recyclerView.setLayoutManager(new GridLayoutManager(ListBooksActity.this, numberOfColumns));
+                adapter = new ListBooksRecyclerViewAdapter(ListBooksActity.this, listYourLibrarySach);
+                adapter.setClickListener(ListBooksActity.this);
+                recyclerView.setAdapter(adapter);
+                tvTongSoSach = findViewById(R.id.tv_tong_sach);
+                tvTongSoSach.setText("(" + listYourLibrarySach.size() + ")");
             }
 
             @Override

@@ -12,6 +12,7 @@ public class Chuong extends RealmObject {
     private String NoiDung;
     private String TenChuong;
     private int soThuTu;
+    private boolean isDanhDau;
 
     public Chuong() {
     }
@@ -48,13 +49,21 @@ public class Chuong extends RealmObject {
         this.soThuTu = soThuTu;
     }
 
+    public boolean isDanhDau() {
+        return isDanhDau;
+    }
+
+    public void setDanhDau(boolean danhDau) {
+        isDanhDau = danhDau;
+    }
+
     @Override
     public String toString() {
         return "Chuong{" +
-                "ID=" + id +
+                "id='" + id + '\'' +
                 ", NoiDung='" + NoiDung + '\'' +
                 ", TenChuong='" + TenChuong + '\'' +
-                ", SoThuTu='" + soThuTu + '\'' +
+                ", soThuTu=" + soThuTu +
                 '}';
     }
 }

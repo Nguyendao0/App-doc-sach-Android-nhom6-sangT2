@@ -11,7 +11,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.helloworldjava.APIResponeModel.ApiResponseSachModle;
 import com.example.helloworldjava.R;
 import com.example.helloworldjava.model.entity.Sach;
 import com.squareup.picasso.Picasso;
@@ -24,12 +23,14 @@ public class ListBooksHomeRecyclerViewAdapter extends RecyclerView.Adapter<ListB
     private LayoutInflater mInflater;
     private ListBooksHomeRecyclerViewAdapter.ItemClickListener mClickListener;
     private int itemLayoutResId;
+    private String name;
 
     // data is passed into the constructor
-    public ListBooksHomeRecyclerViewAdapter(Context context, List<Sach> data, int itemLayoutResId) {
+    public ListBooksHomeRecyclerViewAdapter(Context context, List<Sach> data, int itemLayoutResId, String name) {
         this.mInflater = LayoutInflater.from(context);
         this.mData =  data;
         this.itemLayoutResId = itemLayoutResId;
+        this.name = name;
     }
 
     // inflates the cell layout from xml when needed
@@ -80,22 +81,22 @@ public class ListBooksHomeRecyclerViewAdapter extends RecyclerView.Adapter<ListB
 
         @Override
         public void onClick(View view) {
-            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
+            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition(), name);
         }
     }
     // convenience method for getting data at click position
-    Sach getItem(int id) {
+    public Sach getItem(int id) {
         return mData.get(id);
     }
 
     // allows clicks events to be caught
-    void setClickListener(ListBooksHomeRecyclerViewAdapter.ItemClickListener itemClickListener) {
+    public void setClickListener(ListBooksHomeRecyclerViewAdapter.ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;
 
     }
 
     // parent activity will implement this method to respond to click events
     public interface ItemClickListener {
-        void onItemClick(View view, int position);
+        void onItemClick(View view, int position, String name);
     }
 }

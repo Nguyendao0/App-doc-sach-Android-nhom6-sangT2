@@ -6,7 +6,11 @@
 
     <uses-feature android:name="android.hardware.microphone" />
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".MyApplication"
@@ -21,6 +25,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".FCM.Tutorial.ActivityNotification"
+            android:exported="false" />
+        <activity
             android:name=".HomePageDemoActivity"
             android:exported="false" />
         <activity
@@ -31,9 +38,6 @@
             android:exported="false" />
         <activity
             android:name=".view.DanhsachchuongActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.dangtruyen.DangSachActivity"
             android:exported="false" />
 
         <service
@@ -62,10 +66,11 @@
             android:name=".view.login.Account_Login"
             android:exported="false" />
         <activity
-            android:name=".view.Thongbao.NoitificationActivity"
-            android:exported="false" />
-        <activity
             android:name=".view.GioiThieuSach.BookDetailActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".view.dangtruyen.DangSachActivity"
             android:exported="false" />
         <activity
             android:name=".view.Menu.MenuActivity"
@@ -94,12 +99,7 @@
         <activity
             android:name=".view.home.HomeActivity"
             android:exported="false" />
-        <activity
-            android:name=".model.Realm.REALMActivity"
-            android:exported="false" />
-        <activity
-            android:name=".TESTROOM"
-            android:exported="false" /> <!-- <activity -->
+     <!-- <activity -->
         <!-- android:name=".Library.View.QuestionActivity" -->
         <!-- android:exported="false" /> -->
         <!-- <activity -->
@@ -128,9 +128,17 @@
             android:label="Comment"
             android:parentActivityName=".view.ReadBookActivity" />
 
+        <activity
+            android:name=".view.dangtruyen.DangChuongActivity"
+            android:exported="true"
+            android:label="Thông tin cá nhân"/>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/CHANNEL_ID" />
     </application>
 
 </manifest>

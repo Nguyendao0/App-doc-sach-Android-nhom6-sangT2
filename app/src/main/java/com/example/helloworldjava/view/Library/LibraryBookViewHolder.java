@@ -1,9 +1,10 @@
 package com.example.helloworldjava.view.Library;
 
-import android.net.Uri;
+import android.content.Intent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 ;
 
@@ -15,37 +16,50 @@ import com.example.helloworldjava.LibraryContractInterface.LibraryContract;
 import com.example.helloworldjava.R;
 
 import com.example.helloworldjava.model.Realm.Sach;
-
-import java.io.File;
+import com.example.helloworldjava.view.GioiThieuSach.BookDetailActivity;
 
 public class LibraryBookViewHolder  extends RecyclerView.ViewHolder{
     private TextView textViewTitleBook;
     private ImageView imageViewBook;
     private ImageView imageViewSelect;
     private ImageButton imgButtonDowload;
-
+    private ProgressBar progressBar;
     private boolean selected = false;
     private boolean isDowloaded = false;
     private Sach sach;
-    private LibraryContract.Presenter itemPresenter;
+    private LibraryContract.Presenter presenter;
 
-    public LibraryBookViewHolder(@NonNull View itemView ,LibraryContract.Presenter itemPresenter, boolean isDowloaded) {
+    public LibraryBookViewHolder(@NonNull View itemView , LibraryContract.Presenter presenter, boolean isDowloaded) {
         super(itemView);
 
         textViewTitleBook = itemView.findViewById(R.id.titleBook);
         imageViewBook = itemView.findViewById(R.id.imageBook);
         imageViewSelect = itemView.findViewById(R.id.imageViewSelect);
         imgButtonDowload = itemView.findViewById(R.id.imgButtonDowload);
+        progressBar = itemView.findViewById(R.id.progress);
 
         this.isDowloaded = isDowloaded;
-        this.itemPresenter = itemPresenter;
+        this.presenter = presenter;
 
         setOnclickDowload();
         setImgButtonDowload();
-        if(isDowloaded == false) {
-            setOnclickSelectItem();
-        }
+        setOnclickSelectItem();
 
+    }
+
+    private void setProgressBar()
+    {
+        if(sach.getChuong_Items() != null) {
+            int tongChuongDaDoc = 0;
+//            for (Chuong c : sach.getChuong_Items()) {
+//                if (c.isDanhDau() == true) {
+//                    tongChuongDaDoc++;
+//                }
+//            }
+            int tongChuong = this.sach.getChuong_Items().size();
+            int prog = (int) ((tongChuongDaDoc / (float) tongChuong) * 100);
+            progressBar.setProgress(prog);
+        }
     }
 
     private void setImgButtonDowload()
@@ -62,18 +76,16 @@ public class LibraryBookViewHolder  extends RecyclerView.ViewHolder{
         imgButtonDowload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isDowloaded == false && itemPresenter.isCurreadingVisible() == true)
+                if(isDowloaded == false && presenter.isCurreadingVisible() == true)
                 {
-                    String fileName = Uri.parse(sach.getImg()).getLastPathSegment();
-                    sach.setImg("/data/user/0/com.example.helloworldjava/files/"+fileName);
-                    itemPresenter.addBookOffline(sach);
+                    presenter.addBookOffline(sach);
                 }
-                else if(isDowloaded == true && itemPresenter.isCurreadingVisible() == true){
-                    String filePath = sach.getImg();
-
-                    File file = new File(filePath);
-                    file.delete();
-                    itemPresenter.removeBookOffline(sach.getID());
+                else if(isDowloaded == true && presenter.isCurreadingVisible() == true){
+//                    String filePath = sach.getImg();
+//
+//                    File file = new File(filePath);
+//                    file.delete();
+                    presenter.removeBookOffline(sach.getID());
                 }
             }
         });
@@ -85,21 +97,51 @@ public class LibraryBookViewHolder  extends RecyclerView.ViewHolder{
         this.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (itemPresenter.checkEditVisible()) {
-                    if (selected == true) {
-                        itemPresenter.selectBookItem(LibraryBookViewHolder.this, true);
-                        selected = false;
-                        itemPresenter.removeToListBookView(LibraryBookViewHolder.this);
-                    } else {
-                        itemPresenter.selectBookItem(LibraryBookViewHolder.this, false);
-                        selected = true;
-                        itemPresenter.addToListBookView(LibraryBookViewHolder.this);
-
+                if (presenter.checkEditVisible()) {
+                    if (selected == true  && presenter.getIsADD() == true && isDowloaded == false) {
+                        removeOutOfListBookView();
+                    } else if(selected == false  && presenter.getIsADD() == true && isDowloaded == false){
+                        addToListBookView();
                     }
-                } else {
+
+                    if(selected == true  && presenter.getIsADD() == false && isDowloaded == true)
+                    {
+                        removeOutOfListBookView();
+                    }
+                    else if(selected == false  && presenter.getIsADD() == false && isDowloaded == true)
+                    {
+                        addToListBookView();
+                    }
+                    else if (selected == true  && presenter.getIsADD() == false) {
+                        removeOutOfListBookView();
+                    } else if(selected == false  && presenter.getIsADD() == false ){
+                        addToListBookView();
+                    }
+                }
+                else {
+                    Intent intent = new Intent(view.getContext(), BookDetailActivity.class);
+                    intent.putExtra("idSach", sach.getID());
+                    view.getContext().startActivity(intent);
                 }
             }
         });
+    }
+
+    public boolean getIsDowloaded()
+    {
+        return isDowloaded;
+    }
+    private void addToListBookView()
+    {
+        presenter.selectBookItem(LibraryBookViewHolder.this, false);
+        this.selected = true;
+        presenter.addToListBookView(LibraryBookViewHolder.this);
+    }
+
+    private void removeOutOfListBookView(){
+        presenter.selectBookItem(LibraryBookViewHolder.this, true);
+        this.selected = false;
+        presenter.removeOutOfListBookView(LibraryBookViewHolder.this);
     }
 
     public void bindData(Sach sach)
@@ -109,6 +151,12 @@ public class LibraryBookViewHolder  extends RecyclerView.ViewHolder{
         Glide.with(this.itemView.getContext())
                 .load(sach.getImg())
                 .into(this.imageViewBook);
+        setProgressBar();
+    }
+
+    public Sach getSach()
+    {
+        return this.sach;
     }
 
     public void onClickItem(boolean selected)

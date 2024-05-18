@@ -2,6 +2,7 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/alex_brush</item>
+        <item>@font/annie_use_your_telescope</item>
         <item>@font/bad_script</item>
         <item>@font/carter_one</item>
     </array>

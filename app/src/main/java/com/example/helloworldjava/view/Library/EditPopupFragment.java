@@ -20,9 +20,7 @@ public class EditPopupFragment extends Fragment implements EditPopupContract.Vie
     private LibraryContract.Presenter libraryPresenter;
     private ImageButton btnClose;
     private ImageButton btnAdd;
-    private ImageButton btnStorage;
     private ImageButton btnDelete;
-    private ImageButton btnPlus;
     private TextView txtLibraryPopupMenu;
     @Nullable
     @Override
@@ -36,7 +34,7 @@ public class EditPopupFragment extends Fragment implements EditPopupContract.Vie
 
         txtLibraryPopupMenu = view.findViewById(R.id.textViewLibraryPopupMenu);
 
-        presenter.setItemsPopup(libraryPresenter.getTabSelected());
+
 
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,22 +43,52 @@ public class EditPopupFragment extends Fragment implements EditPopupContract.Vie
                 libraryPresenter.clearSelectBookView();
             }
         });
+
+
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if(libraryPresenter.getIsADD() == true)
+        {
+            updatePopup(1);
+        }
+        else {
+            updatePopup(2);
+        }
     }
 
     @Override
     public void updatePopup(int position) {
         switch (position){
             case 1:
-                btnAdd.setVisibility(View.INVISIBLE);
+                btnAdd.setVisibility(View.VISIBLE);
+                btnDelete.setVisibility(View.INVISIBLE);
+                txtLibraryPopupMenu.setText("Chọn các truyện lưu ngoại tuyến");
+                btnAdd.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        libraryPresenter.replaceFragmentInNavigationContainer("NavigationFragment");
+                        libraryPresenter.addBooksOffline();
+                        libraryPresenter.clearSelectBookView();
+                    }
+                });
                 break;
             case 2:
                 btnAdd.setVisibility(View.INVISIBLE);
-                btnStorage.setVisibility(View.INVISIBLE);
-                btnDelete.setVisibility(View.INVISIBLE);
-                btnPlus.setVisibility(View.VISIBLE);
-
-                txtLibraryPopupMenu.setText("Sửa các danh sách đọc");
+                btnDelete.setVisibility(View.VISIBLE);
+                txtLibraryPopupMenu.setText("Xóa các truyện đã lưu");
+                btnDelete.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        libraryPresenter.replaceFragmentInNavigationContainer("NavigationFragment");
+                        libraryPresenter.removeBooksOffline();
+                        libraryPresenter.removeBooksLibrary();
+                        libraryPresenter.clearSelectBookView();
+                    }
+                });
                 break;
             default:
                 break;

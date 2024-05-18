@@ -42,11 +42,15 @@ public class NavigationFragment extends Fragment implements NavigationContract.V
                     public boolean onMenuItemClick(MenuItem menuItem) {
                         int itemId = menuItem.getItemId();
                         if (itemId == R.id.editMenuItem) {
+                            libraryPresenter.setIsADD(true);
                             libraryPresenter.replaceFragmentInNavigationContainer("EditPopupFragment");
+
                             return true;
                         } else if (itemId == R.id.viewModeMenuItem) {
-                            return true;
-                        } else if (itemId == R.id.titleMenuItem) {
+                            libraryPresenter.setIsADD(false);
+                            libraryPresenter.replaceFragmentInNavigationContainer("EditPopupFragment");
+
+
                             return true;
                         }
                         return false;
@@ -70,22 +74,8 @@ public class NavigationFragment extends Fragment implements NavigationContract.V
     public void showLibraryMenu(int position) {
         switch (position) {
             case 0:
-                popupMenu.getMenu().findItem(R.id.readRecentlyMenuItem).setVisible(true);
-                popupMenu.getMenu().findItem(R.id.updateRecentlyMenuItem).setVisible(true);
                 popupMenu.getMenu().findItem(R.id.addRecentlyMenuItem).setVisible(true);
-                popupMenu.getMenu().findItem(R.id.sortMenuItem).setVisible(true);
                 popupMenu.getMenu().findItem(R.id.viewModeMenuItem).setVisible(true);
-                break;
-            case 1:
-                popupMenu.getMenu().findItem(R.id.readRecentlyMenuItem).setVisible(false);
-                popupMenu.getMenu().findItem(R.id.updateRecentlyMenuItem).setVisible(false);
-                popupMenu.getMenu().findItem(R.id.addRecentlyMenuItem).setVisible(false);
-                popupMenu.getMenu().findItem(R.id.sortMenuItem).setVisible(true);
-                popupMenu.getMenu().findItem(R.id.viewModeMenuItem).setVisible(true);
-                break;
-            case 2:
-                popupMenu.getMenu().findItem(R.id.sortMenuItem).setVisible(false);
-                popupMenu.getMenu().findItem(R.id.viewModeMenuItem).setVisible(false);
                 break;
             default:
                 break;

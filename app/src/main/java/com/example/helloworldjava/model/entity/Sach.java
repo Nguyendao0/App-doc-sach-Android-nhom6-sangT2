@@ -14,6 +14,16 @@ public class Sach {
     private int tongSoLuotDoc;
     private String idNguoiDung;
 
+    private List<String> ListTheLoaiId;
+
+    public List<String> getListTheLoaiId() {
+        return ListTheLoaiId;
+    }
+
+    public void setListTheLoaiId(List<String> listTheLoaiId) {
+        ListTheLoaiId = listTheLoaiId;
+    }
+
     public Sach() {
     }
 

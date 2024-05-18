@@ -35,12 +35,12 @@ public class ChuongDAO {
         });
     }
 
-    public void delete(int IDChuong, Interface_Success_Fail callback) {
+    public void delete(String IDChuong, Interface_Success_Fail callback) {
 
         realm.executeTransactionAsync(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
-                Chuong chuong = realm.where(Chuong.class).equalTo("ID", IDChuong).findFirst();
+                Chuong chuong = realm.where(Chuong.class).equalTo("id", IDChuong).findFirst();
                 if (chuong != null) {
                     chuong.deleteFromRealm();
                 }
@@ -78,8 +78,8 @@ public class ChuongDAO {
         });
     }
 
-    public Chuong getById(int IDChuong) {
-        return realm.where(Chuong.class).equalTo("ID", IDChuong).findFirst();
+    public Chuong getById(String IDChuong) {
+        return realm.where(Chuong.class).equalTo("id", IDChuong).findFirst();
     }
 
     public List<Chuong> getAll() {

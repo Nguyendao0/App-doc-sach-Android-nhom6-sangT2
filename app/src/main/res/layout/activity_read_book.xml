@@ -8,6 +8,17 @@
     android:textAlignment="center"
     tools:context=".view.ReadBookActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -15,7 +26,7 @@
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnDSChuong"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout32"
         app:layout_constraintVertical_bias="0.0">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -28,7 +39,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="24dp"
-                android:fontFamily="serif"
+                android:fontFamily="@font/alex_brush"
                 android:text=" Nội dung chương."
                 android:textColor="#000000"
                 android:textSize="25sp"
@@ -36,38 +47,62 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/btnDSChuong"
+        android:id="@+id/constraintLayout32"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFDBE9"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-        <TextView
-            android:id="@+id/tvchuong"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="Chương"
-            android:textColor="#000000"
-            android:textSize="30sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <!--        <TextView-->
+        <!--            android:id="@+id/tvchuong"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginStart="20dp"-->
+        <!--            android:text="Chương"-->
+        <!--            android:textColor="#000000"-->
+        <!--            android:textSize="30sp"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent" />-->
 
-        <TextView
-            android:id="@+id/tv_tenchuong"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tên Chương"
-            android:textColor="@color/black"
-            android:textSize="30sp"
-            app:layout_constraintStart_toEndOf="@+id/tvchuong"
-            app:layout_constraintTop_toTopOf="parent" />
+        <!--        <TextView-->
+        <!--            android:id="@+id/tv_tenchuong"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="Tên Chương"-->
+        <!--            android:textColor="@color/black"-->
+        <!--            android:textSize="30sp"-->
+        <!--            app:layout_constraintStart_toEndOf="@+id/tvchuong"-->
+        <!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+        <ImageView
+            android:id="@+id/img_seting"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/ic_setting"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/imageViewDanhDauChuong"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/img_seting"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/star_outline" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -78,10 +113,10 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/btnDSChuong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Page 2"
+            android:text="Mục lục"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="20sp"

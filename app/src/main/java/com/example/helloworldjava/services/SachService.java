@@ -17,7 +17,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface SachService {
-    @GET("`sach`")
+    @GET("sach")
     Call<List<Sach>> getListSachs();
 
     @GET("sach")
@@ -46,7 +46,7 @@ public interface SachService {
     );
 
     @GET("sach/{sachId}/chuong")
-    Call<Chuong> getChuongList(
+    Call<List<Chuong>> getChuongList(
             @Path("sachId") String sachId,
             @Query("idNguoiDung") String idNguoiDung
     );

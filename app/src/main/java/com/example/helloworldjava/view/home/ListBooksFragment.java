@@ -41,11 +41,6 @@ public class ListBooksFragment extends Fragment {
             txtListBooks.setText(titleListBooks);
         }
 
-        String[] listArrangeBooks = getResources().getStringArray(R.array.listArrangeBooks);
-        ArrayAdapter<String> listArrangeBooksAdapter = new ArrayAdapter<>(requireContext(), R.layout.list_item, listArrangeBooks);
-        AutoCompleteTextView autoCompleteTextView = view.findViewById(R.id.listArrangeBookAutoCompleTextView);
-        autoCompleteTextView.setAdapter(listArrangeBooksAdapter);
-
         ImageView btnBackHome = view.findViewById(R.id.iconBackHome);
         btnBackHome.setOnClickListener(new View.OnClickListener() {
             @Override

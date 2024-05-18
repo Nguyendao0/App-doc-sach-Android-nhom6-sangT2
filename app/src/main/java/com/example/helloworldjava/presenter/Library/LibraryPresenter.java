@@ -17,6 +17,7 @@ public class LibraryPresenter implements LibraryContract.Presenter {
     private EditPopupContract.View editPopupFragment;
     private ArrayList<LibraryBookViewHolder> selectedBookViewHolders;
 
+    private boolean isAdd;
     public LibraryPresenter() {
         selectedBookViewHolders = new ArrayList<>();
     }
@@ -50,10 +51,7 @@ public class LibraryPresenter implements LibraryContract.Presenter {
         }
     }
 
-    @Override
-    public int getTabSelected() {
-        return libraryView.tabSelected();
-    }
+
 
     @Override
     public void addToListBookView(LibraryBookViewHolder libraryBookViewHolder) {
@@ -61,7 +59,7 @@ public class LibraryPresenter implements LibraryContract.Presenter {
     }
 
     @Override
-    public void removeToListBookView(LibraryBookViewHolder libraryBookViewHolder) {
+    public void removeOutOfListBookView(LibraryBookViewHolder libraryBookViewHolder) {
         this.selectedBookViewHolders.remove(libraryBookViewHolder);
     }
 
@@ -85,6 +83,11 @@ public class LibraryPresenter implements LibraryContract.Presenter {
     }
 
     @Override
+    public ArrayList<LibraryBookViewHolder> getSelectBookItem() {
+        return this.selectedBookViewHolders;
+    }
+
+    @Override
     public void addBookOffline(Sach sach) {
         libraryView.addBookOffline(sach);
     }
@@ -95,8 +98,33 @@ public class LibraryPresenter implements LibraryContract.Presenter {
     }
 
     @Override
+    public void addBooksOffline() {
+        libraryView.addBooksOffline();
+    }
+
+    @Override
+    public void removeBooksOffline() {
+        libraryView.removeBooksOffline();
+    }
+
+    @Override
+    public void removeBooksLibrary() {
+        libraryView.removeBooksLibrary();
+    }
+
+    @Override
     public boolean isCurreadingVisible() {
         return libraryView.isCurreadingVisible();
+    }
+
+    @Override
+    public void setIsADD(boolean isAdd) {
+        this.isAdd = isAdd;
+    }
+
+    @Override
+    public boolean getIsADD() {
+        return this.isAdd;
     }
 
 

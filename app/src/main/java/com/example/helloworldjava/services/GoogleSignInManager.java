@@ -37,7 +37,7 @@ import retrofit2.Response;
 
 public class GoogleSignInManager {
     private final String TAG = "GoogleSignIn";
-    private final String CLIENT_ID = "676414236432-948ra2kvhao4r0rcpghh1da4sjfk28sn.apps.googleusercontent.com";
+    private final String CLIENT_ID = "676414236432-8eiikdlnquc32kem27kulsuc42a7o2mb.apps.googleusercontent.com";
     private AppCompatActivity activity;
     private GoogleSignInClient googleSignInClient;
     private ActivityResultLauncher<Intent> signInLauncher;

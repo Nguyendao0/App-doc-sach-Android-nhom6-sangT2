@@ -125,7 +125,7 @@ public class NoitificationFragment extends Fragment implements Notification.View
         itemTouchHelper.attachToRecyclerView(recyclerView);
 
         presenter = new NotificationFCMPresenter(this);
-        presenter.getListNotifications();
+        presenter.getListNotifications(getContext());
 
         return view;
     }
@@ -134,7 +134,7 @@ public class NoitificationFragment extends Fragment implements Notification.View
         @Override
         public void onReceive(Context context, Intent intent) {
             if(ACTION_FCM_NOTIFICATION.equals(intent.getAction())){
-                presenter.getListNotifications();
+                presenter.getListNotifications(getContext());
             }
         }
     };
@@ -185,7 +185,7 @@ public class NoitificationFragment extends Fragment implements Notification.View
     public void initData() {
         if(presenter !=null)
         {
-            presenter.getListNotifications();
+            presenter.getListNotifications(getContext());
         }
     }
 
@@ -208,7 +208,7 @@ public class NoitificationFragment extends Fragment implements Notification.View
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
-                    presenter.getListNotifications();
+                    presenter.getListNotifications(getContext());
                 } else {
                     System.out.println("Response failed: " + response.code());
                 }

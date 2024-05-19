@@ -129,18 +129,28 @@
             android:text="DS Chương"
             android:textAlignment="center" />
 
-        <ImageView
-            android:id="@+id/btn_setting"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/settings_24px" />
-
-        <TextView
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_marginLeft="5sp"
-            android:layout_marginTop="5sp"
-            android:text="Cài Đặt" />
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/btn_female"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/baseline_female_24" />
+            <ImageView
+                android:id="@+id/btn_male"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/baseline_male_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="5sp"
+                android:layout_marginTop="5sp"
+                android:text="Cài Đặt" />
+        </RelativeLayout>
+
 
     </LinearLayout>
 

@@ -7,7 +7,11 @@
     <uses-feature android:name="android.hardware.microphone" />
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+    </queries>
     <application
         android:name=".MyApplication"
         android:allowBackup="true"

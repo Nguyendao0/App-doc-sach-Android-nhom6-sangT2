@@ -1,18 +1,21 @@
 package com.example.helloworldjava.view.Search;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,6 +24,9 @@ import androidx.fragment.app.Fragment;
 
 import com.example.helloworldjava.R;
 import com.example.helloworldjava.model.entity.Sach;
+import com.example.helloworldjava.services.SachService;
+import com.example.helloworldjava.services.ServiceBuilder;
+import com.example.helloworldjava.view.GioiThieuSach.BookDetailActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -29,6 +35,10 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SearchFragment extends Fragment {
     GridView gridView;
@@ -57,7 +67,7 @@ public class SearchFragment extends Fragment {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){
                     for(QueryDocumentSnapshot doc : task.getResult()){
-                        listSach.add(new Sach((String)doc.getData().get("TenSach"),(String) doc.getData().get("NhaXuatBan"),(String) doc.getData().get("img")));
+                        listSach.add(new Sach((String)doc.getData().get("TenSach"),(String) doc.getData().get("NhaXuatBan"),(String) doc.getData().get("img"),(String) doc.getData().get("id")));
                     }
                 }else Toast.makeText(getContext(), "No such Document", Toast.LENGTH_SHORT).show();
             }
@@ -81,6 +91,17 @@ public class SearchFragment extends Fragment {
             public void afterTextChanged(Editable editable) {
                 String s = String.valueOf(editText.getText());
                 adapterListBook.sortBook(s);
+            }
+        });
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getContext(),"Load Sách Thành Công !",Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(view.getContext(), BookDetailActivity.class);
+                intent.putExtra("IdSach",listSach.get(position).getId());
+                startActivity(intent);
+
             }
         });
         return view;

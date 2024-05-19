@@ -7,9 +7,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.helloworldjava.R;
 import com.example.helloworldjava.model.entity.Sach;
 import com.example.helloworldjava.services.SachService;
@@ -32,19 +34,26 @@ public class BookDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.introduce_book);
 
+        Intent intent = getIntent();
+        String idsach = intent.getStringExtra("IdSach");
+
         SachService sachService = ServiceBuilder.buildService(SachService.class);
-        Call<Sach> request = sachService.getSach("NVGGDJnCQhAkLe5UscYu");
+        Call<Sach> request = sachService.getSach(idsach);
 
         request.enqueue(new Callback<Sach>() {
             @Override
             public void onResponse(@NonNull Call<Sach> call, @NonNull Response<Sach> response) {
                 Sach sach = response.body();
-                System.out.println(sach);
+                //System.out.println(sach);
+                ImageView imgSach = findViewById(R.id.img_TrangBia);
                 TextView tv_TenTruyen = findViewById(R.id.tv_TenTruyen);
                 TextView tv_moTa = findViewById(R.id.tv_mo_ta_sach);
                 TextView tv_theLoai = findViewById(R.id.tv_Theloai);
+                TextView tv_nhaxuatban = findViewById(R.id.tv_TenTacGia);
                 tv_TenTruyen.setText(sach.getTenSach());
                 tv_moTa.setText(sach.getMota());
+                tv_nhaxuatban.setText(sach.getNhaXuatBan());
+                Glide.with(BookDetailActivity.this).load(sach.getImg()).into(imgSach);
                 tv_theLoai.setText("");
                 sach.getListTheLoai().forEach(theLoaiSach -> {
                     tv_theLoai.append(theLoaiSach.getTenTheLoai() + ", ");

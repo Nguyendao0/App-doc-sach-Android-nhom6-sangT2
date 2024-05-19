@@ -136,12 +136,7 @@
                 android:id="@+id/btn_female"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:background="@drawable/baseline_female_24" />
-            <ImageView
-                android:id="@+id/btn_male"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/baseline_male_24" />
+                android:background="@drawable/settings_24px" />
 
             <TextView
                 android:layout_width="wrap_content"

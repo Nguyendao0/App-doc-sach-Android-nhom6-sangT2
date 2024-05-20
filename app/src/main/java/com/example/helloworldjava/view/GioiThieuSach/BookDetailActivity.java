@@ -86,9 +86,7 @@ public class BookDetailActivity extends AppCompatActivity {
         UserService userService = ServiceBuilder.buildService(UserService.class);
         Intent intent = getIntent();
         String idsach = intent.getStringExtra("IdSach");
-
-        SachService sachService = ServiceBuilder.buildService(SachService.class);
-        Call<Sach> request = sachService.getSach(idsach);
+        
 
         request.enqueue(new Callback<Sach>() {
             @Override

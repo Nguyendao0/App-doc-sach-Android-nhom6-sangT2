@@ -83,10 +83,11 @@ public class Sach {
         ListTheLoai = listTheLoai;
     }
 
-    public Sach(String tenSach, String nxb, String img){
+    public Sach(String tenSach, String nxb, String img, String id){
         this.TenSach = tenSach;
         this.NhaXuatBan = nxb;
         this.img = img;
+        this.id = id;
     }
     public int getTongSoLuotDoc() {
         return tongSoLuotDoc;

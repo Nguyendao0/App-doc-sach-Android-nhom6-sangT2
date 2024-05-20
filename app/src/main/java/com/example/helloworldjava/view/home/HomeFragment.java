@@ -1,13 +1,22 @@
 package com.example.helloworldjava.view.home;
 
+import static android.app.Activity.RESULT_OK;
+
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,9 +31,18 @@ import com.example.helloworldjava.services.ServiceBuilder;
 import com.example.helloworldjava.view.user.UserActivity;
 import com.google.firebase.auth.FirebaseUser;
 import com.example.helloworldjava.view.GioiThieuSach.BookDetailActivity;
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.LuminanceSource;
+import com.google.zxing.MultiFormatReader;
+import com.google.zxing.NotFoundException;
+import com.google.zxing.RGBLuminanceSource;
+import com.google.zxing.Result;
+import com.google.zxing.common.HybridBinarizer;
 
 import android.widget.TextView;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +56,7 @@ public class HomeFragment extends Fragment implements ListBooksHomeRecyclerViewA
     private ListBooksHomeRecyclerViewAdapter listNewBookAdapter;
     private SachService sachService;
     private FirebaseAuthManager firebaseAuthManager;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_home, container, false);
@@ -154,7 +173,7 @@ public class HomeFragment extends Fragment implements ListBooksHomeRecyclerViewA
             public void onResponse(Call<List<Sach>> call, Response<List<Sach>> response) {
                 List<Sach> listYourLibrarySach = response.body();
                 listNewBooksRV.setLayoutManager(new GridLayoutManager(getContext(), 3));
-                listNewBookAdapter = new ListBooksHomeRecyclerViewAdapter( requireContext(), listYourLibrarySach,  R.layout.list_books_item_home, "ListBook");
+                listNewBookAdapter = new ListBooksHomeRecyclerViewAdapter(requireContext(), listYourLibrarySach, R.layout.list_books_item_home, "ListBook");
                 listNewBookAdapter.setClickListener(HomeFragment.this::onItemClick);
                 listNewBooksRV.setAdapter(listNewBookAdapter);
             }
@@ -204,6 +223,14 @@ public class HomeFragment extends Fragment implements ListBooksHomeRecyclerViewA
 //        adapter = new ListBooksHomeRecyclerViewAdapter(requireContext(), data, R.layout.list_books_item_home);
 //        listBooksCategoryRV.setAdapter(adapter);
 
+        Button btnOpenQRMenu = view.findViewById(R.id.btnOpenQRMenu);
+        btnOpenQRMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openQRMenuDialog();
+            }
+        });
+
         return view;
     }
 
@@ -222,4 +249,91 @@ public class HomeFragment extends Fragment implements ListBooksHomeRecyclerViewA
         goToBookDetailIntent.putExtra("idSach", sach.getId());
         startActivity(goToBookDetailIntent);
     }
+
+    public void openQRMenuDialog() {
+        Dialog builder = new Dialog(getContext());
+        builder.setTitle("Chọn cách quét mã QR");
+        // Tạo layout cho hộp thoại
+        View view = getLayoutInflater().inflate(R.layout.dialog_scan_qr_code, null);
+        builder.setContentView(view);
+        Button btnScanQRCodeFromCamera = view.findViewById(R.id.btnScanQRCodeFromCamera);
+        Button btnScanQRCodeFromImage = view.findViewById(R.id.btnScanQRCodeFromImage);
+
+        btnScanQRCodeFromCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // open camera intent
+                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                cameraLauncher.launch(takePictureIntent);
+            }
+        });
+
+        btnScanQRCodeFromImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+                photoPickerIntent.setType("image/*");
+                galleryLauncher.launch(photoPickerIntent);
+            }
+        });
+
+        builder.show();
+    }
+
+    public String decodeQR(Bitmap bitmap) {
+        int[] intArray = new int[bitmap.getWidth() * bitmap.getHeight()];
+        // Copy pixel data from the Bitmap into the 'intArray' array
+        bitmap.getPixels(intArray, 0, bitmap.getWidth(), 0, 0, bitmap.getWidth(), bitmap.getHeight());
+
+        LuminanceSource source = new RGBLuminanceSource(bitmap.getWidth(), bitmap.getHeight(), intArray);
+        BinaryBitmap binaryBitmap = new BinaryBitmap(new HybridBinarizer(source));
+        MultiFormatReader reader = new MultiFormatReader();
+        try {
+            Result result = reader.decode(binaryBitmap);
+            return result.getText();
+        } catch (NotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    private ActivityResultLauncher<Intent> galleryLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == RESULT_OK) {
+                    Intent data = result.getData();
+                    if (data != null) {
+                        // Get the image URI
+                        // Set the image to the ImageView
+                        try {
+                            final Uri imageUri = data.getData();
+                            final InputStream imageStream;
+                            imageStream = getContext().getContentResolver().openInputStream(imageUri);
+                            final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+                            // Decode QR
+                            String idSach = decodeQR(selectedImage);
+                            // Go to book detail
+                            Intent intent = new Intent(getContext(), BookDetailActivity.class);
+                            intent.putExtra("idSach", idSach);
+                            startActivity(intent);
+                        } catch (FileNotFoundException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                }
+            });
+
+    private ActivityResultLauncher<Intent> cameraLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == RESULT_OK) {
+                    // Get the image URI
+                    Bitmap photo = (Bitmap) result.getData().getExtras().get("data");
+                    // Decode QR
+                    String idSach = decodeQR(photo);
+                    // Go to book detail
+                    Intent intent = new Intent(getContext(), BookDetailActivity.class);
+                    intent.putExtra("idSach", idSach);
+                    startActivity(intent);
+                }
+            });
 }

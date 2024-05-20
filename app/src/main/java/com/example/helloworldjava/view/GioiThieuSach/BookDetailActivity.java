@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.helloworldjava.FCM.TopicFCM;
+import com.bumptech.glide.Glide;
 import com.example.helloworldjava.R;
 import com.example.helloworldjava.model.Realm.ThuVienSachCaNhan;
 import com.example.helloworldjava.model.entity.Sach;
@@ -83,24 +84,26 @@ public class BookDetailActivity extends AppCompatActivity {
         });
 
         UserService userService = ServiceBuilder.buildService(UserService.class);
+        Intent intent = getIntent();
+        String idsach = intent.getStringExtra("IdSach");
+
+        SachService sachService = ServiceBuilder.buildService(SachService.class);
+        Call<Sach> request = sachService.getSach(idsach);
 
         request.enqueue(new Callback<Sach>() {
             @Override
             public void onResponse(@NonNull Call<Sach> call, @NonNull Response<Sach> response) {
                 Sach sach = response.body();
-
-                // Get view
-                ImageView iv_TrangBia = findViewById(R.id.img_TrangBia);
+                //System.out.println(sach);
+                ImageView imgSach = findViewById(R.id.img_TrangBia);
                 TextView tv_TenTruyen = findViewById(R.id.tv_TenTruyen);
                 TextView tv_moTa = findViewById(R.id.tv_mo_ta_sach);
                 TextView tv_theLoai = findViewById(R.id.tv_Theloai);
-                TextView tv_nxb = findViewById(R.id.tv_TenTacGia);
-
-                // Fill data
-                Picasso.get().load(sach.getImg()).into(iv_TrangBia);
+                TextView tv_nhaxuatban = findViewById(R.id.tv_TenTacGia);
                 tv_TenTruyen.setText(sach.getTenSach());
                 tv_moTa.setText(sach.getMota());
-                tv_nxb.setText(sach.getNhaXuatBan());
+                tv_nhaxuatban.setText(sach.getNhaXuatBan());
+                Glide.with(BookDetailActivity.this).load(sach.getImg()).into(imgSach);
                 tv_theLoai.setText("");
                 if (sach.getListTheLoai() != null) {
                     sach.getListTheLoai().forEach(theLoaiSach -> {

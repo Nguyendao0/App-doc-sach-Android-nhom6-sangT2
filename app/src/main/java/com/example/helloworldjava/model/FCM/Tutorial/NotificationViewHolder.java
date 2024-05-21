@@ -1,4 +1,4 @@
-package com.example.helloworldjava.FCM.Tutorial;
+package com.example.helloworldjava.model.FCM.Tutorial;
 
 import android.view.View;
 import android.widget.TextView;
@@ -6,7 +6,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.helloworldjava.FCM.NotificationFCM;
+import com.example.helloworldjava.model.FCM.NotificationFCM;
 import com.example.helloworldjava.R;
 
 public class NotificationViewHolder  extends RecyclerView.ViewHolder{

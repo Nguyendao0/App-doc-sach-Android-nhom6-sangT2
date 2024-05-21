@@ -1,4 +1,4 @@
-package com.example.helloworldjava.FCM.Tutorial;
+package com.example.helloworldjava.model.FCM.Tutorial;
 
 import androidx.appcompat.app.AppCompatActivity;
 

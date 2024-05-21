@@ -1,4 +1,4 @@
-package com.example.helloworldjava.FCM;
+package com.example.helloworldjava.model.FCM;
 
 public class NotificationFCM {
     private String title;

@@ -5,8 +5,8 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 
-import com.example.helloworldjava.FCM.TopicFCM;
-import com.example.helloworldjava.LibraryContractInterface.CurrentReadingContract;
+import com.example.helloworldjava.model.FCM.TopicFCM;
+import com.example.helloworldjava.presenter.LibraryContractInterface.CurrentReadingContract;
 import com.example.helloworldjava.model.Realm.Chuong;
 import com.example.helloworldjava.model.Realm.DAO.Interface_Success_Fail;
 import com.example.helloworldjava.services.ChuongService;

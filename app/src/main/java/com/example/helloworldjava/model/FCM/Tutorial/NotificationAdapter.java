@@ -1,4 +1,4 @@
-package com.example.helloworldjava.FCM.Tutorial;
+package com.example.helloworldjava.model.FCM.Tutorial;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.helloworldjava.FCM.NotificationFCM;
+import com.example.helloworldjava.model.FCM.NotificationFCM;
 import com.example.helloworldjava.R;
 
 import java.util.ArrayList;

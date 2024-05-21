@@ -2,11 +2,11 @@ package com.example.helloworldjava.presenter.Thongbao;
 
 import android.content.Context;
 
-import com.example.helloworldjava.NotificationContractInterface.Notification;
+import com.example.helloworldjava.presenter.NotificationContractInterface.Notification;
 import com.example.helloworldjava.services.FirebaseAuthManager;
 import com.example.helloworldjava.services.NotificationService;
 import com.example.helloworldjava.services.ServiceBuilder;
-import com.example.helloworldjava.FCM.NotificationFCM;
+import com.example.helloworldjava.model.FCM.NotificationFCM;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,9 +1,8 @@
-package com.example.helloworldjava.LibraryContractInterface;
+package com.example.helloworldjava.presenter.LibraryContractInterface;
 
 import android.content.Context;
 
 import com.example.helloworldjava.model.Realm.Sach;
-import com.example.helloworldjava.view.Library.LibraryBookAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

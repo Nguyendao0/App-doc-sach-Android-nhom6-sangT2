@@ -1,6 +1,5 @@
 package com.example.helloworldjava.view.Library;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -13,8 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.helloworldjava.LibraryContractInterface.LibraryContract;
-import com.example.helloworldjava.LibraryContractInterface.NavigationContract;
+import com.example.helloworldjava.presenter.LibraryContractInterface.LibraryContract;
+import com.example.helloworldjava.presenter.LibraryContractInterface.NavigationContract;
 import com.example.helloworldjava.R;
 
 public class NavigationFragment extends Fragment implements NavigationContract.View {
@@ -60,13 +59,6 @@ public class NavigationFragment extends Fragment implements NavigationContract.V
             }
         });
 
-        questionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), QuestionActivity.class);
-                startActivity(intent);
-            }
-        });
         return view;
     }
 

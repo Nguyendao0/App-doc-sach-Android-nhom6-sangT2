@@ -3,9 +3,9 @@ package com.example.helloworldjava.presenter.Library;
 import androidx.fragment.app.Fragment;
 
 
-import com.example.helloworldjava.LibraryContractInterface.EditPopupContract;
-import com.example.helloworldjava.LibraryContractInterface.LibraryContract;
-import com.example.helloworldjava.LibraryContractInterface.NavigationContract;
+import com.example.helloworldjava.presenter.LibraryContractInterface.EditPopupContract;
+import com.example.helloworldjava.presenter.LibraryContractInterface.LibraryContract;
+import com.example.helloworldjava.presenter.LibraryContractInterface.NavigationContract;
 import com.example.helloworldjava.model.Realm.Sach;
 import com.example.helloworldjava.view.Library.LibraryBookViewHolder;
 

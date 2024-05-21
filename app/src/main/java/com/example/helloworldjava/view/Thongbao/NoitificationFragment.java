@@ -18,9 +18,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.helloworldjava.NotificationContractInterface.Notification;
+import com.example.helloworldjava.presenter.NotificationContractInterface.Notification;
 import com.example.helloworldjava.R;
-import com.example.helloworldjava.FCM.NotificationFCM;
+import com.example.helloworldjava.model.FCM.NotificationFCM;
 import com.example.helloworldjava.presenter.Thongbao.NotificationFCMPresenter;
 import com.example.helloworldjava.services.NotificationService;
 import com.example.helloworldjava.services.ServiceBuilder;

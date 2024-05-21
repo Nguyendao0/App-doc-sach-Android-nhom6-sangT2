@@ -1,31 +1,15 @@
 package com.example.helloworldjava.view.Menu;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import com.example.helloworldjava.FCM.NotificationFCM;
 import com.example.helloworldjava.R;
 import com.example.helloworldjava.services.FirebaseAuthManager;
-import com.example.helloworldjava.services.NotificationService;
-import com.example.helloworldjava.services.ServiceBuilder;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
-import com.google.firebase.messaging.FirebaseMessaging;
 
 import androidx.viewpager2.widget.ViewPager2;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MenuActivity extends AppCompatActivity {
     private FirebaseAuthManager firebaseAuthManager;

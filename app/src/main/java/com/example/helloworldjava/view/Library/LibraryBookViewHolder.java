@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.helloworldjava.LibraryContractInterface.LibraryContract;
+import com.example.helloworldjava.presenter.LibraryContractInterface.LibraryContract;
 import com.example.helloworldjava.R;
 
 import com.example.helloworldjava.model.Realm.Sach;

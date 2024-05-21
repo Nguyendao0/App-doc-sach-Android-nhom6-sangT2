@@ -9,7 +9,6 @@ public class Sach extends RealmObject {
 
     @PrimaryKey
     private String id;
-    private RealmList<DanhGiaSach> DanhGiaSach_Items=null;
     private int luotDoc;
     private RealmList<Chuong> Chuong_Items=null;
     private String img;
@@ -45,13 +44,6 @@ public class Sach extends RealmObject {
         this.luotDoc = luotDoc;
     }
 
-    public RealmList<DanhGiaSach> getDanhGiaSach_Items() {
-        return DanhGiaSach_Items;
-    }
-
-    public void setDanhGiaSach_Items(RealmList<DanhGiaSach> danhGiaSach_Items) {
-        DanhGiaSach_Items = danhGiaSach_Items;
-    }
 
     public String getImg() {
         return img;
@@ -93,18 +85,5 @@ public class Sach extends RealmObject {
         Mota = mota;
     }
 
-    @Override
-    public String toString() {
-        return "Sach{" +
-                "id='" + id + '\'' +
-                ", DanhGiaSach_Items=" + DanhGiaSach_Items +
-                ", luotDoc=" + luotDoc +
-                ", Chuong_Items=" + Chuong_Items +
-                ", img='" + img + '\'' +
-                ", TenSach='" + TenSach + '\'' +
-                ", NhaXuatBan='" + NhaXuatBan + '\'' +
-                ", NamXuatBan=" + NamXuatBan +
-                ", Mota='" + Mota + '\'' +
-                '}';
-    }
+
 }

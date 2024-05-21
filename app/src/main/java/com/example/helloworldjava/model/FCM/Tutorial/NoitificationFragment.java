@@ -1,4 +1,4 @@
-package com.example.helloworldjava.FCM.Tutorial;
+package com.example.helloworldjava.model.FCM.Tutorial;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -18,9 +18,9 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.helloworldjava.FCM.NotificationFCM;
-import com.example.helloworldjava.FCM.TopicFCM;
-import com.example.helloworldjava.NotificationContractInterface.Notification;
+import com.example.helloworldjava.model.FCM.NotificationFCM;
+import com.example.helloworldjava.model.FCM.TopicFCM;
+import com.example.helloworldjava.presenter.NotificationContractInterface.Notification;
 import com.example.helloworldjava.R;
 import com.example.helloworldjava.presenter.Thongbao.NotificationFCMPresenter;
 import com.example.helloworldjava.services.NotificationService;

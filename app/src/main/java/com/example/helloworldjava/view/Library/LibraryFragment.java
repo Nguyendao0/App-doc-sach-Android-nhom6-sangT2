@@ -9,10 +9,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.helloworldjava.LibraryContractInterface.CurrentReadingContract;
-import com.example.helloworldjava.LibraryContractInterface.EditPopupContract;
-import com.example.helloworldjava.LibraryContractInterface.LibraryContract;
-import com.example.helloworldjava.LibraryContractInterface.NavigationContract;
+import com.example.helloworldjava.presenter.LibraryContractInterface.CurrentReadingContract;
+import com.example.helloworldjava.presenter.LibraryContractInterface.EditPopupContract;
+import com.example.helloworldjava.presenter.LibraryContractInterface.LibraryContract;
+import com.example.helloworldjava.presenter.LibraryContractInterface.NavigationContract;
 import com.example.helloworldjava.R;
 import com.example.helloworldjava.model.Realm.Sach;
 import com.example.helloworldjava.presenter.Library.CurrentReadingPresenter;

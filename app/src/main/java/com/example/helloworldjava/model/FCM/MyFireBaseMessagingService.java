@@ -1,17 +1,13 @@
-package com.example.helloworldjava.FCM;
+package com.example.helloworldjava.model.FCM;
 
-import android.Manifest;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 
 import com.example.helloworldjava.MainActivity;
 import com.example.helloworldjava.MyApplication;

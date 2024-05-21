@@ -1,6 +1,6 @@
 package com.example.helloworldjava.presenter.Library;
 
-import com.example.helloworldjava.LibraryContractInterface.EditPopupContract;
+import com.example.helloworldjava.presenter.LibraryContractInterface.EditPopupContract;
 
 public class EditPopupPresenter implements EditPopupContract.Presenter {
     EditPopupContract.View editPopupView;

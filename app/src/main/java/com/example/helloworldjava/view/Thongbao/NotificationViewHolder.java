@@ -1,15 +1,13 @@
 package com.example.helloworldjava.view.Thongbao;
 
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.helloworldjava.R;
-import com.example.helloworldjava.FCM.NotificationFCM;
+import com.example.helloworldjava.model.FCM.NotificationFCM;
 
 public class NotificationViewHolder  extends RecyclerView.ViewHolder{
     private TextView title;

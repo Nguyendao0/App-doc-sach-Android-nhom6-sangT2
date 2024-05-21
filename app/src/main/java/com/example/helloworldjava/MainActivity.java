@@ -19,7 +19,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.example.helloworldjava.view.GioiThieuSach.BookDetailActivity;
 import com.example.helloworldjava.services.NotificationService;
 import com.example.helloworldjava.services.ServiceBuilder;
-import com.example.helloworldjava.FCM.NotificationFCM;
+import com.example.helloworldjava.model.FCM.NotificationFCM;
 import com.example.helloworldjava.view.home.HomeActivity;
 import com.example.helloworldjava.view.Menu.MenuActivity;
 import com.example.helloworldjava.view.login.Account_Login;
@@ -81,11 +81,13 @@ public class MainActivity extends AppCompatActivity {
         // Kiểm tra nếu đây là lần đầu chạy ứng dụng
         boolean isFirstRun = checkFirstRun();
 
-        showWelcomeDialog();
-//        if (isFirstRun) {
-//            showWelcomeDialog();
-//        }
-        // goToMenu();
+        // showWelcomeDialog();
+        if (isFirstRun) {
+            showWelcomeDialog();
+        } else {
+            goToMenu();
+        }
+
 
 
 
@@ -170,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void goToMenu(View v) {
+    public void goToMenu() {
         Intent intent = new Intent(this, MenuActivity.class);
         startActivity(intent);
     }
@@ -234,6 +236,7 @@ public class MainActivity extends AppCompatActivity {
         builder.setPositiveButton("Bỏ qua", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                goToMenu();
                 dialog.dismiss();
             }
         });

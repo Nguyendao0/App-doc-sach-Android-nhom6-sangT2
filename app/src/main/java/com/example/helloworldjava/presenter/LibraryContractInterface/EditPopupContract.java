@@ -1,4 +1,4 @@
-package com.example.helloworldjava.LibraryContractInterface;
+package com.example.helloworldjava.presenter.LibraryContractInterface;
 
 public interface EditPopupContract {
     interface View{

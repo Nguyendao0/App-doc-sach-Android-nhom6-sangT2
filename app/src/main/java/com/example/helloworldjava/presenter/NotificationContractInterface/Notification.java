@@ -1,8 +1,8 @@
-package com.example.helloworldjava.NotificationContractInterface;
+package com.example.helloworldjava.presenter.NotificationContractInterface;
 
 import android.content.Context;
 
-import com.example.helloworldjava.FCM.NotificationFCM;
+import com.example.helloworldjava.model.FCM.NotificationFCM;
 
 import java.util.ArrayList;
 

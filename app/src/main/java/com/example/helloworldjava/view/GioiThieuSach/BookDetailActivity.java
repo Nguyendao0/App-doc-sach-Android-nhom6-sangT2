@@ -1,26 +1,21 @@
 package com.example.helloworldjava.view.GioiThieuSach;
 
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.helloworldjava.FCM.TopicFCM;
+import com.example.helloworldjava.model.FCM.TopicFCM;
 import com.bumptech.glide.Glide;
 import com.example.helloworldjava.R;
 import com.example.helloworldjava.model.Realm.ThuVienSachCaNhan;
@@ -31,21 +26,10 @@ import com.example.helloworldjava.services.ServiceBuilder;
 import com.example.helloworldjava.services.UserService;
 import com.example.helloworldjava.view.DanhsachchuongActivity;
 import com.google.zxing.BarcodeFormat;
-import com.google.zxing.BinaryBitmap;
-import com.google.zxing.LuminanceSource;
-import com.google.zxing.MultiFormatReader;
 import com.google.zxing.MultiFormatWriter;
-import com.google.zxing.NotFoundException;
-import com.google.zxing.RGBLuminanceSource;
-import com.google.zxing.Result;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
-import com.google.zxing.common.HybridBinarizer;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
-import com.squareup.picasso.Picasso;
-
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 
 import retrofit2.Call;
 import retrofit2.Callback;

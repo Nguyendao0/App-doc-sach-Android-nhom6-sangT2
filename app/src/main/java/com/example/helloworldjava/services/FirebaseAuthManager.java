@@ -3,7 +3,7 @@ package com.example.helloworldjava.services;
 import android.content.Context;
 import android.content.Intent;
 
-import com.example.helloworldjava.FCM.NotificationFCM;
+import com.example.helloworldjava.model.FCM.NotificationFCM;
 import com.example.helloworldjava.view.Menu.MenuActivity;
 import com.example.helloworldjava.view.login.Account_Login;
 import com.example.helloworldjava.view.register.Account_Register;

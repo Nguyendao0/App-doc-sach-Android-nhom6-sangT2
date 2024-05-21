@@ -9,12 +9,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.example.helloworldjava.LibraryContractInterface.LibraryContract;
+import com.example.helloworldjava.presenter.LibraryContractInterface.LibraryContract;
 import com.example.helloworldjava.R;
 import com.example.helloworldjava.model.Realm.Sach;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class LibraryBookAdapter extends RecyclerView.Adapter<LibraryBookViewHolder>{
     private ArrayList<Sach> sachList;

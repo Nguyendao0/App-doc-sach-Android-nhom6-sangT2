@@ -1,5 +1,5 @@
 package com.example.helloworldjava.services.API;
-import com.example.helloworldjava.Config.ConfigData;
+import com.example.helloworldjava.model.Config.ConfigData;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;

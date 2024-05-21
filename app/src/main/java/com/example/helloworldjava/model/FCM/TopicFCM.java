@@ -1,4 +1,4 @@
-package com.example.helloworldjava.FCM;
+package com.example.helloworldjava.model.FCM;
 
 import android.util.Log;
 

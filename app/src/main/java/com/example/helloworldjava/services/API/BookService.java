@@ -3,7 +3,7 @@ package com.example.helloworldjava.services.API;
 import com.example.helloworldjava.model.APIEntities.Book;
 import com.example.helloworldjava.model.APIEntities.Chaper;
 import com.example.helloworldjava.model.APIResponeModel.ApiResponseSachModle;
-import com.example.helloworldjava.Config.ConfigData;
+import com.example.helloworldjava.model.Config.ConfigData;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.helloworldjava.R;
-import com.example.helloworldjava.FCM.NotificationFCM;
+import com.example.helloworldjava.model.FCM.NotificationFCM;
 
 import java.util.ArrayList;
 

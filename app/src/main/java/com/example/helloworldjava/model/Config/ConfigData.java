@@ -1,4 +1,4 @@
-package com.example.helloworldjava.Config;
+package com.example.helloworldjava.model.Config;
 
 import android.content.Context;
 import android.content.SharedPreferences;

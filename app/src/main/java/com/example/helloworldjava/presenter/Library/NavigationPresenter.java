@@ -1,6 +1,6 @@
 package com.example.helloworldjava.presenter.Library;
 
-import com.example.helloworldjava.LibraryContractInterface.NavigationContract;
+import com.example.helloworldjava.presenter.LibraryContractInterface.NavigationContract;
 
 public class NavigationPresenter implements NavigationContract.Presenter {
     private NavigationContract.View navigationView;
